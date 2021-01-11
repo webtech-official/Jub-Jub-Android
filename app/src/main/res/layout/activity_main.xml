@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,5 +66,88 @@
         app:layout_constraintTop_toBottomOf="@id/linear" />
 
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="0dp"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <ImageView
+            android:id="@+id/imageView_PrevPage_MainActivity"
+            android:layout_width="40dp"
+            android:layout_height="49dp"
+            android:padding="15dp"
+            android:src="@drawable/ic_chevron_big_left"/>
+
+        <TextView
+            android:id="@+id/textView_PageNum1_MainActivity"
+            android:text="1"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textView_PageNum2_MainActivity"
+            android:text="2"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textView_PageNum3_MainActivity"
+            android:text="3"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textView_PageNum4_MainActivity"
+            android:text="4"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textView_PageNum5_MainActivity"
+            android:text="5"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/imageView_NextPage_MainActivity"
+            android:layout_width="40dp"
+            android:layout_height="49dp"
+            android:padding="15dp"
+            android:src="@drawable/ic_chevron_big_right"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
