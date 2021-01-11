@@ -118,26 +118,18 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_Name_RegisterActivity" />
 
 
-    <TextView
+    <Button
         android:id="@+id/button_Login_RegisterActivity"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:background="@drawable/button_roundedge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="로그인"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:text="회원가입"
+        android:backgroundTint="@color/white"
         android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:fontFamily="@font/notosans"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/button_Login_RegisterActivity"
-        app:layout_constraintEnd_toEndOf="@+id/button_Login_RegisterActivity"
-        app:layout_constraintStart_toStartOf="@+id/button_Login_RegisterActivity"
-        app:layout_constraintTop_toTopOf="@+id/button_Login_RegisterActivity" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"  />
 
 
 
