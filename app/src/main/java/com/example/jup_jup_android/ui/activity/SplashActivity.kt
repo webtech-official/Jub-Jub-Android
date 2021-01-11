@@ -17,6 +17,6 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startApp() {
 
-        startActivity(Intent(applicationContext, MainActivity::class.java))
+        startActivity(Intent(applicationContext, LoginActivity ::class.java))
     }
 }
