@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="20dp"
+    tools:context=".ui.activity.RegisterActivity">
+
+    <TextView
+        android:id="@+id/textView_AppTitle_RegisterActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:fontFamily="@font/varela"
+        android:text="@string/appTitle"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/textView_Register_RegisterActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:layout_marginTop="75dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/editText_Email_RegisterActivity"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/edittext_customedge"
+        android:fontFamily="@font/notosans"
+        android:hint="Email"
+        android:textSize="16dp"
+        android:paddingStart="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="173dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <EditText
+        android:id="@+id/editText_Password_RegisterActivity"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:hint="Password"
+        android:textColorHint="@color/white"
+        android:paddingStart="15dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_customedge"
+        android:fontFamily="@font/notosans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Email_RegisterActivity" />
+
+    <EditText
+        android:id="@+id/editText_PasswordCheck_RegisterActivity"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:hint="Password check"
+        android:textColorHint="@color/white"
+        android:paddingStart="15dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_customedge"
+        android:fontFamily="@font/notosans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Password_RegisterActivity" />
+
+    <EditText
+        android:id="@+id/editText_Name_RegisterActivity"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:hint="Name"
+        android:textColorHint="@color/white"
+        android:paddingStart="15dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_customedge"
+        android:fontFamily="@font/notosans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_PasswordCheck_RegisterActivity" />
+
+     <EditText
+        android:id="@+id/editText_ClassNum_RegisterActivity"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:hint="Class Number (ex 2110)"
+        android:textColorHint="@color/white"
+         android:paddingStart="15dp"
+         android:textSize="16dp"
+        android:textColor="@color/white"
+        android:background="@drawable/edittext_customedge"
+        android:fontFamily="@font/notosans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Name_RegisterActivity" />
+
+
+    <TextView
+        android:id="@+id/button_Login_RegisterActivity"
+        android:layout_width="80dp"
+        android:layout_height="32dp"
+        android:background="@drawable/button_roundedge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:fontFamily="@font/notosans"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/button_Login_RegisterActivity"
+        app:layout_constraintEnd_toEndOf="@+id/button_Login_RegisterActivity"
+        app:layout_constraintStart_toStartOf="@+id/button_Login_RegisterActivity"
+        app:layout_constraintTop_toTopOf="@+id/button_Login_RegisterActivity" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
