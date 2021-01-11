@@ -88,26 +88,19 @@
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
-    <TextView
-        android:id="@+id/button_Login_LoginActivity"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:background="@drawable/button_roundedge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/button_Login_LoginActivity"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
         android:text="로그인"
+        android:backgroundTint="@color/white"
         android:textColor="@color/black"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:fontFamily="@font/notosans"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/button_Login_LoginActivity"
-        app:layout_constraintEnd_toEndOf="@+id/button_Login_LoginActivity"
-        app:layout_constraintStart_toStartOf="@+id/button_Login_LoginActivity"
-        app:layout_constraintTop_toTopOf="@+id/button_Login_LoginActivity" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"  />
 
 
 
