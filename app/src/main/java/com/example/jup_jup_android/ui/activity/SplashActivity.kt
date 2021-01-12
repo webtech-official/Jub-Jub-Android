@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jup_jup_android.R
+import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import java.lang.Thread.sleep
 
 class SplashActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startApp() {
+        ItemStatusListManager.initItemStatusList(applicationContext, 10)
 
         startActivity(Intent(applicationContext, LoginActivity ::class.java))
     }
