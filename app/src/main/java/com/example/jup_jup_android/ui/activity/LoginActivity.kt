@@ -14,5 +14,12 @@ class LoginActivity : AppCompatActivity() {
         textView_GotoRegister_LoginActivity.setOnClickListener {
             startActivity(Intent(applicationContext, RegisterActivity::class.java))
         }
+
+
+        button_Login_LoginActivity.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
+            finish()
+
+        }
     }
 }
