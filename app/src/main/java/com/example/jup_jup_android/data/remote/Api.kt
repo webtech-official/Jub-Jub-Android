@@ -11,9 +11,13 @@ import retrofit2.http.*
 
 interface Api {
 
+    @GET("coffe")
+    fun getTest(): Call<ResponseTest>
+
     @POST("login")
     fun login(@Body login: Login): Call<LoginResponse>
 
     @POST("signup")
     fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
+
 }
