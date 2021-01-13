@@ -8,18 +8,24 @@ import android.view.View
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
+import com.example.jup_jup_android.entity.dataclass.ItemStatus
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import com.example.jup_jup_android.ui.adapter.ViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetPageView(context: Context, view: View) {
+class SetPageView(context: Context, view: View, dataList: ArrayList<ArrayList<ItemStatus>>) {
+
+    //constructor(context: Context?, view: View?, dataList: ArrayList<ArrayList<MyRentalList>>) : this()
+
     var context = context
     var view = view
     private val NEXT_PAGE = +1
     private val PREV_PAGE = -1
     private val THIS_PAGE = 0
     var lastPage = 0
+    var dataList = dataList
+    private var bottomBarPage = 0
+
     private lateinit var textViewArrayList: ArrayList<TextView>
     private lateinit var viewPager : ViewPager
 
@@ -38,8 +44,8 @@ class SetPageView(context: Context, view: View) {
 
         viewPager.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
+            //Page가 바뀌면 실행되는 함수
             override fun onPageSelected(arg0: Int) {
-                Log.d("TestLog", "onPageSelected arg0 = $arg0")
                 changePageByViewPagerSwipe(arg0)
 
             }
@@ -64,7 +70,7 @@ class SetPageView(context: Context, view: View) {
 
         //다음 페이지 이미지 버튼
         view.imageView_NextPage.setOnClickListener {
-            if (viewPager.currentItem != ItemStatusListManager.getDevidedItemStatusList().size - 1) {
+            if (viewPager.currentItem != dataList.size - 1) {
                 changePageByButton(viewPager.currentItem + NEXT_PAGE)
             }
         }
@@ -85,7 +91,7 @@ class SetPageView(context: Context, view: View) {
     }
 
     private fun checkFragmentBlankPageNum() {
-        var maxPage = ItemStatusListManager.getDevidedItemStatusList().size
+        var maxPage = dataList.size
         for (i in 0 until 5) {
             if (textViewArrayList[i].text.toString().toInt() > maxPage) {
                 textViewArrayList[i].visibility = View.GONE
@@ -99,12 +105,13 @@ class SetPageView(context: Context, view: View) {
     fun changePageByViewPagerSwipe(destination: Int) {
         textHighlightOn(destination)
 
-        // 4 -> 5
-        if (lastPage % 5 == 4 && destination % 5 == 0) {
+        // 14 -> 15
+        // lastPage == destination-1은 6에서10을 / 10에서 6을 클릭하면 bottomPage가 넘어가지않는데 숫자가 update되는 오류가 있어서 추가함
+        if (lastPage % 5 == 4 && destination % 5 == 0 && lastPage == destination-1) {
             changePageNumsText(NEXT_PAGE)
         }
         // 5 -> 4
-        else if (lastPage % 5 == 0 && destination % 5 == 4) {
+        else if (lastPage % 5 == 0 && destination % 5 == 4 && lastPage == destination+1 ) {
             changePageNumsText(PREV_PAGE)
         }
         textHighlightOff()
@@ -118,20 +125,17 @@ class SetPageView(context: Context, view: View) {
         textHighlightOff()
         textHighlightOn(destination)
 
-
         viewPager.currentItem = destination
         //lastPage = destination
     }
 
     fun textHighlightOff() {
-        // textViewArrayList[viewPager_ItemStatusList.currentItem % 5].text.toString().toInt()
         textViewArrayList[lastPage % 5].textSize = 18f
         textViewArrayList[lastPage % 5].setShadowLayer(0f, 0f, 0f, Color.parseColor("#FFFFFF"))
         lastPage = viewPager.currentItem
     }
 
     fun textHighlightOn(destination: Int) {
-        //var destination = textViewArrayList[dest % 5].text.toString().toInt()
         textViewArrayList[destination % 5].textSize = 25f
         textViewArrayList[destination % 5].setShadowLayer(20f, 0f, 0f, Color.parseColor("#FFFFFF"))
     }
