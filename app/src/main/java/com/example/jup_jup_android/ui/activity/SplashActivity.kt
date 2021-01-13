@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startApp() {
-        ItemStatusListManager.initItemStatusList(applicationContext, 10)
+        ItemStatusListManager.initItemStatusList(applicationContext, 100)
 
         startActivity(Intent(applicationContext, LoginActivity ::class.java))
     }
