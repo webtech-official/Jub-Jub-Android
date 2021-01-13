@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         SetPageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getDevidedItemStatusList()).initViewPager()
 
         setTitleBarItemsOnclick()
-
     }
 
     private fun setTitleBarItemsOnclick() {
