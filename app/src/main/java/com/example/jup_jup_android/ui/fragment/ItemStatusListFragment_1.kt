@@ -22,7 +22,7 @@ class ItemStatusListFragment_1(itemStatusList: ArrayList<ItemStatus>) : Fragment
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.fragment_item_status_list_1, container, false)
+        var view = inflater.inflate(R.layout.fragment_item_status_list, container, false)
 
         return view
     }
