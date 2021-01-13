@@ -19,7 +19,6 @@ class LoginActivity : AppCompatActivity() {
         button_Login_LoginActivity.setOnClickListener {
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
-
         }
     }
 }
