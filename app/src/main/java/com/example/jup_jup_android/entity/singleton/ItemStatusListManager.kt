@@ -14,11 +14,11 @@ object ItemStatusListManager {
 
 
     fun initItemStatusList(context: Context, cnt: Int){
-        var itemStatusData = ItemStatus(BitmapFactory.decodeResource(context.resources, R.drawable.imageex), "DC모터", "모터", 5)
+//        /var itemStatusData = ItemStatus(BitmapFactory.decodeResource(context.resources, R.drawable.imageex), "DC모터", "모터", 5)
 
         var tempStatusList = ArrayList<ItemStatus>()
         for(i in 0..cnt){
-            tempStatusList.add(itemStatusData)
+            tempStatusList.add(ItemStatus(BitmapFactory.decodeResource(context.resources, R.drawable.imageex), "DC모터", "모터", i))
         }
 
 
@@ -38,20 +38,20 @@ object ItemStatusListManager {
         var cnt = 0
 
         for(i in 0..dataList.size/5){
-            Log.d("TestLog","i = $i")
+            //Log.d("TestLog","i = $i")
             devidedItemStatusList.add(ArrayList())
             for(j in 0 until 5){
-                Log.d("TestLog","j = $j")
+                //Log.d("TestLog","j = $j")
                 if(i*5 + j >= dataList.size){
                     break
                 }else{
                     devidedItemStatusList[i].add(dataList[i*5 + j])
-                    Log.d("TestLog","[i][j] = ${devidedItemStatusList[i][j]}")
+                    //Log.d("TestLog","[i][j] = ${devidedItemStatusList[i][j]}")
                 }
             }
         }
 
-        Log.d("TestLog","complete = ${devidedItemStatusList}")
+        //Log.d("TestLog","complete = ${devidedItemStatusList}")
     }
 
     @JvmName("getDevidedItemStatusList1")
