@@ -9,6 +9,7 @@ import com.example.jup_jup_android.entity.dataclass.ItemStatus
 object ItemStatusListManager {
 
     private var itemStatusList = ArrayList<ItemStatus>()
+
     private var devidedItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
 
