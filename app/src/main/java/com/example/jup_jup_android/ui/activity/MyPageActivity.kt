@@ -1,6 +1,7 @@
 package com.example.jup_jup_android.ui.activity
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -22,10 +23,10 @@ class MyPageActivity : AppCompatActivity() {
 
         textView_Logout_MyPage.setOnClickListener {
             //Toast.makeText(applicationContext, "정말 로그아웃 하시겠습니까?", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(applicationContext, LoginActivity::class.java))
-            finish()
-            finish()
-            finish()
+            startActivity(Intent(applicationContext, LoginActivity::class.java).addFlags(FLAG_ACTIVITY_SINGLE_TOP))
+            //Activity Stack 아래에 있는 Activity들도 모두 종료
+            finishAffinity()
+
         }
     }
 }
