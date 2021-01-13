@@ -13,4 +13,7 @@ interface Api {
 
     @POST("login")
     fun login(@Body login: Login): Call<LoginResponse>
+
+    @POST("signup")
+    fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
 }
