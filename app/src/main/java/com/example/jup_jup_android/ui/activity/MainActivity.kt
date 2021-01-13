@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        SetPageView(applicationContext, pageView_MainActivity).initViewPager()
+        SetPageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getDevidedItemStatusList()).initViewPager()
 
         setTitleBarItemsOnclick()
 
