@@ -55,8 +55,6 @@ class SetPageView(context: Context, view: View, dataList: ArrayList<ArrayList<It
             override fun onPageScrollStateChanged(state: Int) {}
         })
 
-
-
     }
 
     private fun setBottomPageButtonsOnclick() {
