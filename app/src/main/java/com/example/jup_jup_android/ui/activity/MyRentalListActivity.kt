@@ -31,7 +31,7 @@ class MyRentalListActivity : AppCompatActivity() {
     private fun setTitleBarItemsOnclick() {
 
         imageView_BackArrow_MyRentalActivity.setOnClickListener {
-            startActivity(Intent(applicationContext, MyPageActivity::class.java))
+            finish()
         }
     }
 
