@@ -32,7 +32,7 @@ class ViewPagerAdapter(context: Context) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list_1, null)
+        val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
         val reserveCal: Calendar = Calendar.getInstance()
 
         var adapter = ItemStatusList_RecyclerViewAdpater(view.context, position)
@@ -41,7 +41,7 @@ class ViewPagerAdapter(context: Context) : PagerAdapter() {
 
         //setTextViewsText(view, reserveCal, position)
         container.addView(view)
-        Log.d("TestLog", "ViewPagerView Return")
+
         return view
     }
 
