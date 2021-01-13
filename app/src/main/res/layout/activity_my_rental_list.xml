@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.activity.MyRentalListActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/notosans"
+            android:text="나의 대여 목록"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginLeft="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyRentalActivity"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView_BackArrow_MyRentalActivity"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager_MyRentalList_MyRentalActivity"
+        android:layout_width="0dp"
+        android:layout_height="500dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear" />
+
+
+    <ImageView
+        android:id="@+id/imageView_PrevPage_MyRentalActivity"
+        android:layout_width="40dp"
+        android:layout_height="54dp"
+        android:padding="15dp"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/ic_chevron_big_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_NextPage_MyRentalActivity"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toEndOf="@+id/imageView_PrevPage_MyRentalActivity">
+
+
+        <TextView
+            android:id="@+id/textView_PageNum1_MyRentalActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:shadowColor="#FFFFFF"
+            android:shadowRadius="20.0"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView_PageNum2_MyRentalActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:text="2"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView_PageNum3_MyRentalActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView_PageNum4_MyRentalActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:text="4"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView_PageNum5_MyRentalActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="15dp"
+            android:text="5"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView_NextPage_MyRentalActivity"
+        android:layout_width="40dp"
+        android:layout_height="54dp"
+        android:padding="15dp"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/ic_chevron_big_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
