@@ -16,6 +16,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
+    //마지막으로 뒤로가기 버튼 누른 시간
+    var backKeyPressedTime : Long = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -78,4 +83,22 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
+
+    override fun onBackPressed() {
+
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis()
+            Toast.makeText(applicationContext, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        }
+        else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finishApp()
+        }
+    }
+
+    private fun finishApp(){
+        moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+        finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+        android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
+    }
+
 }
