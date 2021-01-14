@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
-import kotlinx.android.synthetic.main.fragment_item_status_list_1.*
-import kotlinx.android.synthetic.main.fragment_item_status_list_1.view.*
+import kotlinx.android.synthetic.main.fragment_item_status_list.*
+import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
 import java.util.*
 class ViewPagerAdapter(context: Context) : PagerAdapter() {
@@ -33,13 +33,12 @@ class ViewPagerAdapter(context: Context) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
-        val reserveCal: Calendar = Calendar.getInstance()
 
-        var adapter = ItemStatusList_RecyclerViewAdpater(view.context, position)
+        var adapter = ItemStatusList_RecyclerViewAdpater(ItemStatusListManager.getDevidedItemStatusList()[position])
+        Log.d("TestLog","${ItemStatusListManager.getDevidedItemStatusList()[position]}")
         view.recyclerView_ItemStatusList.recyclerView_ItemStatusList.adapter = adapter
         adapter.notifyDataSetChanged()
 
-        //setTextViewsText(view, reserveCal, position)
         container.addView(view)
 
         return view
