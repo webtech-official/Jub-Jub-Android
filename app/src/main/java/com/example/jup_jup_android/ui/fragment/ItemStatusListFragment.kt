@@ -8,15 +8,14 @@ import android.view.ViewGroup
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
 import com.example.jup_jup_android.ui.adapter.ItemStatusList_RecyclerViewAdpater
-import kotlinx.android.synthetic.main.fragment_item_status_list_1.*
+import kotlinx.android.synthetic.main.fragment_item_status_list.*
 
-class ItemStatusListFragment_1(itemStatusList: ArrayList<ItemStatus>) : Fragment() {
+class ItemStatusListFragment(itemStatusList: ArrayList<ItemStatus>) : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
         }
     }
 
