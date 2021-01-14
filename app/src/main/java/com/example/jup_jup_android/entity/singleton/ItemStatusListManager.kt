@@ -1,10 +1,13 @@
 package com.example.jup_jup_android.entity.singleton
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
+import android.util.Base64
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
+import java.io.ByteArrayOutputStream
+
 
 object ItemStatusListManager {
 
@@ -18,8 +21,15 @@ object ItemStatusListManager {
 //        /var itemStatusData = ItemStatus(BitmapFactory.decodeResource(context.resources, R.drawable.imageex), "DC모터", "모터", 5)
 
         var tempStatusList = ArrayList<ItemStatus>()
+        val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.imageex)
+        val byteStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)
+        val byteArray: ByteArray = byteStream.toByteArray()
+        val baseString: String = Base64.encodeToString(byteArray, Base64.DEFAULT)
+
         for(i in 0..cnt){
-            tempStatusList.add(ItemStatus(BitmapFactory.decodeResource(context.resources, R.drawable.imageex), "DC모터", "모터", i))
+
+            tempStatusList.add(ItemStatus(i.toLong(), baseString, "DC모터", "모터", i))
         }
 
 
@@ -37,7 +47,7 @@ object ItemStatusListManager {
         var tempList = ArrayList<ItemStatus>()
 
         var cnt = 0
-
+        devidedItemStatusList.clear()
         for(i in 0..dataList.size/5){
             //Log.d("TestLog","i = $i")
             devidedItemStatusList.add(ArrayList())
@@ -46,7 +56,7 @@ object ItemStatusListManager {
                 if(i*5 + j >= dataList.size){
                     break
                 }else{
-                    devidedItemStatusList[i].add(dataList[i*5 + j])
+                    devidedItemStatusList[i].add(dataList[i * 5 + j])
                     //Log.d("TestLog","[i][j] = ${devidedItemStatusList[i][j]}")
                 }
             }
@@ -59,4 +69,5 @@ object ItemStatusListManager {
     fun getDevidedItemStatusList(): ArrayList<ArrayList<ItemStatus>>{
         return devidedItemStatusList
     }
+
 }
