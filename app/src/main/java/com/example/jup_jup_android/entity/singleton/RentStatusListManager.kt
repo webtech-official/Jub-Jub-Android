@@ -1,4 +1,148 @@
 package com.example.jup_jup_android.entity.singleton
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import android.util.Log
+import com.example.jup_jup_android.R
+import com.example.jup_jup_android.entity.dataclass.RentStatus
+import java.io.ByteArrayOutputStream
+
 object RentStatusListManager {
+
+    lateinit var rentStatusList: ArrayList<RentStatus>
+
+    private var originalDevidedRentStatusList = ArrayList<ArrayList<RentStatus>>()
+
+    private var devidedReturnedList = ArrayList<ArrayList<RentStatus>>()
+    private var devidedRentingList = ArrayList<ArrayList<RentStatus>>()
+    private var devidedOverDueList = ArrayList<ArrayList<RentStatus>>()
+
+    var devidedShowList = ArrayList<ArrayList<RentStatus>>()
+
+
+//    var userId: String,
+//    var name: String,
+//    var category: String,
+//    var count: Int,
+//    var image: String,
+//    var status: String
+    
+
+    fun setDummyDataList(context: Context, cnt: Int){
+//        /var RentStatusData = RentStatus(BitmapFactory.decodeResource(context.resources, R.drawable.imageex), "DC모터", "모터", 5)
+
+        var tempList = ArrayList<RentStatus>()
+
+        val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.imageex)
+        val byteStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)
+        val byteArray: ByteArray = byteStream.toByteArray()
+        val baseString: String = Base64.encodeToString(byteArray, Base64.DEFAULT)
+
+        for(i in 0..cnt){
+            when(i%3){
+                0 -> tempList.add(RentStatus("1","모터", "DC모터", i, baseString,"반납"))
+                1 -> tempList.add(RentStatus("1","모터", "DC모터", i, baseString,"대여"))
+                2 -> tempList.add(RentStatus("1","모터", "DC모터", i, baseString,"연체"))
+            }
+        }
+
+
+        setRentStatusList(tempList)
+
+        initShowModeLists(tempList, devidedReturnedList, "반납")
+        initShowModeLists(tempList, devidedRentingList, "대여")
+        initShowModeLists(tempList, devidedOverDueList, "연체")
+
+        Log.d("TestLog", "반납 =  ${devidedReturnedList.size}")
+        Log.d("TestLog", "대여 =  ${devidedRentingList.size}")
+        Log.d("TestLog", "연체 =  ${devidedOverDueList.size}")
+        Log.d("TestLog", "show =  ${getShowedList().size}")
+    }
+    fun initShowModeLists(dataList: ArrayList<RentStatus>, pagingList: ArrayList<ArrayList<RentStatus>>, status: String){
+
+        pagingList.clear()
+
+        var page = 0
+        var cnt = 0
+        pagingList.add(ArrayList())
+
+        for(i in 0 until dataList.size){
+
+            if(dataList[i].status == status){
+                if(cnt == 5){
+                    pagingList.add(ArrayList())
+                    cnt = 0
+                    page++
+                }
+                else{
+                pagingList[page].add(dataList[i])
+                cnt++
+                }
+            }
+        }
+    }
+
+    
+    @JvmName("getRentStatusList1")
+    fun getRentStatusList(): ArrayList<RentStatus>{
+        return rentStatusList
+    }
+
+    @JvmName("setRentStatusList1")
+    fun setRentStatusList(dataList: ArrayList<RentStatus>){
+
+        //rentStatusList = dataList
+
+        var tempList = ArrayList<RentStatus>()
+
+        originalDevidedRentStatusList.clear()
+        for(i in 0..dataList.size/5){
+            //Log.d("TestLog","i = $i")
+            originalDevidedRentStatusList.add(ArrayList())
+            for(j in 0 until 5){
+                //Log.d("TestLog","j = $j")
+                if(i*5 + j >= dataList.size){
+                    break
+                }else{
+                    originalDevidedRentStatusList[i].add(dataList[i * 5 + j])
+                }
+            }
+        }
+        setShowedList(originalDevidedRentStatusList)
+    }
+
+//    fun getOriginalDevidedRentStatusList(): ArrayList<ArrayList<RentStatus>> {
+//        return originalDevidedRentStatusList
+//    }
+
+
+    fun getShowedList(): ArrayList<ArrayList<RentStatus>> {
+        return devidedShowList
+    }
+
+    fun setShowedList(dataList: ArrayList<ArrayList<RentStatus>>) {
+        devidedShowList = dataList
+    }
+
+
+    fun showReturnedDevidedList(){
+        devidedShowList = devidedReturnedList
+    }
+
+    fun showOverDueDevidedList(){
+        devidedShowList = devidedOverDueList
+    }
+
+    fun showRentingDevidedList(){
+        devidedShowList = devidedRentingList
+    }
+
+    fun showOriginalDevidedList(){
+        devidedShowList = originalDevidedRentStatusList
+    }
+
+
 }
