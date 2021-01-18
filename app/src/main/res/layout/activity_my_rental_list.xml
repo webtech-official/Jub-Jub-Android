@@ -28,18 +28,31 @@
             android:textSize="20dp"
             android:layout_marginLeft="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyRentalActivity"
+            app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyRentalListActivity"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
-            android:id="@+id/imageView_BackArrow_MyRentalActivity"
+            android:id="@+id/imageView_BackArrow_MyRentalListActivity"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:padding="4dp"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_ShowMode_MyRentalListActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전체"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
