@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
 import kotlinx.android.synthetic.main.activity_rent.*
+import kotlinx.android.synthetic.main.activity_rent.view.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 
 
@@ -23,6 +24,10 @@ class RentActivity : AppCompatActivity() {
         val data: ItemStatus = intent.getSerializableExtra("Data") as ItemStatus
 
         setTextViewsText(data)
+
+        imageView_BackArrow_RentActivity.setOnClickListener {
+            finish()
+        }
 
         textView_AddMyRentItemAmount_RentActivity.setOnClickListener {
             if(textView_MyRentItemAmount_RentActivity.text.toString().toInt() < data.count){
