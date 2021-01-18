@@ -8,9 +8,10 @@
     tools:context=".ui.activity.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linear"
+        android:id="@+id/titleBar_ViewMode_MainActivity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:visibility="gone"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView_Search_MainActivity"
+            android:id="@+id/imageView_SearchMode_MainActivity"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_vector"
@@ -56,27 +57,74 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleBar_SearchMode_MainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView_BackArrow_MainActivitySearchMode"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_SearchText_MainActivitySearchMode"
+            android:layout_width="0dp"
+            android:paddingLeft="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/round_white_back_white_edge"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MainActivitySearchMode"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView_Search_MainActivitySearchMode"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:src="@drawable/ic_search"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_SearchText_MainActivitySearchMode"
+            app:layout_constraintStart_toStartOf="@+id/editText_SearchText_MainActivitySearchMode"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="51dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <include
         android:id="@+id/pageView_MainActivity"
-        android:layout_height="0dp"
-        android:layout_width="0dp"
         layout="@layout/layout_pageview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
