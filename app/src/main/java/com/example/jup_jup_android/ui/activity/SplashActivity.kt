@@ -8,10 +8,10 @@ import com.example.jup_jup_android.R
 import com.example.jup_jup_android.data.remote.NetRetrofit
 import com.example.jup_jup_android.entity.dataclass.response.ResponseTest
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
+import com.example.jup_jup_android.entity.singleton.RentStatusListManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Thread.sleep
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startApp() {
         ItemStatusListManager.initItemStatusList(applicationContext, 100)
-
+        RentStatusListManager.setDummyDataList(applicationContext, 100)
         val response: Call<ResponseTest> = NetRetrofit.getServiceApi().getTest()
 
         response.enqueue(object: Callback<ResponseTest>{
