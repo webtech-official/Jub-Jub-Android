@@ -1,19 +1,13 @@
 package com.example.jup_jup_android.ui.activity
 
-import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
-import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
-import com.example.jup_jup_android.ui.adapter.ViewPagerAdapter
-import com.example.jup_jup_android.ui.util.SetPageView
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.jup_jup_android.entity.singleton.RentAdapter
+import com.example.jup_jup_android.entity.singleton.RentStatusListManager
+import com.example.jup_jup_android.ui.util.SetMyRentList_PageView
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
-import kotlinx.android.synthetic.main.layout_pageview.view.*
 
 class MyRentalListActivity : AppCompatActivity() {
 
@@ -21,8 +15,8 @@ class MyRentalListActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_rental_list)
-
-        SetPageView(applicationContext, pageView_MyRentalListActivity, ItemStatusListManager.getDevidedItemStatusList()).initViewPager()
+        Log.d("TestLog", "showList.size = ${RentStatusListManager.getShowedList().size}")
+        SetMyRentList_PageView(applicationContext, pageView_MyRentalListActivity).initViewPager()
 
         setTitleBarItemsOnclick()
     }
@@ -30,10 +24,47 @@ class MyRentalListActivity : AppCompatActivity() {
 
     private fun setTitleBarItemsOnclick() {
 
-        imageView_BackArrow_MyRentalActivity.setOnClickListener {
+        imageView_BackArrow_MyRentalListActivity.setOnClickListener {
             finish()
         }
+
+        textView_ShowMode_MyRentalListActivity.setOnClickListener {
+            when(textView_ShowMode_MyRentalListActivity.text.toString()){
+
+                "전체" -> {
+                    setShowModeText("반납")
+                    RentStatusListManager.showReturnedDevidedList()
+
+                }
+
+                "반납" -> {
+                    setShowModeText("대여")
+                    RentStatusListManager.showRentingDevidedList()
+                }
+
+                "대여" -> {
+                    setShowModeText("연체")
+                    RentStatusListManager.showOverDueDevidedList()
+                }
+
+                "연체" -> {
+                    setShowModeText("전체")
+                    RentStatusListManager.showOriginalDevidedList()
+                }
+
+            }
+
+            RentAdapter.getViewPagerAdapter().notifyDataSetChanged()
+            //RentAdapter.getRecyclerAdapter().notifyDataSetChanged()
+
+            Log.d("TestLog", "after click size = ${RentStatusListManager.devidedShowList.size}")
+        }
+    }
+    private fun setShowModeText(text: String){
+        textView_ShowMode_MyRentalListActivity.text = text
     }
 
+    override fun onBackPressed() {
 
+    }
 }
