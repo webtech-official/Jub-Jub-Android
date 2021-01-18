@@ -2,15 +2,18 @@ package com.example.jup_jup_android.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
+import com.example.jup_jup_android.entity.singleton.ItemStatusAdapter
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
-import com.example.jup_jup_android.ui.util.SetPageView
+import com.example.jup_jup_android.ui.util.SetItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_pageview.view.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,30 +33,62 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        SetPageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getDevidedItemStatusList()).initViewPager()
+        SetItemStatusList_PageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getDevidedItemStatusList()).initViewPager()
 
         setTitleBarItemsOnclick()
     }
 
-
+    //타이틀 바 위젯들 온클릭 등록
     private fun setTitleBarItemsOnclick() {
 
-        imageView_Search_MainActivity.setOnClickListener {
-
+        imageView_SearchMode_MainActivity.setOnClickListener {
+            setTitleBarSearchMode()
         }
-
 
         imageView_MyPage_MainActivity.setOnClickListener {
             startActivity(Intent(applicationContext, MyPageActivity::class.java))
         }
+
+        imageView_BackArrow_MainActivitySearchMode.setOnClickListener {
+            setTitleBarViewMode()
+        }
+
+        setSearchFuntion()
+
     }
 
+    private fun setSearchFuntion() {
+        editText_SearchText_MainActivitySearchMode.addTextChangedListener {
+            Log.d("TestLog", "${it}")
+
+            ItemStatusListManager.processShowList(it.toString().toLowerCase())
+            ItemStatusAdapter.getViewPagerAdapter().notifyDataSetChanged()
+
+        }
+    }
+
+    private fun setTitleBarSearchMode() {
+        titleBar_ViewMode_MainActivity.visibility = View.GONE
+        titleBar_SearchMode_MainActivity.visibility = View.VISIBLE
+    }
+
+    private fun setTitleBarViewMode() {
+        titleBar_ViewMode_MainActivity.visibility = View.VISIBLE
+        titleBar_SearchMode_MainActivity.visibility = View.GONE
+        ItemStatusListManager.processShowList("")
+        ItemStatusAdapter.getViewPagerAdapter().notifyDataSetChanged()
+
+    }
+
+    //뒤로가기 버튼 눌렀을 때
     override fun onBackPressed() {
 
+        //1번 눌렀을 때
         if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
             backKeyPressedTime = System.currentTimeMillis()
             Toast.makeText(applicationContext, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
         }
+        //2초 안에 2번 눌렀을 때 종료
         else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
             finishApp()
         }
