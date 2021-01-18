@@ -1,30 +1,23 @@
 package com.example.jup_jup_android.ui.util
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
-import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
-import com.example.jup_jup_android.ui.adapter.ViewPagerAdapter
+import com.example.jup_jup_android.entity.singleton.ItemStatusAdapter
+import com.example.jup_jup_android.entity.singleton.RentAdapter
+import com.example.jup_jup_android.ui.adapter.ItemStatusList_ViewPagerAdapter
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetPageView(context: Context, view: View, dataList: ArrayList<ArrayList<ItemStatus>>) {
+class SetItemStatusList_PageView(var context: Context, var view: View, var  dataList: ArrayList<ArrayList<ItemStatus>>){
 
-    //constructor(context: Context?, view: View?, dataList: ArrayList<ArrayList<MyRentalList>>) : this()
-
-    var context = context
-    var view = view
     private val NEXT_PAGE = +1
     private val PREV_PAGE = -1
     private val THIS_PAGE = 0
     var lastPage = 0
-    var dataList = dataList
-    private var bottomBarPage = 0
 
     private lateinit var textViewArrayList: ArrayList<TextView>
     private lateinit var viewPager : ViewPager
@@ -34,11 +27,17 @@ class SetPageView(context: Context, view: View, dataList: ArrayList<ArrayList<It
 
         viewPager = view.viewPager
         textViewArrayList = arrayListOf<TextView>(view.findViewById(R.id.textView_PageNum1), view.findViewById(R.id.textView_PageNum2),
-                view.findViewById(R.id.textView_PageNum3), view.findViewById(R.id.textView_PageNum4), view.findViewById(R.id.textView_PageNum5))
+        view.findViewById(R.id.textView_PageNum3), view.findViewById(R.id.textView_PageNum4), view.findViewById(R.id.textView_PageNum5))
 
-        var viewPagerAdpater = ViewPagerAdapter(context)
+
+
+        var viewPagerAdpater = ItemStatusList_ViewPagerAdapter(context)
+        ItemStatusAdapter.setViewPagerAdapter(viewPagerAdpater)
         viewPager.adapter = viewPagerAdpater
         viewPagerAdpater.notifyDataSetChanged()
+
+
+
 
         setBottomPageButtonsOnclick()
 
