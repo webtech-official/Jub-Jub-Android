@@ -6,14 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.jup_jup_android.R
-import com.example.jup_jup_android.entity.dataclass.ItemStatus
-import com.example.jup_jup_android.entity.dataclass.RentStatus
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
-import com.example.jup_jup_android.entity.singleton.RentAdapter
-import com.example.jup_jup_android.entity.singleton.RentStatusListManager
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
-
-import kotlin.collections.ArrayList
 
 class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
 
@@ -29,7 +23,7 @@ class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return ItemStatusListManager.devidedshowItemStatusList.size
+        return ItemStatusListManager.dividedshowItemStatusList.size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -42,7 +36,7 @@ class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //메인 화면 (기자재 목록)
-        var adapter = ItemStatusList_RecyclerViewAdpater(ItemStatusListManager.devidedshowItemStatusList[position])
+        var adapter = ItemStatusList_RecyclerViewAdpater(ItemStatusListManager.dividedshowItemStatusList[position])
         view.recyclerView_ItemStatusList.adapter = adapter
         adapter.notifyDataSetChanged()
 

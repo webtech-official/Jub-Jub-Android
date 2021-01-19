@@ -33,23 +33,23 @@ class MyRentalListActivity : AppCompatActivity() {
 
                 "전체" -> {
                     setShowModeText("반납")
-                    RentStatusListManager.showReturnedDevidedList()
+                    RentStatusListManager.showReturnedDividedList()
 
                 }
 
                 "반납" -> {
                     setShowModeText("대여")
-                    RentStatusListManager.showRentingDevidedList()
+                    RentStatusListManager.showRentingDividedList()
                 }
 
                 "대여" -> {
                     setShowModeText("연체")
-                    RentStatusListManager.showOverDueDevidedList()
+                    RentStatusListManager.showOverDueDividedList()
                 }
 
                 "연체" -> {
                     setShowModeText("전체")
-                    RentStatusListManager.showOriginalDevidedList()
+                    RentStatusListManager.showOriginalDividedList()
                 }
 
             }
@@ -57,7 +57,7 @@ class MyRentalListActivity : AppCompatActivity() {
             RentAdapter.getViewPagerAdapter().notifyDataSetChanged()
             //RentAdapter.getRecyclerAdapter().notifyDataSetChanged()
 
-            Log.d("TestLog", "after click size = ${RentStatusListManager.devidedShowList.size}")
+            Log.d("TestLog", "after click size = ${RentStatusListManager.dividedShowList.size}")
         }
     }
     private fun setShowModeText(text: String){
