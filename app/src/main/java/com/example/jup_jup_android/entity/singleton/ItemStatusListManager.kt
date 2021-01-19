@@ -4,20 +4,20 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import android.util.Log
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
-import com.example.jup_jup_android.entity.dataclass.RentStatus
 import java.io.ByteArrayOutputStream
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 object ItemStatusListManager {
 
     private var itemStatusList = ArrayList<ItemStatus>()
 
-    private var originalDevidedItemStatusList = ArrayList<ArrayList<ItemStatus>>()
+    private var originalDividedItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
-    var devidedshowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
+    var dividedshowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
 
     fun initItemStatusList(context: Context, cnt: Int){
@@ -47,20 +47,17 @@ object ItemStatusListManager {
     fun setItemStatusList(dataList: ArrayList<ItemStatus>){
         itemStatusList = dataList
 
-        var tempList = ArrayList<ItemStatus>()
-
-        var cnt = 0
-        originalDevidedItemStatusList.clear()
+        originalDividedItemStatusList.clear()
         for(i in 0..dataList.size/5){
             //Log.d("TestLog","i = $i")
-            originalDevidedItemStatusList.add(ArrayList())
+            originalDividedItemStatusList.add(ArrayList())
             for(j in 0 until 5){
                 //Log.d("TestLog","j = $j")
                 if(i*5 + j >= dataList.size){
                     break
                 }else{
-                    originalDevidedItemStatusList[i].add(dataList[i * 5 + j])
-                    //Log.d("TestLog","[i][j] = ${devidedItemStatusList[i][j]}")
+                    originalDividedItemStatusList[i].add(dataList[i * 5 + j])
+
                 }
             }
         }
@@ -68,9 +65,9 @@ object ItemStatusListManager {
         processShowList("")
     }
 
-    @JvmName("getDevidedItemStatusList1")
-    fun getDevidedItemStatusList(): ArrayList<ArrayList<ItemStatus>>{
-        return originalDevidedItemStatusList
+    @JvmName("getDividedItemStatusList1")
+    fun getDividedItemStatusList(): ArrayList<ArrayList<ItemStatus>>{
+        return originalDividedItemStatusList
     }
 
 
@@ -78,26 +75,24 @@ object ItemStatusListManager {
     fun processShowList(key: String){
 
         if(key == ""){
-            devidedshowItemStatusList = originalDevidedItemStatusList
+            dividedshowItemStatusList = originalDividedItemStatusList
         }else {
-
-            devidedshowItemStatusList.clear()
-            Log.d("BeforeLowerCase", "$key")
-            key.toLowerCase()
-            Log.d("AfterLowerCase", "$key")
+            dividedshowItemStatusList.clear()
             var page = 0
             var cnt = 0
-            devidedshowItemStatusList.add(ArrayList())
+            dividedshowItemStatusList.add(ArrayList())
 
             for (i in 0 until itemStatusList.size) {
 
-                if (itemStatusList[i].name.toLowerCase().contains(key) || itemStatusList[i].category.toLowerCase().contains(key)) {
+                if (itemStatusList[i].name.toLowerCase(Locale.getDefault()).trim().contains(key) || itemStatusList[i].category.toLowerCase(Locale.getDefault()).contains(key))
+                {
                     if (cnt == 5) {
-                        devidedshowItemStatusList.add(ArrayList())
+                        dividedshowItemStatusList.add(ArrayList())
                         cnt = 0
                         page++
-                    } else {
-                        devidedshowItemStatusList[page].add(itemStatusList[i])
+                    }
+                    else {
+                        dividedshowItemStatusList[page].add(itemStatusList[i])
                         cnt++
                     }
                 }
@@ -107,11 +102,11 @@ object ItemStatusListManager {
 
 
     fun getShowList(): ArrayList<ArrayList<ItemStatus>>{
-        return devidedshowItemStatusList
+        return dividedshowItemStatusList
     }
 
     fun setShowList(dataList : ArrayList<ArrayList<ItemStatus>>){
-        devidedshowItemStatusList = dataList
+        dividedshowItemStatusList = dataList
     }
 
 }

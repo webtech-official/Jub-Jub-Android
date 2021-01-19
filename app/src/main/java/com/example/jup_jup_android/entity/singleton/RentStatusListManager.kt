@@ -13,13 +13,13 @@ object RentStatusListManager {
 
     lateinit var rentStatusList: ArrayList<RentStatus>
 
-    private var originalDevidedRentStatusList = ArrayList<ArrayList<RentStatus>>()
+    private var originalDividedRentStatusList = ArrayList<ArrayList<RentStatus>>()
 
-    private var devidedReturnedList = ArrayList<ArrayList<RentStatus>>()
-    private var devidedRentingList = ArrayList<ArrayList<RentStatus>>()
-    private var devidedOverDueList = ArrayList<ArrayList<RentStatus>>()
+    private var dividedReturnedList = ArrayList<ArrayList<RentStatus>>()
+    private var dividedRentingList = ArrayList<ArrayList<RentStatus>>()
+    private var dividedOverDueList = ArrayList<ArrayList<RentStatus>>()
 
-    var devidedShowList = ArrayList<ArrayList<RentStatus>>()
+    var dividedShowList = ArrayList<ArrayList<RentStatus>>()
 
 
 //    var userId: String,
@@ -52,13 +52,13 @@ object RentStatusListManager {
 
         setRentStatusList(tempList)
 
-        initShowModeLists(tempList, devidedReturnedList, "반납")
-        initShowModeLists(tempList, devidedRentingList, "대여")
-        initShowModeLists(tempList, devidedOverDueList, "연체")
+        initShowModeLists(tempList, dividedReturnedList, "반납")
+        initShowModeLists(tempList, dividedRentingList, "대여")
+        initShowModeLists(tempList, dividedOverDueList, "연체")
 
-        Log.d("TestLog", "반납 =  ${devidedReturnedList.size}")
-        Log.d("TestLog", "대여 =  ${devidedRentingList.size}")
-        Log.d("TestLog", "연체 =  ${devidedOverDueList.size}")
+        Log.d("TestLog", "반납 =  ${dividedReturnedList.size}")
+        Log.d("TestLog", "대여 =  ${dividedRentingList.size}")
+        Log.d("TestLog", "연체 =  ${dividedOverDueList.size}")
         Log.d("TestLog", "show =  ${getShowedList().size}")
     }
     fun initShowModeLists(dataList: ArrayList<RentStatus>, pagingList: ArrayList<ArrayList<RentStatus>>, status: String){
@@ -98,50 +98,47 @@ object RentStatusListManager {
 
         var tempList = ArrayList<RentStatus>()
 
-        originalDevidedRentStatusList.clear()
+        originalDividedRentStatusList.clear()
         for(i in 0..dataList.size/5){
             //Log.d("TestLog","i = $i")
-            originalDevidedRentStatusList.add(ArrayList())
+            originalDividedRentStatusList.add(ArrayList())
             for(j in 0 until 5){
                 //Log.d("TestLog","j = $j")
                 if(i*5 + j >= dataList.size){
                     break
                 }else{
-                    originalDevidedRentStatusList[i].add(dataList[i * 5 + j])
+                    originalDividedRentStatusList[i].add(dataList[i * 5 + j])
                 }
             }
         }
-        setShowedList(originalDevidedRentStatusList)
+        setShowedList(originalDividedRentStatusList)
     }
 
-//    fun getOriginalDevidedRentStatusList(): ArrayList<ArrayList<RentStatus>> {
-//        return originalDevidedRentStatusList
-//    }
 
 
     fun getShowedList(): ArrayList<ArrayList<RentStatus>> {
-        return devidedShowList
+        return dividedShowList
     }
 
     fun setShowedList(dataList: ArrayList<ArrayList<RentStatus>>) {
-        devidedShowList = dataList
+        dividedShowList = dataList
     }
 
 
-    fun showReturnedDevidedList(){
-        devidedShowList = devidedReturnedList
+    fun showReturnedDividedList(){
+        dividedShowList = dividedReturnedList
     }
 
-    fun showOverDueDevidedList(){
-        devidedShowList = devidedOverDueList
+    fun showOverDueDividedList(){
+        dividedShowList = dividedOverDueList
     }
 
-    fun showRentingDevidedList(){
-        devidedShowList = devidedRentingList
+    fun showRentingDividedList(){
+        dividedShowList = dividedRentingList
     }
 
-    fun showOriginalDevidedList(){
-        devidedShowList = originalDevidedRentStatusList
+    fun showOriginalDividedList(){
+        dividedShowList = originalDividedRentStatusList
     }
 
 
