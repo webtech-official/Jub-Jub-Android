@@ -7,8 +7,7 @@ import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
-import com.example.jup_jup_android.entity.singleton.ItemStatusAdapter
-import com.example.jup_jup_android.entity.singleton.RentAdapter
+import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import com.example.jup_jup_android.ui.adapter.ItemStatusList_ViewPagerAdapter
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
@@ -18,7 +17,7 @@ class SetItemStatusList_PageView(var context: Context, var view: View, var  data
     private val PREV_PAGE = -1
     private val THIS_PAGE = 0
     var lastPage = 0
-
+    private lateinit var adapter : ItemStatusList_ViewPagerAdapter
     private lateinit var textViewArrayList: ArrayList<TextView>
     private lateinit var viewPager : ViewPager
 
@@ -31,13 +30,9 @@ class SetItemStatusList_PageView(var context: Context, var view: View, var  data
 
 
 
-        var viewPagerAdpater = ItemStatusList_ViewPagerAdapter(context)
-        ItemStatusAdapter.setViewPagerAdapter(viewPagerAdpater)
-        viewPager.adapter = viewPagerAdpater
-        viewPagerAdpater.notifyDataSetChanged()
-
-
-
+        adapter = ItemStatusList_ViewPagerAdapter(context)
+        viewPager.adapter = adapter
+        adapter.notifyDataSetChanged()
 
         setBottomPageButtonsOnclick()
 
@@ -84,6 +79,13 @@ class SetItemStatusList_PageView(var context: Context, var view: View, var  data
     private fun changePageNumsText(direction: Int) {
         for (i in 0 until 5) {
             textViewArrayList[i].text = "${textViewArrayList[i].text.toString().toInt() + 5 * direction}"
+        }
+    }
+
+
+    private fun setPageNumsText(startPageNum: Int){
+        for (i in 0 until 5) {
+            textViewArrayList[i].text = "${startPageNum + i}"
         }
     }
 
@@ -135,6 +137,24 @@ class SetItemStatusList_PageView(var context: Context, var view: View, var  data
     fun textHighlightOn(destination: Int) {
         textViewArrayList[destination % 5].textSize = 25f
         textViewArrayList[destination % 5].setShadowLayer(20f, 0f, 0f, Color.parseColor("#FFFFFF"))
+    }
+
+    fun syncPage(){
+
+        notifyDataSetChanged()
+
+        lastPage = viewPager.currentItem
+        var size = ItemStatusListManager.dividedShowItemStatusList.size
+        if(textViewArrayList[0].text.toString().toInt() > size){
+            setPageNumsText(size - size%5 + 1)
+        }
+
+        changePageByButton(viewPager.currentItem)
+        checkFragmentBlankPageNum()
+    }
+
+    fun notifyDataSetChanged(){
+        adapter.notifyDataSetChanged()
     }
 
 
