@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
-import com.example.jup_jup_android.entity.singleton.ItemStatusAdapter
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import com.example.jup_jup_android.ui.util.SetItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textViewArrayList: ArrayList<TextView>
     private lateinit var viewPager : ViewPager
 
+    private lateinit var pageView: SetItemStatusList_PageView
+
     //마지막으로 뒤로가기 버튼 누른 시간
     var backKeyPressedTime : Long = 0
 
@@ -33,13 +34,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        SetItemStatusList_PageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getDividedItemStatusList()).initViewPager()
+        pageView = SetItemStatusList_PageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getShowList())
+        pageView.initViewPager()
 
-        setTitleBarItemsOnclick()
+        setTitleBarItemsListener()
     }
 
     //타이틀 바 위젯들 온클릭 등록
-    private fun setTitleBarItemsOnclick() {
+    private fun setTitleBarItemsListener() {
 
         imageView_SearchMode_MainActivity.setOnClickListener {
             setTitleBarSearchMode()
@@ -51,6 +53,11 @@ class MainActivity : AppCompatActivity() {
 
         imageView_BackArrow_MainActivitySearchMode.setOnClickListener {
             setTitleBarViewMode()
+            editText_SearchText_MainActivitySearchMode.setText("")
+            ItemStatusListManager.processShowList("")
+            pageView.notifyDataSetChanged()
+            Log.d("TestLog", "showList = ${ItemStatusListManager.dividedShowItemStatusList}")
+            Log.d("TestLog", "originalList = ${ItemStatusListManager.getOriginalDividedItemStatusList()}")
         }
 
         setSearchFuntion()
@@ -61,8 +68,9 @@ class MainActivity : AppCompatActivity() {
         editText_SearchText_MainActivitySearchMode.addTextChangedListener {
             Log.d("TestLog", "${it}")
 
-            ItemStatusListManager.processShowList(it.toString().toLowerCase())
-            ItemStatusAdapter.getViewPagerAdapter().notifyDataSetChanged()
+            ItemStatusListManager.processShowList(it.toString().toLowerCase().trim())
+            pageView.syncPage()
+            pageView.notifyDataSetChanged()
 
         }
     }
@@ -76,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         titleBar_ViewMode_MainActivity.visibility = View.VISIBLE
         titleBar_SearchMode_MainActivity.visibility = View.GONE
         ItemStatusListManager.processShowList("")
-        ItemStatusAdapter.getViewPagerAdapter().notifyDataSetChanged()
+        pageView.notifyDataSetChanged()
 
     }
 
