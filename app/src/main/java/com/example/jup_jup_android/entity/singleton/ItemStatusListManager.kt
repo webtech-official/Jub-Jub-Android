@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
+import android.util.Log
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.dataclass.ItemStatus
 import java.io.ByteArrayOutputStream
@@ -17,7 +18,7 @@ object ItemStatusListManager {
 
     private var originalDividedItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
-    var dividedshowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
+    var dividedShowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
 
     fun initItemStatusList(context: Context, cnt: Int){
@@ -61,38 +62,38 @@ object ItemStatusListManager {
                 }
             }
         }
-
+        Log.d("TestLog", "originalDList = ${originalDividedItemStatusList.size}")
         processShowList("")
     }
 
     @JvmName("getDividedItemStatusList1")
-    fun getDividedItemStatusList(): ArrayList<ArrayList<ItemStatus>>{
+    fun getOriginalDividedItemStatusList(): ArrayList<ArrayList<ItemStatus>>{
         return originalDividedItemStatusList
     }
-
-
 
     fun processShowList(key: String){
 
         if(key == ""){
-            dividedshowItemStatusList = originalDividedItemStatusList
+            dividedShowItemStatusList = getOriginalDividedItemStatusList()
+            //Log.d("TestLog", "Key = \"\" , getoriginalDList = ${getOriginalDividedItemStatusList().size} ")
+            //Log.d("TestLog", "Key = \"\" , originalDList = ${originalDividedItemStatusList.size} ")
         }else {
-            dividedshowItemStatusList.clear()
+            dividedShowItemStatusList.clear()
             var page = 0
             var cnt = 0
-            dividedshowItemStatusList.add(ArrayList())
+            dividedShowItemStatusList.add(ArrayList())
 
             for (i in 0 until itemStatusList.size) {
 
-                if (itemStatusList[i].name.toLowerCase(Locale.getDefault()).trim().contains(key) || itemStatusList[i].category.toLowerCase(Locale.getDefault()).contains(key))
+                if (itemStatusList[i].name.toLowerCase(Locale.getDefault()).trim().contains(key) || itemStatusList[i].category.toLowerCase(Locale.getDefault()).trim().contains(key))
                 {
                     if (cnt == 5) {
-                        dividedshowItemStatusList.add(ArrayList())
+                        dividedShowItemStatusList.add(ArrayList())
                         cnt = 0
                         page++
                     }
                     else {
-                        dividedshowItemStatusList[page].add(itemStatusList[i])
+                        dividedShowItemStatusList[page].add(itemStatusList[i])
                         cnt++
                     }
                 }
@@ -102,11 +103,11 @@ object ItemStatusListManager {
 
 
     fun getShowList(): ArrayList<ArrayList<ItemStatus>>{
-        return dividedshowItemStatusList
+        return dividedShowItemStatusList
     }
 
     fun setShowList(dataList : ArrayList<ArrayList<ItemStatus>>){
-        dividedshowItemStatusList = dataList
+        dividedShowItemStatusList = dataList
     }
 
 }
