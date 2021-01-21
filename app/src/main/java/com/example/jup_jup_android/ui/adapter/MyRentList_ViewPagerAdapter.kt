@@ -24,7 +24,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return RentStatusListManager.dividedShowList.size
+        return RentStatusListManager.getShowList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -37,7 +37,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //나의 대여 목록.
-        var adapter = MyRentList_RecyclerViewAdapter(RentStatusListManager.dividedShowList[position])
+        var adapter = MyRentList_RecyclerViewAdapter(RentStatusListManager.getShowList()[position])
         view.recyclerView_ItemStatusList.adapter = adapter
         adapter.notifyDataSetChanged()
 
