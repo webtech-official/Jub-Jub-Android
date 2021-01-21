@@ -26,7 +26,7 @@ class MyRentalListActivity : AppCompatActivity() {
     private fun setTitleBarItemsOnclick() {
 
         imageView_BackArrow_MyRentalListActivity.setOnClickListener {
-            finish()
+            back()
         }
 
         textView_ShowMode_MyRentalListActivity.setOnClickListener {
@@ -62,7 +62,13 @@ class MyRentalListActivity : AppCompatActivity() {
         textView_ShowMode_MyRentalListActivity.text = text
     }
 
-    override fun onBackPressed() {
+    private fun back(){
+        RentStatusListManager.showOriginalDividedList()
+        pageView.syncPage()
+        finish()
+    }
 
+    override fun onBackPressed() {
+        back()
     }
 }
