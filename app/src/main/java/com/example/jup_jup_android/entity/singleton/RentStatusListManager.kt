@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream
 
 object RentStatusListManager {
 
-    lateinit var rentStatusList: ArrayList<RentStatus>
+    private lateinit var rentStatusList: ArrayList<RentStatus>
 
     private var originalDividedRentStatusList = ArrayList<ArrayList<RentStatus>>()
 
@@ -19,7 +19,7 @@ object RentStatusListManager {
     private var dividedRentingList = ArrayList<ArrayList<RentStatus>>()
     private var dividedOverDueList = ArrayList<ArrayList<RentStatus>>()
 
-    var dividedShowList = ArrayList<ArrayList<RentStatus>>()
+    private var dividedShowList = ArrayList<ArrayList<RentStatus>>()
 
 
 //    var userId: String,
@@ -59,7 +59,7 @@ object RentStatusListManager {
         Log.d("TestLog", "반납 =  ${dividedReturnedList.size}")
         Log.d("TestLog", "대여 =  ${dividedRentingList.size}")
         Log.d("TestLog", "연체 =  ${dividedOverDueList.size}")
-        Log.d("TestLog", "show =  ${getShowedList().size}")
+        Log.d("TestLog", "show =  ${getShowList().size}")
     }
     fun initShowModeLists(dataList: ArrayList<RentStatus>, pagingList: ArrayList<ArrayList<RentStatus>>, status: String){
 
@@ -116,7 +116,7 @@ object RentStatusListManager {
 
 
 
-    fun getShowedList(): ArrayList<ArrayList<RentStatus>> {
+    fun getShowList(): ArrayList<ArrayList<RentStatus>> {
         return dividedShowList
     }
 
