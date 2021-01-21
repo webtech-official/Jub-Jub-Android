@@ -144,7 +144,7 @@ class SetItemStatusList_PageView(var context: Context, var view: View, var  data
         notifyDataSetChanged()
 
         lastPage = viewPager.currentItem
-        var size = ItemStatusListManager.dividedShowItemStatusList.size
+        var size = ItemStatusListManager.getShowList().size
         if(textViewArrayList[0].text.toString().toInt() > size){
             setPageNumsText(size - size%5 + 1)
         }
