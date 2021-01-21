@@ -4,21 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
-import com.example.jup_jup_android.ui.util.SetItemStatusList_PageView
+import com.example.jup_jup_android.ui.util.ItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var pageView: SetItemStatusList_PageView
+    private lateinit var pageView: ItemStatusList_PageView
 
     //마지막으로 뒤로가기 버튼 누른 시간
     var backKeyPressedTime : Long = 0
@@ -27,8 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        pageView = SetItemStatusList_PageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getShowList())
+        pageView = ItemStatusList_PageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getShowList())
         pageView.initViewPager()
 
         setTitleBarItemsListener()
@@ -49,23 +46,19 @@ class MainActivity : AppCompatActivity() {
             setTitleBarViewMode()
             editText_SearchText_MainActivitySearchMode.setText("")
             ItemStatusListManager.processShowList("")
-            pageView.notifyDataSetChanged()
-            Log.d("TestLog", "showList = ${ItemStatusListManager.getShowList()}")
-            Log.d("TestLog", "originalList = ${ItemStatusListManager.getOriginalDividedItemStatusList()}")
+            //pageView.notifyDataSetChanged()
+            pageView.syncPage()
         }
 
-        setSearchFuntion()
-
+        setSearchFunction()
     }
 
-    private fun setSearchFuntion() {
+    private fun setSearchFunction() {
         editText_SearchText_MainActivitySearchMode.addTextChangedListener {
             Log.d("TestLog", "${it}")
 
             ItemStatusListManager.processShowList(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
             pageView.syncPage()
-            pageView.notifyDataSetChanged()
-
         }
     }
 
@@ -78,8 +71,8 @@ class MainActivity : AppCompatActivity() {
         titleBar_ViewMode_MainActivity.visibility = View.VISIBLE
         titleBar_SearchMode_MainActivity.visibility = View.GONE
         ItemStatusListManager.processShowList("")
-        pageView.notifyDataSetChanged()
-
+        //pageView.notifyDataSetChanged()
+        pageView.syncPage()
     }
 
     //뒤로가기 버튼 눌렀을 때
