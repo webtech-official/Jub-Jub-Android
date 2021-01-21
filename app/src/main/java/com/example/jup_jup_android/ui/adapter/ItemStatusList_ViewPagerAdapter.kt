@@ -23,7 +23,7 @@ class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return ItemStatusListManager.dividedShowItemStatusList.size
+        return ItemStatusListManager.getShowList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -36,7 +36,7 @@ class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //메인 화면 (기자재 목록)
-        var adapter = ItemStatusList_RecyclerViewAdpater(ItemStatusListManager.dividedShowItemStatusList[position])
+        var adapter = ItemStatusList_RecyclerViewAdpater(ItemStatusListManager.getShowList()[position])
         view.recyclerView_ItemStatusList.adapter = adapter
         adapter.notifyDataSetChanged()
 
@@ -44,8 +44,5 @@ class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
 
         return view
     }
-
-
-
 
 }
