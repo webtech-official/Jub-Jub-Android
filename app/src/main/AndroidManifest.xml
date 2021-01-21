@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Jupjupandroid"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.activity.RentActivity"></activity>
-        <activity android:name=".ui.activity.MyRentalListActivity" />
+        <activity android:name=".ui.activity.MyRentListActivity" />
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />

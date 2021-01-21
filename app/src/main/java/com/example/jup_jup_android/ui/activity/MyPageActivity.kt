@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.jup_jup_android.R
 import kotlinx.android.synthetic.main.activity_my_page.*
 
@@ -18,7 +17,7 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         textView_MyRentalList_MyPage.setOnClickListener {
-            startActivity(Intent(applicationContext, MyRentalListActivity::class.java))
+            startActivity(Intent(applicationContext, MyRentListActivity::class.java))
         }
 
         textView_Logout_MyPage.setOnClickListener {

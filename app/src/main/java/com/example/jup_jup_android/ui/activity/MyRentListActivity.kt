@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.util.Log
 import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.singleton.RentStatusListManager
-import com.example.jup_jup_android.ui.util.SetMyRentList_PageView
+import com.example.jup_jup_android.ui.util.MyRentList_PageView
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
 
-class MyRentalListActivity : AppCompatActivity() {
+class MyRentListActivity : AppCompatActivity() {
 
-    lateinit var pageView : SetMyRentList_PageView
+    lateinit var pageView : MyRentList_PageView
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_rental_list)
-        Log.d("TestLog", "showList.size = ${RentStatusListManager.getShowedList().size}")
-        pageView = SetMyRentList_PageView(applicationContext, pageView_MyRentalListActivity)
+        Log.d("TestLog", "showList.size = ${RentStatusListManager.getShowList().size}")
+        pageView = MyRentList_PageView(applicationContext, pageView_MyRentalListActivity)
         pageView.initViewPager()
 
         setTitleBarItemsOnclick()
@@ -55,7 +55,7 @@ class MyRentalListActivity : AppCompatActivity() {
             //RentAdapter.getRecyclerAdapter().notifyDataSetChanged()
             pageView.syncPage()
 
-            Log.d("TestLog", "after click size = ${RentStatusListManager.dividedShowList.size}")
+            Log.d("TestLog", "after click size = ${RentStatusListManager.getShowList().size}")
         }
     }
     private fun setShowModeText(text: String){

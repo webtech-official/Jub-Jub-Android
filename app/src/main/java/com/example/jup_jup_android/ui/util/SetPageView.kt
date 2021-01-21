@@ -1,38 +1,26 @@
 package com.example.jup_jup_android.ui.util
 
-import android.content.Context
 import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
-import com.example.jup_jup_android.entity.singleton.RentStatusListManager
-import com.example.jup_jup_android.ui.adapter.MyRentList_ViewPagerAdapter
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetMyRentList_PageView(var context: Context, var view: View){
+class SetPageView(val view: View, private val viewPager: ViewPager, val dataList: ArrayList<ArrayList<Any>>) {
 
     private val NEXT_PAGE = +1
     private val PREV_PAGE = -1
-    private val THIS_PAGE = 0
     var lastPage = 0
-    //private var bottomBarPage = 0
 
-    private lateinit var textViewArrayList: ArrayList<TextView>
-    private lateinit var viewPager : ViewPager
-    private lateinit var adapter : MyRentList_ViewPagerAdapter
+    private lateinit var textViewArrayList : ArrayList<TextView>
 
-    fun initViewPager() {
-        //Log.d("TestLog", "pageView.size = ${dataList.size}")
-        viewPager = view.viewPager
-        textViewArrayList = arrayListOf<TextView>(view.findViewById(R.id.textView_PageNum1), view.findViewById(R.id.textView_PageNum2),
-        view.findViewById(R.id.textView_PageNum3), view.findViewById(R.id.textView_PageNum4), view.findViewById(R.id.textView_PageNum5))
 
-        //RentAdapter.setViewPagerAdapter(MyRentList_ViewPagerAdapter (context))
-        adapter = MyRentList_ViewPagerAdapter (context)
-        viewPager.adapter = adapter
-        adapter.notifyDataSetChanged()
+    init {
+
+        setTextViewArrayList(view)
+        viewPager.adapter?.notifyDataSetChanged()
 
         setBottomPageButtonsOnclick()
 
@@ -49,7 +37,19 @@ class SetMyRentList_PageView(var context: Context, var view: View){
         })
     }
 
-    private fun setBottomPageButtonsOnclick() {
+
+    fun setTextViewArrayList(view: View){
+        textViewArrayList = arrayListOf<TextView>(view.findViewById(R.id.textView_PageNum1), view.findViewById(R.id.textView_PageNum2),
+            view.findViewById(R.id.textView_PageNum3), view.findViewById(R.id.textView_PageNum4), view.findViewById(
+                R.id.textView_PageNum5))
+    }
+
+
+    fun getTextViewArrayList(): ArrayList<TextView> {
+        return textViewArrayList
+    }
+
+    fun setBottomPageButtonsOnclick() {
 
         //이전 페이지 이미지 버튼
         view.imageView_PrevPage.setOnClickListener {
@@ -60,41 +60,15 @@ class SetMyRentList_PageView(var context: Context, var view: View){
 
         //다음 페이지 이미지 버튼
         view.imageView_NextPage.setOnClickListener {
-            if (viewPager.currentItem != RentStatusListManager.dividedShowList.size - 1) {
+            if (viewPager.currentItem != dataList.size - 1) {
                 changePageByButton(viewPager.currentItem + NEXT_PAGE)
             }
         }
 
         //Page 넘버 클릭해서 이동
         for (i in 0..4) {
-            textViewArrayList[i].setOnClickListener {
+                textViewArrayList[i].setOnClickListener {
                 changePageByButton(textViewArrayList[i].text.toString().toInt() - 1)
-            }
-        }
-    }
-
-
-    private fun changePageNumsText(direction: Int) {
-        for (i in 0 until 5) {
-            textViewArrayList[i].text = "${textViewArrayList[i].text.toString().toInt() + 5 * direction}"
-        }
-    }
-
-    private fun setPageNumsText(startPageNum: Int){
-        for (i in 0 until 5) {
-            textViewArrayList[i].text = "${startPageNum + i}"
-        }
-    }
-
-
-    // 존재하지 않는 페이지의 숫자는 GONE으로, 존재하는데 보이지 않는 페이지는 VISIBLE로
-    fun checkFragmentBlankPageNum() {
-        var maxPage = RentStatusListManager.dividedShowList.size
-        for (i in 0 until 5) {
-            if (textViewArrayList[i].text.toString().toInt() > maxPage) {
-                textViewArrayList[i].visibility = View.GONE
-            } else {
-                textViewArrayList[i].visibility = View.VISIBLE
             }
         }
     }
@@ -102,7 +76,6 @@ class SetMyRentList_PageView(var context: Context, var view: View){
     fun changePageByViewPagerSwipe(destination: Int) {
         // 14 -> 15
 
-        Log.d("TestLog", "lastPage = $lastPage")
         // lastPage == destination-1은 6에서10을 / 10에서 6을 클릭하면 bottomPage가 넘어가지않는데 숫자가 update되는 오류가 있어서 추가함
         if (lastPage % 5 == 4 && destination % 5 == 0 && lastPage == destination-1) {
             changePageNumsText(NEXT_PAGE)
@@ -114,7 +87,7 @@ class SetMyRentList_PageView(var context: Context, var view: View){
 
         textHighlightOn(destination)
         textHighlightOff()
-        checkFragmentBlankPageNum()
+        checkFragmentBlankPageNum(dataList.size)
     }
 
     fun changePageByButton(destination: Int) {
@@ -122,9 +95,20 @@ class SetMyRentList_PageView(var context: Context, var view: View){
         //다음 페이지
         textHighlightOff()
         textHighlightOn(destination)
-
-        viewPager.currentItem = destination
+        viewPager.setCurrentItem(destination, true)
+        //viewPager.currentItem =
         //lastPage = destination
+    }
+
+    // 존재하지 않는 페이지의 숫자는 GONE으로, 존재하는데 보이지 않는 페이지는 VISIBLE로
+    fun checkFragmentBlankPageNum(maxPage: Int) {
+        for (i in 0 until 5) {
+            if (textViewArrayList[i].text.toString().toInt() > maxPage) {
+                textViewArrayList[i].visibility = View.GONE
+            } else {
+                textViewArrayList[i].visibility = View.VISIBLE
+            }
+        }
     }
 
     fun textHighlightOff() {
@@ -138,25 +122,26 @@ class SetMyRentList_PageView(var context: Context, var view: View){
         textViewArrayList[destination % 5].setShadowLayer(20f, 0f, 0f, Color.parseColor("#FFFFFF"))
     }
 
-    fun syncPage(){
-        notifyDataSetChanged()
+    private fun changePageNumsText(direction: Int) {
+        for (i in 0 until 5) {
+            textViewArrayList[i].text = "${textViewArrayList[i].text.toString().toInt() + 5 * direction}"
+        }
+    }
+
+    private fun setPageNumsText(startPageNum: Int){
+        for (i in 0 until 5) {
+            textViewArrayList[i].text = "${startPageNum + i}"
+        }
+    }
+
+    fun syncPage(size: Int){
+        viewPager.adapter?.notifyDataSetChanged()
         lastPage = viewPager.currentItem
-        var size = RentStatusListManager.dividedShowList.size
         if(textViewArrayList[0].text.toString().toInt() > size){
             setPageNumsText(size - size%5 + 1)
         }
 
         changePageByButton(viewPager.currentItem)
-        checkFragmentBlankPageNum()
+        checkFragmentBlankPageNum(size)
     }
-
-    fun notifyDataSetChanged(){
-        adapter.notifyDataSetChanged()
-    }
-
-
-
-
-
 }
-
