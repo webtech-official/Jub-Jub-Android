@@ -7,7 +7,7 @@ import com.example.jup_jup_android.entity.singleton.RentStatusListManager
 import com.example.jup_jup_android.ui.adapter.MyRentList_ViewPagerAdapter
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetMyRentList_PageView(var context: Context, var view: View){
+class MyRentList_PageView(var context: Context, var view: View){
 
     private lateinit var setPageView : SetPageView
 
