@@ -15,7 +15,7 @@ class MyRentalListActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_rental_list)
-        Log.d("TestLog", "showList.size = ${RentStatusListManager.getShowedList().size}")
+        Log.d("TestLog", "showList.size = ${RentStatusListManager.getShowList().size}")
         pageView = SetMyRentList_PageView(applicationContext, pageView_MyRentalListActivity)
         pageView.initViewPager()
 
@@ -55,7 +55,7 @@ class MyRentalListActivity : AppCompatActivity() {
             //RentAdapter.getRecyclerAdapter().notifyDataSetChanged()
             pageView.syncPage()
 
-            Log.d("TestLog", "after click size = ${RentStatusListManager.dividedShowList.size}")
+            Log.d("TestLog", "after click size = ${RentStatusListManager.getShowList().size}")
         }
     }
     private fun setShowModeText(text: String){
