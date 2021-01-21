@@ -13,16 +13,10 @@ import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import com.example.jup_jup_android.ui.util.SetItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-
-    private val NEXT_PAGE = +1
-    private val PREV_PAGE = -1
-    private val THIS_PAGE = 0
-    var lastPage = 0
-    private lateinit var textViewArrayList: ArrayList<TextView>
-    private lateinit var viewPager : ViewPager
 
     private lateinit var pageView: SetItemStatusList_PageView
 
@@ -56,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             editText_SearchText_MainActivitySearchMode.setText("")
             ItemStatusListManager.processShowList("")
             pageView.notifyDataSetChanged()
-            Log.d("TestLog", "showList = ${ItemStatusListManager.dividedShowItemStatusList}")
+            Log.d("TestLog", "showList = ${ItemStatusListManager.getShowList()}")
             Log.d("TestLog", "originalList = ${ItemStatusListManager.getOriginalDividedItemStatusList()}")
         }
 
@@ -68,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         editText_SearchText_MainActivitySearchMode.addTextChangedListener {
             Log.d("TestLog", "${it}")
 
-            ItemStatusListManager.processShowList(it.toString().toLowerCase().trim())
+            ItemStatusListManager.processShowList(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
             pageView.syncPage()
             pageView.notifyDataSetChanged()
 

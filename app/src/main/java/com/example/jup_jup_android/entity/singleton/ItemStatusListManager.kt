@@ -18,7 +18,7 @@ object ItemStatusListManager {
 
     private var originalDividedItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
-    var dividedShowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
+    private var dividedShowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
 
 
     fun initItemStatusList(context: Context, cnt: Int){
@@ -85,7 +85,8 @@ object ItemStatusListManager {
 
             for (i in 0 until itemStatusList.size) {
 
-                if (itemStatusList[i].name.toLowerCase(Locale.getDefault()).trim().contains(key) || itemStatusList[i].category.toLowerCase(Locale.getDefault()).trim().contains(key))
+                if (itemStatusList[i].name.toLowerCase(Locale.getDefault()).replace(" ", "").contains(key)
+                        || itemStatusList[i].category.toLowerCase(Locale.getDefault()).replace(" ", "").contains(key))
                 {
                     if (cnt == 5) {
                         dividedShowItemStatusList.add(ArrayList())
