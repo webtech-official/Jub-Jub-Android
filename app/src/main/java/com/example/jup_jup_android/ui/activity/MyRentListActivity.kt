@@ -8,7 +8,7 @@ import com.example.jup_jup_android.entity.singleton.RentStatusListManager
 import com.example.jup_jup_android.ui.util.MyRentList_PageView
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
 
-class MyRentalListActivity : AppCompatActivity() {
+class MyRentListActivity : AppCompatActivity() {
 
     lateinit var pageView : MyRentList_PageView
     override fun onCreate(savedInstanceState: Bundle?) {
