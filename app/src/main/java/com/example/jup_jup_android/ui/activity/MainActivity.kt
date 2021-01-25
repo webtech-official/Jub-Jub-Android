@@ -55,11 +55,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSearchFunction() {
         editText_SearchText_MainActivitySearchMode.addTextChangedListener {
-            Log.d("TestLog", "${it}")
+            Log.d("TestLog", "editText.key = ${it}")
 
             ItemStatusListManager.processShowList(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
-            pageView.syncPage()
+
         }
+    }
+    fun syncPage(){
+        pageView.syncPage()
     }
 
     private fun setTitleBarSearchMode() {
