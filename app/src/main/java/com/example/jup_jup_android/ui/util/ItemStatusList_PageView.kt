@@ -18,7 +18,7 @@ class ItemStatusList_PageView(var context: Context, var view: View, var  dataLis
 
         viewPager.adapter = ItemStatusList_ViewPagerAdapter(context)
 
-        setPageView = SetPageView(view, viewPager, ItemStatusListManager.getShowList() as ArrayList<ArrayList<Any>>)
+        setPageView = SetPageView(view, viewPager, dataList as ArrayList<ArrayList<Any>>)
 
     }
 
