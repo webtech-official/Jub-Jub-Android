@@ -35,6 +35,8 @@ class SetPageView(val view: View, private val viewPager: ViewPager, val dataList
 
             override fun onPageScrollStateChanged(state: Int) {}
         })
+
+        checkFragmentBlankPageNum(dataList.size)
     }
 
 
@@ -44,10 +46,6 @@ class SetPageView(val view: View, private val viewPager: ViewPager, val dataList
                 R.id.textView_PageNum5))
     }
 
-
-    fun getTextViewArrayList(): ArrayList<TextView> {
-        return textViewArrayList
-    }
 
     fun setBottomPageButtonsOnclick() {
 
