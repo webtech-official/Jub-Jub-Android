@@ -94,8 +94,7 @@ class SetPageView(val view: View, private val viewPager: ViewPager, private val 
         textHighlightOff()
         textHighlightOn(destination)
         viewPager.setCurrentItem(destination, true)
-        //viewPager.currentItem =
-        //lastPage = destination
+
     }
 
     // 존재하지 않는 페이지의 숫자는 GONE으로, 존재하는데 보이지 않는 페이지는 VISIBLE로
