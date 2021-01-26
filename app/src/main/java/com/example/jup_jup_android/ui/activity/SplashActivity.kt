@@ -23,8 +23,10 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startApp() {
+        
         ItemStatusListManager.setDummyData(applicationContext)
         RentStatusListManager.setDummyDataList(applicationContext, 100)
+
         val response: Call<ResponseTest> = NetRetrofit.getServiceApi().getTest()
 
         response.enqueue(object: Callback<ResponseTest>{
