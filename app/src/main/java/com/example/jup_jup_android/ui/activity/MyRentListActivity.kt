@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.jup_jup_android.R
+import com.example.jup_jup_android.entity.dataclass.RentStatus
 import com.example.jup_jup_android.entity.singleton.RentStatusListManager
 import com.example.jup_jup_android.ui.util.MyRentList_PageView
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
+import kotlinx.android.synthetic.main.layout_pageview.*
 
 class MyRentListActivity : AppCompatActivity() {
 
@@ -15,11 +17,20 @@ class MyRentListActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_rental_list)
+
         Log.d("TestLog", "showList.size = ${RentStatusListManager.getShowList().size}")
-        pageView = MyRentList_PageView(applicationContext, pageView_MyRentalListActivity)
+        pageView = MyRentList_PageView(applicationContext, pageView_MyRentalListActivity, RentStatusListManager.getShowList())
         pageView.initViewPager()
 
         setTitleBarItemsOnclick()
+
+        refreshLayout.setOnRefreshListener {
+
+            RentStatusListManager.addRentStatusItem(RentStatus("1","DC모터", "모터", 100, "","반납"))
+            RentStatusListManager.addRentStatusItem(RentStatus("1","DC모터", "모터", 100, "","대여"))
+            RentStatusListManager.addRentStatusItem(RentStatus("1","DC모터", "모터", 100, "","연체"))
+            pageView.syncPage()
+        }
     }
 
 
@@ -35,7 +46,6 @@ class MyRentListActivity : AppCompatActivity() {
                 "전체" -> {
                     setShowModeText("반납")
                     RentStatusListManager.showReturnedDividedList()
-
                 }
                 "반납" -> {
                     setShowModeText("대여")
