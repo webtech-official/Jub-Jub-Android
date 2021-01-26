@@ -11,6 +11,7 @@ import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import com.example.jup_jup_android.ui.util.ItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
 
 
@@ -29,6 +30,13 @@ class MainActivity : AppCompatActivity() {
         pageView.initViewPager()
 
         setTitleBarItemsListener()
+
+        refreshLayout.setOnRefreshListener {
+            Log.d("TestLog", "새로고침 완료!")
+
+            refreshLayout.isRefreshing = false
+        }
+
     }
 
     //타이틀 바 위젯들 온클릭 등록
