@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
 import com.example.jup_jup_android.R
+import com.example.jup_jup_android.entity.dataclass.ItemStatus
 import com.example.jup_jup_android.entity.dataclass.RentStatus
 import java.io.ByteArrayOutputStream
 
@@ -43,9 +44,10 @@ object RentStatusListManager {
 
         for(i in 0..cnt){
             when(i%3){
-                0 -> tempList.add(RentStatus("1","모터", "DC모터", i, baseString,"반납"))
-                1 -> tempList.add(RentStatus("1","모터", "DC모터", i, baseString,"대여"))
-                2 -> tempList.add(RentStatus("1","모터", "DC모터", i, baseString,"연체"))
+
+                0 -> tempList.add(RentStatus("1","DC모터", "모터", i, baseString,"반납"))
+                1 -> tempList.add(RentStatus("1","DC모터", "모터", i, baseString,"대여"))
+                2 -> tempList.add(RentStatus("1","DC모터", "모터", i, baseString,"연체"))
             }
         }
 
@@ -61,7 +63,7 @@ object RentStatusListManager {
         Log.d("TestLog", "연체 =  ${dividedOverDueList.size}")
         Log.d("TestLog", "show =  ${getShowList().size}")
     }
-    fun initShowModeLists(dataList: ArrayList<RentStatus>, pagingList: ArrayList<ArrayList<RentStatus>>, status: String){
+    private fun initShowModeLists(dataList: ArrayList<RentStatus>, pagingList: ArrayList<ArrayList<RentStatus>>, status: String){
 
         pagingList.clear()
 
@@ -89,6 +91,10 @@ object RentStatusListManager {
     @JvmName("getRentStatusList1")
     fun getRentStatusList(): ArrayList<RentStatus>{
         return rentStatusList
+    }
+
+    fun addRentStatusItem(item: RentStatus){
+        rentStatusList.add(item)
     }
 
     @JvmName("setRentStatusList1")
@@ -120,7 +126,7 @@ object RentStatusListManager {
         return dividedShowList
     }
 
-    fun setShowedList(dataList: ArrayList<ArrayList<RentStatus>>) {
+    private fun setShowedList(dataList: ArrayList<ArrayList<RentStatus>>) {
         dividedShowList = dataList
     }
 
