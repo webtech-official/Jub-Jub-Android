@@ -8,7 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.jup_jup_android.R
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetPageView(val view: View, private val viewPager: ViewPager, val dataList: ArrayList<ArrayList<Any>>) {
+class SetPageView(val view: View, private val viewPager: ViewPager, private val dataList: ArrayList<ArrayList<Any>>) {
 
     private val NEXT_PAGE = +1
     private val PREV_PAGE = -1
@@ -40,14 +40,14 @@ class SetPageView(val view: View, private val viewPager: ViewPager, val dataList
     }
 
 
-    fun setTextViewArrayList(view: View){
+    private fun setTextViewArrayList(view: View){
         textViewArrayList = arrayListOf<TextView>(view.findViewById(R.id.textView_PageNum1), view.findViewById(R.id.textView_PageNum2),
             view.findViewById(R.id.textView_PageNum3), view.findViewById(R.id.textView_PageNum4), view.findViewById(
                 R.id.textView_PageNum5))
     }
 
 
-    fun setBottomPageButtonsOnclick() {
+    private fun setBottomPageButtonsOnclick() {
 
         //이전 페이지 이미지 버튼
         view.imageView_PrevPage.setOnClickListener {
@@ -88,7 +88,7 @@ class SetPageView(val view: View, private val viewPager: ViewPager, val dataList
         checkFragmentBlankPageNum(dataList.size)
     }
 
-    fun changePageByButton(destination: Int) {
+    private fun changePageByButton(destination: Int) {
 
         //다음 페이지
         textHighlightOff()
@@ -99,7 +99,7 @@ class SetPageView(val view: View, private val viewPager: ViewPager, val dataList
     }
 
     // 존재하지 않는 페이지의 숫자는 GONE으로, 존재하는데 보이지 않는 페이지는 VISIBLE로
-    fun checkFragmentBlankPageNum(maxPage: Int) {
+    private fun checkFragmentBlankPageNum(maxPage: Int) {
         for (i in 0 until 5) {
             if (textViewArrayList[i].text.toString().toInt() > maxPage) {
                 textViewArrayList[i].visibility = View.GONE
@@ -109,13 +109,13 @@ class SetPageView(val view: View, private val viewPager: ViewPager, val dataList
         }
     }
 
-    fun textHighlightOff() {
+    private fun textHighlightOff() {
         textViewArrayList[lastPage % 5].textSize = 18f
         textViewArrayList[lastPage % 5].setShadowLayer(0f, 0f, 0f, Color.parseColor("#FFFFFF"))
         lastPage = viewPager.currentItem
     }
 
-    fun textHighlightOn(destination: Int) {
+    private fun textHighlightOn(destination: Int) {
         textViewArrayList[destination % 5].textSize = 25f
         textViewArrayList[destination % 5].setShadowLayer(20f, 0f, 0f, Color.parseColor("#FFFFFF"))
     }
