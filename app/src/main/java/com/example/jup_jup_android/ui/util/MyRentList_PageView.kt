@@ -17,7 +17,7 @@ class MyRentList_PageView(var context: Context, var view: View){
 
         viewPager.adapter = MyRentList_ViewPagerAdapter (context)
 
-        setPageView = SetPageView(view, viewPager, ItemStatusListManager.getShowList() as ArrayList<ArrayList<Any>>)
+        setPageView = SetPageView(view, viewPager, RentStatusListManager.getShowList() as ArrayList<ArrayList<Any>>)
 
     }
 
