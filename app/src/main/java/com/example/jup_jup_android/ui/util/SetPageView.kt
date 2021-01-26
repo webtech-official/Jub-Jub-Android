@@ -29,6 +29,7 @@ class SetPageView(val view: View, private val viewPager: ViewPager, private val 
             //Page가 바뀌면 실행되는 함수
             override fun onPageSelected(arg0: Int) {
                 changePageByViewPagerSwipe(arg0)
+                Log.d("TestLog", "dataList.size = ${dataList.size}")
             }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
