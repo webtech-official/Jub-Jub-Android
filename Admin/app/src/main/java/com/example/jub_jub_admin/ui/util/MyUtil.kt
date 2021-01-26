@@ -1,4 +1,4 @@
-package com.example.jup_jup_android.ui.util
+package com.example.jub_jub_admin.ui.util
 
 import android.content.Context
 import android.graphics.Bitmap

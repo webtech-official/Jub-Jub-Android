@@ -1,4 +1,4 @@
-package com.example.jup_jup_android
+package com.example.jub_jub_android
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
