@@ -18,12 +18,12 @@ class ItemStatusList_PageView(var context: Context, var view: View, var  dataLis
 
         viewPager.adapter = ItemStatusList_ViewPagerAdapter(context)
 
-        setPageView = SetPageView(view, viewPager, ItemStatusListManager.getShowList() as ArrayList<ArrayList<Any>>)
+        setPageView = SetPageView(view, viewPager, dataList as ArrayList<ArrayList<Any>>)
 
     }
 
     fun syncPage(){
-        Log.d("TestLog", "ISList.size = ${ItemStatusListManager.getShowList().size}")
+        //Log.d("TestLog", "ISList.size = ${ItemStatusListManager.getShowList().size}")
         setPageView.syncPage(ItemStatusListManager.getShowList().size)
     }
 

@@ -11,13 +11,14 @@ import com.example.jup_jup_android.R
 import com.example.jup_jup_android.entity.singleton.ItemStatusListManager
 import com.example.jup_jup_android.ui.util.ItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var pageView: ItemStatusList_PageView
-
+    private var lastSize = 0
     //마지막으로 뒤로가기 버튼 누른 시간
     var backKeyPressedTime : Long = 0
 
@@ -29,6 +30,13 @@ class MainActivity : AppCompatActivity() {
         pageView.initViewPager()
 
         setTitleBarItemsListener()
+
+        refreshLayout.setOnRefreshListener {
+            Log.d("TestLog", "새로고침 완료!")
+
+            refreshLayout.isRefreshing = false
+        }
+
     }
 
     //타이틀 바 위젯들 온클릭 등록
@@ -43,11 +51,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         imageView_BackArrow_MainActivitySearchMode.setOnClickListener {
-            setTitleBarViewMode()
             editText_SearchText_MainActivitySearchMode.setText("")
-            ItemStatusListManager.processShowList("")
-            //pageView.notifyDataSetChanged()
-            pageView.syncPage()
+            setTitleBarViewMode()
         }
 
         setSearchFunction()
@@ -55,11 +60,34 @@ class MainActivity : AppCompatActivity() {
 
     private fun setSearchFunction() {
         editText_SearchText_MainActivitySearchMode.addTextChangedListener {
-            Log.d("TestLog", "${it}")
 
-            ItemStatusListManager.processShowList(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
-            pageView.syncPage()
+            search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
+
+            var currentSize = ItemStatusListManager.getShowList().size
+
+            var beforeTime = System.currentTimeMillis()
+
+            if(lastSize != currentSize){
+                pageView.syncPage()
+                lastSize = currentSize
+            }
+
+            var afterTime = System.currentTimeMillis()
+
+            Log.d("TestLog", "syncTime = ${(afterTime - beforeTime)}")
         }
+    }
+    private fun search(word: String){
+        var r = Runnable {
+            ItemStatusListManager.processShowList(word)
+        }
+
+        val thread = Thread(r)
+        thread.start()
+
+        try {
+            thread.join()
+        } catch (e : InterruptedException){ }
     }
 
     private fun setTitleBarSearchMode() {
@@ -70,8 +98,7 @@ class MainActivity : AppCompatActivity() {
     private fun setTitleBarViewMode() {
         titleBar_ViewMode_MainActivity.visibility = View.VISIBLE
         titleBar_SearchMode_MainActivity.visibility = View.GONE
-        ItemStatusListManager.processShowList("")
-        //pageView.notifyDataSetChanged()
+        search("")
         pageView.syncPage()
     }
 
