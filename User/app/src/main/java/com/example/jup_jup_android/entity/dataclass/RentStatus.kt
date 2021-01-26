@@ -15,6 +15,5 @@ data class RentStatus(
         var status: String
 ): Serializable{
     constructor(userId: String, name: String, category: String, count: Int, image: String, status: String) : this(0, userId, name, category, count, image, status)
-
 }
 
