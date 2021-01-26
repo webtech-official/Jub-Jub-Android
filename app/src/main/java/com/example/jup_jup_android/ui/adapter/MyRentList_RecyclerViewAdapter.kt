@@ -1,5 +1,6 @@
 package com.example.jup_jup_android.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<RentStatus>):Recycl
         return dataList.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyRentList_RecyclerViewAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipmentlist_item, parent, false)
         return ViewHolder(v)
     }
@@ -40,10 +41,8 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<RentStatus>):Recycl
             itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
             itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"
-
             itemView.textView_RentStatus_Item.visibility = View.VISIBLE
             itemView.textView_RentStatus_Item.text = data.status
-
 
             when(data.status){
                 "반납" -> setRentStatus(itemView, R.drawable.round_black_back_white_edge, R.color.white)
