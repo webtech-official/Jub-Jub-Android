@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startApp() {
-        
+
         ItemStatusListManager.setDummyData(applicationContext)
         RentStatusListManager.setDummyDataList(applicationContext, 100)
 
