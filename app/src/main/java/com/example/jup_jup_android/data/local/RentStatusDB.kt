@@ -10,7 +10,7 @@ import com.example.jup_jup_android.entity.dataclass.RentStatus
 @Database(entities = [RentStatus::class], version = 1)
 abstract class RentStatusDB: RoomDatabase() {
 
-    abstract fun RentStatusDAO() : RentStatusDAO
+    abstract fun rentStatusDAO() : RentStatusDAO
 
     companion object {
         private var INSTANCE: RentStatusDB? = null
