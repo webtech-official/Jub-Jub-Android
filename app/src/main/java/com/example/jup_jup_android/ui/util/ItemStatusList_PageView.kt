@@ -23,7 +23,7 @@ class ItemStatusList_PageView(var context: Context, var view: View, var  dataLis
     }
 
     fun syncPage(){
-        Log.d("TestLog", "ISList.size = ${ItemStatusListManager.getShowList().size}")
+        //Log.d("TestLog", "ISList.size = ${ItemStatusListManager.getShowList().size}")
         setPageView.syncPage(ItemStatusListManager.getShowList().size)
     }
 
