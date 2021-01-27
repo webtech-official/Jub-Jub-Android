@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Jupjupandroid" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.JubJubUser" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -19,7 +19,7 @@
     </style>
 
 
-    <style name="SplashTheme" parent="Theme.Jupjupandroid">
+    <style name="SplashTheme" parent="Theme.JubJubUser">
         <item name="android:windowBackground">@drawable/ic_splash_screen</item>
     </style>
 

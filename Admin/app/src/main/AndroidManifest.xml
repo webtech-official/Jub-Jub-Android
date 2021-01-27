@@ -2,14 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jub_jub_admin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JubJubAdmin">
-        <activity android:name=".ui.activity.MainActivity">
+        android:theme="@style/Theme.JubJubAdmin"
+        android:usesCleartextTraffic="true">
+        <activity android:name="com.example.jub_jub_admin.ui.activity.RentActivity" />
+        <activity android:name="com.example.jub_jub_admin.ui.activity.MyRentListActivity" />
+        <activity android:name="com.example.jub_jub_admin.ui.activity.MyPageActivity" />
+        <activity android:name="com.example.jub_jub_admin.ui.activity.SignUpActivity" />
+        <activity android:name="com.example.jub_jub_admin.ui.activity.LoginActivity" />
+        <activity android:name="com.example.jub_jub_admin.ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

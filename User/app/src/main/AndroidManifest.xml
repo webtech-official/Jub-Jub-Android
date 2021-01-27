@@ -10,16 +10,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Jupjupandroid"
+        android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.RentActivity"></activity>
-        <activity android:name=".ui.activity.MyRentListActivity" />
-        <activity android:name=".ui.activity.MyPageActivity" />
-        <activity android:name=".ui.activity.SignUpActivity" />
-        <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name="com.example.jub_jub_user.ui.activity.RentActivity" />
+        <activity android:name="com.example.jub_jub_user.ui.activity.MyRentListActivity" />
+        <activity android:name="com.example.jub_jub_user.ui.activity.MyPageActivity" />
+        <activity android:name="com.example.jub_jub_user.ui.activity.SignUpActivity" />
+        <activity android:name="com.example.jub_jub_user.ui.activity.LoginActivity" />
+        <activity android:name="com.example.jub_jub_user.ui.activity.MainActivity" />
         <activity
-            android:name=".ui.activity.SplashActivity"
+            android:name="com.example.jub_jub_user.ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
