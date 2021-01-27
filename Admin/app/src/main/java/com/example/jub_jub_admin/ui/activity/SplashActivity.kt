@@ -8,6 +8,7 @@ import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.response.ResponseTest
 import com.example.jub_jub_admin.entity.singleton.ItemStatusListManager
+import com.example.jub_jub_admin.entity.singleton.RentStatusListManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
