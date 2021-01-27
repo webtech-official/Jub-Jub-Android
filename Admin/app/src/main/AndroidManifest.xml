@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubAdmin"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.jub_jub_admin.ui.activity.RentActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.MyRentListActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.MyPageActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.SignUpActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.LoginActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.SplashActivity"
+        <activity android:name=".ui.activity.AddItemActivity"></activity>
+        <activity android:name=".ui.activity.ModifyItemActivity" />
+        <activity android:name=".ui.activity.RentActivity" />
+        <activity android:name=".ui.activity.MyRentListActivity" />
+        <activity android:name=".ui.activity.MyPageActivity" />
+        <activity android:name=".ui.activity.SignUpActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
