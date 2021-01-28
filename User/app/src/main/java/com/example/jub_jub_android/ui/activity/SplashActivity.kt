@@ -7,8 +7,9 @@ import android.util.Log
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.response.ResponseTest
-import com.example.jub_jub_android.entity.singleton.ItemStatusListManager
-import com.example.jub_jub_android.entity.singleton.RentStatusListManager
+import com.example.jub_jub_android.entity.singleton.ManageItemListManager
+import com.example.jub_jub_android.entity.singleton.ManageLaptopListManager
+import com.example.jub_jub_android.entity.singleton.StudentRentStatusListManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,9 +25,9 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startApp() {
 
-        ItemStatusListManager.setDummyData(applicationContext)
-        RentStatusListManager.setDummyDataList(applicationContext, 100)
-
+        ManageItemListManager.setDummyData(applicationContext)
+        StudentRentStatusListManager.setDummyDataList(applicationContext, 100)
+        ManageLaptopListManager.setDummyData(applicationContext)
         val response: Call<ResponseTest> = NetRetrofit.getServiceApi().getTest()
 
         response.enqueue(object: Callback<ResponseTest>{
