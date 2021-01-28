@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.AddItemActivity"></activity>
+        <activity android:name=".ui.activity.ModifyLaptopActivity"></activity>
+        <activity android:name=".ui.activity.ManageLaptopActivity" />
         <activity android:name=".ui.activity.ModifyItemActivity" />
-        <activity android:name=".ui.activity.RentActivity" />
-        <activity android:name=".ui.activity.MyRentListActivity" />
+        <activity android:name=".ui.activity.StudentRentStatusListActivity" />
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
