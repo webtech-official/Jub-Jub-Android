@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/textView"
-            android:text="마이페이지"
+            android:text="admin 마이페이지"
             style="@style/MyTitleText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyPage"
@@ -42,16 +42,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
 
-    <TextView
-        android:id="@+id/textView_MyRentalList_MyPage"
-        android:text="나의 대여 목록"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        style="@style/MyPageText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    <TextView
+        <TextView
+            android:id="@+id/textView_ManageItem_MyPage"
+            android:text="기자재 관리"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textView_AddItem_MyPage"
+            android:text="기자재 추가"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
+
+        <TextView
+            android:id="@+id/textView_ManageLaptop_MyPage"
+            android:text="노트북 관리"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textView_AddLaptop_MyPage"
+            android:text="노트북 추가 "
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
+
+
+        <TextView
+            android:id="@+id/textView_AcceptRentItem_MyPage"
+            android:text="기자재 대여 승인"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textView_ManageStudent_MyPage"
+            android:text="학생 관리"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
+
+
+        <TextView
+            android:id="@+id/textView_MyRentalList_MyPage"
+            android:text="나의 대여 목록"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <TextView
+            android:id="@+id/textView_RentRecord_MyPage"
+            android:text="대여 기록"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
+
+        <TextView
         android:id="@+id/textView_Logout_MyPage"
         android:text="로그아웃"
         style="@style/MyPageText"
@@ -60,4 +125,5 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
 
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
