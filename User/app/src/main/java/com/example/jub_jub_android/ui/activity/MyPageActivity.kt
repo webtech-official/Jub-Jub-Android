@@ -23,17 +23,17 @@ class MyPageActivity : AppCompatActivity() {
 
         //기자재 추가
         textView_AddItem_MyPage.setOnClickListener {
-            startActivity(Intent(applicationContext, AddItemActivity::class.java))
+            startActivity(Intent(applicationContext, ModifyItemActivity::class.java))
         }
 
         //노트북 관리
         textView_ManageLaptop_MyPage.setOnClickListener {
-
+            startActivity(Intent(applicationContext, ManageLaptopActivity::class.java))
         }
 
         //노트북 추가
         textView_AddLaptop_MyPage.setOnClickListener {
-
+            startActivity(Intent(applicationContext, ModifyLaptopActivity::class.java))
         }
         //기자재 대여 승인
         textView_AcceptRentItem_MyPage.setOnClickListener {
