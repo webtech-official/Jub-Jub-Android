@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.dataclass.ItemStatus
-import com.example.jub_jub_android.ui.activity.RentActivity
+import com.example.jub_jub_android.ui.activity.ModifyItemActivity
 import com.example.jub_jub_android.ui.util.MyUtil
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
 
-class ItemStatusList_RecyclerViewAdpater(var dataList: ArrayList<ItemStatus>): RecyclerView.Adapter<ItemStatusList_RecyclerViewAdpater.ViewHolder>() {
+class ManageItem_RecyclerViewAdpater(var dataList: ArrayList<ItemStatus>): RecyclerView.Adapter<ManageItem_RecyclerViewAdpater.ViewHolder>() {
 
     //private var devideditemStatusList = dataList
 
@@ -40,7 +40,7 @@ class ItemStatusList_RecyclerViewAdpater(var dataList: ArrayList<ItemStatus>): R
             //각각의 아이템 클릭시
             itemView.setOnClickListener {
 
-                var intent = Intent(itemView.context, RentActivity::class.java)
+                var intent = Intent(itemView.context, ModifyItemActivity::class.java)
 
                 intent.putExtra("Data", data)
                 intent.addFlags(FLAG_ACTIVITY_NEW_TASK)
