@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.ItemStatus
 import com.example.jub_jub_admin.ui.activity.ModifyItemActivity
-import com.example.jub_jub_admin.ui.activity.RentActivity
 import com.example.jub_jub_admin.ui.util.MyUtil
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
