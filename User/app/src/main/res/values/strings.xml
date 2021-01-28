@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">jub-jub-user</string>
+    <string name="app_name">jub-jub-android</string>
     <string name="appTitle">JubJub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

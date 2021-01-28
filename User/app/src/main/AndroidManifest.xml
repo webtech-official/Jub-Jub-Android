@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jup_jup_android">
+    package="com.example.jub_jub_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.jub_jub_user.ui.activity.RentActivity" />
-        <activity android:name="com.example.jub_jub_user.ui.activity.MyRentListActivity" />
-        <activity android:name="com.example.jub_jub_user.ui.activity.MyPageActivity" />
-        <activity android:name="com.example.jub_jub_user.ui.activity.SignUpActivity" />
-        <activity android:name="com.example.jub_jub_user.ui.activity.LoginActivity" />
-        <activity android:name="com.example.jub_jub_user.ui.activity.MainActivity" />
+        <activity android:name="com.example.jub_jub_android.ui.activity.RentActivity" />
+        <activity android:name="com.example.jub_jub_android.ui.activity.MyRentListActivity" />
+        <activity android:name="com.example.jub_jub_android.ui.activity.MyPageActivity" />
+        <activity android:name="com.example.jub_jub_android.ui.activity.SignUpActivity" />
+        <activity android:name="com.example.jub_jub_android.ui.activity.LoginActivity" />
+        <activity android:name="com.example.jub_jub_android.ui.activity.MainActivity" />
         <activity
-            android:name="com.example.jub_jub_user.ui.activity.SplashActivity"
+            android:name="com.example.jub_jub_android.ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
