@@ -3,11 +3,11 @@ package com.example.jub_jub_android.ui.util
 import android.content.Context
 import android.view.View
 import com.example.jub_jub_android.entity.dataclass.ItemStatus
-import com.example.jub_jub_android.entity.singleton.ItemStatusListManager
-import com.example.jub_jub_android.ui.adapter.ItemStatusList_ViewPagerAdapter
+import com.example.jub_jub_android.entity.singleton.ManageItemListManager
+import com.example.jub_jub_android.ui.adapter.ManageItem_ViewPagerAdapter
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class ItemStatusList_PageView(var context: Context, var view: View, var  dataList: ArrayList<ArrayList<ItemStatus>>){
+class ManageItemList_PageView(var context: Context, var view: View, var  dataList: ArrayList<ArrayList<ItemStatus>>){
 
     private lateinit var setPageView : SetPageView
 
@@ -15,7 +15,7 @@ class ItemStatusList_PageView(var context: Context, var view: View, var  dataLis
 
         val viewPager = view.viewPager
 
-        viewPager.adapter = ItemStatusList_ViewPagerAdapter(context)
+        viewPager.adapter = ManageItem_ViewPagerAdapter(context)
 
         setPageView = SetPageView(view, viewPager, dataList as ArrayList<ArrayList<Any>>)
 
@@ -23,7 +23,7 @@ class ItemStatusList_PageView(var context: Context, var view: View, var  dataLis
 
     fun syncPage(){
         //Log.d("TestLog", "ISList.size = ${ItemStatusListManager.getShowList().size}")
-        setPageView.syncPage(ItemStatusListManager.getShowList().size)
+        setPageView.syncPage(ManageItemListManager.getShowList().size)
     }
 
 
