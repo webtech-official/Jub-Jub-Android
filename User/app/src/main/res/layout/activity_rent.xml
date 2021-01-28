@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
 
-    tools:context="com.example.jub_jub_user.ui.activity.RentActivity">
+    tools:context="com.example.jub_jub_android.ui.activity.RentActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear"

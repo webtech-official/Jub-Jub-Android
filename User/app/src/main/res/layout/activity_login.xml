@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:padding="20dp"
-    tools:context="com.example.jub_jub_user.ui.activity.LoginActivity">
+    tools:context="com.example.jub_jub_android.ui.activity.LoginActivity">
 
     <TextView
         android:id="@+id/textView_AppTitle_LoginActivity"
