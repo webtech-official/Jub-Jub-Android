@@ -19,14 +19,8 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/notosans"
             android:text="마이페이지"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginLeft="15dp"
+            style="@style/MyTitleText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyPage"
             app:layout_constraintTop_toTopOf="parent" />
@@ -43,38 +37,24 @@
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"
+        style="@style/MyLinearLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
 
     <TextView
         android:id="@+id/textView_MyRentalList_MyPage"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:text="나의 대여 목록"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="25dp"
         android:layout_marginTop="10dp"
+        style="@style/MyPageText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textView_Logout_MyPage"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:text="로그아웃"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/roboto"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="25dp"
+        style="@style/MyPageText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
