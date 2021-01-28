@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:visibility="visible"
-        android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,36 +19,21 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/varela"
-            android:text="@string/appTitle"
-            android:textColor="@color/white"
-            android:textSize="24dp"
+            style="@style/AppTitleInApp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView_SearchMode_MainActivity"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_vector"
-            android:padding="7dp"
-            android:layout_marginRight="2dp"
+            style="@style/SearchIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView_MyPage_MainActivity"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-
         <ImageView
             android:id="@+id/imageView_MyPage_MainActivity"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_person"
+            style="@style/MyPageIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -68,11 +52,8 @@
 
         <ImageView
             android:id="@+id/imageView_BackArrow_MainActivitySearchMode"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            android:src="@drawable/ic_arrow_back"
             android:layout_marginLeft="10dp"
+            style="@style/MyBackArrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -104,12 +85,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
         android:layout_marginTop="51dp"
-        android:background="@color/white"
+        style="@style/MyLinearLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -120,11 +98,10 @@
         layout="@layout/layout_pageview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
 
 

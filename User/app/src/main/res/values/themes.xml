@@ -54,7 +54,6 @@
     </style>
 
     <style name="MyButton">
-
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:textSize">14dp</item>
@@ -64,6 +63,32 @@
         <item name="android:backgroundTint">@color/white</item>
     </style>
 
+    <style name="MyLinearLine">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
 
+    <style name="MyBackArrow">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:src">@drawable/ic_arrow_back</item>
+    </style>
+
+    <style name="SearchIcon">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:src">@drawable/ic_vector</item>
+    </style>
+
+    <style name="MyPageIcon">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:src">@drawable/ic_person</item>
+    </style>
 
 </resources>
