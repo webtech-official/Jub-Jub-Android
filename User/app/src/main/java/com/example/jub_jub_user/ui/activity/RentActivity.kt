@@ -41,7 +41,7 @@ class RentActivity : AppCompatActivity() {
             }
         }
 
-        textView_Rent_RentActivity.setOnClickListener {
+        button_Rent_RentActivity.setOnClickListener {
             var dialog = Dialog(this)
 
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

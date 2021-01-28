@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+
     tools:context="com.example.jub_jub_user.ui.activity.RentActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -69,37 +70,27 @@
 
     <TextView
         android:id="@+id/textView_rentItemCategory_RentActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="모터"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:fontFamily="@font/notosans"
+        android:layout_marginLeft="0dp"
+        style="@style/MyTitleText"
         app:layout_constraintStart_toStartOf="@+id/textView_rentItemName_RentActivity"
         app:layout_constraintTop_toBottomOf="@+id/textView_rentItemName_RentActivity" />
 
     <TextView
         android:id="@+id/textView_RentItemCount_RentActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="수량: 5개"
-        android:textColor="@color/white"
-        android:textSize="20dp"
         android:layout_marginTop="5dp"
+        style="@style/MyTitleText"
         app:layout_constraintBottom_toBottomOf="@+id/textView_rentItemName_RentActivity"
         app:layout_constraintEnd_toEndOf="@+id/imageView_RentItem_RentActivity"
         app:layout_constraintTop_toTopOf="@+id/textView_rentItemName_RentActivity" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:fontFamily="@font/notosans"
         android:text="대여수량"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        style="@style/MyTitleText"
         app:layout_constraintEnd_toEndOf="@+id/textView_RentItemCount_RentActivity"
         app:layout_constraintTop_toBottomOf="@+id/textView_RentItemCount_RentActivity" />
 
@@ -147,16 +138,12 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView_Rent_RentActivity"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/button_roundedge"
+    <Button
+        android:id="@+id/button_Rent_RentActivity"
+        style="@style/MyButton"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="대여"
-        android:textColor="@color/black"
-        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3" />
 
