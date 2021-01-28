@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.singleton.RentStatusListManager
+import com.example.jub_jub_android.entity.singleton.StudentRentStatusListManager
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
 class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
@@ -24,7 +24,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return RentStatusListManager.getShowList().size
+        return StudentRentStatusListManager.getShowList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -37,7 +37,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //나의 대여 목록.
-        var adapter = MyRentList_RecyclerViewAdapter(RentStatusListManager.getShowList()[position])
+        var adapter = MyRentList_RecyclerViewAdapter(StudentRentStatusListManager.getShowList()[position])
         view.recyclerView_ItemStatusList.adapter = adapter
         adapter.notifyDataSetChanged()
 
