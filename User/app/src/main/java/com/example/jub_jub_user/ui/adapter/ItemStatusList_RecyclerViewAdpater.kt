@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.entity.dataclass.ItemStatus
 import com.example.jub_jub_user.ui.activity.RentActivity
 import com.example.jub_jub_user.ui.util.MyUtil

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.entity.dataclass.RentStatus
 import com.example.jub_jub_user.ui.util.MyUtil
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*

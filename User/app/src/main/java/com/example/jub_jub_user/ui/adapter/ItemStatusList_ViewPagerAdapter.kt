@@ -5,7 +5,7 @@ import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.entity.singleton.ItemStatusListManager
 import com.example.jub_jub_user.ui.adapter.ItemStatusList_RecyclerViewAdpater
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*

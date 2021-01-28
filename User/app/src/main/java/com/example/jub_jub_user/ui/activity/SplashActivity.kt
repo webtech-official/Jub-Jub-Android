@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.data.remote.NetRetrofit
 import com.example.jub_jub_user.entity.dataclass.response.ResponseTest
 import com.example.jub_jub_user.entity.singleton.ItemStatusListManager

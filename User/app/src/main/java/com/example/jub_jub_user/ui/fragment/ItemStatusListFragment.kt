@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.entity.dataclass.ItemStatus
 
 class ItemStatusListFragment(itemStatusList: ArrayList<ItemStatus>) : Fragment() {

@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
 class SetPageView(val view: View, private val viewPager: ViewPager, private val dataList: ArrayList<ArrayList<Any>>) {

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.data.local.RentStatusDB
 import com.example.jub_jub_user.entity.dataclass.RentStatus
 import com.example.jub_jub_user.entity.singleton.RentStatusListManager

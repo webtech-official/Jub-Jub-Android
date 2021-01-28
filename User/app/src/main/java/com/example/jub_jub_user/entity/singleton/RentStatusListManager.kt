@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.data.local.RentStatusDB
 import com.example.jub_jub_user.entity.dataclass.RentStatus
 import java.io.ByteArrayOutputStream

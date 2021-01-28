@@ -1,4 +1,4 @@
-package com.example.jup_jup_android
+package com.example.jub_jub_android
 
 import org.junit.Test
 

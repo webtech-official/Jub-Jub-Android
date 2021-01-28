@@ -7,7 +7,7 @@ import android.util.Base64
 import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.entity.dataclass.ItemStatus
 import kotlinx.android.synthetic.main.activity_rent.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*

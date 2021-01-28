@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.data.remote.NetRetrofit
 import com.example.jub_jub_user.entity.dataclass.body.Login
 import com.example.jub_jub_user.entity.dataclass.response.LoginResponse

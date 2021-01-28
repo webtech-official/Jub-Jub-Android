@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.entity.singleton.ItemStatusListManager
 import com.example.jub_jub_user.ui.util.ItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*

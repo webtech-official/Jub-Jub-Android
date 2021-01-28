@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
-import com.example.jup_jup_android.R
+import com.example.jub_jub_android.R
 import com.example.jub_jub_user.data.local.ItemStatusDB
 import com.example.jub_jub_user.entity.dataclass.ItemStatus
 import java.io.ByteArrayOutputStream
