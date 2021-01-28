@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.jub_jub_android.ui.activity.RentActivity" />
-        <activity android:name="com.example.jub_jub_android.ui.activity.MyRentListActivity" />
-        <activity android:name="com.example.jub_jub_android.ui.activity.MyPageActivity" />
-        <activity android:name="com.example.jub_jub_android.ui.activity.SignUpActivity" />
-        <activity android:name="com.example.jub_jub_android.ui.activity.LoginActivity" />
-        <activity android:name="com.example.jub_jub_android.ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.RentActivity" />
+        <activity android:name=".ui.activity.MyRentListActivity" />
+        <activity android:name=".ui.activity.MyPageActivity" />
+        <activity android:name=".ui.activity.SignUpActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
         <activity
             android:name="com.example.jub_jub_android.ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
