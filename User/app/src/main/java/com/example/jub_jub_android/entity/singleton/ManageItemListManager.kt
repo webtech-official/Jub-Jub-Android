@@ -11,10 +11,10 @@ import java.io.ByteArrayOutputStream
 import kotlin.collections.ArrayList
 
 
-object ItemStatusListManager {
+object ManageItemListManager {
     private lateinit var itemStatusDB: ItemStatusDB
 
-    private var dividedShowItemStatusList = ArrayList<ArrayList<ItemStatus>>()
+    private var dividedShowList = ArrayList<ArrayList<ItemStatus>>()
 
     fun setDummyData(context: Context){
         itemStatusDB = ItemStatusDB.getInstance(context)!!
@@ -67,18 +67,18 @@ object ItemStatusListManager {
                 //Log.d("TestLog", " $key = ${dataList.size}")
             }
 
-            dividedShowItemStatusList.clear()
+            dividedShowList.clear()
             var page = 0
             var cnt = 0
-            dividedShowItemStatusList.add(ArrayList())
+            dividedShowList.add(ArrayList())
 
             for (i in 0 until dataList.size) {
                 if (cnt == 5) {
-                    dividedShowItemStatusList.add(ArrayList())
+                    dividedShowList.add(ArrayList())
                     cnt = 0
                     page++
                 }
-                dividedShowItemStatusList[page].add(dataList[i])
+                dividedShowList[page].add(dataList[i])
                 cnt++
             }
 
@@ -93,7 +93,7 @@ object ItemStatusListManager {
     }
 
     fun getShowList(): ArrayList<ArrayList<ItemStatus>>{
-        return dividedShowItemStatusList
+        return dividedShowList
     }
 
 }
