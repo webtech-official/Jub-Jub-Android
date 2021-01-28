@@ -108,7 +108,16 @@
         <item name="android:fontFamily">@font/notosans</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginLeft">15dp</item>
-
     </style>
+
+    <style name="BottomPageNum">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
 
 </resources>
