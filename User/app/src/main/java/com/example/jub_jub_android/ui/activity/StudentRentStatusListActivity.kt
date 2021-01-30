@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.RentStatusDB
-import com.example.jub_jub_android.entity.dataclass.RentStatus
+import com.example.jub_jub_android.data.local.DB.RentStatusDB
+import com.example.jub_jub_android.entity.dataclass.StudentRentStatus
 import com.example.jub_jub_android.entity.singleton.StudentRentStatusListManager
-import com.example.jub_jub_android.ui.util.StudentRentStatusList_PageView
+import com.example.jub_jub_android.ui.util.PageView.StudentRentStatusList_PageView
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.io.ByteArrayOutputStream
@@ -44,9 +44,9 @@ class StudentRentStatusListActivity : AppCompatActivity() {
             val byteArray: ByteArray = byteStream.toByteArray()
             val baseString = Base64.encodeToString(byteArray, Base64.DEFAULT)
 
-            rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"반납"))
-            rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"대여"))
-            rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"연체"))
+            rentStatusDB.rentStatusDAO().insert(StudentRentStatus("1","DC모터", "모터", 1000, baseString,"반납"))
+            rentStatusDB.rentStatusDAO().insert(StudentRentStatus("1","DC모터", "모터", 1000, baseString,"대여"))
+            rentStatusDB.rentStatusDAO().insert(StudentRentStatus("1","DC모터", "모터", 1000, baseString,"연체"))
             Log.d("TestLog", "추가완료!")
             Log.d("TestLog", "추가완료!")
         }
