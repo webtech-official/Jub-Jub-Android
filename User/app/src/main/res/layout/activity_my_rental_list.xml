@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/textView"
             style="@style/MyTitleText"
-            android:text="나의 대여 목록"
+            android:text="학번 이름"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyRentalListActivity"
             app:layout_constraintTop_toTopOf="parent" />

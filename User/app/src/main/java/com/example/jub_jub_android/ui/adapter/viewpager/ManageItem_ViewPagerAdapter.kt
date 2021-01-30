@@ -38,7 +38,7 @@ class ManageItem_ViewPagerAdapter(var context: Context) : PagerAdapter() {
 
         //메인 화면 (기자재 목록)
         var adapter = ManageItem_RecyclerViewAdpater(ManageItemListManager.getShowList()[position])
-        view.recyclerView_ItemStatusList.adapter = adapter
+        view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
         container.addView(view)

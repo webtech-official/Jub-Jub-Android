@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.singleton.StudentRentStatusListManager
-import com.example.jub_jub_android.ui.adapter.recyclerview.MyRentList_RecyclerViewAdapter
+import com.example.jub_jub_android.entity.singleton.RentRequestListManager
+import com.example.jub_jub_android.ui.adapter.recyclerview.AllowRentRequest_RecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
-class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
+class AllowRentRequest_ViewPagerAdapter(var context: Context) : PagerAdapter() {
 
-
-    private var context = context
     private lateinit var layoutInflater: LayoutInflater
 
     override fun getItemPosition(`object`: Any): Int {
@@ -25,7 +23,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return StudentRentStatusListManager.getShowList().size
+        return RentRequestListManager.getShowList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -37,8 +35,8 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
         layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
-        //나의 대여 목록.
-        var adapter = MyRentList_RecyclerViewAdapter(StudentRentStatusListManager.getShowList()[position])
+        //메인 화면 (기자재 목록)
+        var adapter = AllowRentRequest_RecyclerViewAdapter(context, RentRequestListManager.getShowList()[position])
         view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 

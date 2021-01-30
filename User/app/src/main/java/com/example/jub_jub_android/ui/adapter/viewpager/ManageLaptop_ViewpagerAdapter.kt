@@ -38,7 +38,7 @@ class ManageLaptop_ViewpagerAdapter(var context: Context) : PagerAdapter() {
 
         //메인 화면 (기자재 목록)
         var adapter = ManageLaptop_RecyclerViewAdapter(ManageLaptopListManager.getShowList()[position])
-        view.recyclerView_ItemStatusList.adapter = adapter
+        view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
         container.addView(view)

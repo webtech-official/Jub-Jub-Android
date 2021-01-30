@@ -100,14 +100,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
-
-        <TextView
-            android:id="@+id/textView_MyRentalList_MyPage"
-            android:text="나의 대여 목록"
-            style="@style/MyPageText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
         <TextView
             android:id="@+id/textView_RentRecord_MyPage"
             android:text="대여 기록"

@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.activity.AllowRentRequestActivity"
     android:background="@color/black"
-    tools:context="com.example.jub_jub_android.ui.activity.MainActivity">
+    >
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/titleBar_ViewMode_MainActivity"
+        android:id="@+id/titleBar_ViewMode_AllowRentRequestActivity"
         android:visibility="visible"
         style="@style/TitleBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,20 +25,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:text="기자재 관리"
+            android:text="기자재 대여 승인"
             style="@style/MyTitleSubText"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toEndOf="@+id/textView" />
 
         <ImageView
-            android:id="@+id/imageView_SearchMode_MainActivity"
+            android:id="@+id/imageView_SearchMode_AllowRentRequestActivity"
             style="@style/SearchIcon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView_MyPage_MainActivity"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_MyPage_AllowRentRequestActivity"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView_MyPage_MainActivity"
+            android:id="@+id/imageView_MyPage_AllowRentRequestActivity"
             style="@style/MyPageIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,34 +48,34 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/titleBar_SearchMode_MainActivity"
-        android:visibility="gone"
+        android:id="@+id/titleBar_SearchMode_AllowRentRequestActivity"
         style="@style/SearchTitleBar"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView_BackArrow_MainActivitySearchMode"
+            android:id="@+id/imageView_BackArrow_AllowRentRequestActivitySearchMode"
             style="@style/MyBackArrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText_SearchText_MainActivitySearchMode"
+            android:id="@+id/editText_SearchText_AllowRentRequestActivitySearchMode"
             style="@style/SearchBar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MainActivitySearchMode"
+            app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_AllowRentRequestActivitySearchMode"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView_Search_MainActivitySearchMode"
+            android:id="@+id/imageView_Search_AllowRentRequestActivitySearchMode"
             style="@style/SearchBarIcon"
-            app:layout_constraintBottom_toBottomOf="@+id/editText_SearchText_MainActivitySearchMode"
-            app:layout_constraintStart_toStartOf="@+id/editText_SearchText_MainActivitySearchMode"
-            app:layout_constraintTop_toTopOf="@+id/editText_SearchText_MainActivitySearchMode" />
+            app:layout_constraintBottom_toBottomOf="@+id/editText_SearchText_AllowRentRequestActivitySearchMode"
+            app:layout_constraintStart_toStartOf="@+id/editText_SearchText_AllowRentRequestActivitySearchMode"
+            app:layout_constraintTop_toTopOf="@+id/editText_SearchText_AllowRentRequestActivitySearchMode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -87,7 +89,7 @@
 
 
     <include
-        android:id="@+id/pageView_MainActivity"
+        android:id="@+id/pageView_AllowRentRequestActivity"
         layout="@layout/layout_pageview"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -95,9 +97,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
