@@ -12,7 +12,6 @@ interface ItemStatusDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(itemStatus: ItemStatus)
 
-
     @Query("SELECT * FROM itemStatus WHERE name || category  LIKE :word ")
     fun search(word: String): List<ItemStatus>
 
