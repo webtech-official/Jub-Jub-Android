@@ -1,13 +1,9 @@
 package com.example.jub_jub_android.entity.singleton
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
-import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.ItemStatusDB
+import com.example.jub_jub_android.data.local.DB.ItemStatusDB
 import com.example.jub_jub_android.entity.dataclass.ItemStatus
-import java.io.ByteArrayOutputStream
+import com.example.jub_jub_android.ui.util.MyUtil
 import kotlin.collections.ArrayList
 
 
@@ -21,11 +17,8 @@ object ManageItemListManager {
 
 
         var r = Runnable {
-            val byteStream = ByteArrayOutputStream()
-            val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.imageex)
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)
-            val byteArray: ByteArray = byteStream.toByteArray()
-            val baseString = Base64.encodeToString(byteArray, Base64.DEFAULT)
+
+            val baseString = MyUtil().getMoterTestImage(context)
 
             itemStatusDB.itemStatusDAO().clear()
             var cnt = 1
@@ -54,36 +47,18 @@ object ManageItemListManager {
     fun processShowList(key: String){
         var dataList = ArrayList<ItemStatus>()
 
+        val thread = Thread(Runnable {
 
-        var r = Runnable {
             if(key == ""){
                 dataList = itemStatusDB.itemStatusDAO().getAll() as ArrayList<ItemStatus>
-                //Log.d("TestLog", " withoutkey ${dataList.size}")
-                //Log.d("TestLog", "Key = \"\" , getoriginalDList = ${getOriginalDividedItemStatusList().size} ")
-                //Log.d("TestLog", "Key = \"\" , originalDList = ${originalDividedItemStatusList.size} ")
             }
             else {
                 dataList = itemStatusDB.itemStatusDAO().search("%$key%") as ArrayList<ItemStatus>
-                //Log.d("TestLog", " $key = ${dataList.size}")
             }
+            MyUtil().processShowList(dataList as ArrayList<Any>, key, dividedShowList as ArrayList<ArrayList<Any>>)
 
-            dividedShowList.clear()
-            var page = 0
-            var cnt = 0
-            dividedShowList.add(ArrayList())
+        })
 
-            for (i in 0 until dataList.size) {
-                if (cnt == 5) {
-                    dividedShowList.add(ArrayList())
-                    cnt = 0
-                    page++
-                }
-                dividedShowList[page].add(dataList[i])
-                cnt++
-            }
-
-        }
-        val thread = Thread(r)
         thread.start()
 
         try {
