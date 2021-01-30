@@ -1,9 +1,10 @@
-package com.example.jub_jub_android.data.local
+package com.example.jub_jub_android.data.local.DB
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.jub_jub_android.data.local.DAO.LaptopStatusDAO
 import com.example.jub_jub_android.entity.dataclass.LaptopStatus
 
 

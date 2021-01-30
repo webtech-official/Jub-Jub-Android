@@ -1,13 +1,14 @@
-package com.example.jub_jub_android.data.local
+package com.example.jub_jub_android.data.local.DB
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.jub_jub_android.entity.dataclass.RentStatus
+import com.example.jub_jub_android.data.local.DAO.RentStatusDAO
+import com.example.jub_jub_android.entity.dataclass.StudentRentStatus
 
 
-@Database(entities = [RentStatus::class], version = 1)
+@Database(entities = [StudentRentStatus::class], version = 1)
 abstract class RentStatusDB: RoomDatabase() {
 
     abstract fun rentStatusDAO() : RentStatusDAO
