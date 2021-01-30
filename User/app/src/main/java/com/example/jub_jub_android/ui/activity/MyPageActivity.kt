@@ -37,7 +37,7 @@ class MyPageActivity : AppCompatActivity() {
         }
         //기자재 대여 승인
         textView_AcceptRentItem_MyPage.setOnClickListener {
-
+            startActivity(Intent(applicationContext, AllowRentRequestActivity::class.java))
         }
         //학생 관리
         textView_ManageStudent_MyPage.setOnClickListener {
