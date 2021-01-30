@@ -1,14 +1,9 @@
 package com.example.jub_jub_android.entity.singleton
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
-import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.LaptopStatusDB
+import com.example.jub_jub_android.data.local.DB.LaptopStatusDB
 import com.example.jub_jub_android.entity.dataclass.LaptopStatus
 import com.example.jub_jub_android.ui.util.MyUtil
-import java.io.ByteArrayOutputStream
 
 object ManageLaptopListManager {
     private lateinit var laptopStatusDB: LaptopStatusDB
