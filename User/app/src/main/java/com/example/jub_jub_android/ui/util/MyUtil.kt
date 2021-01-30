@@ -6,11 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import android.view.Window
-import android.widget.Toast
-import androidx.room.RoomDatabase
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.dataclass.ItemStatus
-import com.example.jub_jub_android.entity.singleton.ManageItemListManager
+
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 import java.io.ByteArrayOutputStream
 
@@ -38,7 +35,7 @@ class MyUtil {
         val byteArray: ByteArray = byteStream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
-    
+
     fun processShowList(dataList: ArrayList<Any>, key: String, showList: ArrayList<ArrayList<Any>>){
 
         showList.clear()
