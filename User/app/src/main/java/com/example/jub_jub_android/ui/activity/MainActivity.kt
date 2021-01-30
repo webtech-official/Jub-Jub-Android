@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.singleton.ManageItemListManager
-import com.example.jub_jub_android.ui.util.ManageItemList_PageView
+import com.example.jub_jub_android.ui.util.PageView.ManageItemList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
@@ -66,16 +66,13 @@ class MainActivity : AppCompatActivity() {
 
             var currentSize = ManageItemListManager.getShowList().size
 
-            var beforeTime = System.currentTimeMillis()
 
             if(lastSize != currentSize){
                 pageView.syncPage()
                 lastSize = currentSize
             }
 
-            var afterTime = System.currentTimeMillis()
 
-            Log.d("TestLog", "syncTime = ${(afterTime - beforeTime)}")
         }
     }
     private fun search(word: String){
