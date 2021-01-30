@@ -1,38 +1,31 @@
 package com.example.jub_jub_android.entity.singleton
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
 import android.util.Log
-import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.RentStatusDB
-import com.example.jub_jub_android.entity.dataclass.RentStatus
-import java.io.ByteArrayOutputStream
+import com.example.jub_jub_android.data.local.DB.RentStatusDB
+import com.example.jub_jub_android.entity.dataclass.StudentRentStatus
+import com.example.jub_jub_android.ui.util.MyUtil
 
 object StudentRentStatusListManager {
 
     private lateinit var rentStatusDB : RentStatusDB
 
-    private var dividedShowList = ArrayList<ArrayList<RentStatus>>()
+    private var dividedShowList = ArrayList<ArrayList<StudentRentStatus>>()
 
 
 
     fun setDummyDataList(context: Context, cnt: Int){
         rentStatusDB = RentStatusDB.getInstance(context)!!
         var r = Runnable {
-            val byteStream = ByteArrayOutputStream()
-            val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.imageex)
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)
-            val byteArray: ByteArray = byteStream.toByteArray()
-            val baseString = Base64.encodeToString(byteArray, Base64.DEFAULT)
+
+            val baseString = MyUtil().getMoterTestImage(context)
 
             rentStatusDB.rentStatusDAO().clear()
             for(i in 0..cnt){
                 when(i%3){
-                    0 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"반납"))
-                    1 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"대여"))
-                    2 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"연체"))
+                    0 -> rentStatusDB.rentStatusDAO().insert(StudentRentStatus("1","DC모터", "모터", i, baseString,"반납"))
+                    1 -> rentStatusDB.rentStatusDAO().insert(StudentRentStatus("1","DC모터", "모터", i, baseString,"대여"))
+                    2 -> rentStatusDB.rentStatusDAO().insert(StudentRentStatus("1","DC모터", "모터", i, baseString,"연체"))
                 }
             }
         }
@@ -48,16 +41,16 @@ object StudentRentStatusListManager {
     }
 
     fun processShowList(key: String){
-        var dataList = ArrayList<RentStatus>()
+        var dataList = ArrayList<StudentRentStatus>()
 
         var r = Runnable {
 
             if(key == "전체"){
-                dataList = rentStatusDB.rentStatusDAO().getAll() as ArrayList<RentStatus>
+                dataList = rentStatusDB.rentStatusDAO().getAll() as ArrayList<StudentRentStatus>
                 Log.d("TestLog", " rent withoutkey ${dataList.size}")
             }
             else {
-                dataList = rentStatusDB.rentStatusDAO().search("%$key%") as ArrayList<RentStatus>
+                dataList = rentStatusDB.rentStatusDAO().search("%$key%") as ArrayList<StudentRentStatus>
                 Log.d("TestLog", " rent $key = ${dataList.size}")
             }
 
@@ -85,7 +78,7 @@ object StudentRentStatusListManager {
         } catch (e : InterruptedException){ }
     }
 
-    fun getShowList(): ArrayList<ArrayList<RentStatus>> {
+    fun getShowList(): ArrayList<ArrayList<StudentRentStatus>> {
         return dividedShowList
     }
 }
