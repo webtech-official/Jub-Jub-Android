@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.data.local
+package com.example.jub_jub_android.data.local.DAO
 
 import androidx.room.*
 import com.example.jub_jub_android.entity.dataclass.ItemStatus
