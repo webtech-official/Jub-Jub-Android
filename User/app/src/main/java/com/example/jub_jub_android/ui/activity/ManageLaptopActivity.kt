@@ -7,9 +7,8 @@ import android.util.Log
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.singleton.ManageItemListManager
 import com.example.jub_jub_android.entity.singleton.ManageLaptopListManager
-import com.example.jub_jub_android.ui.util.ManageLaptopList_PageView
+import com.example.jub_jub_android.ui.util.PageView.ManageLaptopList_PageView
 import kotlinx.android.synthetic.main.activity_manage_laptop.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
