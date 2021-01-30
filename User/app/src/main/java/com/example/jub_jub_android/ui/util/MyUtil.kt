@@ -31,7 +31,7 @@ class MyUtil {
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
-    fun getMoterTestImage(context: Context): String{
+    fun getMotorTestImage(context: Context): String{
         val byteStream = ByteArrayOutputStream()
         val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.imageex)
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)

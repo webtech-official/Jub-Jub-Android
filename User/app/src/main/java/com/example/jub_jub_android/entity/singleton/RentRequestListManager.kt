@@ -1,9 +1,7 @@
 package com.example.jub_jub_android.entity.singleton
 
 import android.content.Context
-import androidx.room.PrimaryKey
 import com.example.jub_jub_android.data.local.DB.RentRequestDB
-import com.example.jub_jub_android.entity.dataclass.ItemStatus
 import com.example.jub_jub_android.entity.dataclass.RentRequest
 import com.example.jub_jub_android.ui.util.MyUtil
 
@@ -18,7 +16,7 @@ object RentRequestListManager {
 
         var r = Runnable {
 
-            val baseString = MyUtil().getMoterTestImage(context)
+            val baseString = MyUtil().getMotorTestImage(context)
 
             rentRequestDB.rentRequestDAO().clear()
             var cnt = 1

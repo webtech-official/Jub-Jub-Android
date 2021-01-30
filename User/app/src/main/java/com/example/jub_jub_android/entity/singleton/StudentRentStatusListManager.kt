@@ -18,7 +18,7 @@ object StudentRentStatusListManager {
         rentStatusDB = RentStatusDB.getInstance(context)!!
         var r = Runnable {
 
-            val baseString = MyUtil().getMoterTestImage(context)
+            val baseString = MyUtil().getMotorTestImage(context)
 
             rentStatusDB.rentStatusDAO().clear()
             for(i in 0..cnt){

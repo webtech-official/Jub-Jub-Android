@@ -18,7 +18,7 @@ object ManageItemListManager {
 
         var r = Runnable {
 
-            val baseString = MyUtil().getMoterTestImage(context)
+            val baseString = MyUtil().getMotorTestImage(context)
 
             itemStatusDB.itemStatusDAO().clear()
             var cnt = 1
