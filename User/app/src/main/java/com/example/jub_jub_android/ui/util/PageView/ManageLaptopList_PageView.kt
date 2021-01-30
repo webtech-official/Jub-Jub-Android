@@ -1,10 +1,11 @@
-package com.example.jub_jub_android.ui.util
+package com.example.jub_jub_android.ui.util.PageView
 
 import android.content.Context
 import android.view.View
 import com.example.jub_jub_android.entity.dataclass.LaptopStatus
 import com.example.jub_jub_android.entity.singleton.ManageLaptopListManager
 import com.example.jub_jub_android.ui.adapter.viewpager.ManageLaptop_ViewpagerAdapter
+import com.example.jub_jub_android.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
 class ManageLaptopList_PageView(var context: Context, var view: View, var  dataList: ArrayList<ArrayList<LaptopStatus>>){
