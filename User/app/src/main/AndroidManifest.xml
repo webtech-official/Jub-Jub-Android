@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.AllowRentRequestActivity"></activity>
         <activity android:name=".ui.activity.ModifyLaptopActivity" />
         <activity android:name=".ui.activity.ManageLaptopActivity" />
         <activity android:name=".ui.activity.ModifyItemActivity" />
