@@ -60,7 +60,7 @@
             app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
 
         <ImageView
-            android:id="@+id/imageView_ItemImage_ModifyActivity"
+            android:id="@+id/imageView_ItemImage_ModifyLaptopActivity"
             style="@style/CurrentPhoto"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_OpenGallery_ModifyLaptopActivity"
             app:layout_constraintStart_toEndOf="@+id/imageView_OpenGallery_ModifyLaptopActivity"
