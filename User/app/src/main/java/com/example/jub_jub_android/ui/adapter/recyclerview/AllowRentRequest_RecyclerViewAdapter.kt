@@ -43,13 +43,6 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
         fun bindItemStatusListItems(context: Context, data: RentRequest, holder: ViewHolder){
             setTextViewsText(data)
 
-            itemView.setOnClickListener {
-                Toast.makeText(context, "con 클릭" , Toast.LENGTH_SHORT).show()
-            }
-            itemView.setOnClickListener {
-                Toast.makeText(holder.view.context, "VH 클릭" , Toast.LENGTH_SHORT).show()
-            }
-
             //각각의 아이템 클릭시
             itemView.button_AllowRentRequest.setOnClickListener {
                 allowRequest(context, it.context)
@@ -68,6 +61,7 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
             dialog.accept.setOnClickListener {
                 Toast.makeText(itemContext, "item 대여 신청 수락" , Toast.LENGTH_SHORT).show()
                 Toast.makeText(dialogContext, "dialog 대여 신청 수락" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(dialog.context, "dialog 대여 신청 수락" , Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
                 Toast.makeText(itemContext, "item 대여 신청 수락" , Toast.LENGTH_SHORT).show()
                 Toast.makeText(dialogContext, "dialog 대여 신청 수락" , Toast.LENGTH_SHORT).show()
