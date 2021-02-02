@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NetRetrofit {
 
-    private val BASE_URL = "http://192.168.0.132:8080/api/v1/"
+    private val BASE_URL = "http://3.36.29.69:8080/api/v1/"
 
     fun getServiceApi() : Api {
 
