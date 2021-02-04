@@ -14,10 +14,11 @@ interface Api {
     @GET("coffe")
     fun getTest(): Call<ResponseTest>
 
-    @POST("login")
+    @POST("signin")
     fun login(@Body login: Login): Call<LoginResponse>
 
     @POST("signup")
     fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
 
 }
+
