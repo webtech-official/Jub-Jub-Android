@@ -40,12 +40,20 @@ class SignUpActivity : AppCompatActivity() {
                         response: Response<SignUpResponse>
                     ) {
                         Log.d("TestLog", "onResponse!")
+
                         if (response.code() == 200) {
-                            Log.d("TestLog", "success = ${response.body()?.success}")
-                            Toast.makeText(applicationContext, "회원가입 완료!", Toast.LENGTH_SHORT)
-                                .show()
-                            finish()
-                        } else {
+                            if(response.body()?.success!!) {
+
+                                Log.d("TestLog", "success = ${response.body()?.success}")
+                                Toast.makeText(applicationContext, "회원가입 완료!", Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+
+                            else{
+                                Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                        else {
                             Log.d("TestLog", "${response.code()}")
                         }
                     }
