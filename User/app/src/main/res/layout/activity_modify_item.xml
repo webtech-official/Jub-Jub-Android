@@ -76,6 +76,7 @@
         <EditText
             android:id="@+id/editText_ItemName_ModifyItemActivity"
             style="@style/MyEditText"
+            android:text="COX CK87 네이비 게이트론 LED 게이밍 기계식 키보드(갈축)"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -91,6 +92,7 @@
         <EditText
             android:id="@+id/editText_ItemCount_ModifyItemActivity"
             style="@style/MyEditText"
+            android:text="5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -106,8 +108,8 @@
 
         <EditText
             android:id="@+id/editText_ItemCategory_ModifyItemActivity"
-
             style="@style/MyEditText"
+            android:text="키보드"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
