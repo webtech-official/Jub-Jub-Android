@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         setTitleBarItemsListener()
 
         refreshLayout.setOnRefreshListener {
-            setSearchFunction()
+            getDataFromServer()
             Log.d("TestLog", "새로고침 완료!")
             pageView.syncPage()
             refreshLayout.isRefreshing = false
