@@ -13,11 +13,13 @@
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.activity.RentActivity" />
-        <activity android:name=".ui.activity.MyRentListActivity" />
+        <activity android:name=".ui.activity.MyRentListActivity"
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.MainActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
