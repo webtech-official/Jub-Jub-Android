@@ -86,7 +86,7 @@ object ItemStatusListManager {
             thread.join()
         } catch (e : InterruptedException){ }
 
-        
+
         processShowList("")
         Log.d("TestLog", "데이터 가져오기 끝")
 
