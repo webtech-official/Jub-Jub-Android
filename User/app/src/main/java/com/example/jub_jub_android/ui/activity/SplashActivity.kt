@@ -18,14 +18,12 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
         startApp()
     }
 
     private fun startApp() {
 
-        ItemStatusListManager.setDummyData(applicationContext)
-        RentStatusListManager.setDummyDataList(applicationContext, 100)
+         RentStatusListManager.setDummyDataList(applicationContext, 100)
 
         val response: Call<ResponseTest> = NetRetrofit.getServiceApi().getTest()
 
