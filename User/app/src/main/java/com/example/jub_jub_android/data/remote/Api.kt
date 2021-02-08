@@ -3,6 +3,7 @@ package com.example.jub_jub_android.data.remote
 import com.example.jub_jub_android.entity.dataclass.body.Login
 import com.example.jub_jub_android.entity.dataclass.body.SignUp
 import com.example.jub_jub_android.entity.dataclass.response.*
+import com.example.jub_jub_android.entity.singleton.TokenManager.token
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,5 +24,11 @@ interface Api {
 
     @GET("myequipment")
     fun getMyEquipmentData(@Header("X-AUTH-TOKEN") token: String): Call<MyEquipmentResponse>
+
+    @POST("equipmentallow/{name}")
+    fun rentEquipment(@Header("X-AUTH-TOKEN") token: String,
+                           @Body equipmentAllowDTO: EquipmentAllowDTO,
+                           @Path("name") name: String
+    ): Call<MyResponse>
 }
 
