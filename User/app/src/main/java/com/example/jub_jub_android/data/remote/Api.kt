@@ -2,6 +2,7 @@ package com.example.jub_jub_android.data.remote
 
 import com.example.jub_jub_android.entity.dataclass.body.Login
 import com.example.jub_jub_android.entity.dataclass.body.SignUp
+import com.example.jub_jub_android.entity.dataclass.response.EquipmentResponse
 import com.example.jub_jub_android.entity.dataclass.response.LoginResponse
 import com.example.jub_jub_android.entity.dataclass.response.ResponseTest
 import com.example.jub_jub_android.entity.dataclass.response.SignUpResponse
@@ -20,5 +21,8 @@ interface Api {
     @POST("signup")
     fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
 
+    @GET("equipment/")
+    fun getEquipmentData(@Header("X-AUTH-TOKEN") token: String): Call<EquipmentResponse>
+    
 }
 
