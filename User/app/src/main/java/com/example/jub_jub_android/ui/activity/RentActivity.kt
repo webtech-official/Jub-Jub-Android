@@ -8,7 +8,7 @@ import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.dataclass.ItemStatus
+import com.example.jub_jub_android.entity.dataclass.Equipment
 import kotlinx.android.synthetic.main.activity_rent.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 
@@ -20,7 +20,7 @@ class RentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent)
 
-        val data: ItemStatus = intent.getSerializableExtra("Data") as ItemStatus
+        val data: Equipment = intent.getSerializableExtra("Data") as Equipment
 
         setTextViewsText(data)
 
@@ -65,7 +65,7 @@ class RentActivity : AppCompatActivity() {
 
     }
 
-    private fun setTextViewsText(data: ItemStatus) {
+    private fun setTextViewsText(data: Equipment) {
         textView_rentItemName_RentActivity.text = data.name
         textView_rentItemCategory_RentActivity.text = data.category
         textView_RentItemCount_RentActivity.text = "수량: ${data.count}개"
