@@ -7,7 +7,9 @@ import java.io.Serializable
 
 @Entity(tableName = "itemStatus")
 data class Equipment(
-        @PrimaryKey(autoGenerate = true) var id: Int,
+        @PrimaryKey(autoGenerate = true)
+        @SerializedName("equ_Idx") var id: Int,
+
         @SerializedName("content") var category: String,
         var count: Int,
         @SerializedName("img_equipment") var image: String,
