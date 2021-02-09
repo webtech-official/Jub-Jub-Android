@@ -51,8 +51,7 @@ class ItemStatusList_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): Re
         }
 
         private fun setTextViewsText(data: Equipment) {
-            Log.d("TestLog_ISL_Re", "$data")
-            itemView.textView_ItemName_Item.text = data.name
+             itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
             itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"
             itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
