@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.dataclass.RentStatus
+import com.example.jub_jub_android.entity.dataclass.MyEquipment
 import com.example.jub_jub_android.ui.util.MyUtil
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 
-class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<RentStatus>):RecyclerView.Adapter<MyRentList_RecyclerViewAdapter.ViewHolder>() {
+class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):RecyclerView.Adapter<MyRentList_RecyclerViewAdapter.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
@@ -29,13 +29,13 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<RentStatus>):Recycl
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        fun bindRentItemListItems(data: RentStatus){
+        fun bindRentItemListItems(data: MyEquipment){
 
             setTextViewsText(data)
 
         }
 
-        private fun setTextViewsText(data: RentStatus) {
+        private fun setTextViewsText(data: MyEquipment) {
             itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
             itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
