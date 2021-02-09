@@ -88,7 +88,7 @@ object ItemStatusListManager {
 
 
         processShowList("")
-        Log.d("TestLog", "데이터 가져오기 끝")
+        Log.d("TestLog_ItemManager", "데이터 가져오기 끝")
 
     }
 
