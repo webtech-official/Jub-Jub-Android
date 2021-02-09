@@ -3,15 +3,12 @@ package com.example.jub_jub_android.data.remote
 import com.example.jub_jub_android.entity.dataclass.body.Login
 import com.example.jub_jub_android.entity.dataclass.body.SignUp
 import com.example.jub_jub_android.entity.dataclass.response.*
-import com.example.jub_jub_android.entity.singleton.TokenManager.token
+
 import retrofit2.Call
 import retrofit2.http.*
 
 
 interface Api {
-
-    @GET("coffe")
-    fun getTest(): Call<ResponseTest>
 
     @POST("signin")
     fun login(@Body login: Login): Call<LoginResponse>
