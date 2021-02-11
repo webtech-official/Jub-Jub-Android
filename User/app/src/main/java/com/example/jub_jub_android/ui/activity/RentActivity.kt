@@ -1,10 +1,8 @@
 package com.example.jub_jub_android.ui.activity
 
-import android.app.Dialog
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
-import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jub_jub_android.R
@@ -13,6 +11,7 @@ import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
 import com.example.jub_jub_android.entity.dataclass.response.MyResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
+import com.example.jub_jub_android.ui.util.MyUtil
 import kotlinx.android.synthetic.main.activity_rent.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 import retrofit2.Call
@@ -39,7 +38,6 @@ class RentActivity : AppCompatActivity() {
             if(textView_MyRentItemAmount_RentActivity.text.toString().toInt() < data.count){
                 textView_MyRentItemAmount_RentActivity.text = "${textView_MyRentItemAmount_RentActivity.text.toString().toInt() + 1}"
             }
-
         }
 
         textView_MinusMyRentItemAmoun_RentActivityt.setOnClickListener {
@@ -49,14 +47,9 @@ class RentActivity : AppCompatActivity() {
         }
 
         button_Rent_RentActivity.setOnClickListener {
-            var dialog = Dialog(this)
 
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.setContentView(R.layout.layout_alertdialog)
 
-            dialog.textView_AlertName_AlertDialogLayout.text = data.name
-            dialog.textView_AlertContent_AlertDialogLayout.text = "정말 대여 하시겠습니까?"
-            dialog.show()
+            val dialog = MyUtil.makeBaseDialog(this, "대여")
 
             dialog.textView_Cancel_AlertDialogLayout.setOnClickListener {
                 dialog.dismiss()
@@ -67,9 +60,9 @@ class RentActivity : AppCompatActivity() {
                 finish()
             }
 
+            dialog.show()
 
         }
-
     }
 
     private fun rentRequest(data: Equipment) {
@@ -95,10 +88,10 @@ class RentActivity : AppCompatActivity() {
     }
 
     private fun setTextViewsText(data: Equipment) {
+
         textView_rentItemName_RentActivity.text = data.name
         textView_rentItemCategory_RentActivity.text = data.category
         textView_RentItemCount_RentActivity.text = "수량: ${data.count}개"
-
 
         val decodedString: ByteArray = Base64.decode(data.image, Base64.DEFAULT)
         val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
