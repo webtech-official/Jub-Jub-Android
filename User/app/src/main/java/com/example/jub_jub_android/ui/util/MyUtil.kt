@@ -35,7 +35,7 @@ object MyUtil {
     }
 
     fun convertFileToBitmap(imageFile: File): Bitmap? {
-            return BitmapFactory.decodeFile(imageFile.path)
+        return BitmapFactory.decodeFile(imageFile.path)
     }
 
     fun convertBitmapToBase64(bitmap: Bitmap): String? {
@@ -55,7 +55,6 @@ object MyUtil {
         dialog.textView_AlertContent_AlertDialogLayout.text = "정말 $dialogName 하시겠습니까?"
 
         return dialog
-
     }
 
 }
