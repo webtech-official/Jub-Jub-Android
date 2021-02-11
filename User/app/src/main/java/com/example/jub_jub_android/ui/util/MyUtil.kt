@@ -53,7 +53,7 @@ object MyUtil {
 
         dialog.textView_AlertName_AlertDialogLayout.text = dialogName
         dialog.textView_AlertContent_AlertDialogLayout.text = "정말 $dialogName 하시겠습니까?"
-
+        dialog.show()
         return dialog
     }
 
