@@ -19,7 +19,6 @@ object MyEquipmentListManager {
 
         val thread = Thread(Runnable {
             myEquipmentDB.myEquipmentDAO().clear()
-
             for(i in 0 until dataList.size){
 //            constructor(name: String, category: String, count: Int, image: String, status: String) : this(0, name, category, count, image, status)
                 var data = dataList[i].equipment
