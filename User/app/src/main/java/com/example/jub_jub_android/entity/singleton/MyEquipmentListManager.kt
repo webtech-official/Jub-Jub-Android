@@ -24,9 +24,9 @@ object MyEquipmentListManager {
                 var data = dataList[i].equipment
 
                 myEquipmentDB.myEquipmentDAO().insert(MyEquipment(data.name, data.content, data.count,
-                    //MyUtil().convertFileToBase64(data.img_equipment)!!
+                        //MyUtil().convertFileToBase64(data.img_equipment)!!
                         // 백엔드가 미완이라 테스트 이미지로 대체
-                        MyUtil().getMotorTestImage(context)
+                        MyUtil.getMotorTestImage(context)
                         , getStatus(dataList[i].equipmentEnum)))
                 //Log.d("TestLog_MyEqManager", "$i = ${MyUtil().convertFileToBase64(data.img_equipment)!!}")
             }

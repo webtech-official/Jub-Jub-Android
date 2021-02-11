@@ -36,7 +36,7 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):Recyc
         }
 
         private fun setTextViewsText(data: MyEquipment) {
-            itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
+            itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
             itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
             itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"

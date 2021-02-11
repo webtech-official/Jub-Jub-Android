@@ -13,6 +13,7 @@ import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
 import com.example.jub_jub_android.entity.dataclass.response.MyResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
+import com.example.jub_jub_android.ui.util.MyUtil
 import kotlinx.android.synthetic.main.activity_rent.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 import retrofit2.Call
@@ -49,14 +50,9 @@ class RentActivity : AppCompatActivity() {
         }
 
         button_Rent_RentActivity.setOnClickListener {
-            var dialog = Dialog(this)
 
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.setContentView(R.layout.layout_alertdialog)
 
-            dialog.textView_AlertName_AlertDialogLayout.text = data.name
-            dialog.textView_AlertContent_AlertDialogLayout.text = "정말 대여 하시겠습니까?"
-            dialog.show()
+            val dialog = MyUtil.makeBaseDialog(this, "대여")
 
             dialog.textView_Cancel_AlertDialogLayout.setOnClickListener {
                 dialog.dismiss()
@@ -66,6 +62,8 @@ class RentActivity : AppCompatActivity() {
                 dialog.dismiss()
                 finish()
             }
+
+            dialog.show()
 
 
         }
