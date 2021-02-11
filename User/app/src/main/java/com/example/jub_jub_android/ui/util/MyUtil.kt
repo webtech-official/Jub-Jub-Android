@@ -1,6 +1,5 @@
 package com.example.jub_jub_android.ui.util
 
-import android.R
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -41,8 +40,5 @@ class MyUtil {
         val byteArray: ByteArray = byteStream.toByteArray()
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
-
-
-
 
 }
