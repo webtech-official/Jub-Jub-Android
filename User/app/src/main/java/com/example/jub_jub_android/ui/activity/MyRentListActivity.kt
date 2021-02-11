@@ -31,18 +31,8 @@ class MyRentListActivity : AppCompatActivity() {
         setTitleBarItemsOnclick()
 
         refreshLayout.setOnRefreshListener {
-            val rentStatusDB = MyEquipmentDB.getInstance(this)!!
+            getDataFromServer()
 
-            val thread = Thread( Runnable {
-                //rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"반납"))
-            })
-            thread.start()
-
-            try {
-                thread.join()
-            } catch (e : InterruptedException){ }
-
-            MyEquipmentListManager.processShowList("${textView_ShowMode_MyRentalListActivity.text}")
             pageView.syncPage()
             refreshLayout.isRefreshing = false
         }
@@ -62,14 +52,16 @@ class MyRentListActivity : AppCompatActivity() {
                 response: Response<MyEquipmentResponse>
             ) {
                 if(response.body()?.success!!){
-                    response.body().list[0].equipment.img_equipment
                     setDataList(applicationContext, response.body()?.list!!)
                     setPageView()
+                    MyEquipmentListManager.processShowList("${textView_ShowMode_MyRentalListActivity.text}")
+
                 }else{
                     Toast.makeText(applicationContext, "서버에서 데이터를 받아오는데 실패했습니다!", Toast.LENGTH_SHORT).show()
                 }
                 Log.d("TestLog_MyEquipList", "isSuc = ${response.isSuccessful}")
                 Log.d("TestLog_MyEquipList", "size = ${response.body()?.list?.size}")
+
             }
 
             override fun onFailure(call: Call<MyEquipmentResponse>, t: Throwable) {
@@ -77,30 +69,8 @@ class MyRentListActivity : AppCompatActivity() {
                 Log.d("TestLog_MyEquipList", "t.localizedMessage = ${t.localizedMessage}")
                 Log.d("TestLog_MyEquipList", "call = ${call}")
             }
-
         })
     }
-
-//    val response: Call<MyEquipmentResponse> = NetRetrofit.getServiceApi().getMyEquipmentData(TokenManager.getToken())
-//
-//    response.enqueue(object : Callback<MyEquipmentResponse>{
-//        override fun onResponse(call: Call<MyEquipmentResponse>, response: Response<MyEquipmentResponse>) {
-//            Log.d("TestLog_MyEquipmentList", "${response.body()?.list?.size}")
-//            if(response.body()?.success == true){
-//                Log.d("TestLog_MyEquipmentList", "${response.body()?.list?.size}")
-//                //setDataList(applicationContext, response.body()?.list!!)
-//                //setPageView()
-//            }else{
-//                Toast.makeText(applicationContext, "서버에서 데이터를 가져오는데 실패했습니다!", Toast.LENGTH_SHORT).show()
-//                Log.d("TestLog_MyEquipmentList", "서버에서 데이터를 가져오는데 실패했습니다!")
-//            }
-//        }
-//
-//        override fun onFailure(call: Call<MyEquipmentResponse>, t: Throwable) {
-//            Log.d("TestLog_MyEquipmentList", "에러 = ${t.message}")
-//
-//        }
-//    })
 
     private fun setTitleBarItemsOnclick() {
 
