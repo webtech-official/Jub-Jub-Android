@@ -1,14 +1,18 @@
 package com.example.jub_jub_admin.ui.activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.response.ResponseTest
-import com.example.jub_jub_admin.entity.singleton.ItemStatusListManager
-import com.example.jub_jub_admin.entity.singleton.RentStatusListManager
+import com.example.jub_jub_admin.entity.singleton.ManageItemListManager
+import com.example.jub_jub_admin.entity.singleton.ManageLaptopListManager
+import com.example.jub_jub_admin.entity.singleton.RentRequestListManager
+import com.example.jub_jub_admin.entity.singleton.StudentRentStatusListManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,14 +22,17 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
         startApp()
     }
 
     private fun startApp() {
+        setPermission()
 
-        ItemStatusListManager.setDummyData(applicationContext)
-        RentStatusListManager.setDummyDataList(applicationContext, 100)
+        ManageItemListManager.setDummyData(applicationContext)
+        StudentRentStatusListManager.setDummyDataList(applicationContext, 100)
+        ManageLaptopListManager.setDummyData(applicationContext)
+
+        RentRequestListManager.setDummyData(applicationContext)
 
         val response: Call<ResponseTest> = NetRetrofit.getServiceApi().getTest()
 
@@ -48,5 +55,17 @@ class SplashActivity : AppCompatActivity() {
 
         startActivity(Intent(applicationContext, LoginActivity ::class.java))
         finish()
+    }
+
+    private fun setPermission() {
+
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
     }
 }

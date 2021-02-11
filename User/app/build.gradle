@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.jub_jub_android"
+        applicationId "com.example.jub_jub_user"
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1

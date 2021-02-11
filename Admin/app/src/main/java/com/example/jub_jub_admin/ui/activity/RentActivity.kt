@@ -51,10 +51,10 @@ class RentActivity : AppCompatActivity() {
             dialog.textView_AlertContent_AlertDialogLayout.text = "정말 대여 하시겠습니까?"
             dialog.show()
 
-            dialog.textView_Cancel_AlertDialogLayout.setOnClickListener {
+            dialog.cancel.setOnClickListener {
                 dialog.dismiss()
             }
-            dialog.textView_Accept_AlertDialogLayout.setOnClickListener {
+            dialog.accept.setOnClickListener {
                 Toast.makeText(applicationContext, "대여 신청 완료!", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
                 finish()

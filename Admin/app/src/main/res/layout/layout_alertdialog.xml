@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_Cancel_AlertDialogLayout"
+        android:id="@+id/cancel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView_Accept_AlertDialogLayout"
+        android:id="@+id/accept"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/notosans"

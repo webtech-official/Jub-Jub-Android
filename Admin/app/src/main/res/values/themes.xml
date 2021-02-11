@@ -10,8 +10,9 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
+
         <!-- 타이틀 바 제거 -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -29,7 +30,16 @@
         <item name="android:textSize">24dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/varela</item>
+    </style>
 
+    <style name="TitleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:text">@string/appTitle</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/varela</item>
     </style>
 
     <style name="LoginRegisterLogo">
@@ -44,6 +54,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">44dp</item>
         <item name="android:paddingLeft">15dp</item>
+        <item name="android:layout_marginTop">8dp</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
@@ -59,6 +70,165 @@
         <item name="android:fontFamily">@font/notosans</item>
         <item name="android:gravity">center</item>
         <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+
+
+    <style name="MyLinearLine">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="MyBackArrow">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:src">@drawable/ic_arrow_back</item>
+    </style>
+
+    <style name="SearchIcon">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:src">@drawable/ic_vector</item>
+    </style>
+
+    <style name="MyPageIcon">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:src">@drawable/ic_person</item>
+    </style>
+
+    <style name="MyPageText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingHorizontal">25dp</item>
+    </style>
+
+    <style name="MyTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosans</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">15dp</item>
+    </style>
+
+    <style name="MyTitleSubText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+
+    <style name="BottomPageNum">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="ModifyText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosans</item>
+    </style>
+
+    <style name="ModifyLaptopText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosans</item>
+    </style>
+
+    <style name="OpenGallery">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:src">@drawable/ic_add_photo</item>
+        <item name="android:background">@drawable/white_edge</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="CurrentPhoto">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginStart">25dp</item>
+    </style>
+
+    <style name="RecyclerViewItem_Image">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:src">@drawable/imageex</item>
+    </style>
+
+    <style name="RecyclerViewItem_Name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosans</item>
+        <item name="android:layout_marginLeft">15dp</item>
+    </style>
+
+    <style name="RecyclerViewItem_Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/notosans</item>
+    </style>
+
+    <style name="AllowDenyButton">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">33dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="SearchTitleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:text">@string/appTitle</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/varela</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="SearchBar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:background">@drawable/round_white_back_white_edge</item>
+        <item name="android:layout_marginVertical">8dp</item>
+    </style>
+    <style name="SearchBarIcon">
+        <item name="android:layout_width">17dp</item>
+        <item name="android:layout_height">17dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:src">@drawable/ic_search</item>
     </style>
 
 </resources>

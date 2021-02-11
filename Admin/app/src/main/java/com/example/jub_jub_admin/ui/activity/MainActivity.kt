@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.entity.singleton.ItemStatusListManager
-import com.example.jub_jub_admin.ui.util.ItemStatusList_PageView
+import com.example.jub_jub_admin.entity.singleton.ManageItemListManager
+import com.example.jub_jub_admin.ui.util.PageView.ManageItemList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
@@ -18,7 +18,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var pageView: ItemStatusList_PageView
+    private lateinit var pageView: ManageItemList_PageView
     private var lastSize = 0
     //마지막으로 뒤로가기 버튼 누른 시간
     var backKeyPressedTime : Long = 0
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pageView = ItemStatusList_PageView(applicationContext, pageView_MainActivity, ItemStatusListManager.getShowList())
+        pageView = ManageItemList_PageView(applicationContext, pageView_MainActivity, ManageItemListManager.getShowList())
         pageView.initViewPager()
 
         setTitleBarItemsListener()
@@ -64,23 +64,20 @@ class MainActivity : AppCompatActivity() {
 
             search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
 
-            var currentSize = ItemStatusListManager.getShowList().size
+            var currentSize = ManageItemListManager.getShowList().size
 
-            var beforeTime = System.currentTimeMillis()
 
             if(lastSize != currentSize){
                 pageView.syncPage()
                 lastSize = currentSize
             }
 
-            var afterTime = System.currentTimeMillis()
 
-            Log.d("TestLog", "syncTime = ${(afterTime - beforeTime)}")
         }
     }
     private fun search(word: String){
         var r = Runnable {
-            ItemStatusListManager.processShowList(word)
+            ManageItemListManager.processShowList(word)
         }
 
         val thread = Thread(r)
