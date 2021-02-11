@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="com.example.jub_jub_user.ui.activity.StudentRentStatusListActivity">
+    tools:context="com.example.jub_jub_android.ui.activity.MyRentListActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/textView"
             style="@style/MyTitleText"
-            android:text="학번 이름"
+            android:text="나의 대여 목록"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyRentalListActivity"
             app:layout_constraintTop_toTopOf="parent" />
