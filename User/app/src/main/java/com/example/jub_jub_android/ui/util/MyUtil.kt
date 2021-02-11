@@ -16,10 +16,10 @@ class MyUtil {
         return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
     }
 
-    fun convertFileToBase64(context:Context, imageString: String): String? {
+    fun convertFileToBase64(imageString: String): String? {
         var imageFile = File(imageString)
         return convertBitmapToBase64(convertFileToBitmap(imageFile)!!)
-        val bigPictureBitmap = BitmapFactory.decodeResource(context.getResources(), imageString)
+        //val bigPictureBitmap = BitmapFactory.decodeResource(context.getResources(), imageString)
 
     }
 
