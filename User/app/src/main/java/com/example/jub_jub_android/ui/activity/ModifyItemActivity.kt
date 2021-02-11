@@ -17,11 +17,10 @@ import com.example.jub_jub_android.entity.dataclass.response.MyResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
 import com.example.jub_jub_android.ui.util.MyUtil
 import kotlinx.android.synthetic.main.activity_modify_item.*
-import kotlinx.android.synthetic.main.activity_signup.*
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 
 class ModifyItemActivity : AppCompatActivity(){
 
@@ -80,8 +79,8 @@ class ModifyItemActivity : AppCompatActivity(){
             imageUri = data?.data!!
 
             //Uri 제대로 왔는지 테스트하는 코드
-            //imageView.setImageURI(imageUri)
-
+            imageView_ItemImage_ModifyActivity.setImageURI(imageUri)
+            isImageSelected = true
             val image : Bitmap = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, imageUri)
         }
     }
@@ -90,10 +89,15 @@ class ModifyItemActivity : AppCompatActivity(){
     private fun addData() {
         if(checkEditText()){
 
-            val addItemData = ModifyItem(File(imageUri.path), editText_ItemName_ModifyItemActivity.text.toString(), editText_ItemCategory_ModifyItemActivity.text.toString(), editText_ItemCount_ModifyItemActivity.text.toString().toInt())
+            var file: String? = null
+
+            var imageFile = MyUtil().uriToFile(imageUri, applicationContext)
+            val filePath: MultipartBody.Part = MyUtil().createMultiPart(imageFile)
+
+            val addItemData = ModifyItem(filePath, editText_ItemName_ModifyItemActivity.text.toString(), editText_ItemCategory_ModifyItemActivity.text.toString(), editText_ItemCount_ModifyItemActivity.text.toString().toInt())
             Log.d("TestLog", "${addItemData}")
 
-            val response: Call<MyResponse> = NetRetrofit.getServiceApi().addItem(TokenManager.getToken(), File(imageUri.path), editText_ItemName_ModifyItemActivity.text.toString(), editText_ItemCategory_ModifyItemActivity.text.toString(), editText_ItemCount_ModifyItemActivity.text.toString().toInt())
+            val response: Call<MyResponse> = NetRetrofit.getServiceApi().addItem(TokenManager.getToken(), filePath, editText_ItemName_ModifyItemActivity.text.toString(), editText_ItemCategory_ModifyItemActivity.text.toString(), editText_ItemCount_ModifyItemActivity.text.toString().toInt())
 
             response.enqueue(object : Callback<MyResponse> {
                 override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
@@ -105,6 +109,7 @@ class ModifyItemActivity : AppCompatActivity(){
 
                 override fun onFailure(call: Call<MyResponse>, t: Throwable) {
                     Log.d("TestLog", "Fail message = ${t.message} \n")
+
 //                    Log.d("TestLog", "message = ${response.message()} \n")
 //                    Log.d("TestLog", "success = ${response.body()?.success} \n")
 //                    Log.d("TestLog", "msg = ${response.body()?.msg} \n")
@@ -121,7 +126,7 @@ class ModifyItemActivity : AppCompatActivity(){
             Toast.makeText(applicationContext, "빈칸을 모두 입력해주세요!", Toast.LENGTH_SHORT).show()
             false
         }
-        else if(isImageSelected){
+        else if(!isImageSelected){
             Toast.makeText(applicationContext, "기자재 사진을 등록해주세요!", Toast.LENGTH_SHORT).show()
             false
         }

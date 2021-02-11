@@ -2,14 +2,20 @@ package com.example.jub_jub_android.ui.util
 
 import android.app.Dialog
 import android.content.Context
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.util.Base64
 import android.view.Window
 import com.example.jub_jub_android.R
 
 import kotlinx.android.synthetic.main.layout_alertdialog.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
+import java.io.File
 
 
 class MyUtil {
@@ -65,6 +71,20 @@ class MyUtil {
 
         return dialog
 
+    }
+
+    fun uriToFile(uri: Uri?, context: Context): String {
+        val cursor: Cursor = context.contentResolver.query(uri!!, null, null, null)!!
+        cursor.moveToNext()
+        val path: String = cursor.getString(cursor.getColumnIndex("_data"))
+        cursor.close()
+        return path
+    }
+
+    fun createMultiPart(filePath: String?): MultipartBody.Part {
+        val file = File(filePath)
+        val requestBody: RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
+        return MultipartBody.Part.createFormData("files", file.name, requestBody)
     }
 
 }

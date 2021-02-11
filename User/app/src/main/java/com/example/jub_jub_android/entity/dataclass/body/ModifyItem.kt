@@ -2,6 +2,7 @@ package com.example.jub_jub_android.entity.dataclass.body
 
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 import java.io.File
 import java.io.Serializable
 
@@ -9,7 +10,7 @@ data class ModifyItem (
         @PrimaryKey var id: Int,
 
         @SerializedName("img_equipment")
-        var image: File,
+        var image: MultipartBody.Part,
 
         @SerializedName("name")
         var name: String,
@@ -20,5 +21,5 @@ data class ModifyItem (
         @SerializedName("count")
         var count: Int
 ) : Serializable {
-    constructor(image: File, name: String, category: String, count: Int) : this(0, image, name, category, count)
+    constructor(image: MultipartBody.Part, name: String, category: String, count: Int) : this(0, image, name, category, count)
 }

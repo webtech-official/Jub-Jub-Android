@@ -1,6 +1,8 @@
 package com.example.jub_jub_android.ui.activity
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startApp() {
+        setPermission()
 
         ManageItemListManager.setDummyData(applicationContext)
         StudentRentStatusListManager.setDummyDataList(applicationContext, 100)
@@ -53,5 +56,17 @@ class SplashActivity : AppCompatActivity() {
 
         startActivity(Intent(applicationContext, LoginActivity ::class.java))
         finish()
+    }
+
+    private fun setPermission() {
+
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+
     }
 }
