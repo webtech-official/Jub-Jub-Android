@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.singleton.TokenManager
 import com.example.jub_jub_android.ui.util.MyUtil
@@ -37,7 +38,7 @@ class MyPageActivity : AppCompatActivity() {
             dialog.show()
         }
     }
-
+  
     private fun logOut(){
         TokenManager.removeToken()
         startActivity(Intent(applicationContext, LoginActivity::class.java).addFlags(FLAG_ACTIVITY_SINGLE_TOP))
