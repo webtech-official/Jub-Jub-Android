@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.dataclass.ItemStatus
+import com.example.jub_jub_android.entity.dataclass.Equipment
 
-class ItemStatusListFragment(itemStatusList: ArrayList<ItemStatus>) : Fragment() {
+class ItemStatusListFragment(itemStatusList: ArrayList<Equipment>) : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

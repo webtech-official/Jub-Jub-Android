@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.jub_jub_android.entity.dataclass.ItemStatus
+import com.example.jub_jub_android.entity.dataclass.Equipment
 
 
-@Database(entities = [ItemStatus::class], version = 1)
+@Database(entities = [Equipment::class], version = 2)
 abstract class ItemStatusDB: RoomDatabase() {
 
     abstract fun itemStatusDAO(): ItemStatusDAO
