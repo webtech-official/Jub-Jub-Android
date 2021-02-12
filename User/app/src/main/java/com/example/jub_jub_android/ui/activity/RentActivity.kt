@@ -1,10 +1,8 @@
 package com.example.jub_jub_android.ui.activity
 
-import android.app.Dialog
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
-import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.jub_jub_android.R
@@ -40,7 +38,6 @@ class RentActivity : AppCompatActivity() {
             if(textView_MyRentItemAmount_RentActivity.text.toString().toInt() < data.count){
                 textView_MyRentItemAmount_RentActivity.text = "${textView_MyRentItemAmount_RentActivity.text.toString().toInt() + 1}"
             }
-
         }
 
         textView_MinusMyRentItemAmoun_RentActivityt.setOnClickListener {
@@ -64,10 +61,7 @@ class RentActivity : AppCompatActivity() {
             }
 
             dialog.show()
-
-
         }
-
     }
 
     private fun rentRequest(data: Equipment) {
@@ -93,10 +87,10 @@ class RentActivity : AppCompatActivity() {
     }
 
     private fun setTextViewsText(data: Equipment) {
+
         textView_rentItemName_RentActivity.text = data.name
         textView_rentItemCategory_RentActivity.text = data.category
         textView_RentItemCount_RentActivity.text = "수량: ${data.count}개"
-
 
         val decodedString: ByteArray = Base64.decode(data.image, Base64.DEFAULT)
         val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)

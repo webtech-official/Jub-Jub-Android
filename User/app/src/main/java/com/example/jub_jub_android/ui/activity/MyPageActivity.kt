@@ -25,7 +25,6 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         textView_Logout_MyPage.setOnClickListener {
-
             val dialog = MyUtil.makeBaseDialog(this, "로그아웃")
 
             dialog.textView_Cancel_AlertDialogLayout.setOnClickListener {
@@ -39,6 +38,7 @@ class MyPageActivity : AppCompatActivity() {
             dialog.show()
         }
     }
+  
     private fun logOut(){
         TokenManager.removeToken()
         startActivity(Intent(applicationContext, LoginActivity::class.java).addFlags(FLAG_ACTIVITY_SINGLE_TOP))
