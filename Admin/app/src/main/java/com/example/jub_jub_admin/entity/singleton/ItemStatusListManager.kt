@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.data.local.ItemStatusDB
+import com.example.jub_jub_admin.data.local.db.ItemStatusDB
 import com.example.jub_jub_admin.entity.dataclass.ItemStatus
 import java.io.ByteArrayOutputStream
 import kotlin.collections.ArrayList

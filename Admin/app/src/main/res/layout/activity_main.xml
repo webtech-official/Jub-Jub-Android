@@ -5,53 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="com.example.jub_jub_admin.ui.activity.MainActivity">
+    tools:context="com.example.jub_jub_user.ui.activity.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleBar_ViewMode_MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:visibility="visible"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
+        style="@style/TitleBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/varela"
-            android:text="@string/appTitle"
-            android:textColor="@color/white"
-            android:textSize="24dp"
+            style="@style/AppTitleInApp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
+        <TextView
+            android:text="기자재 관리"
+            style="@style/MyTitleSubText"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView" />
 
         <ImageView
             android:id="@+id/imageView_SearchMode_MainActivity"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_vector"
-            android:padding="7dp"
-            android:layout_marginRight="2dp"
+            style="@style/SearchIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView_MyPage_MainActivity"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-
         <ImageView
             android:id="@+id/imageView_MyPage_MainActivity"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_person"
+            style="@style/MyPageIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,32 +47,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleBar_SearchMode_MainActivity"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:visibility="gone"
+        style="@style/SearchTitleBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView_BackArrow_MainActivitySearchMode"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:padding="10dp"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_marginLeft="10dp"
+            style="@style/MyBackArrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editText_SearchText_MainActivitySearchMode"
-            android:layout_width="0dp"
-            android:paddingLeft="40dp"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="8dp"
-            android:background="@drawable/round_white_back_white_edge"
+            style="@style/SearchBar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MainActivitySearchMode"
@@ -94,24 +70,17 @@
 
         <ImageView
             android:id="@+id/imageView_Search_MainActivitySearchMode"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:src="@drawable/ic_search"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="7dp"
+            style="@style/SearchBarIcon"
             app:layout_constraintBottom_toBottomOf="@+id/editText_SearchText_MainActivitySearchMode"
             app:layout_constraintStart_toStartOf="@+id/editText_SearchText_MainActivitySearchMode"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/editText_SearchText_MainActivitySearchMode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
         android:layout_marginTop="51dp"
-        android:background="@color/white"
+        style="@style/MyLinearLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -122,11 +91,10 @@
         layout="@layout/layout_pageview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
 
 

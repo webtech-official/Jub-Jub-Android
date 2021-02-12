@@ -52,29 +52,30 @@ class LoginActivity : AppCompatActivity() {
                         override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
                         {
                             if(response.code() == 200){
-                                if(response.body()?.msg != null){
-                                    Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
-
-                                } else{
-                                    Log.d("TestLog", "로그인 성공!")
-                                    Log.d("TestLog", "email = ${response.body()?.email}" +
+                                if(response.isSuccessful){
+                                    Log.d("TestLog_Login", "로그인 성공!")
+                                    Log.d("TestLog_Login", "code = ${response.body()?.code}" +
                                             "" +
-                                            "classNum = ${response.body()?.classNumber} token = ${response.body()?.token} msg = ${response.body()?.msg} ")
-                                    TokenManager.setToken(response.body()?.token!!)
+                                            "data = ${response.body()?.data} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
+
+                                    TokenManager.setToken(response.body()?.data!!)
                                     //앱 시작
 
                                     Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                                     startActivity(Intent(applicationContext, MainActivity::class.java))
                                     finish()
+
+                                } else{
+                                    Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
                                 }
                             }
                             else {
-                                Log.d("TestLog", "로그인 실패! ${response.code()}")
+                                Log.d("TestLog_Login", "로그인 실패! ${response.code()}")
                             }
                         }
 
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                            Log.d("TestLog", "onFailure ${t.message.toString()}")
+                            Log.d("TestLog_Login", "onFailure ${t.message.toString()}")
                         }
                     })
 

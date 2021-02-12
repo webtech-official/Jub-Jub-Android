@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.data.local.RentStatusDB
+import com.example.jub_jub_admin.data.local.db.RentStatusDB
 import com.example.jub_jub_admin.entity.dataclass.RentStatus
 import com.example.jub_jub_admin.entity.singleton.RentStatusListManager
 import com.example.jub_jub_admin.ui.util.MyRentList_PageView
@@ -38,9 +38,9 @@ class MyRentListActivity : AppCompatActivity() {
                 val byteArray: ByteArray = byteStream.toByteArray()
                 val baseString = Base64.encodeToString(byteArray, Base64.DEFAULT)
 
-                rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"반납"))
-                rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"대여"))
-                rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"연체"))
+                //rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"반납"))
+                //rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"대여"))
+                //rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", 1000, baseString,"연체"))
                 Log.d("TestLog", "추가완료!")
                 Log.d("TestLog", "추가완료!")
             }

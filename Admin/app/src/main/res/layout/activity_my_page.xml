@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="com.example.jub_jub_admin.ui.activity.MyPageActivity">
+    tools:context="com.example.jub_jub_user.ui.activity.MyPageActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linear"
@@ -19,24 +19,15 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/notosans"
-            android:text="마이페이지"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginLeft="15dp"
+            android:text="admin 마이페이지"
+            style="@style/MyTitleText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_MyPage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView_BackArrow_MyPage"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_arrow_back"
+            style="@style/MyBackArrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,9 +37,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"
+        style="@style/MyLinearLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linear" />
@@ -58,115 +47,75 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        >
         <TextView
             android:id="@+id/textView_ManageItem_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="기자재 관리"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            />
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/textView_AddItem_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="기자재 추가"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_ManageItem_MyPage" />
-
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
         <TextView
             android:id="@+id/textView_ManageLaptop_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="노트북 관리"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_ManageItem_MyPage" />
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/textView_AddLaptop_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="노트북 추가"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_ManageItem_MyPage" />
+            android:text="노트북 추가 "
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
+
 
         <TextView
             android:id="@+id/textView_AcceptRentItem_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="기자재 대여 승인"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_ManageItem_MyPage" />
-
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/textView_ManageStudent_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="학생 관리"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_ManageItem_MyPage" />
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
         <TextView
             android:id="@+id/textView_RentRecord_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             android:text="대여 기록"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_ManageItem_MyPage" />
-
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
         <TextView
-            android:id="@+id/textView_Logout_MyPage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="로그아웃"
-            android:textSize="20dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="25dp"
-            android:textColor="@color/white"
-            />
+        android:id="@+id/textView_Logout_MyPage"
+        android:text="로그아웃"
+        style="@style/MyPageText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
 
-
-    </LinearLayout>
-
-
-
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

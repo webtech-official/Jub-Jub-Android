@@ -1,9 +1,7 @@
 package com.example.jub_jub_admin.ui.adapter
 
-import android.app.Activity
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.ItemStatus
 import com.example.jub_jub_admin.ui.activity.ModifyItemActivity
-import com.example.jub_jub_admin.ui.activity.RentActivity
 import com.example.jub_jub_admin.ui.util.MyUtil
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
@@ -53,10 +50,10 @@ class ItemStatusList_RecyclerViewAdpater(var dataList: ArrayList<ItemStatus>): R
         }
 
         private fun setTextViewsText(data: ItemStatus) {
-            itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
-            itemView.textView_ItemName_Item.text = data.name
-            itemView.textView_ItemCategory_Item.text = data.category
-            itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"
+            itemView.imageView_ItemImage.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
+            itemView.textView_ItemName.text = data.name
+            itemView.textView_ItemCategory.text = data.category
+            itemView.textView_ItemCount.text = "수량 : ${data.count}개"
 
         }
 

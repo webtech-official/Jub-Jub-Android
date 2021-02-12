@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.singleton.RentStatusListManager
-import com.example.jub_jub_admin.ui.adapter.MyRentList_RecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
 class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
@@ -39,7 +38,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
 
         //나의 대여 목록.
         var adapter = MyRentList_RecyclerViewAdapter(RentStatusListManager.getShowList()[position])
-        view.recyclerView_ItemStatusList.adapter = adapter
+        view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
         container.addView(view)

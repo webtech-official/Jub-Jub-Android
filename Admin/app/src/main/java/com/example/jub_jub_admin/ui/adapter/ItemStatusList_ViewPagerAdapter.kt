@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.singleton.ItemStatusListManager
-import com.example.jub_jub_admin.ui.adapter.ItemStatusList_RecyclerViewAdpater
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
 class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
@@ -38,7 +37,7 @@ class ItemStatusList_ViewPagerAdapter(var context: Context) : PagerAdapter() {
 
         //메인 화면 (기자재 목록)
         var adapter = ItemStatusList_RecyclerViewAdpater(ItemStatusListManager.getShowList()[position])
-        view.recyclerView_ItemStatusList.adapter = adapter
+        view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
         container.addView(view)

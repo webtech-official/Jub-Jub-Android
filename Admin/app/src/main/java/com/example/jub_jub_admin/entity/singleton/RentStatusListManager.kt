@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory
 import android.util.Base64
 import android.util.Log
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.data.local.RentStatusDB
+import com.example.jub_jub_admin.data.local.db.RentStatusDB
 import com.example.jub_jub_admin.entity.dataclass.RentStatus
 import java.io.ByteArrayOutputStream
 
@@ -30,9 +30,8 @@ object RentStatusListManager {
             rentStatusDB.rentStatusDAO().clear()
             for(i in 0..cnt){
                 when(i%3){
-                    0 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"반납"))
-                    1 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"대여"))
-                    2 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"연체"))
+                    //1 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"대여"))
+                    //2 -> rentStatusDB.rentStatusDAO().insert(RentStatus("1","DC모터", "모터", i, baseString,"연체"))
                 }
             }
         }
