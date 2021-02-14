@@ -4,23 +4,23 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.jub_jub_admin.data.local.dao.ItemStatusDAO
-import com.example.jub_jub_admin.entity.dataclass.ItemStatus
+import com.example.jub_jub_admin.data.local.dao.EquipmentDAO
+import com.example.jub_jub_admin.entity.dataclass.Equipment
 
 
-@Database(entities = [ItemStatus::class], version = 1)
-abstract class ItemStatusDB: RoomDatabase() {
+@Database(entities = [Equipment::class], version = 3)
+abstract class EquipmentDB: RoomDatabase() {
 
-    abstract fun itemStatusDAO(): ItemStatusDAO
+    abstract fun equipmentDAO(): EquipmentDAO
 
     companion object {
-        private var INSTANCE: ItemStatusDB? = null
+        private var INSTANCE: EquipmentDB? = null
 
-        fun getInstance(context: Context): ItemStatusDB? {
+        fun getInstance(context: Context): EquipmentDB? {
             if (INSTANCE == null) {
-                synchronized(ItemStatusDB::class) {
+                synchronized(EquipmentDB::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                            ItemStatusDB::class.java, "itemStatus.db")
+                            EquipmentDB::class.java, "equipment.db")
                             .fallbackToDestructiveMigration()
                             .build()
                 }
