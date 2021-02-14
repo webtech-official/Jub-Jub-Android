@@ -12,13 +12,13 @@ data class ModifyItem (
         var image: MultipartBody.Part,
 
         @SerializedName("name")
-        var name: String,
+        var name: MultipartBody.Part,
 
         @SerializedName("content")
-        var category: String,
+        var category: MultipartBody.Part,
 
         @SerializedName("count")
-        var count: Int
+        var count: MultipartBody.Part
 ) : Serializable {
-    constructor(image: MultipartBody.Part, name: String, category: String, count: Int) : this(0, image, name, category, count)
+    constructor(image: MultipartBody.Part, name: MultipartBody.Part, category: MultipartBody.Part, count: MultipartBody.Part) : this(0, image, name, category, count)
 }
