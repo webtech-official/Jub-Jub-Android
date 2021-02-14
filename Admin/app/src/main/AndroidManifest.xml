@@ -3,6 +3,8 @@
     package="com.example.jub_jub_admin">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +20,7 @@
             android:windowSoftInputMode="adjustNothing"/>
         <activity android:name="com.example.jub_jub_admin.ui.activity.ManageLaptopActivity"
             android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name="com.example.jub_jub_admin.ui.activity.ModifyItemActivity"
+        <activity android:name="com.example.jub_jub_admin.ui.activity.ModifyEquipmentActivity"
             android:windowSoftInputMode="adjustNothing"/>
         <activity android:name="com.example.jub_jub_admin.ui.activity.StudentRentStatusListActivity" />
         <activity android:name="com.example.jub_jub_admin.ui.activity.MyPageActivity" />
