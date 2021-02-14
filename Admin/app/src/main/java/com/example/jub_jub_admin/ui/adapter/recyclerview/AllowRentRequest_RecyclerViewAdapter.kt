@@ -34,7 +34,6 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
-        val myUtil = MyUtil()
 
 
         fun bindItemStatusListItems(context: Context, data: RentRequest, holder: ViewHolder){
@@ -46,26 +45,20 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
             }
 
             itemView.button_DenyRentRequest.setOnClickListener {
-                Toast.makeText(context, "con 거절" , Toast.LENGTH_SHORT).show()
                 denyRequest(context, itemView.context)
-                Toast.makeText(context, "con 거절" , Toast.LENGTH_SHORT).show()
             }
         }
 
         private fun allowRequest(dialogContext: Context, itemContext: Context) {
-            val dialog = myUtil.makeBaseDialog(dialogContext, "수락")
+            val dialog = MyUtil.makeBaseDialog(dialogContext, "수락")
 
             dialog.accept.setOnClickListener {
-                Toast.makeText(itemContext, "item 대여 신청 수락" , Toast.LENGTH_SHORT).show()
-                Toast.makeText(dialogContext, "dialog 대여 신청 수락" , Toast.LENGTH_SHORT).show()
-                Toast.makeText(dialog.context, "dialog 대여 신청 수락" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemContext, "수락 완료" , Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
-                Toast.makeText(itemContext, "item 대여 신청 수락" , Toast.LENGTH_SHORT).show()
-                Toast.makeText(dialogContext, "dialog 대여 신청 수락" , Toast.LENGTH_SHORT).show()
-
             }
 
             dialog.cancel.setOnClickListener {
+                Toast.makeText(itemContext, "취소" , Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
 
@@ -73,17 +66,15 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
         }
 
         private fun denyRequest(dialogContext: Context, itemContext: Context) {
-            val dialog = myUtil.makeBaseDialog(dialogContext, "거절")
+            val dialog = MyUtil.makeBaseDialog(dialogContext, "거절")
 
             dialog.accept.setOnClickListener {
-                Toast.makeText(itemContext, "item 대여 신청 거절" , Toast.LENGTH_SHORT).show()
-                Toast.makeText(dialogContext, "dialog 대여 신청 거절" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemContext, "거절 완료" , Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
-                Toast.makeText(itemContext, "item 대여 신청 거절" , Toast.LENGTH_SHORT).show()
-                Toast.makeText(dialogContext, "dialog 대여 신청 거절" , Toast.LENGTH_SHORT).show()
             }
 
             dialog.cancel.setOnClickListener {
+                Toast.makeText(itemContext, "취소" , Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
 
@@ -95,7 +86,7 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
             itemView.button_AllowRentRequest.visibility = View.VISIBLE
             itemView.button_DenyRentRequest.visibility = View.VISIBLE
 
-            itemView.imageView_ItemImage.setImageBitmap(myUtil.convertBase64ToBitmap(data.image))
+            itemView.imageView_ItemImage.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
             itemView.textView_ItemName.text = data.itemName
             itemView.textView_ItemCategory.text = data.category
             itemView.textView_ItemCount.text = "수량 : ${data.count}개"
