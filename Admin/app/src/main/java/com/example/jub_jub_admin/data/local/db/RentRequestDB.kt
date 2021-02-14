@@ -19,7 +19,7 @@ abstract class RentRequestDB: RoomDatabase() {
 
         fun getInstance(context: Context): RentRequestDB? {
             if (INSTANCE == null) {
-                synchronized(ItemStatusDB::class) {
+                synchronized(EquipmentDB::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                         RentRequestDB::class.java, "rentRequest.db")
                         .fallbackToDestructiveMigration()
