@@ -49,7 +49,7 @@ class ManageLaptop_RecyclerViewAdapter(var dataList: ArrayList<LaptopStatus>): R
         }
 
         private fun setTextViewsText(data: LaptopStatus) {
-            itemView.imageView_ItemImage.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
+            itemView.imageView_ItemImage.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
             itemView.textView_ItemName.text = data.name
             itemView.textView_ItemCategory.text = data.category
             itemView.textView_ItemCount.text = "수량 : ${data.count}개"

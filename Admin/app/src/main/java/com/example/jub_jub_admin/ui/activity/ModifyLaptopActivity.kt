@@ -39,7 +39,7 @@ class ModifyLaptopActivity : AppCompatActivity() {
     private fun modifyMode(data: LaptopStatus) {
         editText_LaptopName_ModifyLaptopActivity.setText(data.name)
         editText_LaptopCount_ModifyLaptopActivity.setText(data.count.toString())
-        imageView_ItemImage_ModifyLaptopActivity.setImageBitmap(MyUtil().convertBase64ToBitmap(data.image))
+        imageView_ItemImage_ModifyLaptopActivity.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
         editText_CPU_ModifyLaptopActivity.setText(data.cpu)
         editText_GPU_ModifyLaptopActivity.setText(data.gpu)
         editText_RAM_ModifyLaptopActivity.setText(data.ram)
