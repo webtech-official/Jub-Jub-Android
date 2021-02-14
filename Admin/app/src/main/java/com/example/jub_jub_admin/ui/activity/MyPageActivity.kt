@@ -23,7 +23,7 @@ class MyPageActivity : AppCompatActivity() {
 
         //기자재 추가
         textView_AddItem_MyPage.setOnClickListener {
-            startActivity(Intent(applicationContext, ModifyItemActivity::class.java))
+            startActivity(Intent(applicationContext, ModifyEquipmentActivity::class.java))
         }
 
         //노트북 관리

@@ -18,6 +18,36 @@ object ItemStatusListManager {
 
     private var dividedShowItemStatusList = ArrayList<ArrayList<Equipment>>()
 
+    fun setDataList(context:Context, dataList: ArrayList<Equipment>){
+        itemStatusDB = ItemStatusDB.getInstance(context)!!
+
+        val thread = Thread(Runnable {
+            itemStatusDB.itemStatusDAO().clear()
+
+
+            Log.d("TestLog_ItemManager", "list Size ${dataList.size}")
+
+
+            for(i in 0 until dataList.size){
+                itemStatusDB.itemStatusDAO().insert(Equipment(dataList[i].category, dataList[i].count, dataList[i].image, dataList[i].name))
+                Log.d("TestLog_ItemManager", "itemImage.length = ${dataList[i].image.length}")
+                //Log.d("TestLog_ItemManager", "$i.id =  ${dataList[i].id}. $i.name = ${dataList[i].name}")
+            }
+            Log.d("TestLog_ItemManager", "데이터 입력 완료")
+
+        })
+
+        thread.start()
+
+        try {
+            thread.join()
+        } catch (e : InterruptedException){ }
+
+
+        processShowList("")
+        Log.d("TestLog_ItemManager", "데이터 가져오기 끝")
+
+    }
 
     fun processShowList(key: String){
         var dataList = ArrayList<Equipment>()
@@ -58,38 +88,6 @@ object ItemStatusListManager {
 
     fun getShowList(): ArrayList<ArrayList<Equipment>>{
         return dividedShowItemStatusList
-    }
-
-    fun setDataList(context:Context, dataList: ArrayList<Equipment>){
-        itemStatusDB = ItemStatusDB.getInstance(context)!!
-
-        val thread = Thread(Runnable {
-            itemStatusDB.itemStatusDAO().clear()
-
-
-            Log.d("TestLog_ItemManager", "list Size ${dataList.size}")
-
-
-            for(i in 0 until dataList.size){
-                itemStatusDB.itemStatusDAO().insert(Equipment(dataList[i].category, dataList[i].count, dataList[i].image, dataList[i].name))
-                Log.d("TestLog_ItemManager", "itemImage.length = ${dataList[i].image.length}")
-                //Log.d("TestLog_ItemManager", "$i.id =  ${dataList[i].id}. $i.name = ${dataList[i].name}")
-
-            }
-            Log.d("TestLog_ItemManager", "데이터 입력 완료")
-
-        })
-
-        thread.start()
-
-        try {
-            thread.join()
-        } catch (e : InterruptedException){ }
-
-
-        processShowList("")
-        Log.d("TestLog_ItemManager", "데이터 가져오기 끝")
-
     }
 
 }

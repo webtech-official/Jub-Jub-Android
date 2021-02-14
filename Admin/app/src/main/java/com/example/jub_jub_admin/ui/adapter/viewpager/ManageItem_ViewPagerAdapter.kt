@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.entity.singleton.ManageItemListManager
-import com.example.jub_jub_admin.ui.adapter.recyclerview.ManageItem_RecyclerViewAdpater
+import com.example.jub_jub_admin.entity.singleton.EquipmentManager
+import com.example.jub_jub_admin.ui.adapter.recyclerview.ManageEquipment_RecyclerViewAdpater
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
 class ManageItem_ViewPagerAdapter(var context: Context) : PagerAdapter() {
@@ -24,7 +24,7 @@ class ManageItem_ViewPagerAdapter(var context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return ManageItemListManager.getShowList().size
+        return EquipmentManager.getShowList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -37,7 +37,7 @@ class ManageItem_ViewPagerAdapter(var context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //메인 화면 (기자재 목록)
-        var adapter = ManageItem_RecyclerViewAdpater(ManageItemListManager.getShowList()[position])
+        var adapter = ManageEquipment_RecyclerViewAdpater(EquipmentManager.getShowList()[position])
         view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 
