@@ -16,7 +16,7 @@ object RentRecordListManager {
 
         var r = Runnable {
 
-            val baseString = MyUtil().getMotorTestImage(context)
+            val baseString = MyUtil.getMotorTestImage(context)
 
             rentRecordDB.rentRecordDAO().clear()
             var cnt = 1
