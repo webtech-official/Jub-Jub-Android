@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-@Entity(tableName = "itemStatus")
-data class ItemStatus(
-        @PrimaryKey var id: Int,
+@Entity(tableName = "equipment")
+data class Equipment(
+        @PrimaryKey(autoGenerate = true) var id: Int,
 
         @SerializedName("img_equipment")
         var image: String,
