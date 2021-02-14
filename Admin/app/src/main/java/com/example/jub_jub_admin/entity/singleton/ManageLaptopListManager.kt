@@ -10,21 +10,21 @@ object ManageLaptopListManager {
 
     private var dividedShowList = ArrayList<ArrayList<LaptopStatus>>()
 
-    
+
     fun setDummyData(context: Context){
 
         laptopStatusDB = LaptopStatusDB.getInstance(context)!!
 
         var r = Runnable {
-            val laptopImage: String = MyUtil().getLaptopTestImage(context)
+            val laptopImage: String = MyUtil.getLaptopTestImage(context)
 
             laptopStatusDB.laptopStatusDAO().clear()
-            
-            laptopStatusDB.laptopStatusDAO().insert(LaptopStatus("한성 노트북", "노트북", 78, laptopImage, 
+
+            laptopStatusDB.laptopStatusDAO().insert(LaptopStatus("한성 노트북", "노트북", 78, laptopImage,
                 "몰라", "모른다구", "나도 몰라!", "ㅁㅁ", "ㅎㅎ"))
             laptopStatusDB.laptopStatusDAO().insert(LaptopStatus("맥북", "노트북", 78, laptopImage,
                 "몰라", "모른다구", "나도 몰라!", "ㅁㅁ", "ㅎㅎ"))
-            
+
         }
 
         val thread = Thread(r)
