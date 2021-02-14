@@ -6,10 +6,11 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.provider.MediaStore
 import android.util.Base64
+import android.util.Log
 import android.view.Window
 import com.example.jub_jub_admin.R
-
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -18,13 +19,13 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 
 
-class MyUtil {
+object MyUtil {
 
     fun convertBase64ToBitmap(base64Code: String): Bitmap{
-
         val decodedString: ByteArray = Base64.decode(base64Code, Base64.DEFAULT)
         return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
     }
+
 
     fun getLaptopTestImage(context: Context): String {
         val byteStream = ByteArrayOutputStream()
@@ -42,24 +43,6 @@ class MyUtil {
         return Base64.encodeToString(byteArray, Base64.DEFAULT)
     }
 
-    fun processShowList(dataList: ArrayList<Any>, key: String, showList: ArrayList<ArrayList<Any>>){
-
-        showList.clear()
-        var page = 0
-        var cnt = 0
-        showList.add(ArrayList())
-
-        for (i in 0 until dataList.size) {
-            if (cnt == 5) {
-                showList.add(ArrayList())
-                cnt = 0
-                page++
-            }
-            showList[page].add(dataList[i])
-            cnt++
-        }
-    }
-
     fun makeBaseDialog(context: Context, dialogName: String): Dialog {
         var dialog = Dialog(context)
 
@@ -72,6 +55,40 @@ class MyUtil {
         return dialog
 
     }
+
+    fun getPathFromBase64(context: Context,image: String ): String {
+        return getPathFromUri(context,getUriFromBitmap(context,convertBase64ToBitmap(image))!!)
+    }
+
+    fun getUriFromBitmap(context: Context, imageBitmap: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path = MediaStore.Images.Media.insertImage(context.getContentResolver(), imageBitmap, "Title", null)
+        return Uri.parse(path)
+    }
+
+    fun getPathFromUri(context: Context, contentURI: Uri): String {
+
+        var result: String = ""
+
+        var cursor: Cursor = context.contentResolver.query(contentURI, null, null, null, null)!!
+        try {
+            if(cursor == null){
+                result = contentURI.path.toString()
+            } else {
+                cursor.moveToFirst()
+                var idx: Int = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+                result = cursor.getString(idx)
+                cursor.close()
+
+            }
+        }catch (e: NullPointerException){
+            Log.d("TestLog_ModifyEquipmentActivity_image", "error = ${e.message}")
+        }
+
+        return result
+    }
+
 
     fun uriToFile(uri: Uri?, context: Context): String {
         val cursor: Cursor = context.contentResolver.query(uri!!, null, null, null)!!
