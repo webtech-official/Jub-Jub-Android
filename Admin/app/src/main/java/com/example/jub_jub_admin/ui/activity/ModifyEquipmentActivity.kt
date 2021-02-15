@@ -70,11 +70,15 @@ class ModifyEquipmentActivity : AppCompatActivity(){
     }
 
     private fun modifyData() {
+
         val imagePath = MyUtil.getPathFromBase64(applicationContext, data.image)
         val imageFile = File(imagePath)
-        val requestFile = RequestBody.create(applicationContext.contentResolver.getType(MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!)!!.toMediaTypeOrNull(), imageFile)
-        val requestFile2 = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), imageFile)
+        val requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), imageFile)
         val imageBody = MultipartBody.Part.createFormData("file", imageFile.name, requestFile)
+
+
+        val requestFile2 = RequestBody.create(applicationContext.contentResolver.getType(MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!)!!.toMediaTypeOrNull(), imageFile)
+
         val filePath : Uri = MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!
         val fileBody: RequestBody = RequestBody.create("image/png".toMediaTypeOrNull(), imagePath)
         val filePart: MultipartBody.Part = MultipartBody.Part.createFormData("photo", "photo.jpg", fileBody)
@@ -165,7 +169,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
             val name = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemName_ModifyItemActivity.text.toString())
             val category = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCategory_ModifyItemActivity.text.toString())
             val count = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCount_ModifyItemActivity.text.toString())
-            RequestBody.create
+
 
 
 
