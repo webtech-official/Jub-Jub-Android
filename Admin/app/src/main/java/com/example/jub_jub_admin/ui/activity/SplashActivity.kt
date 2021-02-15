@@ -6,13 +6,14 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.response.ResponseTest
-import com.example.jub_jub_admin.entity.singleton.ManageItemListManager
-import com.example.jub_jub_admin.entity.singleton.ManageLaptopListManager
-import com.example.jub_jub_admin.entity.singleton.RentRequestListManager
-import com.example.jub_jub_admin.entity.singleton.StudentRentStatusListManager
+import com.example.jub_jub_admin.entity.dataclass.response.SearchEquipment
+import com.example.jub_jub_admin.entity.singleton.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,9 +27,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startApp() {
-        setPermission()
 
-        ManageItemListManager.setDummyData(applicationContext)
         StudentRentStatusListManager.setDummyDataList(applicationContext, 100)
         ManageLaptopListManager.setDummyData(applicationContext)
 
@@ -57,15 +56,5 @@ class SplashActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun setPermission() {
 
-        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-            shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
-
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        }
-
-    }
 }
