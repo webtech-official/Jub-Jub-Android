@@ -9,10 +9,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.entity.singleton.ManageItemListManager
+import com.example.jub_jub_admin.data.remote.NetRetrofit
+import com.example.jub_jub_admin.entity.dataclass.response.GetEquipmentResponse
+import com.example.jub_jub_admin.entity.dataclass.response.SearchEquipment
+import com.example.jub_jub_admin.entity.singleton.EquipmentManager
+import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.util.PageView.ManageItemList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 
@@ -27,17 +34,70 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pageView = ManageItemList_PageView(applicationContext, pageView_MainActivity, ManageItemListManager.getShowList())
-        pageView.initViewPager()
+        test()
+
+        getDataFromServer()
 
         setTitleBarItemsListener()
 
         refreshLayout.setOnRefreshListener {
+            getDataFromServer()
+            pageView.syncPage()
             Log.d("TestLog", "새로고침 완료!")
 
             refreshLayout.isRefreshing = false
         }
 
+    }
+
+
+    private fun test() {
+        val response: Call<SearchEquipment> = NetRetrofit.getServiceApi().searchEquipment(TokenManager.getToken(), "DC모터")
+
+        response.enqueue(object: Callback<SearchEquipment>{
+            override fun onResponse(call: Call<SearchEquipment>, response: Response<SearchEquipment>) {
+                if(response.isSuccessful){
+                    if(response.body()?.success == true){
+                        Log.d("TestLog_Splash", "${response.body()?.data}")
+                    }else{
+                        Log.d("TestLog_Splash", "${response.body()?.msg}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<SearchEquipment>, t: Throwable) {
+                Log.d("TestLog_Splash", "Fail! ${t.message}")
+            }
+
+        })
+    }
+
+    private fun getDataFromServer() {
+        val response: Call<GetEquipmentResponse> = NetRetrofit.getServiceApi().getAllEquipment(TokenManager.token)
+
+        response.enqueue(object: Callback<GetEquipmentResponse> {
+            override fun onResponse(call: Call<GetEquipmentResponse>, response: Response<GetEquipmentResponse>) {
+
+                if(response.body()?.success == true){
+                    Log.d("TestLog_MainAc", "Success! list.size = ${response.body()?.list?.size}")
+                    EquipmentManager.setDataList(applicationContext, response.body()?.list!!)
+                    setPageView()
+
+                }else{
+                    Log.d("TestLog_mainAc", "Fail! ${response.body()?.msg}")
+                }
+
+            }
+
+            override fun onFailure(call: Call<GetEquipmentResponse>, t: Throwable) {
+                Log.d("TestLog_mainAc", "Fail! ${t.message}")
+            }
+        })
+    }
+
+    private fun setPageView(){
+        pageView = ManageItemList_PageView(applicationContext, pageView_MainActivity, EquipmentManager.getShowList())
+        pageView.initViewPager()
     }
 
     //타이틀 바 위젯들 온클릭 등록
@@ -64,7 +124,7 @@ class MainActivity : AppCompatActivity() {
 
             search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
 
-            var currentSize = ManageItemListManager.getShowList().size
+            var currentSize = EquipmentManager.getShowList().size
 
 
             if(lastSize != currentSize){
@@ -77,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun search(word: String){
         var r = Runnable {
-            ManageItemListManager.processShowList(word)
+            EquipmentManager.processShowList(word)
         }
 
         val thread = Thread(r)
