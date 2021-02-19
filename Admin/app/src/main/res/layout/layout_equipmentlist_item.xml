@@ -79,6 +79,18 @@
         app:layout_constraintEnd_toEndOf="@+id/button_AllowRentRequest"
         app:layout_constraintStart_toStartOf="@+id/button_AllowRentRequest"/>
 
+    <TextView
+        android:id="@+id/textView_RentalDate_Item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2021-02-17"
+        android:textSize="17dp"
+        android:visibility="gone"
+        style="@style/RecyclerViewItem_Name"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_ItemImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage" />
+
 
 
     <LinearLayout
