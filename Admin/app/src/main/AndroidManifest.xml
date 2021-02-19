@@ -14,23 +14,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubAdmin"
         android:usesCleartextTraffic="true">
-
-        <activity android:name="com.example.jub_jub_admin.ui.activity.AllowRentRequestActivity"/>
-        <activity android:name="com.example.jub_jub_admin.ui.activity.ModifyLaptopActivity"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name="com.example.jub_jub_admin.ui.activity.ManageLaptopActivity"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name="com.example.jub_jub_admin.ui.activity.ModifyEquipmentActivity"
-            android:windowSoftInputMode="adjustNothing"/>
-        <activity android:name="com.example.jub_jub_admin.ui.activity.StudentRentStatusListActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.MyPageActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.SignUpActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.LoginActivity" />
-        <activity android:name="com.example.jub_jub_admin.ui.activity.MainActivity"
-            android:windowSoftInputMode="adjustNothing"/>
-
+        <activity android:name=".ui.activity.ManageStudentActivity"></activity>
+        <activity android:name=".ui.activity.AllowRentRequestActivity" />
         <activity
-            android:name="com.example.jub_jub_admin.ui.activity.SplashActivity"
+            android:name=".ui.activity.ModifyLaptopActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.activity.ManageLaptopActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.activity.ModifyEquipmentActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".ui.activity.StudentRentStatusListActivity" />
+        <activity android:name=".ui.activity.MyPageActivity" />
+        <activity android:name=".ui.activity.SignUpActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
