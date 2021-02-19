@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:layout_gravity="center"
-    tools:context="com.example.jub_jub_user.ui.fragment.ItemStatusListFragment">
+    tools:context="ui.fragment.ItemStatusListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
