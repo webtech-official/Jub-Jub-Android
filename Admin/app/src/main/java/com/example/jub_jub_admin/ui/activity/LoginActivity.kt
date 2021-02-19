@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -51,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else
                 {
+                    progress_bar.visibility = View.VISIBLE
                     val loginData = Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString())
 
                     val response: Call<LoginResponse> = NetRetrofit.getServiceApi().login(loginData)
@@ -61,11 +63,12 @@ class LoginActivity : AppCompatActivity() {
                             if(response.isSuccessful){
 
                                 if(response.body()?.success == true){
-
+                                    progress_bar.visibility = View.GONE
                                     Log.d("TestLog_Login", "로그인 성공!")
                                     Log.d("TestLog_Login", "code = ${response.body()?.code}" +
                                             "data = ${response.body()?.data} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
-                                    TokenManager.setToken(response.body()?.data!!)
+                                    Log.d("TestLog_Login", "aToken = ${response.body()?.data?.accessToken}")
+                                    TokenManager.setToken(response.body()?.data?.accessToken!!)
                                     //앱 시작
 
                                     Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
@@ -83,6 +86,8 @@ class LoginActivity : AppCompatActivity() {
                         }
 
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                            progress_bar.visibility = View.GONE
+                            Log.d("TestLog_Login","${t.message}")
                             Toast.makeText(applicationContext, "${t.message}", Toast.LENGTH_SHORT).show()
                         }
                     })
