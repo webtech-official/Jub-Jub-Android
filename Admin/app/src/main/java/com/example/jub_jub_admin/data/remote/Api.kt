@@ -21,26 +21,25 @@ interface Api {
     fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
 
     @Multipart
-    @POST("equipment")
+    @POST("admin/equipment")
     fun addItem(@Header("X-AUTH-TOKEN") token: String,
                 @Part img_equipment: MultipartBody.Part,
-                @Part name: RequestBody,
-                @Part content: RequestBody,
-                @Part count: RequestBody,
+                @Part("name") name: RequestBody,
+                @Part("content") content: RequestBody,
+                @Part("count") count: RequestBody,
     ): Call<MyResponse>
 
-    @GET("equipment/")
+    @GET("admin/equipment/")
     fun getAllEquipment(@Header("X-AUTH-TOKEN") token: String): Call<GetEquipmentResponse>
 
-    @GET("equipment/{name}")
+    @GET("admin/equipment/{name}")
     fun searchEquipment(
             @Header("X-AUTH-TOKEN") token: String,
             @Path("name") name: String
     ): Call<SearchEquipment>
 
-    @Headers("Content-Type: multipart/form-data")
     @Multipart
-    @PUT("equipmentAll/{oldName}")
+    @PUT("admin/equipmentAll/{oldName}")
     fun modifyEquipment(
             @Header("X-AUTH-TOKEN") token: String,
             @Path("oldName") oldName: String,
