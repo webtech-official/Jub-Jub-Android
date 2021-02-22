@@ -1,11 +1,13 @@
 package com.example.jub_jub_android.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.jub_jub_android.R
+import com.example.jub_jub_android.data.local.SharedPref
 import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.body.Login
 import com.example.jub_jub_android.entity.dataclass.response.LoginResponse
@@ -19,11 +21,13 @@ class LoginActivity : AppCompatActivity() {
 
     //마지막으로 뒤로가기 버튼 누른 시간
     var backKeyPressedTime : Long = 0
-
+    lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        autoLogin()
 
         textView_GotoRegister_LoginActivity.setOnClickListener {
             startActivity(Intent(applicationContext, SignUpActivity::class.java))
@@ -35,54 +39,66 @@ class LoginActivity : AppCompatActivity() {
         }
 
         button_Login_LoginActivity.setOnClickListener {
-            if(editText_Email_LoginActivity.text.toString() == "") {
-                Toast.makeText(applicationContext, "Email을 입력해주세요!", Toast.LENGTH_SHORT).show()
+            if(checkEditText()){
+
+                login(Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString()))
             }
-            else {
-                if(editText_Password_LoginActivity.text.toString() == "") {
-                    Toast.makeText(applicationContext, "Password를 입력해주세요!", Toast.LENGTH_SHORT).show()
-                }
-                else
-                {
-                    val loginData = Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString())
-
-                    val response: Call<LoginResponse> = NetRetrofit.getServiceApi().login(loginData)
-
-                    response.enqueue(object : Callback<LoginResponse> {
-                        override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
-                        {
-                            if(response.code() == 200){
-                                if(response.isSuccessful){
-                                    Log.d("TestLog", "로그인 성공!")
-                                    Log.d("TestLog1", "code = ${response.body()?.code}" +
-                                            "" +
-                                            "data = ${response.body()?.data} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
-
-                                    TokenManager.setToken(response.body()?.data!!)
-                                    //앱 시작
-
-                                    Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                                    finish()
-
-                                } else{
-                                    Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                            else {
-                                Log.d("TestLog", "로그인 실패! ${response.code()}")
-                            }
-                        }
-
-                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                            Log.d("TestLog", "onFailure ${t.message.toString()}")
-                        }
-                    })
-
-                }
-            }
-
         }
+
+    }
+
+    private fun autoLogin() {
+        if(intent.hasExtra("LoginData")){
+            login(intent.getSerializableExtra("LoginData") as Login)
+        }
+    }
+
+    fun checkEditText(): Boolean {
+        return if(editText_Email_LoginActivity.text.toString() == "") {
+            Toast.makeText(applicationContext, "Email을 입력해주세요!", Toast.LENGTH_SHORT).show()
+            false
+        } else {
+            if(editText_Password_LoginActivity.text.toString() == "") {
+                Toast.makeText(applicationContext, "Password를 입력해주세요!", Toast.LENGTH_SHORT).show()
+                false
+            } else {
+                true
+            }
+        }
+    }
+
+    fun login(loginData: Login){
+        val response: Call<LoginResponse> = NetRetrofit.getServiceApi().login(loginData)
+
+        response.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
+            {
+                if(response.isSuccessful){
+                    if(response.body()?.success == true){
+                        Log.d("TestLog", "로그인 성공!")
+                        Log.d("TestLog1", "code = ${response.body()?.code}" +
+                                "" +
+                                "data = ${response.body()?.data} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
+
+                        TokenManager.setToken("${response.body()?.data?.accessToken}")
+                        Log.d("TestLog_Login", TokenManager.getToken())
+                        sharedPref = SharedPref(applicationContext)
+                        sharedPref.saveAccount(loginData.email, loginData.password)
+                        //앱 시작
+                        Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                        finish()
+                    } else{
+                        Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
+                        Log.d("TestLog_Login", "${response.body()?.msg}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.d("TestLog", "onFailure ${t.message.toString()}")
+            }
+        })
     }
 
     override fun onBackPressed() {
