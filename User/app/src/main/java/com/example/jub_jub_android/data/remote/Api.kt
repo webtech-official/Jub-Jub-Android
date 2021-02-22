@@ -17,14 +17,14 @@ interface Api {
     fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
 
     @GET("equipment/")
-    fun getEquipmentData(@Header("X-AUTH-TOKEN") token: String): Call<EquipmentResponse>
+    fun getEquipmentData(@Header("Authorization") token: String): Call<EquipmentResponse>
 
     @GET("myequipment")
-    fun getMyEquipmentData(@Header("X-AUTH-TOKEN") token: String): Call<MyEquipmentResponse>
+    fun getMyEquipmentData(@Header("Authorization") token: String): Call<MyEquipmentResponse>
 
     @POST("equipmentallow/{name}")
-    fun rentEquipment(@Header("X-AUTH-TOKEN") token: String,
-                           @Body equipmentAllowDTO: EquipmentAllowDTO,
+    fun rentEquipment(@Header("Authorization") token: String,
+                           @Body equipmentAllowSaveDto : EquipmentAllowDTO,
                            @Path("name") name: String
     ): Call<MyResponse>
 }
