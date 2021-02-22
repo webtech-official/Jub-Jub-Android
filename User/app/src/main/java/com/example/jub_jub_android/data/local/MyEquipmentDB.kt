@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.jub_jub_android.entity.dataclass.MyEquipment
 
 
-@Database(entities = [MyEquipment::class], version = 2)
+@Database(entities = [MyEquipment::class], version = 2, exportSchema = false)
 abstract class MyEquipmentDB: RoomDatabase() {
 
     abstract fun myEquipmentDAO() : MyEquipmentDAO

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.jub_jub_android.entity.dataclass.Equipment
 
 
-@Database(entities = [Equipment::class], version = 2)
+@Database(entities = [Equipment::class], version = 2, exportSchema = false)
 abstract class ItemStatusDB: RoomDatabase() {
 
     abstract fun itemStatusDAO(): ItemStatusDAO
