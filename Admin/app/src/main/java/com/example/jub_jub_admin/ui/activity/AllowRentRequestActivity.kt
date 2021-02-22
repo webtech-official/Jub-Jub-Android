@@ -5,12 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.example.jub_jub_admin.R
+import com.example.jub_jub_admin.data.remote.NetRetrofit
+import com.example.jub_jub_admin.entity.dataclass.response.RentRequestResponse
 import com.example.jub_jub_admin.entity.singleton.RentRequestListManager
+import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.util.PageView.AllowRentRequestList_PageView
 import kotlinx.android.synthetic.main.activity_manage_rent_request.*
 import kotlinx.android.synthetic.main.layout_pageview.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class AllowRentRequestActivity : AppCompatActivity() {
@@ -23,74 +30,58 @@ class AllowRentRequestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_rent_request)
 
-        pageView = AllowRentRequestList_PageView(this, pageView_AllowRentRequestActivity, RentRequestListManager.getShowList())
-        pageView.initViewPager()
+        getDataFromServer()
 
         setTitleBarItemsListener()
 
         refreshLayout.setOnRefreshListener {
-            Log.d("TestLog", "새로고침 완료!")
-
+            Log.d("TestLog_AllowRequest", "새로고침 완료!")
+            Toast.makeText(applicationContext, "새로고침 완료", Toast.LENGTH_SHORT).show()
             refreshLayout.isRefreshing = false
         }
 
     }
+
+    private fun getDataFromServer() {
+        val response: Call<RentRequestResponse> = NetRetrofit.getServiceApi().getRentRequest(TokenManager.getToken())
+
+        response.enqueue(object: Callback<RentRequestResponse> {
+            override fun onResponse(call: Call<RentRequestResponse>, response: Response<RentRequestResponse>) {
+                if(response.isSuccessful){
+                    if(response.body()?.success!!){
+                        Log.d("TestLog_AllowRequest", "${response.body()?.list}")
+                        RentRequestListManager.setDataList(response.body()?.list!!)
+                        setPageView()
+                    }else{
+                        Log.d("TestLog_AllowRequest", response.body()?.msg!!)
+                        Log.d("TestLog_AllowRequest", "")
+                    }
+                }else{
+                    Log.d("TestLog_AllowRequest", response.body()?.msg!!)
+                    Log.d("TestLog_AllowRequest", "실패")
+                }
+
+            }
+
+            override fun onFailure(call: Call<RentRequestResponse>, t: Throwable) {
+                Log.d("TestLog_AllowRequest", t.message!!)
+                Log.d("TestLog_AllowRequest", "실패")
+            }
+
+        })
+    }
+
+    private fun setPageView(){
+        pageView = AllowRentRequestList_PageView(this, pageView_AllowRentRequestActivity, RentRequestListManager.getShowList())
+        pageView.initViewPager()
+    }
+
+
     private fun setTitleBarItemsListener() {
-
-        imageView_SearchMode_AllowRentRequestActivity.setOnClickListener {
-            setTitleBarSearchMode()
-        }
-
         imageView_MyPage_AllowRentRequestActivity.setOnClickListener {
             startActivity(Intent(applicationContext, MyPageActivity::class.java))
         }
-
-        imageView_BackArrow_AllowRentRequestActivitySearchMode.setOnClickListener {
-            editText_SearchText_AllowRentRequestActivitySearchMode.setText("")
-            setTitleBarViewMode()
-        }
-
-        setSearchFunction()
     }
 
-    private fun setSearchFunction() =
-        editText_SearchText_AllowRentRequestActivitySearchMode.addTextChangedListener {
-
-            search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
-
-            var currentSize = RentRequestListManager.getShowList().size
-
-
-            if(lastSize != currentSize){
-                pageView.syncPage()
-                lastSize = currentSize
-            }
-
-
-        }
-    private fun search(word: String){
-        var r = Runnable {
-            RentRequestListManager.processShowList(word)
-        }
-
-        val thread = Thread(r)
-        thread.start()
-
-        try {
-            thread.join()
-        } catch (e : InterruptedException){ }
-    }
-
-    private fun setTitleBarSearchMode() {
-        titleBar_ViewMode_AllowRentRequestActivity.visibility = View.GONE
-        titleBar_SearchMode_AllowRentRequestActivity.visibility = View.VISIBLE
-    }
-
-    private fun setTitleBarViewMode() {
-        titleBar_ViewMode_AllowRentRequestActivity.visibility = View.VISIBLE
-        titleBar_SearchMode_AllowRentRequestActivity.visibility = View.GONE
-        search("")
-        pageView.syncPage()
-    }
 
 }
