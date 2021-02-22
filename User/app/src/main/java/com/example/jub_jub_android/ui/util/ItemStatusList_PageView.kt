@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.singleton.ItemStatusListManager
-import com.example.jub_jub_android.ui.adapter.ItemStatusList_ViewPagerAdapter
+import com.example.jub_jub_android.ui.adapter.viewpager.ItemStatusList_ViewPagerAdapter
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
 class ItemStatusList_PageView(var context: Context, var view: View, var  dataList: ArrayList<ArrayList<Equipment>>){

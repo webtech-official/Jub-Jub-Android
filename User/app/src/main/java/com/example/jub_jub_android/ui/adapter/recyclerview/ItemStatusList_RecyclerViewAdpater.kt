@@ -1,8 +1,7 @@
-package com.example.jub_jub_android.ui.adapter
+package com.example.jub_jub_android.ui.adapter.recyclerview
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.ui.activity.RentActivity
-import com.example.jub_jub_android.ui.util.MyUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
 
@@ -54,8 +53,7 @@ class ItemStatusList_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): Re
              itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
             itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"
-            itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
-
+            Picasso.get().load(data.image.toString()).into(itemView.imageView_ItemImage_Item)
         }
 
     }

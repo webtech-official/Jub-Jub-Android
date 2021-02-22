@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.ui.adapter
+package com.example.jub_jub_android.ui.adapter.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.dataclass.MyEquipment
-import com.example.jub_jub_android.ui.util.MyUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 
 class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):RecyclerView.Adapter<MyRentList_RecyclerViewAdapter.ViewHolder>() {
@@ -36,7 +36,7 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):Recyc
         }
 
         private fun setTextViewsText(data: MyEquipment) {
-            itemView.imageView_ItemImage_Item.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
+            Picasso.get().load(data.image).into(itemView.imageView_ItemImage_Item)
             itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
             itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"
@@ -44,9 +44,11 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):Recyc
             itemView.textView_RentStatus_Item.text = data.status
 
             when(data.status){
-                "반납" -> setRentStatus(itemView, R.drawable.round_black_back_white_edge, R.color.white)
-                "대여" -> setRentStatus(itemView, R.drawable.round_yellow_back_yellow_edge, R.color.black)
-                "연체" -> setRentStatus(itemView, R.drawable.round_white_back_white_edge, R.color.black)
+                "대기" -> setRentStatus(itemView, R.drawable.bg_waiting, R.color.black)
+                "반납" -> setRentStatus(itemView, R.drawable.bg_return, R.color.white)
+                "대여" -> setRentStatus(itemView, R.drawable.bg_rental, R.color.black)
+                "연체" -> setRentStatus(itemView, R.drawable.bg_overdue, R.color.black)
+                "거절" -> setRentStatus(itemView, R.drawable.bg_reject, R.color.black)
                 else -> itemView.textView_RentStatus_Item.text = "?"
 
             }

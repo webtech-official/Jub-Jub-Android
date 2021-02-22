@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.ui.adapter
+package com.example.jub_jub_android.ui.adapter.viewpager
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.singleton.MyEquipmentListManager
+import com.example.jub_jub_android.ui.adapter.recyclerview.MyRentList_RecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
 class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
