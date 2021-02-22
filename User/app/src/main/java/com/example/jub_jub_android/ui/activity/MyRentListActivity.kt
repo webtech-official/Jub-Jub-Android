@@ -34,6 +34,7 @@ class MyRentListActivity : AppCompatActivity() {
             getDataFromServer()
 
             pageView.syncPage()
+            Toast.makeText(applicationContext, "새로고침 완료", Toast.LENGTH_SHORT).show()
             refreshLayout.isRefreshing = false
         }
     }
@@ -80,17 +81,17 @@ class MyRentListActivity : AppCompatActivity() {
 
         textView_ShowMode_MyRentalListActivity.setOnClickListener {
             when(textView_ShowMode_MyRentalListActivity.text.toString()){
-                "전체" -> setShowMode("반납")
-                "반납" -> setShowMode("대여")
-                "대여" -> setShowMode("연체")
-                "연체" -> setShowMode("전체")
+                "전체" -> setShowMode("대기")
+                "대기" -> setShowMode("대여")
+                "대여" -> setShowMode("반납")
+                "반납" -> setShowMode("연체")
+                "연체" -> setShowMode("거절")
+                "거절" -> setShowMode("전체")
             }
 
             //RentAdapter.getViewPagerAdapter().notifyDataSetChanged()
             //RentAdapter.getRecyclerAdapter().notifyDataSetChanged()
             pageView.syncPage()
-
-            Log.d("TestLog", "after click size = ${MyEquipmentListManager.getShowList().size}")
         }
     }
     private fun setShowMode(text: String){
