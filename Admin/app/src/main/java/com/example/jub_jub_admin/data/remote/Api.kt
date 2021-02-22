@@ -18,37 +18,44 @@ interface Api {
     fun login(@Body login: Login): Call<LoginResponse>
 
     @POST("signup")
-    fun signUp(@Body signUp: SignUp): Call<SignUpResponse>
+    fun signUp(@Body signUp: SignUp): Call<MyResponse>
+
+    @GET("admin/applyview")
+    fun getRentRequest(@Header("Authorization") token: String): Call<RentRequestResponse>
+
+    @PUT("admin/approved/{eqa_Idx}")
+    fun allowRentRequest(@Header("Authorization") token: String,
+                         @Path("eqa_Idx")eqa_Idx: Int): Call<MyResponse>
+
+    @PUT("admin/reject/{eqa_Idx}")
+    fun denyRentRequest(@Header("Authorization") token: String,
+                        @Path("eqa_Idx")eqa_Idx: Int): Call<MyResponse>
 
     @Multipart
     @POST("admin/equipment")
-    fun addItem(@Header("X-AUTH-TOKEN") token: String,
+    fun addItem(@Header("Authorization") token: String,
                 @Part img_equipment: MultipartBody.Part,
                 @Part("name") name: RequestBody,
                 @Part("content") content: RequestBody,
                 @Part("count") count: RequestBody,
     ): Call<MyResponse>
 
-    @GET("admin/equipment/")
-    fun getAllEquipment(@Header("X-AUTH-TOKEN") token: String): Call<GetEquipmentResponse>
-
-    @GET("admin/equipment/{name}")
-    fun searchEquipment(
-            @Header("X-AUTH-TOKEN") token: String,
-            @Path("name") name: String
-    ): Call<SearchEquipment>
+    @GET("equipment/")
+    fun getAllEquipment(@Header("Authorization") token: String): Call<GetEquipmentResponse>
 
     @Multipart
     @PUT("admin/equipmentAll/{oldName}")
     fun modifyEquipment(
-            @Header("X-AUTH-TOKEN") token: String,
-            @Path("oldName") oldName: String,
-            @Query("content") content: String,
-            @Query("count") count: Int,
+            @Header("Authorization") token: String,
             @Part img_equipment: MultipartBody.Part,
-            @Query("newName") newName: String
+            @Path("oldName") oldName: RequestBody,
+            @Part("content") content: RequestBody,
+            @Part("count") count: RequestBody,
+            @Part("newName") newName: RequestBody
     ): Call<MyResponse>
 
+    //@GET("admin/laptop")
+    //fun getLaptopData(@Header("Authorization") token: String): Call<LaptopResponse>)
 
 
 }
