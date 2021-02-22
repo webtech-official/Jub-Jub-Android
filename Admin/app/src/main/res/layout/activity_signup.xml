@@ -6,18 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:padding="20dp"
-    tools:context="com.example.jub_jub_user.ui.activity.SignUpActivity">
+    tools:context="ui.activity.SignUpActivity">
 
     <TextView
         android:id="@+id/textView_AppTitle_SignUpActivity"
-
         android:layout_marginTop="23dp"
-
         style="@style/AppTitleInApp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
     <TextView
         android:id="@+id/textView_SignUp_SignUpActivity"
@@ -63,14 +59,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_PasswordCheck_SignUpActivity" />
 
-     <EditText
+    <EditText
         android:id="@+id/editText_ClassNum_SignUpActivity"
         android:hint="Class Number (ex 2110)"
         style="@style/MyEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Name_SignUpActivity" />
-
 
     <Button
         android:id="@+id/button_SignUp_SignUpActivity"
@@ -79,7 +74,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"  />
 
-
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
