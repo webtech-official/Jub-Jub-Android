@@ -26,7 +26,6 @@ object MyUtil {
         return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
     }
 
-
     fun getLaptopTestImage(context: Context): String {
         val byteStream = ByteArrayOutputStream()
         val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.image_laptop)
@@ -56,8 +55,8 @@ object MyUtil {
 
     }
 
-    fun getPathFromBase64(context: Context,image: String ): String {
-        return getPathFromUri(context,getUriFromBitmap(context,convertBase64ToBitmap(image))!!)
+    fun getPathFromBase64(context: Context, image: String): String {
+        return getPathFromUri(context, getUriFromBitmap(context, convertBase64ToBitmap(image))!!)
     }
 
     fun getUriFromBitmap(context: Context, imageBitmap: Bitmap): Uri? {
