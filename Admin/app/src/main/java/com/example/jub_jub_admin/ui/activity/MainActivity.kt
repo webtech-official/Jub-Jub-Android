@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        test()
-
         getDataFromServer()
 
         setTitleBarItemsListener()
@@ -50,30 +48,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    private fun test() {
-        val response: Call<SearchEquipment> = NetRetrofit.getServiceApi().searchEquipment(TokenManager.getToken(), "DC모터")
-
-        response.enqueue(object: Callback<SearchEquipment>{
-            override fun onResponse(call: Call<SearchEquipment>, response: Response<SearchEquipment>) {
-                if(response.isSuccessful){
-                    if(response.body()?.success == true){
-                        Log.d("TestLog_Splash", "${response.body()?.data}")
-                    }else{
-                        Log.d("TestLog_Splash", "${response.body()?.msg}")
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<SearchEquipment>, t: Throwable) {
-                Log.d("TestLog_Splash", "Fail! ${t.message}")
-            }
-
-        })
-    }
-
     private fun getDataFromServer() {
-        val response: Call<GetEquipmentResponse> = NetRetrofit.getServiceApi().getAllEquipment(TokenManager.token)
+        Log.d("TestLog_MainAc", "Token = ${TokenManager.getToken()}")
+        val response: Call<GetEquipmentResponse> = NetRetrofit.getServiceApi().getAllEquipment(TokenManager.getToken())
 
         response.enqueue(object: Callback<GetEquipmentResponse> {
             override fun onResponse(call: Call<GetEquipmentResponse>, response: Response<GetEquipmentResponse>) {
