@@ -58,15 +58,17 @@
 
     <TextView
         android:id="@+id/textView_rentItemName_RentActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="DC모터"
-        android:textSize="24dp"
-        android:textColor="@color/white"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:text="DC모터"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_RentItemCount_RentActivity"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/imageView_RentItem_RentActivity"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_RentItem_RentActivity"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_RentItem_RentActivity" />
 
     <TextView
         android:id="@+id/textView_rentItemCategory_RentActivity"
@@ -79,12 +81,12 @@
 
     <TextView
         android:id="@+id/textView_RentItemCount_RentActivity"
-        android:text="수량: 5개"
-        android:layout_marginTop="5dp"
         style="@style/MyTitleText"
+        android:text="수량: 5개"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView_rentItemName_RentActivity"
         app:layout_constraintEnd_toEndOf="@+id/imageView_RentItem_RentActivity"
-        app:layout_constraintTop_toTopOf="@+id/textView_rentItemName_RentActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_RentItem_RentActivity" />
 
     <TextView
         android:id="@+id/textView3"
@@ -120,10 +122,8 @@
             android:background="@drawable/amount_control_edge"
             android:fontFamily="@font/notosans"
             android:gravity="center"
-
-            android:text="1"
+            android:text="0"
             android:textColor="@color/black"
-
             android:textSize="18dp" />
 
         <TextView
