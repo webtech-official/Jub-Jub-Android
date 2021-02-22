@@ -4,8 +4,8 @@ import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.jub_jub_android.R
+import com.example.jub_jub_android.data.local.SharedPref
 import com.example.jub_jub_android.entity.singleton.TokenManager
 import com.example.jub_jub_android.ui.util.MyUtil
 import kotlinx.android.synthetic.main.activity_my_page.*
@@ -41,6 +41,7 @@ class MyPageActivity : AppCompatActivity() {
   
     private fun logOut(){
         TokenManager.removeToken()
+        SharedPref(applicationContext).logOut()
         startActivity(Intent(applicationContext, LoginActivity::class.java).addFlags(FLAG_ACTIVITY_SINGLE_TOP))
         //Activity Stack 아래에 있는 Activity들도 모두 종료
         finishAffinity()
