@@ -7,5 +7,4 @@ data class EquipmentResponse (
         var list: ArrayList<Equipment>,
         var msg: String,
         var success: Boolean
-    )
-
+        )
