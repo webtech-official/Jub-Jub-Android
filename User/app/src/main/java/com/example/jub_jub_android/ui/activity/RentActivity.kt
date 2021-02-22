@@ -12,6 +12,7 @@ import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
 import com.example.jub_jub_android.entity.dataclass.response.MyResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
 import com.example.jub_jub_android.ui.util.MyUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_rent.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 import retrofit2.Call
@@ -55,9 +56,13 @@ class RentActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             dialog.textView_Accept_AlertDialogLayout.setOnClickListener {
-                rentRequest(data)
-                dialog.dismiss()
-                finish()
+                if(textView_MyRentItemAmount_RentActivity.text.toString().toInt() == 0){
+                    Toast.makeText(applicationContext, "대여 수량을 확인해 주세요", Toast.LENGTH_SHORT).show()
+                }else{
+                    rentRequest(data)
+                    dialog.dismiss()
+                    finish()
+                }
             }
 
             dialog.show()
@@ -91,10 +96,6 @@ class RentActivity : AppCompatActivity() {
         textView_rentItemName_RentActivity.text = data.name
         textView_rentItemCategory_RentActivity.text = data.category
         textView_RentItemCount_RentActivity.text = "수량: ${data.count}개"
-
-        val decodedString: ByteArray = Base64.decode(data.image, Base64.DEFAULT)
-        val decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
-
-        imageView_RentItem_RentActivity.setImageBitmap(decodedByte)
+        Picasso.get().load(data.image.toString()).into(imageView_RentItem_RentActivity)
     }
 }
