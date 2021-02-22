@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.jub_jub_admin.R
+import com.example.jub_jub_admin.data.local.SharedPref
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.body.Login
 import com.example.jub_jub_admin.entity.dataclass.response.LoginResponse
@@ -32,71 +33,80 @@ class LoginActivity : AppCompatActivity() {
 
         setPermission()
 
+        autoLogin()
 
         textView_GotoRegister_LoginActivity.setOnClickListener {
             startActivity(Intent(applicationContext, SignUpActivity::class.java))
         }
 
-        textView_LogIn_LoginActivity.setOnClickListener {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
-            finish()
-        }
-
         button_Login_LoginActivity.setOnClickListener {
-            if(editText_Email_LoginActivity.text.toString() == "") {
-                Toast.makeText(applicationContext, "Email을 입력해주세요!", Toast.LENGTH_SHORT).show()
+            if(checkEditText()){
+                login(Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString()))
             }
-            else {
-                if(editText_Password_LoginActivity.text.toString() == "") {
-                    Toast.makeText(applicationContext, "Password를 입력해주세요!", Toast.LENGTH_SHORT).show()
-                }
-                else
-                {
-                    progress_bar.visibility = View.VISIBLE
-                    val loginData = Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString())
-
-                    val response: Call<LoginResponse> = NetRetrofit.getServiceApi().login(loginData)
-
-                    response.enqueue(object : Callback<LoginResponse> {
-                        override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
-                        {
-                            if(response.isSuccessful){
-
-                                if(response.body()?.success == true){
-                                    progress_bar.visibility = View.GONE
-                                    Log.d("TestLog_Login", "로그인 성공!")
-                                    Log.d("TestLog_Login", "code = ${response.body()?.code}" +
-                                            "data = ${response.body()?.data} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
-                                    Log.d("TestLog_Login", "aToken = ${response.body()?.data?.accessToken}")
-                                    TokenManager.setToken(response.body()?.data?.accessToken!!)
-                                    //앱 시작
-
-                                    Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
-                                    startActivity(Intent(applicationContext, MainActivity::class.java))
-                                    finish()
-                                }
-                                else{
-                                    Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
-                                }
-
-                            }
-                            else{
-                                Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-
-                        override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                            progress_bar.visibility = View.GONE
-                            Log.d("TestLog_Login","${t.message}")
-                            Toast.makeText(applicationContext, "${t.message}", Toast.LENGTH_SHORT).show()
-                        }
-                    })
-
-                }
-            }
-
         }
     }
+
+    private fun autoLogin() {
+        if(intent.hasExtra("LoginData")){
+            login(intent.getSerializableExtra("LoginData") as Login)
+        }
+    }
+
+    fun checkEditText(): Boolean {
+        return if(editText_Email_LoginActivity.text.toString() == "") {
+            Toast.makeText(applicationContext, "Email을 입력해주세요!", Toast.LENGTH_SHORT).show()
+            false
+        } else {
+            if(editText_Password_LoginActivity.text.toString() == "") {
+                Toast.makeText(applicationContext, "Password를 입력해주세요!", Toast.LENGTH_SHORT).show()
+                false
+            } else { true }
+        }
+    }
+
+
+    private fun login(loginData: Login){
+
+        progress_bar.visibility = View.VISIBLE
+
+        val response: Call<LoginResponse> = NetRetrofit.getServiceApi().login(loginData)
+
+        response.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
+            {
+                progress_bar.visibility = View.GONE
+                if(response.isSuccessful){
+                    if(response.body()?.success == true){
+                        Log.d("TestLog", "로그인 성공!")
+                        Log.d("TestLog1", "code = ${response.body()?.code}" +
+                                "" +
+                                "data = ${response.body()?.data?.accessToken} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
+
+                        TokenManager.setToken("${response.body()?.data?.accessToken}")
+                        Log.d("TestLog_Login", TokenManager.getToken())
+
+                        SharedPref(applicationContext).saveAccount(loginData.email, loginData.password)
+                        //앱 시작
+
+                        Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                        finish()
+                    } else{
+                        Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
+                        Log.d("TestLog_Login", "${response.body()?.msg}")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                progress_bar.visibility = View.GONE
+                Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
+                Log.d("TestLog", "onFailure ${t.message.toString()}")
+            }
+        })
+
+    }
+
 
     private fun setPermission() {
 
@@ -124,6 +134,19 @@ class LoginActivity : AppCompatActivity() {
         }else{
             Toast.makeText(this, "WRITE 이미 승인 됨",  Toast.LENGTH_SHORT).show()
             Log.d("TestLog_Login", "WRITE 이미 승인 됨")
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)){
+                Toast.makeText(this, "INTERNET 이미 거절 됨",  Toast.LENGTH_SHORT).show()
+                Log.d("TestLog_Login", "INTERNET 이미 거절 됨")
+            }else {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.INTERNET), 100)
+                Log.d("TestLog_Login", "INTERNET 권한 요청")
+            }
+        }else{
+            Toast.makeText(this, "INTERNET 이미 승인 됨",  Toast.LENGTH_SHORT).show()
+            Log.d("TestLog_Login", "INTERNET 이미 승인 됨")
         }
 
     }
