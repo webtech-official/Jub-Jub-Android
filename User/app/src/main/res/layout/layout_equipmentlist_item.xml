@@ -20,13 +20,16 @@
 
     <TextView
         android:id="@+id/textView_ItemName_Item"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:text="DC 모터"
-        android:textSize="14dp"
-        android:textColor="@color/white"
+        android:layout_marginRight="10dp"
         android:fontFamily="@font/notosans"
+        android:text="DC 모터"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView_RentStatus_Item"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/imageView_ItemImage_Item"
         app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage_Item" />
 
@@ -66,7 +69,7 @@
         android:id="@+id/textView_RentStatus_Item"
         android:layout_width="62dp"
         android:layout_height="40dp"
-        android:background="@drawable/round_black_back_white_edge"
+        android:background="@drawable/bg_return"
         android:fontFamily="@font/notosans"
         android:gravity="center"
         android:text="반납"
