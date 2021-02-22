@@ -8,7 +8,7 @@ import com.example.jub_jub_admin.data.local.dao.EquipmentDAO
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 
 
-@Database(entities = [Equipment::class], version = 3)
+@Database(entities = [Equipment::class], version = 3, exportSchema = false)
 abstract class EquipmentDB: RoomDatabase() {
 
     abstract fun equipmentDAO(): EquipmentDAO

@@ -8,7 +8,7 @@ import com.example.jub_jub_admin.data.local.dao.LaptopStatusDAO
 import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
 
 
-@Database(entities = [LaptopStatus::class], version = 1)
+@Database(entities = [LaptopStatus::class], version = 1, exportSchema = false)
 abstract class LaptopStatusDB: RoomDatabase() {
 
     abstract fun laptopStatusDAO(): LaptopStatusDAO

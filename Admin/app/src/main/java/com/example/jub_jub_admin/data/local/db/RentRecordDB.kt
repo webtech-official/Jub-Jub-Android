@@ -8,7 +8,7 @@ import com.example.jub_jub_admin.data.local.dao.RentRecordDAO
 import com.example.jub_jub_admin.entity.dataclass.RentRecord
 
 
-@Database(entities = [RentRecord::class], version = 1)
+@Database(entities = [RentRecord::class], version = 1, exportSchema = false)
 abstract class RentRecordDB: RoomDatabase() {
 
     abstract fun rentRecordDAO(): RentRecordDAO
