@@ -14,7 +14,6 @@ import retrofit2.Response
 import java.io.Serializable
 
 class SplashActivity : AppCompatActivity() {
-    lateinit var sharedPref: SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -31,7 +30,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun init(intent: Intent) {
-        sharedPref = SharedPref(applicationContext)
+        val sharedPref = SharedPref(applicationContext)
 
         if(sharedPref.isExist("Id")){
             intent.putExtra("LoginData",  sharedPref.getAccount())
