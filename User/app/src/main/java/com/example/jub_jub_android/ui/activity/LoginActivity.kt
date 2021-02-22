@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.data.local.SharedPref
@@ -33,14 +34,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, SignUpActivity::class.java))
         }
 
-        textView_LogIn_LoginActivity.setOnClickListener {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
-            finish()
-        }
-
         button_Login_LoginActivity.setOnClickListener {
             if(checkEditText()){
-
                 login(Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString()))
             }
         }
@@ -68,23 +63,28 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun login(loginData: Login){
+
+        progress_bar.visibility = View.VISIBLE
+
         val response: Call<LoginResponse> = NetRetrofit.getServiceApi().login(loginData)
 
         response.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
             {
+                progress_bar.visibility = View.GONE
                 if(response.isSuccessful){
                     if(response.body()?.success == true){
                         Log.d("TestLog", "로그인 성공!")
                         Log.d("TestLog1", "code = ${response.body()?.code}" +
                                 "" +
-                                "data = ${response.body()?.data} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
+                                "data = ${response.body()?.data?.accessToken} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
 
                         TokenManager.setToken("${response.body()?.data?.accessToken}")
                         Log.d("TestLog_Login", TokenManager.getToken())
                         sharedPref = SharedPref(applicationContext)
                         sharedPref.saveAccount(loginData.email, loginData.password)
                         //앱 시작
+
                         Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(applicationContext, MainActivity::class.java))
                         finish()
@@ -96,6 +96,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                progress_bar.visibility = View.GONE
+                Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
                 Log.d("TestLog", "onFailure ${t.message.toString()}")
             }
         })
