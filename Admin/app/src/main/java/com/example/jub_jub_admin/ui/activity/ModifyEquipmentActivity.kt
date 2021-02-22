@@ -12,19 +12,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.Equipment
-import com.example.jub_jub_admin.entity.dataclass.body.ModifyItem
 import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
 import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.util.MyUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_modify_item.*
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Multipart
 import java.io.File
 
 
@@ -71,33 +70,21 @@ class ModifyEquipmentActivity : AppCompatActivity(){
 
     private fun modifyData() {
 
-        val imagePath = MyUtil.getPathFromBase64(applicationContext, data.image)
-        val imageFile = File(imagePath)
-        val requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), imageFile)
-        val imageBody = MultipartBody.Part.createFormData("file", imageFile.name, requestFile)
+        //val imagePath = MyUtil.getPathFromBase64(applicationContext, data.image)
+        val imageFile = File(data.image)
 
+        //imageView_ItemImage_ModifyActivity.drawable.toBitmap().toString()
 
-        val requestFile2 = RequestBody.create(applicationContext.contentResolver.getType(MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!)!!.toMediaTypeOrNull(), imageFile)
-
-        val filePath : Uri = MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!
-        val fileBody: RequestBody = RequestBody.create("image/png".toMediaTypeOrNull(), imagePath)
+        val fileBody: RequestBody = RequestBody.create("image/png".toMediaTypeOrNull(), imageFile.path)
         val filePart: MultipartBody.Part = MultipartBody.Part.createFormData("photo", "photo.jpg", fileBody)
 
-        val category = editText_ItemCategory_ModifyItemActivity.text.toString()
-        val oldName = data.name
-        val count = editText_ItemCount_ModifyItemActivity.text.toString().toInt()
-        val newName = editText_ItemName_ModifyItemActivity.text.toString()
+        val newName = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemName_ModifyItemActivity.text.toString())
+        val category = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCategory_ModifyItemActivity.text.toString())
+        val count = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCount_ModifyItemActivity.text.toString())
+        val oldName = RequestBody.create("text/plain".toMediaTypeOrNull(), data.name)
 
-
-        Log.d("TestLog_ModifyEquip", "imagePath = $imagePath")
-        Log.d("TestLog_ModifyEquip", "imageFile = $imageFile")
-        Log.d("TestLog_ModifyEquip", "imageFileName = ${imageFile.name}")
-        Log.d("TestLog_ModifyEquip", "requestFile = $requestFile")
-        Log.d("TestLog_ModifyEquip", "imageBody.body = ${imageBody.body}")
-        Log.d("TestLog_ModifyEquip", "imageBody = ${imageBody}")
-        Log.d("TestLog_ModifyEquip", "imageBody.Header = ${imageBody.headers}")
-        val response :Call<MyResponse> = NetRetrofit.getServiceApi().modifyEquipment(TokenManager.getToken(), oldName, category,
-                count, filePart, newName)
+        val response :Call<MyResponse> = NetRetrofit.getServiceApi().modifyEquipment(TokenManager.getToken(), filePart, category,
+                count,oldName , newName)
 
         response.enqueue(object : Callback<MyResponse> {
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
@@ -106,6 +93,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                         Log.d("TestLog_ModifyEquip", "Success!")
                     } else {
                         Log.d("TestLog_ModifyEquip", "isSuc = true / suc = Fal")
+                        Log.d("TestLog_ModifyEquip", "${response.body()}")
                         Log.d("TestLog_ModifyEquip", "${response.body()?.msg}")
                     }
                 }
@@ -118,7 +106,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
     }
 
     private fun modifyMode(data: Equipment){
-        imageView_ItemImage_ModifyActivity.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
+        Picasso.get().load(data.image).into(imageView_ItemImage_ModifyActivity)
         editText_ItemName_ModifyItemActivity.setText(data.name)
         editText_ItemCount_ModifyItemActivity.setText(data.count.toString())
         editText_ItemCategory_ModifyItemActivity.setText(data.category)
@@ -155,22 +143,12 @@ class ModifyEquipmentActivity : AppCompatActivity(){
             val imagePath = MyUtil.getPathFromUri(applicationContext, imageUri)
             val imageFile = File(imagePath)
             //val requestFile = RequestBody.create(applicationContext.contentResolver.getType(MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!)!!.toMediaTypeOrNull(), imageFile)
-            val requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), imageFile)
-            val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.name, requestFile)
+            val imageRequestBody = imageFile.asRequestBody("image/png".toMediaTypeOrNull())
+            val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.name, imageRequestBody)
 
-//            val filePath : Uri = MyUtil.getUriFromBitmap(applicationContext, MyUtil.convertBase64ToBitmap(data.image))!!
-//            val fileBody: RequestBody = RequestBody.create("image/png".toMediaTypeOrNull(), imagePath)
-//            val filePart: MultipartBody.Part = MultipartBody.Part.createFormData("photo", "photo.jpg", fileBody)
-
-//            val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.toString())
-//            val name = MultipartBody.Part.createFormData("name", editText_ItemName_ModifyItemActivity.text.toString())
-//            val category = MultipartBody.Part.createFormData("content", editText_ItemCategory_ModifyItemActivity.text.toString())
-//            val count = MultipartBody.Part.createFormData("content", editText_ItemCount_ModifyItemActivity.text.toString())
             val name = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemName_ModifyItemActivity.text.toString())
             val category = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCategory_ModifyItemActivity.text.toString())
             val count = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCount_ModifyItemActivity.text.toString())
-
-
 
 
 //            var file: String? = null
@@ -183,10 +161,10 @@ class ModifyEquipmentActivity : AppCompatActivity(){
 
             response.enqueue(object : Callback<MyResponse> {
                 override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
-                    Log.d("TestLog", "message = ${response.message()} \n")
-                    Log.d("TestLog", "success = ${response.body()?.success} \n")
-                    Log.d("TestLog", "msg = ${response.body()?.msg} \n")
-                    Log.d("TestLog", "code = ${response.body()?.code} \n")
+                    Log.d("TestLog_ModifyEQ", "message = ${response.message()} \n")
+                    Log.d("TestLog_ModifyEQ", "success = ${response.body()?.success} \n")
+                    Log.d("TestLog_ModifyEQ", "msg = ${response.body()?.msg} \n")
+                    Log.d("TestLog_ModifyEQ", "code = ${response.body()?.code} \n")
                     if(response.isSuccessful){
                         if(response.body()?.success== true){
                             Toast.makeText(applicationContext, "기자재 등록 완료", Toast.LENGTH_SHORT).show()
@@ -194,7 +172,6 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                         }
                         else{
                             Log.d("TestLog_ModifyEq", "${response.body()?.msg}")
-
                         }
                     }
                     else{
@@ -204,7 +181,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                 }
 
                 override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                    Log.d("TestLog", "Fail message = ${t.message} \n")
+                    Log.d("TestLog_ModifyEQ", "Fail message = ${t.message} \n")
 
 //                    Log.d("TestLog", "message = ${response.message()} \n")
 //                    Log.d("TestLog", "success = ${response.body()?.success} \n")
