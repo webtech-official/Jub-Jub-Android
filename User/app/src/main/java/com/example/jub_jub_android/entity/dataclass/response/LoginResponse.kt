@@ -6,3 +6,8 @@ data class LoginResponse (
     val msg: String,
     val success: Boolean
 )
+
+data class Tokens (
+    val accessToken: String,
+    val refreshToken: String
+)
