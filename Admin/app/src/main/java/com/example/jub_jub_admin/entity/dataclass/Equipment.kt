@@ -4,9 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
+import java.net.URL
 
 @Entity(tableName = "equipment")
 data class Equipment(
+        @SerializedName("equ_Idx")
         @PrimaryKey(autoGenerate = true) var id: Int,
 
         @SerializedName("img_equipment")
