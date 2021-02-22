@@ -3,6 +3,7 @@ package com.example.jub_jub_android.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.data.remote.NetRetrofit
@@ -23,22 +24,19 @@ class SignUpActivity : AppCompatActivity() {
         button_SignUp_SignUpActivity.setOnClickListener {
 
             if (checkEditText()) {
-
                 val signUpData = SignUp(
                     editText_ClassNum_SignUpActivity.text.toString(),
                     editText_Email_SignUpActivity.text.toString(),
-
                     editText_Name_SignUpActivity.text.toString(),
-                    editText_Password_SignUpActivity.text.toString()
-                )
+                    editText_Password_SignUpActivity.text.toString())
+
+                progress_bar.visibility = View.VISIBLE
 
                 val response: Call<SignUpResponse> = NetRetrofit.getServiceApi().signUp(signUpData)
 
                 response.enqueue(object : Callback<SignUpResponse> {
-                    override fun onResponse(
-                        call: Call<SignUpResponse>,
-                        response: Response<SignUpResponse>
-                    ) {
+                    override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
+                        progress_bar.visibility = View.GONE
                         Log.d("TestLog", "onResponse!")
 
                         if (response.code() == 200) {
@@ -59,14 +57,14 @@ class SignUpActivity : AppCompatActivity() {
                     }
 
                     override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
-                        Log.d("TestLog", "onFailure! ${t.message}")
-                    }
+                        progress_bar.visibility = View.GONE                    }
                 })
             }
 
         }
 
     }
+
     private fun checkEditText(): Boolean{
 
         return if(editText_ClassNum_SignUpActivity.text.toString() == "" || editText_Email_SignUpActivity.text.toString() == "" || editText_Name_SignUpActivity.text.toString() == ""
