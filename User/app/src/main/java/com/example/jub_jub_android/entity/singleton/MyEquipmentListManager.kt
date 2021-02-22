@@ -15,19 +15,19 @@ object MyEquipmentListManager {
 
     fun setDataList(context: Context, dataList: ArrayList<MyEquipmentDetailInfo>){
         myEquipmentDB = MyEquipmentDB.getInstance(context)!!
-
-
         val thread = Thread(Runnable {
             myEquipmentDB.myEquipmentDAO().clear()
             for(i in 0 until dataList.size){
 //            constructor(name: String, category: String, count: Int, image: String, status: String) : this(0, name, category, count, image, status)
                 var data = dataList[i].equipment
 
-                myEquipmentDB.myEquipmentDAO().insert(MyEquipment(data.name, data.content, data.count,
-                        //MyUtil().convertFileToBase64(data.img_equipment)!!
-                        // 백엔드가 미완이라 테스트 이미지로 대체
-                        MyUtil.getMotorTestImage(context)
-                        , getStatus(dataList[i].equipmentEnum)))
+                myEquipmentDB.myEquipmentDAO().insert(
+                    MyEquipment(
+                        data.name,
+                        data.content,
+                        data.count,
+                        data.img_equipment,
+                        getStatus(dataList[i])))
                 //Log.d("TestLog_MyEqManager", "$i = ${MyUtil().convertFileToBase64(data.img_equipment)!!}")
             }
 
@@ -43,12 +43,21 @@ object MyEquipmentListManager {
         processShowList("")
     }
 
-    private fun getStatus(status: String): String {
-        return when(status){
-            "ROLE_Waiting" -> "대여"
-            //대여, 반납, 연체 추가
-            else -> "?"
+    private fun getStatus(data: MyEquipmentDetailInfo): String {
+        return if(data.isReturn!!){
+            "반납"
         }
+        else{
+            when(data.equipmentEnum){
+                "ROLE_Waiting" -> "대기"
+                "ROLE_Accept" -> "대여"
+                "ROLE_Reject" -> "거절"
+                //대여, 반납, 연체 추가
+                else -> "?"
+            }
+        }
+
+
     }
 
     fun processShowList(key: String){
@@ -56,7 +65,7 @@ object MyEquipmentListManager {
 
         var r = Runnable {
 
-            if(key == "전체"){
+            if(key == "전체" || key == ""){
                 dataList = myEquipmentDB.myEquipmentDAO().getAll() as ArrayList<MyEquipment>
                 Log.d("TestLog", " rent withoutkey ${dataList.size}")
             }
