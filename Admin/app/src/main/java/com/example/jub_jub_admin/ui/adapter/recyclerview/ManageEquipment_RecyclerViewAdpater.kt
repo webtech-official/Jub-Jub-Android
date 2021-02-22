@@ -10,6 +10,7 @@ import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 import com.example.jub_jub_admin.ui.activity.ModifyEquipmentActivity
 import com.example.jub_jub_admin.ui.util.MyUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
 
@@ -50,7 +51,7 @@ class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): R
         }
 
         private fun setTextViewsText(data: Equipment) {
-            itemView.imageView_ItemImage.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
+            Picasso.get().load(data.image).into(itemView.imageView_ItemImage)
             itemView.textView_ItemName.text = data.name
             itemView.textView_ItemCategory.text = data.category
             itemView.textView_ItemCount.text = "수량 : ${data.count}개"

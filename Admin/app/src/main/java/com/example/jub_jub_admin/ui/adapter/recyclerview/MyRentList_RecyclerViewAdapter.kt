@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.StudentRentStatus
 import com.example.jub_jub_admin.ui.util.MyUtil
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 
 class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<StudentRentStatus>):RecyclerView.Adapter<MyRentList_RecyclerViewAdapter.ViewHolder>() {
@@ -36,7 +37,7 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<StudentRentStatus>)
         }
 
         private fun setTextViewsText(data: StudentRentStatus) {
-            itemView.imageView_ItemImage.setImageBitmap(MyUtil.convertBase64ToBitmap(data.image))
+            Picasso.get().load(data.image).into(itemView.imageView_ItemImage)
             itemView.textView_ItemName.text = data.name
             itemView.textView_ItemCategory.text = data.category
             itemView.textView_ItemCount.text = "수량 : ${data.count}개"
