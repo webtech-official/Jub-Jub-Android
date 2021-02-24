@@ -48,9 +48,9 @@ interface Api {
     fun modifyEquipment(
             @Header("Authorization") token: String,
             @Part img_equipment: MultipartBody.Part,
-            @Path("oldName") oldName: RequestBody,
+            @Path("oldName") oldName: String,
             @Part("content") content: RequestBody,
-            @Part("count") count: RequestBody,
+            @Query("count") count: Int,
             @Part("newName") newName: RequestBody
     ): Call<MyResponse>
 
