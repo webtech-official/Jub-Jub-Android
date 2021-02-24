@@ -16,7 +16,7 @@ object ManageLaptopListManager {
         laptopStatusDB = LaptopStatusDB.getInstance(context)!!
 
         var r = Runnable {
-            val laptopImage: String = MyUtil.getLaptopTestImage(context)
+            val laptopImage: String = ""
 
             laptopStatusDB.laptopStatusDAO().clear()
 

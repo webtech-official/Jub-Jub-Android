@@ -26,22 +26,6 @@ object MyUtil {
         return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
     }
 
-    fun getLaptopTestImage(context: Context): String {
-        val byteStream = ByteArrayOutputStream()
-        val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.image_laptop)
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)
-        val byteArray: ByteArray = byteStream.toByteArray()
-        return Base64.encodeToString(byteArray, Base64.DEFAULT)
-    }
-
-    fun getMotorTestImage(context: Context): String{
-        val byteStream = ByteArrayOutputStream()
-        val bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.imageex)
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream)
-        val byteArray: ByteArray = byteStream.toByteArray()
-        return Base64.encodeToString(byteArray, Base64.DEFAULT)
-    }
-
     fun makeBaseDialog(context: Context, dialogName: String): Dialog {
         var dialog = Dialog(context)
 
@@ -59,7 +43,7 @@ object MyUtil {
         return getPathFromUri(context, getUriFromBitmap(context, convertBase64ToBitmap(image))!!)
     }
 
-    fun getUriFromBitmap(context: Context, imageBitmap: Bitmap): Uri? {
+    fun getUriFromBitmap(context: Context, imageBitmap: Bitmap): Uri {
         val bytes = ByteArrayOutputStream()
         imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
         val path = MediaStore.Images.Media.insertImage(context.getContentResolver(), imageBitmap, "Title", null)
