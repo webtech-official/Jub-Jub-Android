@@ -1,4 +1,4 @@
-package com.example.jub_jub_admin.ui.adapter.recyclerview
+package com.example.jub_jub_admin.ui.manageEq
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.Equipment
-import com.example.jub_jub_admin.ui.activity.MainActivity
 import com.example.jub_jub_admin.ui.activity.ModifyEquipmentActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*

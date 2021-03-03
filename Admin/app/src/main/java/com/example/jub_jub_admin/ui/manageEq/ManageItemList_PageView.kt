@@ -1,10 +1,9 @@
-package com.example.jub_jub_admin.ui.util.PageView
+package com.example.jub_jub_admin.ui.manageEq
 
 import android.content.Context
 import android.view.View
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 import com.example.jub_jub_admin.entity.singleton.EquipmentManager
-import com.example.jub_jub_admin.ui.adapter.viewpager.ManageItem_ViewPagerAdapter
 import com.example.jub_jub_admin.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 

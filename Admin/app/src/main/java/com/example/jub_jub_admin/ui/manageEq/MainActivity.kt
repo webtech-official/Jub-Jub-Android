@@ -1,4 +1,4 @@
-package com.example.jub_jub_admin.ui.activity
+package com.example.jub_jub_admin.ui.manageEq
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,10 +11,9 @@ import androidx.core.widget.addTextChangedListener
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.response.GetEquipmentResponse
-import com.example.jub_jub_admin.entity.dataclass.response.SearchEquipment
 import com.example.jub_jub_admin.entity.singleton.EquipmentManager
 import com.example.jub_jub_admin.entity.singleton.TokenManager
-import com.example.jub_jub_admin.ui.util.PageView.ManageItemList_PageView
+import com.example.jub_jub_admin.ui.activity.MyPageActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import retrofit2.Call
