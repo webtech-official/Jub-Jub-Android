@@ -24,7 +24,7 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-
+    private val MODIFY_EQUIPMENT = 1042
     private lateinit var pageView: ManageItemList_PageView
     private var lastSize = 0
     //마지막으로 뒤로가기 버튼 누른 시간
@@ -37,15 +37,25 @@ class MainActivity : AppCompatActivity() {
         getDataFromServer()
 
         setTitleBarItemsListener()
-
         refreshLayout.setOnRefreshListener {
-            getDataFromServer()
-            pageView.syncPage()
-            Log.d("TestLog", "새로고침 완료!")
-
-            refreshLayout.isRefreshing = false
+            refresh()
         }
+    }
+    private fun refresh(){
+        refreshLayout.isRefreshing = true
+        getDataFromServer()
+        pageView.syncPage()
+        Log.d("TestLog", "새로고침 완료!")
+        refreshLayout.isRefreshing = false
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("TestLog_MainAc", "result = $resultCode, request = $requestCode")
+        if(resultCode == RESULT_OK && requestCode == MODIFY_EQUIPMENT){
+            Log.d("TestLog_MainAc", "새로고침 완료!")
+            refresh()
+        }
     }
 
     private fun getDataFromServer() {
