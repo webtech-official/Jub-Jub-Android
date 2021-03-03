@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/black"
+    android:paddingHorizontal="25dp"
+    android:layout_weight="1"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView_ItemImage"
+        style="@style/RecyclerViewItem_Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_ItemName"
+        style="@style/RecyclerViewItem_Name"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="10dp"
+        android:text="DC 모터"
+        app:layout_constraintEnd_toStartOf="@+id/button_AllowRentRequest"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView_ItemImage"
+
+        app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage" />
+
+    <TextView
+        android:id="@+id/textView_ItemCategory"
+        style="@style/RecyclerViewItem_Text"
+        android:text="모터"
+        app:layout_constraintStart_toStartOf="@+id/textView_ItemName"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ItemName"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/textView_StudentNumber"
+        android:text="2110"
+        style="@style/RecyclerViewItem_Text"
+        app:layout_constraintStart_toStartOf="@+id/textView_ItemCategory"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ItemCategory" />
+    <TextView
+        android:id="@+id/textView_ItemCount"
+        android:text="수량 : 5개"
+        style="@style/RecyclerViewItem_Text"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_ItemImage"
+        app:layout_constraintStart_toStartOf="@+id/textView_ItemName" />
+
+
+    <TextView
+        android:id="@+id/button_AllowRentRequest"
+        android:text="수락"
+        android:textColor="@color/black"
+        android:background="@drawable/background_allow_rent_request"
+        style="@style/AllowDenyButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage" />
+
+    <TextView
+        android:id="@+id/button_DenyRentRequest"
+        android:text="거절"
+        android:textColor="@color/white"
+        android:background="@drawable/background_deny_rent_request"
+        style="@style/AllowDenyButton"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_ItemImage"
+        app:layout_constraintEnd_toEndOf="@+id/button_AllowRentRequest"
+        app:layout_constraintStart_toStartOf="@+id/button_AllowRentRequest"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        style="@style/MyLinearLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView_ItemImage" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
