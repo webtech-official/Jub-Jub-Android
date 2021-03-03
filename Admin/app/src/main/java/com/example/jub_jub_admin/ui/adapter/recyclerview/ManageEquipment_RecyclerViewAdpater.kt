@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.Equipment
+import com.example.jub_jub_admin.ui.activity.MainActivity
 import com.example.jub_jub_admin.ui.activity.ModifyEquipmentActivity
-import com.example.jub_jub_admin.ui.util.MyUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
-import java.util.ArrayList
+import java.util.*
+
 
 class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): RecyclerView.Adapter<ManageEquipment_RecyclerViewAdpater.ViewHolder>() {
 
@@ -34,6 +35,7 @@ class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): R
 
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        private val MODIFY_EQUIPMENT = 1042
         fun bindItemStatusListItems(data: Equipment){
 
             setTextViewsText(data)
@@ -45,7 +47,6 @@ class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): R
 
                 intent.putExtra("Data", data)
                 intent.addFlags(FLAG_ACTIVITY_NEW_TASK)
-
                 itemView.context.startActivity(intent)
             }
         }
