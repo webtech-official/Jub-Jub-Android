@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.Equipment
@@ -75,8 +76,9 @@ class ModifyEquipmentActivity : AppCompatActivity(){
         progress_bar.visibility = View.VISIBLE
         //val imagePath = MyUtil.getPathFromUri(applicationContext, imageUri)
         //val imageFile = File(imagePath)\
-        val imageFile = File(MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()).toString())
-        Log.d("TestLog_Modify", "${MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap())}")
+        Log.d("TestLog_Modify", "Image = ${MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()).toString()}")
+        val imagePath = MyUtil.getPathFromUri(applicationContext, MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()))
+        val imageFile = File(imagePath)
         val imageRequestBody = imageFile.asRequestBody("image/png".toMediaTypeOrNull())
         val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.name, imageRequestBody)
         
@@ -94,6 +96,9 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                 if (response.isSuccessful) {
                     if (response.body()?.success == true) {
                         Toast.makeText(applicationContext, "기자재 수정 완료", Toast.LENGTH_SHORT).show()
+                        setResult(RESULT_OK)
+                        finish()
+
                     } else {
                         Toast.makeText(applicationContext, "기자재 등록 실패! \n ${response.body()?.msg}", Toast.LENGTH_SHORT).show()
                     }
@@ -161,6 +166,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                     if (response.isSuccessful) {
                         if (response.body()?.success == true) {
                             Toast.makeText(applicationContext, "기자재 등록 완료", Toast.LENGTH_SHORT).show()
+                            setResult(RESULT_OK)
                             finish()
                         } else {
                             Log.d("TestLog_ModifyEq", "${response.body()?.msg}")
