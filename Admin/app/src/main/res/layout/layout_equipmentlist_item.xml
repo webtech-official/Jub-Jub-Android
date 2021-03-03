@@ -18,17 +18,20 @@
 
     <TextView
         android:id="@+id/textView_ItemName"
-        android:text="DC 모터"
         style="@style/RecyclerViewItem_Name"
+        android:autoSizeTextType="uniform"
+        android:text="DC 모터"
         app:layout_constraintStart_toEndOf="@+id/imageView_ItemImage"
         app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage" />
 
     <TextView
         android:id="@+id/textView_ItemCategory"
-        android:text="모터"
         style="@style/RecyclerViewItem_Text"
+        android:text="모터"
+        app:layout_constraintBottom_toTopOf="@+id/textView_ItemCount"
         app:layout_constraintStart_toStartOf="@+id/textView_ItemName"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ItemName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_ItemName"
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
         android:id="@+id/textView_StudentNumber"
@@ -61,25 +64,6 @@
 
 
     <TextView
-        android:id="@+id/button_AllowRentRequest"
-        android:text="수락"
-        android:textColor="@color/black"
-        android:background="@drawable/background_allow_rent_request"
-        style="@style/AllowDenyButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage" />
-
-    <TextView
-        android:id="@+id/button_DenyRentRequest"
-        android:text="거절"
-        android:textColor="@color/white"
-        android:background="@drawable/background_deny_rent_request"
-        style="@style/AllowDenyButton"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_ItemImage"
-        app:layout_constraintEnd_toEndOf="@+id/button_AllowRentRequest"
-        app:layout_constraintStart_toStartOf="@+id/button_AllowRentRequest"/>
-
-    <TextView
         android:id="@+id/textView_RentalDate_Item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,8 +74,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView_ItemImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView_ItemImage" />
-
-
 
     <LinearLayout
         android:id="@+id/linearLayout5"
