@@ -83,6 +83,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
+        <TextView
+            android:id="@+id/textView_AddLaptopSpec_MyPage"
+            android:text="노트북 사양 추가"
+            style="@style/MyPageText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_MyRentalList_MyPage" />
 
         <TextView
             android:id="@+id/textView_AcceptRentItem_MyPage"
