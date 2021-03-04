@@ -17,6 +17,7 @@ import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
 import com.example.jub_jub_admin.entity.singleton.TokenManager
+import com.example.jub_jub_admin.ui.manageEq.ManageEquipmentViewModel
 import com.example.jub_jub_admin.ui.util.MyUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_modify_item.*
@@ -71,17 +72,58 @@ class ModifyEquipmentActivity : AppCompatActivity(){
         }
 
     }
+    private fun addData() {
+        if(checkEditText()){
+            progress_bar.visibility = View.VISIBLE
+
+            val imagePath = MyUtil.getPathFromUri(applicationContext, imageUri)
+            val imageFile = File(imagePath)
+            val imageRequestBody = imageFile.asRequestBody("image/png".toMediaTypeOrNull())
+            val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.name, imageRequestBody)
+
+            val name = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemName_ModifyItemActivity.text.toString())
+            val category = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCategory_ModifyItemActivity.text.toString())
+            val count = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCount_ModifyItemActivity.text.toString())
+
+            val response: Call<MyResponse> = NetRetrofit.getServiceApi().addItem(TokenManager.getToken(), imageBody, name, category, count)
+            response.enqueue(object : Callback<MyResponse> {
+                override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
+                    progress_bar.visibility = View.GONE
+                    imageFile.delete()
+                    if (response.isSuccessful) {
+                        if (response.body()?.success == true) {
+                            Toast.makeText(applicationContext, "기자재 등록 완료", Toast.LENGTH_SHORT).show()
+                            ManageEquipmentViewModel.update()
+                            finish()
+                        } else {
+                            Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+                override fun onFailure(call: Call<MyResponse>, t: Throwable) {
+                    progress_bar.visibility = View.GONE
+                    imageFile.delete()
+                    Log.d("TestLog_ModifyEQ", "Fail message = ${t.message} \n")
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
+
+                }
+
+            })
+        }
+    }
 
     private fun modifyData() {
         progress_bar.visibility = View.VISIBLE
-        //val imagePath = MyUtil.getPathFromUri(applicationContext, imageUri)
-        //val imageFile = File(imagePath)\
         Log.d("TestLog_Modify", "Image = ${MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()).toString()}")
         val imagePath = MyUtil.getPathFromUri(applicationContext, MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()))
         val imageFile = File(imagePath)
         val imageRequestBody = imageFile.asRequestBody("image/png".toMediaTypeOrNull())
+        Log.d("TestLog_Modify", "ImageName = ${imageFile.name}")
         val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.name, imageRequestBody)
-        
 
         val newName = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemName_ModifyItemActivity.text.toString())
         val category = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCategory_ModifyItemActivity.text.toString())
@@ -92,13 +134,17 @@ class ModifyEquipmentActivity : AppCompatActivity(){
 
         response.enqueue(object : Callback<MyResponse> {
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
+
                 progress_bar.visibility = View.GONE
+                Log.d("TestLog_ModifyAc", "Delete ImageFile")
+                //imageFile.delete()
+                //imageFile.absoluteFile.delete()
+
                 if (response.isSuccessful) {
                     if (response.body()?.success == true) {
                         Toast.makeText(applicationContext, "기자재 수정 완료", Toast.LENGTH_SHORT).show()
-                        setResult(RESULT_OK)
+                        ManageEquipmentViewModel.update()
                         finish()
-
                     } else {
                         Toast.makeText(applicationContext, "기자재 등록 실패! \n ${response.body()?.msg}", Toast.LENGTH_SHORT).show()
                     }
@@ -107,10 +153,12 @@ class ModifyEquipmentActivity : AppCompatActivity(){
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
                 progress_bar.visibility = View.GONE
+                imageFile.delete()
                 Log.d("TestLog_ModifyEquip", "Fail!, ${t.message}")
             }
 
         })
+
     }
 
     private fun modifyMode(data: Equipment){
@@ -145,52 +193,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
     }
 
 
-    private fun addData() {
-        if(checkEditText()){
-            progress_bar.visibility = View.VISIBLE
 
-            val imagePath = MyUtil.getPathFromUri(applicationContext, imageUri)
-            val imageFile = File(imagePath)
-            val imageRequestBody = imageFile.asRequestBody("image/png".toMediaTypeOrNull())
-            val imageBody = MultipartBody.Part.createFormData("img_equipment", imageFile.name, imageRequestBody)
-
-            val name = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemName_ModifyItemActivity.text.toString())
-            val category = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCategory_ModifyItemActivity.text.toString())
-            val count = RequestBody.create("text/plain".toMediaTypeOrNull(), editText_ItemCount_ModifyItemActivity.text.toString())
-
-            val response: Call<MyResponse> = NetRetrofit.getServiceApi().addItem(TokenManager.getToken(), imageBody, name, category, count)
-
-            response.enqueue(object : Callback<MyResponse> {
-                override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
-                    progress_bar.visibility = View.GONE
-                    if (response.isSuccessful) {
-                        if (response.body()?.success == true) {
-                            Toast.makeText(applicationContext, "기자재 등록 완료", Toast.LENGTH_SHORT).show()
-                            setResult(RESULT_OK)
-                            finish()
-                        } else {
-                            Log.d("TestLog_ModifyEq", "${response.body()?.msg}")
-                        }
-                    } else {
-                        Log.d("TestLog_ModifyEq", "${response.body()?.msg}")
-                    }
-
-                }
-
-                override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                    progress_bar.visibility = View.GONE
-                    Log.d("TestLog_ModifyEQ", "Fail message = ${t.message} \n")
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
-
-//                    Log.d("TestLog", "message = ${response.message()} \n")
-//                    Log.d("TestLog", "success = ${response.body()?.success} \n")
-//                    Log.d("TestLog", "msg = ${response.body()?.msg} \n")
-//                    Log.d("TestLog", "code = ${response.body()?.code} \n")
-                }
-
-            })
-        }
-    }
 
     private fun checkEditText(): Boolean {
         return if(editText_ItemName_ModifyItemActivity.text.toString() == "" || editText_ItemCount_ModifyItemActivity.text.toString() == ""
