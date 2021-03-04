@@ -41,12 +41,12 @@ class SignUpActivity : AppCompatActivity() {
         response.enqueue(object : Callback<MyResponse> {
 
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
+                progress_bar.visibility = View.GONE
                 if (response.body()?.success!!) {
                     Toast.makeText(applicationContext, "계정 생성 완료! 이메일을 확인해주세요!", Toast.LENGTH_SHORT).show()
-                    progress_bar.visibility = View.VISIBLE
                     finish()
                 } else {
-                    Log.d("TestLog", "${response.code()}")
+                    Log.d("TestLog", "${response.body()?.msg}")
                     Toast.makeText(applicationContext, response.body()?.msg, Toast.LENGTH_SHORT).show()
                 }
             }
@@ -54,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
                 Toast.makeText(applicationContext, "서버 연결 실패", Toast.LENGTH_SHORT).show()
                 Log.d("TestLog", "onFailure! ${t.message}")
-                progress_bar.visibility = View.VISIBLE
+                progress_bar.visibility = View.GONE
             }
         })
     }
