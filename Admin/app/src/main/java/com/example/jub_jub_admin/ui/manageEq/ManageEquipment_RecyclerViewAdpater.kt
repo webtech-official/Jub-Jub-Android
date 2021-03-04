@@ -1,5 +1,7 @@
 package com.example.jub_jub_admin.ui.manageEq
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.view.LayoutInflater
@@ -16,9 +18,6 @@ import java.util.*
 
 class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): RecyclerView.Adapter<ManageEquipment_RecyclerViewAdpater.ViewHolder>() {
 
-    //private var devideditemStatusList = dataList
-
-
     override fun getItemCount(): Int {
         return dataList.size
     }
@@ -32,7 +31,6 @@ class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): R
         holder.bindItemStatusListItems(dataList[itemPosition])
     }
 
-
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val MODIFY_EQUIPMENT = 1042
         fun bindItemStatusListItems(data: Equipment){
@@ -41,11 +39,11 @@ class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): R
 
             //각각의 아이템 클릭시
             itemView.setOnClickListener {
-
                 var intent = Intent(itemView.context, ModifyEquipmentActivity::class.java)
 
                 intent.putExtra("Data", data)
                 intent.addFlags(FLAG_ACTIVITY_NEW_TASK)
+
                 itemView.context.startActivity(intent)
             }
         }
