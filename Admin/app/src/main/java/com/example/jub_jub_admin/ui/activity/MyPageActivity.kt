@@ -35,6 +35,12 @@ class MyPageActivity : AppCompatActivity() {
         textView_AddLaptop_MyPage.setOnClickListener {
             startActivity(Intent(applicationContext, ModifyLaptopActivity::class.java))
         }
+
+        //노트북 사양 추가
+        textView_AddLaptopSpec_MyPage.setOnClickListener {
+            startActivity(Intent(applicationContext, AddLaptopSpecActivity::class.java))
+        }
+
         //기자재 대여 승인
         textView_AcceptRentItem_MyPage.setOnClickListener {
             startActivity(Intent(applicationContext, AllowRentRequestActivity::class.java))
