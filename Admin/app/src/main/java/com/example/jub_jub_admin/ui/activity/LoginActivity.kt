@@ -16,6 +16,7 @@ import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.body.Login
 import com.example.jub_jub_admin.entity.dataclass.response.LoginResponse
 import com.example.jub_jub_admin.entity.singleton.TokenManager
+import com.example.jub_jub_admin.ui.manageEq.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
         button_Login_LoginActivity.setOnClickListener {
             if(checkEditText()){
+                progress_bar.visibility = View.VISIBLE
                 login(Login(editText_Email_LoginActivity.text.toString(), editText_Password_LoginActivity.text.toString()))
             }
         }
