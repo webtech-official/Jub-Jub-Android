@@ -10,11 +10,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubAdmin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.ManageStudentActivity"></activity>
+        <activity android:name=".ui.activity.AddLaptopSpecActivity"></activity>
+        <activity android:name=".ui.activity.ManageStudentActivity" />
         <activity android:name=".ui.activity.AllowRentRequestActivity" />
         <activity
             android:name=".ui.activity.ModifyLaptopActivity"
@@ -30,8 +32,8 @@
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
         <activity
-            android:name=".ui.activity.MainActivity"
-            android:windowSoftInputMode="adjustNothing" />
+            android:name=".ui.manageEq.MainActivity"
+            android:windowSoftInputMode="adjustNothing"></activity>
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
