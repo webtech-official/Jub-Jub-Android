@@ -1,16 +1,17 @@
-package com.example.jub_jub_admin.ui.adapter.viewpager
+package com.example.jub_jub_admin.ui.ManageLaptop
 
 import android.content.Context
+import android.util.Log
 import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.entity.singleton.ManageLaptopListManager
-import com.example.jub_jub_admin.ui.adapter.recyclerview.ManageLaptop_RecyclerViewAdapter
+import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
+import com.example.jub_jub_admin.ui.manageEq.ManageEquipmentViewModel
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
-class ManageLaptop_ViewpagerAdapter(var context: Context) : PagerAdapter() {
+class ManageLaptop_ViewpagerAdapter(val context: Context, private val viewModel: ManageLaptopViewModel) : PagerAdapter() {
 
     private lateinit var layoutInflater: LayoutInflater
 
@@ -24,7 +25,8 @@ class ManageLaptop_ViewpagerAdapter(var context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return ManageLaptopListManager.getShowList().size
+        Log.d("TestLog_ManageLaptopViewPagerAdapter", "${viewModel.getShowList().size}")
+        return viewModel.getShowList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -37,7 +39,7 @@ class ManageLaptop_ViewpagerAdapter(var context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //메인 화면 (기자재 목록)
-        var adapter = ManageLaptop_RecyclerViewAdapter(ManageLaptopListManager.getShowList()[position])
+        var adapter = ManageLaptop_RecyclerViewAdapter(viewModel.getShowList()[position])
         view.recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.activity.ManageLaptopActivity">
+    tools:context=".ui.ManageLaptop.ManageLaptopActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleBar_ViewMode_ManageLaptopActivity"

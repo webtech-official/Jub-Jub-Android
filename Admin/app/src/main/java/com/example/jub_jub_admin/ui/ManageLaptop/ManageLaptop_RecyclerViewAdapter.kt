@@ -1,13 +1,14 @@
-package com.example.jub_jub_admin.ui.adapter.recyclerview
+package com.example.jub_jub_admin.ui.ManageLaptop
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
-import com.example.jub_jub_admin.ui.activity.ModifyLaptopActivity
+import com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptopActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
@@ -18,6 +19,7 @@ class ManageLaptop_RecyclerViewAdapter(var dataList: ArrayList<LaptopStatus>): R
 
 
     override fun getItemCount(): Int {
+        Log.d("TestLog_ManageLaptopRecyclerViewAdapter", "${dataList.size}")
         return dataList.size
     }
 
@@ -49,10 +51,12 @@ class ManageLaptop_RecyclerViewAdapter(var dataList: ArrayList<LaptopStatus>): R
         }
 
         private fun setTextViewsText(data: LaptopStatus) {
-            Picasso.get().load(data.image).into(itemView.imageView_ItemImage)
-            itemView.textView_ItemName.text = data.name
-            itemView.textView_ItemCategory.text = data.category
-            itemView.textView_ItemCount.text = "수량 : ${data.count}개"
+
+            //Picasso.get().load(data.laptopSpec.image).into(itemView.imageView_ItemImage)
+            itemView.textView_ItemName.text = data.laptopSpec.laptopName
+            itemView.textView_ItemCategory.text = data.laptopSpec.laptopBrand
+            itemView.textView_ItemCount.visibility = View.GONE
+            //itemView.textView_ItemCount.text = "수량 : ${data.count}개"
 
         }
 
