@@ -19,10 +19,10 @@
         <activity android:name=".ui.activity.ManageStudentActivity" />
         <activity android:name=".ui.activity.AllowRentRequestActivity" />
         <activity
-            android:name=".ui.activity.ModifyLaptopActivity"
+            android:name="com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptopActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".ui.activity.ManageLaptopActivity"
+            android:name=".ui.ManageLaptop.ManageLaptopActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.activity.ModifyEquipmentActivity"
