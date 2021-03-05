@@ -13,7 +13,7 @@ interface LaptopStatusDAO {
         @Query("SELECT * FROM laptopStatus")
         fun getAll(): List<LaptopStatus>
 
-        @Query("SELECT * FROM laptopStatus WHERE name LIKE :word ")
+        @Query("SELECT * FROM laptopStatus WHERE laptopSpec || classNumber || laptopIdx || laptopSerialNumber LIKE :word ")
         fun search(word: String): List<LaptopStatus>
 
         @Insert(onConflict = OnConflictStrategy.REPLACE)
