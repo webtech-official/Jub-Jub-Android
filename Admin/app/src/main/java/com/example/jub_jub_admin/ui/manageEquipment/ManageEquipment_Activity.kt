@@ -1,7 +1,6 @@
-package com.example.jub_jub_admin.ui.manageEq
+package com.example.jub_jub_admin.ui.manageEquipment
 
 import android.content.Intent
-import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import android.os.Process
 import android.util.Log
@@ -11,18 +10,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.activity.MyPageActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
 
 
-class MainActivity : AppCompatActivity() {
+class ManageEquipment_Activity : AppCompatActivity() {
 
     private lateinit var viewModel: ManageEquipmentViewModel
 
-    private lateinit var pageView: ManageItemList_PageView
+    private lateinit var pageView: ManageEquipment_PageView
 
     private var lastSize = 0
     //마지막으로 뒤로가기 버튼 누른 시간
@@ -33,8 +31,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProvider(this).get(ManageEquipmentViewModel::class.java)
+
+        pageView = ManageEquipment_PageView(applicationContext, pageView_MainActivity, viewModel)
+
         viewModel.init(applicationContext)
 
+        pageView.initViewPager()
 
         //viewModel.getDataFromServer(true)
 
@@ -52,13 +54,6 @@ class MainActivity : AppCompatActivity() {
             pageView.syncPage()
         })
     }
-
-    //region setPageView()
-    private fun setPageView(){
-        pageView = ManageItemList_PageView(applicationContext, pageView_MainActivity, viewModel)
-        pageView.initViewPager()
-    }
-    //endregion
 
     //region 새로고침
     private fun refresh(){
@@ -93,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     private fun setSearchFunction() {
         editText_SearchText_MainActivitySearchMode.addTextChangedListener {
 
-            search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
+            viewModel.search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
 
             var currentSize = viewModel.getShowList().size
 
@@ -101,23 +96,7 @@ class MainActivity : AppCompatActivity() {
                 pageView.syncPage()
                 lastSize = currentSize
             }
-
         }
-    }
-    //endregion
-
-    //region 검색
-    private fun search(word: String){
-        var r = Runnable {
-            viewModel.processShowList(word)
-        }
-
-        val thread = Thread(r)
-        thread.start()
-
-        try {
-            thread.join()
-        } catch (e : InterruptedException){ }
     }
     //endregion
 
@@ -132,7 +111,7 @@ class MainActivity : AppCompatActivity() {
     private fun setTitleBarViewMode() {
         titleBar_ViewMode_MainActivity.visibility = View.VISIBLE
         titleBar_SearchMode_MainActivity.visibility = View.GONE
-        search("")
+        viewModel.search("")
         pageView.syncPage()
 
     }
@@ -140,7 +119,6 @@ class MainActivity : AppCompatActivity() {
 
     //region 뒤로가기 버튼 눌렀을 때
     override fun onBackPressed() {
-
         //1번 눌렀을 때
         if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
             backKeyPressedTime = System.currentTimeMillis()

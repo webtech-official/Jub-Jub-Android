@@ -1,7 +1,5 @@
-package com.example.jub_jub_admin.ui.manageEq
+package com.example.jub_jub_admin.ui.manageEquipment
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.jub_jub_admin.ui.manageEq
+package com.example.jub_jub_admin.ui.manageEquipment
 
 import android.content.Context
 import androidx.viewpager.widget.PagerAdapter
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.jub_jub_admin.R
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
-class ManageItem_ViewPagerAdapter(val context: Context, private val viewModel: ManageEquipmentViewModel) : PagerAdapter() {
+class ManageEquipment_ViewPagerAdapter(val context: Context, private val viewModel: ManageEquipmentViewModel) : PagerAdapter() {
 
     private lateinit var layoutInflater: LayoutInflater
 

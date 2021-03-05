@@ -1,8 +1,7 @@
-package com.example.jub_jub_admin.ui.manageEq
+package com.example.jub_jub_admin.ui.manageEquipment
 
 import android.content.Context
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jub_jub_admin.data.local.db.EquipmentDB
@@ -13,7 +12,6 @@ import com.example.jub_jub_admin.entity.singleton.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Thread.sleep
 
 class ManageEquipmentViewModel: ViewModel() {
 
@@ -25,7 +23,6 @@ class ManageEquipmentViewModel: ViewModel() {
         fun update() {
             i.value = i.value?.plus(1)
         }
-
     }
 
     init {
@@ -37,10 +34,6 @@ class ManageEquipmentViewModel: ViewModel() {
 
         list.value = ArrayList<ArrayList<Equipment>>()
         getDataFromServer()
-        //context 저장
-        //this.context = context
-        //DB객체 생성
-        //setDummyData()
 
         Log.d("TestLog_MainViewModel", "${list.value}")
     }
@@ -121,8 +114,6 @@ class ManageEquipmentViewModel: ViewModel() {
                 array[page].add(dataList[i])
                 cnt++
             }
-            Log.d("TestLog_MainViewModel", "process array $array")
-            Log.d("TestLog_MainViewModel", "process list ${list.value}")
         }
         val thread = Thread(r)
         thread.start()
@@ -131,16 +122,30 @@ class ManageEquipmentViewModel: ViewModel() {
             thread.join()
         } catch (e : InterruptedException){ }
 
-        list.value = array
+        //list.value =
+        list.postValue(array)
         Log.d("TestLog_MainViewModel", "process list ${list.value}")
-
     }
+
+    //region 검색
+    fun search(word: String){
+        var r = Runnable {
+            processShowList(word)
+        }
+
+        val thread = Thread(r)
+        thread.start()
+
+        try {
+            thread.join()
+        } catch (e : InterruptedException){ }
+    }
+    //endregion
 
     @JvmName("getShowList1")
     fun getShowList(): ArrayList<ArrayList<Equipment>> {
 
-        val arr = list.value!!
-        return arr
+        return list.value!!
     }
 
 }
