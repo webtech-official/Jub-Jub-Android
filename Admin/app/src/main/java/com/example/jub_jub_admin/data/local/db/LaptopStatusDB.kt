@@ -1,14 +1,14 @@
 package com.example.jub_jub_admin.data.local.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.example.jub_jub_admin.data.local.dao.LaptopStatusDAO
+import com.example.jub_jub_admin.entity.dataclass.Converters
 import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
 
 
 @Database(entities = [LaptopStatus::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class LaptopStatusDB: RoomDatabase() {
 
     abstract fun laptopStatusDAO(): LaptopStatusDAO
