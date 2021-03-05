@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.activity.ModifyLaptopActivity">
+    tools:context=".ui.ModifyLaptop.ModifyLaptopActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,78 +67,49 @@
             app:layout_constraintStart_toEndOf="@+id/imageView_OpenGallery_ModifyLaptopActivity"
             app:layout_constraintTop_toTopOf="@+id/imageView_OpenGallery_ModifyLaptopActivity" />
 
-        <ScrollView
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_Modify_ModifyLaptopActivity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_OpenGallery_ModifyLaptopActivity"
-            app:layout_constraintBottom_toTopOf="@id/button_Modify_ModifyLaptopActivity">
+            app:layout_constraintVertical_bias="0.0">
 
-            <LinearLayout
-                android:id="@+id/LinearLayout_ModifyLaptop"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                style="@style/ModifyText"
+                android:text="학생 이름" />
+            <EditText
+                android:id="@+id/editText_StudentName_ModifyLaptopActivity"
+                style="@style/MyEditText" />
 
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="제품명" />
+            <TextView
+                style="@style/ModifyText"
+                android:text="학생 학번" />
+            <EditText
+                android:id="@+id/editText_ClassNum_ModifyLaptopActivity"
+                style="@style/MyEditText" />
 
-                <EditText
-                    android:id="@+id/editText_LaptopName_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
+            <TextView
+                style="@style/ModifyText"
+                android:text="노트북 스펙" />
+            <Spinner
+                android:id="@+id/spinner_LaptopSpec_ModifyLaptopActivity"
+                style="@style/MySpinner"
+                />
 
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="수량" />
+            <TextView
+                style="@style/ModifyText"
+                android:text="노트북 시리얼 번호 " />
+            <EditText
+                android:id="@+id/editText_LaptopSerialNum_ModifyLaptopActivity"
+                style="@style/MyEditText" />
 
-                <EditText
-                    android:id="@+id/editText_LaptopCount_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
+        </LinearLayout>
 
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="CPU" />
-
-                <EditText
-                    android:id="@+id/editText_CPU_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
-
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="GPU" />
-
-                <EditText
-                    android:id="@+id/editText_GPU_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
-
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="RAM" />
-
-                <EditText
-                    android:id="@+id/editText_RAM_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
-
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="SSD" />
-
-                <EditText
-                    android:id="@+id/editText_SSD_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
-
-                <TextView
-                    style="@style/ModifyText"
-                    android:text="HDD" />
-
-                <EditText
-                    android:id="@+id/editText_HDD_ModifyLaptopActivity"
-                    style="@style/MyEditText" />
-
-            </LinearLayout>
-        </ScrollView>
         <Button
             android:id="@+id/button_Modify_ModifyLaptopActivity"
             style="@style/MyButton"
