@@ -1,5 +1,8 @@
 package com.example.jub_jub_admin.data.remote
 
+import com.example.jub_jub_admin.entity.dataclass.GetLaptopResponse
+import com.example.jub_jub_admin.entity.dataclass.body.LaptopSaveDTO
+import com.example.jub_jub_admin.entity.dataclass.body.AddLaptopSpec
 import com.example.jub_jub_admin.entity.dataclass.body.Login
 import com.example.jub_jub_admin.entity.dataclass.body.SignUp
 import com.example.jub_jub_admin.entity.dataclass.response.*
@@ -56,6 +59,20 @@ interface Api {
 
     //@GET("admin/laptop")
     //fun getLaptopData(@Header("Authorization") token: String): Call<LaptopResponse>)
+
+    @GET("admin/laptop")
+    fun getAllLaptop(@Header("Authorization") token: String): Call<GetLaptopResponse>
+
+    @POST("admin/laptop")
+    fun addLaptop(@Header("Authorization") token: String, @Body laptopSaveReqDto : LaptopSaveDTO): Call<MyResponse>
+
+    @GET("admin/laptop-spec")
+    fun getLaptopSpec(@Header("Authorization") token: String): Call<GETLaptopSpecResponse>
+
+    @POST("admin/laptop-spec")
+    fun addLaptopSpec(@Header("Authorization") token: String, @Body laptopSpecDto: AddLaptopSpec): Call<MyResponse>
+
+
 
 
 }
