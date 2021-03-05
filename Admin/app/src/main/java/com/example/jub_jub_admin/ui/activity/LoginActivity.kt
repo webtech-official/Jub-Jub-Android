@@ -15,6 +15,7 @@ import com.example.jub_jub_admin.data.local.SharedPref
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.body.Login
 import com.example.jub_jub_admin.entity.dataclass.response.LoginResponse
+import com.example.jub_jub_admin.entity.singleton.LaptopSpecManager
 import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.manageEq.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -89,6 +90,9 @@ class LoginActivity : AppCompatActivity() {
 
                         SharedPref(applicationContext).saveAccount(loginData.email, loginData.password)
                         //앱 시작
+
+                        //Splash 역할
+                        LaptopSpecManager.getLaptopSpec()
 
                         Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(applicationContext, MainActivity::class.java))
