@@ -9,17 +9,14 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.ui.activity.MyPageActivity
-import com.example.jub_jub_admin.ui.manageEq.ManageEquipmentViewModel
-import com.example.jub_jub_admin.ui.manageEq.ManageItemList_PageView
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_manage_laptop.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
 
-class ManageLaptopActivity : AppCompatActivity() {
+class ManageLaptop_Activity : AppCompatActivity() {
 
     private lateinit var pageView: ManageLaptopList_PageView
-    private lateinit var viewModel: ManageLaptopViewModel
+    private lateinit var viewModel: ManageLaptop_ViewModel
 
     private var lastSize = 0
     
@@ -27,7 +24,7 @@ class ManageLaptopActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage_laptop)
 
-        viewModel = ViewModelProvider(this).get(ManageLaptopViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ManageLaptop_ViewModel::class.java)
 
         viewModel.init(applicationContext)
 
@@ -42,11 +39,11 @@ class ManageLaptopActivity : AppCompatActivity() {
             Log.d("TestLog_MLapAc","${viewModel.getShowList().size}")
         }
 
-        ManageLaptopViewModel.i.observe(this, {
+        ManageLaptop_ViewModel.i.observe(this, {
             viewModel.getDataFromServer()
         })
 
-        ManageLaptopViewModel.list.observe(this, {
+        ManageLaptop_ViewModel.list.observe(this, {
             pageView.syncPage()
         })
     }

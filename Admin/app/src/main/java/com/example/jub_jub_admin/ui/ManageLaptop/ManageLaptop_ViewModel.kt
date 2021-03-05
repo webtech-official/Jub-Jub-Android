@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ManageLaptopViewModel: ViewModel() {
+class ManageLaptop_ViewModel: ViewModel() {
 
     private lateinit var laptopStatusDB: LaptopStatusDB
 

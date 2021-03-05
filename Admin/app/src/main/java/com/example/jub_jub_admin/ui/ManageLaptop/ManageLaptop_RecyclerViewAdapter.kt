@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
-import com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptopActivity
-import com.squareup.picasso.Picasso
+import com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptop_Activity
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
 
@@ -41,7 +40,7 @@ class ManageLaptop_RecyclerViewAdapter(var dataList: ArrayList<LaptopStatus>): R
             //각각의 아이템 클릭시
             itemView.setOnClickListener {
 
-                var intent = Intent(itemView.context, ModifyLaptopActivity::class.java)
+                var intent = Intent(itemView.context, ModifyLaptop_Activity::class.java)
 
                 intent.putExtra("Data", data)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

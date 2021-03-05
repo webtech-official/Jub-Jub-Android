@@ -3,11 +3,10 @@ package com.example.jub_jub_admin.ui.ManageLaptop
 import android.content.Context
 import android.util.Log
 import android.view.View
-import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
 import com.example.jub_jub_admin.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class ManageLaptopList_PageView(var context: Context, var view: View, var viewModel: ManageLaptopViewModel){
+class ManageLaptopList_PageView(var context: Context, var view: View, var viewModel: ManageLaptop_ViewModel){
 
     private lateinit var setPageView : SetPageView
 

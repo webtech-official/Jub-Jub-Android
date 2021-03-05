@@ -7,11 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.jub_jub_admin.R
-import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
-import com.example.jub_jub_admin.ui.manageEq.ManageEquipmentViewModel
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
-class ManageLaptop_ViewpagerAdapter(val context: Context, private val viewModel: ManageLaptopViewModel) : PagerAdapter() {
+class ManageLaptop_ViewpagerAdapter(val context: Context, private val viewModel: ManageLaptop_ViewModel) : PagerAdapter() {
 
     private lateinit var layoutInflater: LayoutInflater
 
