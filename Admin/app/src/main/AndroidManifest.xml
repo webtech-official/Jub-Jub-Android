@@ -17,12 +17,12 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.activity.AddLaptopSpecActivity"></activity>
         <activity android:name=".ui.activity.ManageStudentActivity" />
-        <activity android:name=".ui.activity.AllowRentRequestActivity" />
+        <activity android:name=".ui.AllowRentRequest.AllowRentRequest_Activity" />
         <activity
-            android:name="com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptopActivity"
+            android:name="com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptop_Activity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".ui.ManageLaptop.ManageLaptopActivity"
+            android:name=".ui.ManageLaptop.ManageLaptop_Activity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.activity.ModifyEquipmentActivity"
@@ -32,7 +32,7 @@
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
         <activity
-            android:name=".ui.manageEq.MainActivity"
+            android:name=".ui.manageEquipment.ManageEquipment_Activity"
             android:windowSoftInputMode="adjustNothing"></activity>
         <activity
             android:name=".ui.activity.SplashActivity"
