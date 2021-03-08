@@ -13,8 +13,8 @@ object LaptopSpecManager {
 
     var laptopSpecList = ArrayList<LaptopSpec>()
 
-    fun getLaptopSpec(){
 
+    fun getLaptopSpec(){
         val response: Call<GETLaptopSpecResponse> = NetRetrofit.getServiceApi().getLaptopSpec(TokenManager.getToken())
 
         response.enqueue(object : Callback<GETLaptopSpecResponse>{
@@ -32,7 +32,6 @@ object LaptopSpecManager {
             }
 
         })
-
     }
 
     fun getSpecList(): ArrayList<LaptopSpec> {
@@ -55,6 +54,5 @@ object LaptopSpecManager {
         Log.d("TestLog_LaptopSpecManager", "return NameList ${arr}")
         return arr
     }
-
 
 }
