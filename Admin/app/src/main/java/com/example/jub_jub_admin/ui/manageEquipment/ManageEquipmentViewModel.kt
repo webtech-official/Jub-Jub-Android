@@ -2,6 +2,7 @@ package com.example.jub_jub_admin.ui.manageEquipment
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jub_jub_admin.data.local.db.EquipmentDB
@@ -22,6 +23,7 @@ class ManageEquipmentViewModel: ViewModel() {
         var list = MutableLiveData<ArrayList<ArrayList<Equipment>>>()
         fun update() {
             i.value = i.value?.plus(1)
+            Log.d("TestLog_MaEqVM", "update!")
         }
     }
 
@@ -33,12 +35,12 @@ class ManageEquipmentViewModel: ViewModel() {
         equipmentDB = EquipmentDB.getInstance(context)!!
 
         list.value = ArrayList<ArrayList<Equipment>>()
-        getDataFromServer()
+        getEquipmentData(context)
 
         Log.d("TestLog_MainViewModel", "${list.value}")
     }
 
-    fun getDataFromServer() {
+    fun getEquipmentData(context: Context) {
         Log.d("TestLog_MainViewModel", "getDataFromServer 시작")
         val response: Call<GetEquipmentResponse> = NetRetrofit.getServiceApi().getAllEquipment(
             TokenManager.getToken())
@@ -46,18 +48,15 @@ class ManageEquipmentViewModel: ViewModel() {
         response.enqueue(object: Callback<GetEquipmentResponse> {
             override fun onResponse(call: Call<GetEquipmentResponse>, response: Response<GetEquipmentResponse>) {
 
-                if(response.body()?.success == true){
+                if(response.isSuccessful && response.body()?.success == true){
                     Log.d("TestLog_MainViewModel", "getDataFromServer 성공 list.size = ${response.body()?.list?.size}")
                     setDataList(response.body()?.list!!)
-
                 }else{
-                    Log.d("TestLog_MainViewModel", "Fail! ${response.body()?.msg}")
-                }
+                    Toast.makeText(context, response.body()?.msg, Toast.LENGTH_SHORT).show()                }
             }
 
             override fun onFailure(call: Call<GetEquipmentResponse>, t: Throwable) {
-                Log.d("TestLog_MainViewModel", "Fail! ${t.message}")
-                Log.d("TestLog_MainViewModel", "getDataFromServer 실패")
+                Toast.makeText(context, t.message!!, Toast.LENGTH_SHORT).show()
             }
 
         })
