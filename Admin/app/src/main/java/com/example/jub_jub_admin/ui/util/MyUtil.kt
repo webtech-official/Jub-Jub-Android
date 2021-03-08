@@ -6,10 +6,12 @@ import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Process
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
 import android.view.Window
+import android.widget.Toast
 import com.example.jub_jub_admin.R
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
