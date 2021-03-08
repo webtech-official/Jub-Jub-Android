@@ -47,7 +47,7 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):Recyc
                 "대기" -> setRentStatus(itemView, R.drawable.bg_waiting, R.color.black)
                 "반납" -> setRentStatus(itemView, R.drawable.bg_return, R.color.white)
                 "대여" -> setRentStatus(itemView, R.drawable.bg_rental, R.color.black)
-                "연체" -> setRentStatus(itemView, R.drawable.bg_overdue, R.color.black)
+                "승인" -> setRentStatus(itemView, R.drawable.bg_overdue, R.color.black)
                 "거절" -> setRentStatus(itemView, R.drawable.bg_reject, R.color.black)
                 else -> itemView.textView_RentStatus_Item.text = "?"
 
