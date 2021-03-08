@@ -25,6 +25,7 @@ class ManageEquipment_Activity : AppCompatActivity() {
     private var lastSize = 0
     //마지막으로 뒤로가기 버튼 누른 시간
     var backKeyPressedTime : Long = 0
+    private var isViewMode = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,20 +48,22 @@ class ManageEquipment_Activity : AppCompatActivity() {
         }
 
         ManageEquipmentViewModel.i.observe(this, {
-            viewModel.getDataFromServer()
+            viewModel.getEquipmentData(applicationContext)
         })
 
         ManageEquipmentViewModel.list.observe(this, {
             pageView.syncPage()
         })
+
     }
 
     //region 새로고침
     private fun refresh(){
         refreshLayout.isRefreshing = true
-        viewModel.getDataFromServer()
+        viewModel.getEquipmentData(applicationContext)
         Log.d("TestLog", "새로고침 완료!")
         refreshLayout.isRefreshing = false
+
     }
     //endregion
 
@@ -102,6 +105,7 @@ class ManageEquipment_Activity : AppCompatActivity() {
 
     //region 타이틀 바 검색모드
     private fun setTitleBarSearchMode() {
+        isViewMode = false
         titleBar_ViewMode_MainActivity.visibility = View.GONE
         titleBar_SearchMode_MainActivity.visibility = View.VISIBLE
     }
@@ -109,6 +113,7 @@ class ManageEquipment_Activity : AppCompatActivity() {
 
     //region 타이틀 바 뷰 모드
     private fun setTitleBarViewMode() {
+        isViewMode = true
         titleBar_ViewMode_MainActivity.visibility = View.VISIBLE
         titleBar_SearchMode_MainActivity.visibility = View.GONE
         viewModel.search("")
@@ -119,14 +124,19 @@ class ManageEquipment_Activity : AppCompatActivity() {
 
     //region 뒤로가기 버튼 눌렀을 때
     override fun onBackPressed() {
-        //1번 눌렀을 때
-        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
-            backKeyPressedTime = System.currentTimeMillis()
-            Toast.makeText(applicationContext, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
-        }
-        //2초 안에 2번 눌렀을 때 종료
-        else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
-            finishApp()
+
+        if(!isViewMode){
+            setTitleBarViewMode()
+        }else{
+            //1번 눌렀을 때
+            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+                backKeyPressedTime = System.currentTimeMillis()
+                Toast.makeText(applicationContext, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
+            }
+            //2초 안에 2번 눌렀을 때 종료
+            else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+                finishApp()
+            }
         }
     }
     //endregion
