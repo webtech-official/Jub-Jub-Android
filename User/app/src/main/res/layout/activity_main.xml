@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="com.example.jub_jub_android.ui.activity.MainActivity">
+    tools:context="com.example.jub_jub_android.ui.EquipmentStatus.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/titleBar_ViewMode_MainActivity"
@@ -86,8 +86,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_marginTop="51dp"
         style="@style/MyLinearLine"
+        android:layout_marginTop="51dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
