@@ -1,9 +1,7 @@
-package com.example.jub_jub_android.ui.activity
+package com.example.jub_jub_android.ui.EquipmentStatus
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.os.Process
 import android.util.Log
 import android.view.View
@@ -16,6 +14,7 @@ import com.example.jub_jub_android.entity.dataclass.response.EquipmentResponse
 import com.example.jub_jub_android.entity.singleton.ItemStatusListManager
 import com.example.jub_jub_android.entity.singleton.ItemStatusListManager.setDataList
 import com.example.jub_jub_android.entity.singleton.TokenManager
+import com.example.jub_jub_android.ui.activity.MyPageActivity
 import com.example.jub_jub_android.ui.util.ItemStatusList_PageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
@@ -23,7 +22,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,8 +29,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pageView: ItemStatusList_PageView
     private var lastSize = 0
     //마지막으로 뒤로가기 버튼 누른 시간
-    var backKeyPressedTime : Long = 0
-    var isViewMode = true
+    private var backKeyPressedTime : Long = 0
+    private var isViewMode = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -23,6 +23,7 @@ class ManageLaptop_ViewModel: ViewModel() {
         var list = MutableLiveData<ArrayList<ArrayList<LaptopStatus>>>()
         fun update() {
             i.value = i.value?.plus(1)
+            Log.d("TestLog_MaLTVM", "update!")
         }
     }
 
@@ -35,29 +36,24 @@ class ManageLaptop_ViewModel: ViewModel() {
 
         list.value = ArrayList<ArrayList<LaptopStatus>>()
 
-        getDataFromServer()
+        getDataFromServer(context)
     }
 
-    fun getDataFromServer(){
+    fun getDataFromServer(context: Context){
 
         val response: Call<GetLaptopResponse> = NetRetrofit.getServiceApi().getAllLaptop(TokenManager.getToken())
 
         response.enqueue(object : Callback<GetLaptopResponse>{
             override fun onResponse(call: Call<GetLaptopResponse>, response: Response<GetLaptopResponse>) {
-                if(response.isSuccessful){
-                    if(response.body()!!.success){
-                        setDataList(response.body()!!.list)
-                    }else{
-                        Log.d("TestLog_MLaptopVM", "실패 ${response.body()!!.msg}")
-                    }
-
-                }else{
-                    Log.d("TestLog_MLaptopVM", "실패 ${response.body()!!.msg}")
+                if (response.isSuccessful && response.body()!!.success) {
+                    setDataList(response.body()!!.list)
+                } else {
+                    Toast.makeText(context, response.body()?.msg, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<GetLaptopResponse>, t: Throwable) {
-                Log.d("TestLog_MLaptopVM", "서버통신 실패 ${t.message}")
+                Toast.makeText(context, t.message!!, Toast.LENGTH_SHORT).show()
             }
 
         })

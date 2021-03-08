@@ -18,7 +18,7 @@
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.MainActivity"
+        <activity android:name=".ui.EquipmentStatus.MainActivity"
             android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".ui.activity.SplashActivity"

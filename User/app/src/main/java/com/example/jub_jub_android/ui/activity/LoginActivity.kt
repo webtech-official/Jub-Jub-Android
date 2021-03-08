@@ -1,6 +1,5 @@
 package com.example.jub_jub_android.ui.activity
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +12,7 @@ import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.body.Login
 import com.example.jub_jub_android.entity.dataclass.response.LoginResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
+import com.example.jub_jub_android.ui.EquipmentStatus.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback

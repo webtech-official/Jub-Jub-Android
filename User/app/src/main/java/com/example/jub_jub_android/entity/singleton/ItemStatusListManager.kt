@@ -1,15 +1,9 @@
 package com.example.jub_jub_android.entity.singleton
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Base64
 import android.util.Log
-import com.example.jub_jub_android.R
 import com.example.jub_jub_android.data.local.ItemStatusDB
 import com.example.jub_jub_android.entity.dataclass.Equipment
-import com.example.jub_jub_android.ui.activity.MainActivity
-import java.io.ByteArrayOutputStream
 import kotlin.collections.ArrayList
 
 
