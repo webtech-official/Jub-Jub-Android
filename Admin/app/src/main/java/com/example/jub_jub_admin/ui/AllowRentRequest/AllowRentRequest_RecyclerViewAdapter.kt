@@ -1,12 +1,10 @@
-package com.example.jub_jub_admin.ui.adapter.recyclerview
+package com.example.jub_jub_admin.ui.AllowRentRequest
 
-import android.app.Dialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
@@ -17,11 +15,6 @@ import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.util.MyUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_alertdialog.*
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.imageView_ItemImage
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.textView_ItemCategory
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.textView_ItemCount
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.textView_ItemName
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.textView_StudentNumber
 import kotlinx.android.synthetic.main.layout_manage_rent_request_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -98,7 +91,7 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
             Picasso.get().load(data.img_equipment).into(itemView.imageView_ItemImage)
             itemView.textView_ItemName.text = data.name
             itemView.textView_ItemCategory.text = data.content
-            itemView.textView_ItemCount.text = "수량 : ${data.count}개"
+            itemView.textView_ItemCount.text = "수량 : ${dataInfo.amount}개"
             itemView.textView_StudentNumber.text = dataInfo.admin.classNumber
 
         }
@@ -112,7 +105,7 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
 
                     if(response.body()?.success!!){
                         Toast.makeText(dialogContext, "수락 완료" , Toast.LENGTH_SHORT).show()
-
+                        AllowRentRequest_ViewModel.update()
                     }else {
                         Toast.makeText(dialogContext, response.message() , Toast.LENGTH_SHORT).show()
                     }
@@ -134,6 +127,7 @@ class AllowRentRequest_RecyclerViewAdapter(val context: Context, var dataList: A
                     Log.d("TestLog_AllowRequestReAdap", response.body()?.msg!!)
                     if(response.body()?.success!!){
                         Toast.makeText(dialogContext, "거절 완료" , Toast.LENGTH_SHORT).show()
+                        AllowRentRequest_ViewModel.update()
                     }else {
                         Toast.makeText(dialogContext, response.message() , Toast.LENGTH_SHORT).show()
                     }
