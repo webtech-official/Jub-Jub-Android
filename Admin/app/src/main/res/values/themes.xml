@@ -78,16 +78,15 @@
     </style>
 
     <style name="MyButton">
-
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/notosans</item>
         <item name="android:gravity">center</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:backgroundTint">@color/white</item>
     </style>
-
 
 
     <style name="MyLinearLine">
@@ -101,6 +100,7 @@
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:padding">4dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:src">@drawable/ic_arrow_back</item>
     </style>
 
@@ -108,6 +108,7 @@
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:padding">7dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:src">@drawable/ic_vector</item>
     </style>
 
@@ -115,6 +116,7 @@
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:padding">4dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:src">@drawable/ic_person</item>
     </style>
 
@@ -253,6 +255,11 @@
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/notosans</item>
+    </style>
+
+    <style name="selectableItemBackground_Black" parent="">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 
 
