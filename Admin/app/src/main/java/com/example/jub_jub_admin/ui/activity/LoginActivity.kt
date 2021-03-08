@@ -17,7 +17,7 @@ import com.example.jub_jub_admin.entity.dataclass.body.Login
 import com.example.jub_jub_admin.entity.dataclass.response.LoginResponse
 import com.example.jub_jub_admin.entity.singleton.LaptopSpecManager
 import com.example.jub_jub_admin.entity.singleton.TokenManager
-import com.example.jub_jub_admin.ui.manageEq.MainActivity
+import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipment_Activity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -78,36 +78,28 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>)
             {
                 progress_bar.visibility = View.GONE
-                if(response.isSuccessful){
-                    if(response.body()?.success == true){
-                        Log.d("TestLog", "로그인 성공!")
-                        Log.d("TestLog1", "code = ${response.body()?.code}" +
-                                "" +
-                                "data = ${response.body()?.data?.accessToken} msg = ${response.body()?.msg} success = ${response.body()?.success} ")
+                if(response.isSuccessful && response.body()!!.success){
 
-                        TokenManager.setToken("${response.body()?.data?.accessToken}")
-                        Log.d("TestLog_Login", TokenManager.getToken())
+                    TokenManager.setToken("${response.body()?.data?.accessToken}")
 
-                        SharedPref(applicationContext).saveAccount(loginData.email, loginData.password)
-                        //앱 시작
+                    SharedPref(applicationContext).saveAccount(loginData.email, loginData.password)
+                    //앱 시작
 
-                        //Splash 역할
-                        LaptopSpecManager.getLaptopSpec()
+                    //Splash 역할
+                    LaptopSpecManager.getLaptopSpec()
 
-                        Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
-                        finish()
-                    } else{
-                        Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
-                        Log.d("TestLog_Login", "${response.body()?.msg}")
-                    }
+                    Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(applicationContext, ManageEquipment_Activity::class.java))
+                    finish()
+
+                } else{
+                    Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 progress_bar.visibility = View.GONE
                 Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
-                Log.d("TestLog", "onFailure ${t.message.toString()}")
             }
         })
 
