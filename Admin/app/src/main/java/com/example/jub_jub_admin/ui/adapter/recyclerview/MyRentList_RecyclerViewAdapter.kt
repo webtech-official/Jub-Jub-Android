@@ -9,7 +9,7 @@ import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.StudentRentStatus
 import com.example.jub_jub_admin.ui.util.MyUtil
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
+import kotlinx.android.synthetic.main.layout_equipment_item.view.*
 
 class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<StudentRentStatus>):RecyclerView.Adapter<MyRentList_RecyclerViewAdapter.ViewHolder>() {
 
@@ -19,7 +19,7 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<StudentRentStatus>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipmentlist_item, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipment_item, parent, false)
         return ViewHolder(v)
     }
 

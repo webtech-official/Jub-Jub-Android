@@ -10,7 +10,7 @@ import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 import com.example.jub_jub_admin.ui.activity.ModifyEquipmentActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
+import kotlinx.android.synthetic.main.layout_equipment_item.view.*
 import java.util.*
 
 
@@ -21,7 +21,7 @@ class ManageEquipment_RecyclerViewAdpater(var dataList: ArrayList<Equipment>): R
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipmentlist_item, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipment_item, parent, false)
         return ViewHolder(v)
     }
 

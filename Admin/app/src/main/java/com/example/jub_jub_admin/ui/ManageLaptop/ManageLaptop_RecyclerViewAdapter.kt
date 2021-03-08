@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
 import com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptop_Activity
-import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
+import kotlinx.android.synthetic.main.layout_equipment_item.view.*
 import java.util.ArrayList
 
 class ManageLaptop_RecyclerViewAdapter(var dataList: ArrayList<LaptopStatus>): RecyclerView.Adapter<ManageLaptop_RecyclerViewAdapter.ViewHolder>() {
@@ -23,7 +23,7 @@ class ManageLaptop_RecyclerViewAdapter(var dataList: ArrayList<LaptopStatus>): R
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipmentlist_item, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_equipment_item, parent, false)
         return ViewHolder(v)
     }
 
