@@ -25,6 +25,7 @@ class ManageLaptopList_PageView(var context: Context, var view: View, var viewMo
     fun syncPage(){
         //Log.d("TestLog", "ISList.size = ${ItemStatusListManager.getShowList().size}")
         setPageView.syncPage(viewModel.getShowList().size)
+        setPageView.syncData(viewModel.getShowList() as ArrayList<ArrayList<Any>>)
     }
 
 
