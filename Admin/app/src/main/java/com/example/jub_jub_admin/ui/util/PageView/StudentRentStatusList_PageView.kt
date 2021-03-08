@@ -24,6 +24,7 @@ class StudentRentStatusList_PageView(var context: Context, var view: View, var d
 
     fun syncPage(){
         setPageView.syncPage(StudentRentStatusListManager.getShowList().size)
+        //setPageView.syncData()
     }
 
 }
