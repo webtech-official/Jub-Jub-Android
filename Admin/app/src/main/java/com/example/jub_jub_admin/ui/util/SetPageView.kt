@@ -6,9 +6,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.example.jub_jub_admin.R
+import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipmentViewModel
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetPageView(val view: View, private val viewPager: ViewPager, private val dataList: ArrayList<ArrayList<Any>>) {
+class SetPageView(val view: View, private val viewPager: ViewPager, private var dataList: ArrayList<ArrayList<Any>>) {
 
     private val NEXT_PAGE = +1
     private val PREV_PAGE = -1
@@ -18,7 +19,7 @@ class SetPageView(val view: View, private val viewPager: ViewPager, private val 
 
 
     init {
-
+        Log.d("TestLog_SPV", "새로고침! ")
         setTextViewArrayList(view)
         viewPager.adapter?.notifyDataSetChanged()
 
@@ -29,7 +30,7 @@ class SetPageView(val view: View, private val viewPager: ViewPager, private val 
             //Page가 바뀌면 실행되는 함수
             override fun onPageSelected(arg0: Int) {
                 changePageByViewPagerSwipe(arg0)
-                Log.d("TestLog", "dataList.size = ${dataList.size}")
+                Log.d("TestLog_SPV", "dataList.size = ${dataList.size}")
             }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
@@ -142,4 +143,9 @@ class SetPageView(val view: View, private val viewPager: ViewPager, private val 
         changePageByButton(viewPager.currentItem)
         checkFragmentBlankPageNum(size)
     }
+
+    fun syncData(dL: ArrayList<ArrayList<Any>>){
+        dataList = dL
+    }
+
 }
