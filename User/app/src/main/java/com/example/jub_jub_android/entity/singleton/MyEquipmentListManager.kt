@@ -15,6 +15,7 @@ object MyEquipmentListManager {
 
     fun setDataList(context: Context, dataList: ArrayList<MyEquipmentDetailInfo>){
         myEquipmentDB = MyEquipmentDB.getInstance(context)!!
+
         val thread = Thread(Runnable {
             myEquipmentDB.myEquipmentDAO().clear()
             for(i in 0 until dataList.size){
@@ -25,7 +26,7 @@ object MyEquipmentListManager {
                     MyEquipment(
                         data.name,
                         data.content,
-                        data.count,
+                        dataList[i].amount,
                         data.img_equipment,
                         getStatus(dataList[i])))
                 //Log.d("TestLog_MyEqManager", "$i = ${MyUtil().convertFileToBase64(data.img_equipment)!!}")
@@ -44,21 +45,16 @@ object MyEquipmentListManager {
     }
 
     private fun getStatus(data: MyEquipmentDetailInfo): String {
-        return if(data.isReturn!!){
-            "반납"
-        }
-        else{
-            when(data.equipmentEnum){
+        return when(data.equipmentEnum){
                 "ROLE_Waiting" -> "대기"
-                "ROLE_Accept" -> "대여"
+                "ROLE_Accept" -> "승인"
                 "ROLE_Reject" -> "거절"
+                "ROLE_Rental" -> "대여"
+                "ROLE_Return" -> "반납"
                 //대여, 반납, 연체 추가
                 else -> "?"
             }
         }
-
-
-    }
 
     fun processShowList(key: String){
         var dataList = ArrayList<MyEquipment>()

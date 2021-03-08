@@ -83,9 +83,9 @@ class MyRentListActivity : AppCompatActivity() {
             when(textView_ShowMode_MyRentalListActivity.text.toString()){
                 "전체" -> setShowMode("대기")
                 "대기" -> setShowMode("대여")
-                "대여" -> setShowMode("반납")
-                "반납" -> setShowMode("연체")
-                "연체" -> setShowMode("거절")
+                "대여" -> setShowMode("승인")
+                "승인" -> setShowMode("반납")
+                "반납" -> setShowMode("거절")
                 "거절" -> setShowMode("전체")
             }
 
