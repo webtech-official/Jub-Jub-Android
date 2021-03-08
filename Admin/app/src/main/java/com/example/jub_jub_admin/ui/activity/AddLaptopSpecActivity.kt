@@ -13,6 +13,7 @@ import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.LaptopStatus
 import com.example.jub_jub_admin.entity.dataclass.body.AddLaptopSpec
 import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
+import com.example.jub_jub_admin.entity.singleton.LaptopSpecManager
 import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.util.MyUtil
 import kotlinx.android.synthetic.main.activity_add_laptop_spec.*
@@ -49,6 +50,7 @@ class AddLaptopSpecActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     if(response.body()?.success == true){
                         Toast.makeText(applicationContext, "노트북 사양 등록 성공!", Toast.LENGTH_SHORT).show()
+                        LaptopSpecManager.getLaptopSpec()
                         finish()
                     }else{
                         Toast.makeText(applicationContext, response.body()?.msg, Toast.LENGTH_SHORT).show()
