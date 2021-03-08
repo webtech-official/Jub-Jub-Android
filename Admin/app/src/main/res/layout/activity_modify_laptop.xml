@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.ModifyLaptop.ModifyLaptopActivity">
+    tools:context=".ui.ModifyLaptop.ModifyLaptop_Activity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,9 +96,13 @@
             <TextView
                 style="@style/ModifyText"
                 android:text="노트북 스펙" />
+
             <Spinner
                 android:id="@+id/spinner_LaptopSpec_ModifyLaptopActivity"
-                style="@style/MySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/edittext_customedge"
+                android:padding="2dp"
                 />
 
             <TextView
