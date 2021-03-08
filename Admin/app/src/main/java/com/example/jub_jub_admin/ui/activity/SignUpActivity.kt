@@ -39,26 +39,23 @@ class SignUpActivity : AppCompatActivity() {
         val response: Call<MyResponse> = NetRetrofit.getServiceApi().signUp(signUpData)
 
         response.enqueue(object : Callback<MyResponse> {
-
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 progress_bar.visibility = View.GONE
                 if (response.body()?.success!!) {
                     Toast.makeText(applicationContext, "계정 생성 완료! 이메일을 확인해주세요!", Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Log.d("TestLog", "${response.body()?.msg}")
                     Toast.makeText(applicationContext, response.body()?.msg, Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                Toast.makeText(applicationContext, "서버 연결 실패", Toast.LENGTH_SHORT).show()
-                Log.d("TestLog", "onFailure! ${t.message}")
+                Toast.makeText(applicationContext, t.message!!, Toast.LENGTH_SHORT).show()
+
                 progress_bar.visibility = View.GONE
             }
         })
     }
-
 
     private fun checkEditText(): Boolean{
 
@@ -75,6 +72,5 @@ class SignUpActivity : AppCompatActivity() {
         }
 
     }
-
 
 }
