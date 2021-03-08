@@ -11,13 +11,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toBitmap
-import androidx.core.net.toUri
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
 import com.example.jub_jub_admin.entity.singleton.TokenManager
-import com.example.jub_jub_admin.ui.manageEq.ManageEquipmentViewModel
+import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipmentViewModel
 import com.example.jub_jub_admin.ui.util.MyUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_modify_item.*
@@ -29,7 +28,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
-import java.net.URI
 
 
 class ModifyEquipmentActivity : AppCompatActivity(){
