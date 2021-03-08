@@ -15,4 +15,8 @@ object TokenManager {
         token = tk
     }
 
+    fun removeToken(){
+        token = ""
+    }
+
 }
