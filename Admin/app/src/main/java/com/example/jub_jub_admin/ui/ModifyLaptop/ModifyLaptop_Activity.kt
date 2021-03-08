@@ -20,13 +20,15 @@ import com.example.jub_jub_admin.entity.dataclass.response.GETLaptopSpecResponse
 import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
 import com.example.jub_jub_admin.entity.singleton.LaptopSpecManager
 import com.example.jub_jub_admin.entity.singleton.TokenManager
-import com.example.jub_jub_admin.ui.manageEq.ManageEquipmentViewModel
+import com.example.jub_jub_admin.ui.ManageLaptop.ManageLaptop_ViewModel
+import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipmentViewModel
 import kotlinx.android.synthetic.main.activity_modify_laptop.*
+import kotlinx.android.synthetic.main.layout_spinner_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ModifyLaptopActivity : AppCompatActivity() {
+class ModifyLaptop_Activity : AppCompatActivity() {
     var isModify = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,19 +68,17 @@ class ModifyLaptopActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     if(response.body()!!.success){
                         Toast.makeText(applicationContext, "노트북 등록 성공", Toast.LENGTH_SHORT).show()
-                        ManageEquipmentViewModel.update()
+                        ManageLaptop_ViewModel.update()
                         finish()
 
                     }else{
                         Toast.makeText(applicationContext, "실패했습니다. ${response.body()!!.msg}", Toast.LENGTH_SHORT).show()
-                        Log.d("TestLog_ModifyLaptopActivity", "실패 ${response.body()!!.msg}")
                     }
                 }
             }
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
                 Toast.makeText(applicationContext, "서버 통신에 실패했습니다. ${t.message}", Toast.LENGTH_SHORT).show()
-                Log.d("TestLog_ModifyLaptopActivity", "실패 ${t.message}")
             }
 
         })
@@ -94,7 +94,7 @@ class ModifyLaptopActivity : AppCompatActivity() {
     }
 
     private fun setSpinner(items: ArrayList<String>){
-        val myAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+        val myAdapter = ArrayAdapter(this, R.layout.layout_spinner_item, R.id.textView_Spinner_Item, items)
 
         spinner_LaptopSpec_ModifyLaptopActivity.adapter = myAdapter
 
