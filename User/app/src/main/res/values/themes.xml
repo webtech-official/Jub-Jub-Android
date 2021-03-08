@@ -13,6 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
 
+        <!-- Text 눌렀을 때 색 -->
+        <item name="colorControlHighlight">@color/white</item>
+
         <!-- 타이틀 바 제거 -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -73,6 +76,7 @@
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:padding">4dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:src">@drawable/ic_arrow_back</item>
     </style>
 
@@ -80,6 +84,7 @@
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:padding">7dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:src">@drawable/ic_vector</item>
     </style>
 
@@ -87,6 +92,7 @@
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:padding">4dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:src">@drawable/ic_person</item>
     </style>
 
@@ -94,6 +100,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:textSize">20dp</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:gravity">center_vertical</item>
