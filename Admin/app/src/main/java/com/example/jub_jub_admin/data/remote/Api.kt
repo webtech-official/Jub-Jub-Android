@@ -14,9 +14,6 @@ import retrofit2.http.*
 
 interface Api {
 
-    @GET("coffe")
-    fun getTest(): Call<ResponseTest>
-
     @POST("signin")
     fun login(@Body login: Login): Call<LoginResponse>
 
