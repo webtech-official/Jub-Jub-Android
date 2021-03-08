@@ -19,21 +19,19 @@
         <activity android:name=".ui.activity.ManageStudentActivity" />
         <activity android:name=".ui.AllowRentRequest.AllowRentRequest_Activity" />
         <activity
-            android:name="com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptop_Activity"
-            android:windowSoftInputMode="adjustNothing" />
+            android:name="com.example.jub_jub_admin.ui.ModifyLaptop.ModifyLaptop_Activity"/>
         <activity
             android:name=".ui.ManageLaptop.ManageLaptop_Activity"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".ui.activity.ModifyEquipmentActivity"
-            android:windowSoftInputMode="adjustNothing" />
+            android:name=".ui.activity.ModifyEquipmentActivity"/>
         <activity android:name=".ui.activity.StudentRentStatusListActivity" />
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
         <activity
             android:name=".ui.manageEquipment.ManageEquipment_Activity"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
