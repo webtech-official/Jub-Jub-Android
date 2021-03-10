@@ -8,7 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.jub_jub_android.R
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class SetPageView(val view: View, private val viewPager: ViewPager, private val dataList: ArrayList<ArrayList<Any>>) {
+class SetPageView(val view: View, private val viewPager: ViewPager, private var dataList: ArrayList<ArrayList<Any>>) {
 
     private val NEXT_PAGE = +1
     private val PREV_PAGE = -1
@@ -142,4 +142,8 @@ class SetPageView(val view: View, private val viewPager: ViewPager, private val 
         changePageByButton(viewPager.currentItem)
         checkFragmentBlankPageNum(size)
     }
+    fun syncData(dL: ArrayList<ArrayList<Any>>){
+        dataList = dL
+    }
+
 }
