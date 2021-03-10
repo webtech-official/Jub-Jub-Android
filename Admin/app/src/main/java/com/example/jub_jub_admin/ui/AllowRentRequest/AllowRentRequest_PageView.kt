@@ -5,7 +5,7 @@ import android.view.View
 import com.example.jub_jub_admin.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class AllowRentRequestList_PageView(var context: Context, var view: View, var viewModel: AllowRentRequest_ViewModel) {
+class AllowRentRequest_PageView(var context: Context, var view: View, var viewModel: AllowRentRequest_ViewModel) {
 
     private lateinit var setPageView : SetPageView
 

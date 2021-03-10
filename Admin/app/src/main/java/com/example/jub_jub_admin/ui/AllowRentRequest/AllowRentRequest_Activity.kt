@@ -4,20 +4,17 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Process
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.jub_jub_admin.R
 import com.example.jub_jub_admin.ui.activity.MyPageActivity
-import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipmentViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_manage_rent_request.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 
 class AllowRentRequest_Activity : AppCompatActivity() {
 
     private lateinit var viewModel: AllowRentRequest_ViewModel
-    private lateinit var pageView: AllowRentRequestList_PageView
+    private lateinit var pageView: AllowRentRequest_PageView
 
     var backKeyPressedTime : Long = 0
 
@@ -35,7 +32,7 @@ class AllowRentRequest_Activity : AppCompatActivity() {
         //ViewModel 객체 등록 -> pageView 객체 등록 -> viewModel.init() -> pageView.init() 순서대로 해야 함
         viewModel = ViewModelProvider(this).get(AllowRentRequest_ViewModel::class.java)
 
-        pageView = AllowRentRequestList_PageView(this, pageView_AllowRentRequestActivity, viewModel)
+        pageView = AllowRentRequest_PageView(this, pageView_AllowRentRequestActivity, viewModel)
 
         viewModel.init(applicationContext)
 
