@@ -16,7 +16,7 @@ import com.example.jub_jub_admin.data.remote.NetRetrofit
 import com.example.jub_jub_admin.entity.dataclass.Equipment
 import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
 import com.example.jub_jub_admin.entity.singleton.TokenManager
-import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipmentViewModel
+import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipment_ViewModel
 import com.example.jub_jub_admin.ui.util.MyUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_modify_item.*
@@ -91,7 +91,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                     if (response.isSuccessful) {
                         if (response.body()?.success == true) {
                             Toast.makeText(applicationContext, "기자재 등록 완료", Toast.LENGTH_SHORT).show()
-                            ManageEquipmentViewModel.update()
+                            ManageEquipment_ViewModel.update()
                             finish()
                         } else {
                             Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
@@ -141,7 +141,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
                 if (response.isSuccessful) {
                     if (response.body()?.success == true) {
                         Toast.makeText(applicationContext, "기자재 수정 완료", Toast.LENGTH_SHORT).show()
-                        ManageEquipmentViewModel.update()
+                        ManageEquipment_ViewModel.update()
                         finish()
                     } else {
                         Toast.makeText(applicationContext, "기자재 등록 실패! \n ${response.body()?.msg}", Toast.LENGTH_SHORT).show()
