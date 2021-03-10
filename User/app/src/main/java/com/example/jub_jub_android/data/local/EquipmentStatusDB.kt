@@ -8,18 +8,18 @@ import com.example.jub_jub_android.entity.dataclass.Equipment
 
 
 @Database(entities = [Equipment::class], version = 2, exportSchema = false)
-abstract class ItemStatusDB: RoomDatabase() {
+abstract class EquipmentStatusDB: RoomDatabase() {
 
-    abstract fun itemStatusDAO(): ItemStatusDAO
+    abstract fun equipmentStatusDAO(): EquipmentStatusDAO
 
     companion object {
-        private var INSTANCE: ItemStatusDB? = null
+        private var INSTANCE: EquipmentStatusDB? = null
 
-        fun getInstance(context: Context): ItemStatusDB? {
+        fun getInstance(context: Context): EquipmentStatusDB? {
             if (INSTANCE == null) {
-                synchronized(ItemStatusDB::class) {
+                synchronized(EquipmentStatusDB::class) {
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                            ItemStatusDB::class.java, "itemStatus.db")
+                            EquipmentStatusDB::class.java, "equipmentStatus.db")
                             .fallbackToDestructiveMigration()
                             .build()
                 }
