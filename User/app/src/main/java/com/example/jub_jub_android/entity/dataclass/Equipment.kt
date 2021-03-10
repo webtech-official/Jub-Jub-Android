@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-@Entity(tableName = "itemStatus")
+@Entity(tableName = "equipmentStatus")
 data class Equipment(
         @PrimaryKey(autoGenerate = true)
         @SerializedName("equ_Idx") var id: Int,
