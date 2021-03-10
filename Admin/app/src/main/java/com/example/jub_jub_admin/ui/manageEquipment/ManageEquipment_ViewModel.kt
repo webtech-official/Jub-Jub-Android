@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ManageEquipmentViewModel: ViewModel() {
+class ManageEquipment_ViewModel: ViewModel() {
 
     private lateinit var equipmentDB: EquipmentDB
 

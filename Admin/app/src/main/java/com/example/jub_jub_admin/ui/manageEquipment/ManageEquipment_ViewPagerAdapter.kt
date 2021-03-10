@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.jub_jub_admin.R
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
-class ManageEquipment_ViewPagerAdapter(val context: Context, private val viewModel: ManageEquipmentViewModel) : PagerAdapter() {
+class ManageEquipment_ViewPagerAdapter(val context: Context, private val viewModel: ManageEquipment_ViewModel) : PagerAdapter() {
 
     private lateinit var layoutInflater: LayoutInflater
 

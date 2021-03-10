@@ -18,7 +18,7 @@ import java.util.*
 
 class ManageEquipment_Activity : AppCompatActivity() {
 
-    private lateinit var viewModel: ManageEquipmentViewModel
+    private lateinit var viewModel: ManageEquipment_ViewModel
 
     private lateinit var pageView: ManageEquipment_PageView
 
@@ -31,11 +31,10 @@ class ManageEquipment_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(ManageEquipmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ManageEquipment_ViewModel::class.java)
+        viewModel.init(applicationContext)
 
         pageView = ManageEquipment_PageView(applicationContext, pageView_MainActivity, viewModel)
-
-        viewModel.init(applicationContext)
 
         pageView.initViewPager()
 
@@ -47,11 +46,11 @@ class ManageEquipment_Activity : AppCompatActivity() {
             refresh()
         }
 
-        ManageEquipmentViewModel.i.observe(this, {
+        ManageEquipment_ViewModel.i.observe(this, {
             viewModel.getEquipmentData(applicationContext)
         })
 
-        ManageEquipmentViewModel.list.observe(this, {
+        ManageEquipment_ViewModel.list.observe(this, {
             pageView.syncPage()
         })
 

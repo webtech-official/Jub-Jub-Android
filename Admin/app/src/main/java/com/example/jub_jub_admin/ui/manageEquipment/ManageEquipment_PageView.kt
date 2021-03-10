@@ -6,7 +6,7 @@ import android.view.View
 import com.example.jub_jub_admin.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class ManageEquipment_PageView(var context: Context, var view: View, var viewModel: ManageEquipmentViewModel){
+class ManageEquipment_PageView(var context: Context, var view: View, var viewModel: ManageEquipment_ViewModel){
 
     private lateinit var setPageView : SetPageView
 
@@ -15,6 +15,7 @@ class ManageEquipment_PageView(var context: Context, var view: View, var viewMod
         val viewPager = view.viewPager
 
         viewPager.adapter = ManageEquipment_ViewPagerAdapter(context,viewModel)
+
         Log.d("TestLog_MaEqPV", "dataList = ${viewModel.getShowList()}")
         setPageView = SetPageView(view, viewPager, viewModel.getShowList() as ArrayList<ArrayList<Any>>)
     }
