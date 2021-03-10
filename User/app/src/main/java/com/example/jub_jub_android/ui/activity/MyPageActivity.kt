@@ -8,6 +8,7 @@ import com.example.jub_jub_android.R
 import com.example.jub_jub_android.data.local.SharedPref
 import com.example.jub_jub_android.entity.singleton.TokenManager
 import com.example.jub_jub_android.ui.util.MyUtil
+import com.example.jub_jub_android.ui.view.myrentstatus.MyRentListActivity
 import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 

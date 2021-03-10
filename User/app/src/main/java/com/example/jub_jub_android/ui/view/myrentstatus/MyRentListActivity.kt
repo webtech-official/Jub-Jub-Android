@@ -1,17 +1,15 @@
-package com.example.jub_jub_android.ui.activity
+package com.example.jub_jub_android.ui.view.myrentstatus
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.MyEquipmentDB
 import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.response.MyEquipmentResponse
 import com.example.jub_jub_android.entity.singleton.MyEquipmentListManager
 import com.example.jub_jub_android.entity.singleton.MyEquipmentListManager.setDataList
 import com.example.jub_jub_android.entity.singleton.TokenManager
-import com.example.jub_jub_android.ui.util.MyRentList_PageView
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import retrofit2.Call

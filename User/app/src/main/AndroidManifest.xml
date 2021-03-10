@@ -13,7 +13,7 @@
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.view.rent_request.RentActivity" />
-        <activity android:name=".ui.activity.MyRentListActivity"
+        <activity android:name=".ui.view.myrentstatus.MyRentListActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
