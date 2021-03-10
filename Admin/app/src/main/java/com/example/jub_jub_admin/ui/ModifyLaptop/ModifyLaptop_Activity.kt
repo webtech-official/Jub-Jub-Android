@@ -21,9 +21,7 @@ import com.example.jub_jub_admin.entity.dataclass.response.MyResponse
 import com.example.jub_jub_admin.entity.singleton.LaptopSpecManager
 import com.example.jub_jub_admin.entity.singleton.TokenManager
 import com.example.jub_jub_admin.ui.ManageLaptop.ManageLaptop_ViewModel
-import com.example.jub_jub_admin.ui.manageEquipment.ManageEquipmentViewModel
 import kotlinx.android.synthetic.main.activity_modify_laptop.*
-import kotlinx.android.synthetic.main.layout_spinner_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
