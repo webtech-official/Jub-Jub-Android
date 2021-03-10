@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.entity.dataclass.Equipment
-import com.example.jub_jub_android.ui.activity.RentActivity
+import com.example.jub_jub_android.ui.view.rent_request.RentActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.layout_equipmentlist_item.view.*
 import java.util.ArrayList
