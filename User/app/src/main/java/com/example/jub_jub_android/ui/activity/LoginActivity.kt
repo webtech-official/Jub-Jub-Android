@@ -12,7 +12,7 @@ import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.body.Login
 import com.example.jub_jub_android.entity.dataclass.response.LoginResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
-import com.example.jub_jub_android.ui.EquipmentStatus.MainActivity
+import com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatusActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
                         //앱 시작
 
                         Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
+                        startActivity(Intent(applicationContext, EquipmentStatusActivity::class.java))
                         finish()
                     } else{
                         Toast.makeText(applicationContext, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
