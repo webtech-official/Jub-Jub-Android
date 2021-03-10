@@ -17,7 +17,7 @@ import java.util.*
 
 class ManageLaptop_Activity : AppCompatActivity() {
 
-    private lateinit var pageView: ManageLaptopList_PageView
+    private lateinit var pageView: ManageLaptop_PageView
     private lateinit var viewModel: ManageLaptop_ViewModel
 
     var backKeyPressedTime : Long = 0
@@ -33,7 +33,7 @@ class ManageLaptop_Activity : AppCompatActivity() {
 
         viewModel.init(applicationContext)
 
-        pageView = ManageLaptopList_PageView(applicationContext, pageView_ManageLaptopActivity, viewModel)
+        pageView = ManageLaptop_PageView(applicationContext, pageView_ManageLaptopActivity, viewModel)
 
         pageView.initViewPager()
 

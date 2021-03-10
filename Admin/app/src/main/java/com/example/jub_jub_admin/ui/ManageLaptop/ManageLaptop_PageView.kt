@@ -6,7 +6,7 @@ import android.view.View
 import com.example.jub_jub_admin.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class ManageLaptopList_PageView(var context: Context, var view: View, var viewModel: ManageLaptop_ViewModel){
+class ManageLaptop_PageView(var context: Context, var view: View, var viewModel: ManageLaptop_ViewModel){
 
     private lateinit var setPageView : SetPageView
 
