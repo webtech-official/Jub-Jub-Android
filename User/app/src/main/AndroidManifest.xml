@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.RentActivity" />
+        <activity android:name=".ui.view.rent_request.RentActivity" />
         <activity android:name=".ui.activity.MyRentListActivity"
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".ui.activity.MyPageActivity" />
         <activity android:name=".ui.activity.SignUpActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.EquipmentStatus.MainActivity"
+        <activity android:name="com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatusActivity"
             android:windowSoftInputMode="adjustNothing"/>
         <activity
             android:name=".ui.activity.SplashActivity"
