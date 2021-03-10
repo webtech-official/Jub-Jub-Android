@@ -40,7 +40,6 @@ class EquipmentStatusActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        searchText.value = "android"
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -85,15 +84,18 @@ class EquipmentStatusActivity : AppCompatActivity() {
 
     fun setTitleBarSearchMode() {
         isViewMode = false
+        binding.invalidateAll()
     }
 
     fun setTitleBarViewMode() {
         isViewMode = true
+        binding.invalidateAll()
         searchText.value = ""
     }
 
     fun getIsViewMode(): Boolean {
         return isViewMode
+        binding.invalidateAll()
     }
 
     //뒤로가기 버튼 눌렀을 때
