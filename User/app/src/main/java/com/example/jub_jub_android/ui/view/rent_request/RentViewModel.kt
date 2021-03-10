@@ -3,7 +3,6 @@ package com.example.jub_jub_android.ui.view.rent_request
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.databinding.ActivityRentBinding
@@ -11,7 +10,6 @@ import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
 import com.example.jub_jub_android.entity.dataclass.response.MyResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
-import kotlinx.android.synthetic.main.activity_rent.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
