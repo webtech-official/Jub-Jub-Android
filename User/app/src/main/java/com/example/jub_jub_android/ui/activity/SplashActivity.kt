@@ -3,15 +3,8 @@ package com.example.jub_jub_android.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.data.local.SharedPref
-import com.example.jub_jub_android.data.remote.NetRetrofit
-import com.example.jub_jub_android.entity.singleton.MyEquipmentListManager
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.Serializable
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
