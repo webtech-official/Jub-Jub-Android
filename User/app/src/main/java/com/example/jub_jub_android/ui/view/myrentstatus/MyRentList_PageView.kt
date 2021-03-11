@@ -2,13 +2,11 @@ package com.example.jub_jub_android.ui.view.myrentstatus
 
 import android.content.Context
 import android.view.View
-import com.example.jub_jub_android.entity.dataclass.MyEquipment
-import com.example.jub_jub_android.entity.singleton.MyEquipmentListManager
 import com.example.jub_jub_android.ui.adapter.viewpager.MyRentList_ViewPagerAdapter
 import com.example.jub_jub_android.ui.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
-class MyRentList_PageView(var context: Context, var view: View, var dataList: ArrayList<ArrayList<MyEquipment>>){
+class MyRentList_PageView(var context: Context, var view: View, var viewModel: MyRentList_ViewModel){
 
     private lateinit var setPageView : SetPageView
 
@@ -16,14 +14,15 @@ class MyRentList_PageView(var context: Context, var view: View, var dataList: Ar
 
         val viewPager = view.viewPager
 
-        viewPager.adapter = MyRentList_ViewPagerAdapter (context)
+        viewPager.adapter = MyRentList_ViewPagerAdapter (context, viewModel)
 
-        setPageView = SetPageView(view, viewPager, dataList as ArrayList<ArrayList<Any>>)
+        setPageView = SetPageView(view, viewPager, viewModel.getDataList() as ArrayList<ArrayList<Any>>)
 
     }
 
     fun syncPage(){
-        setPageView.syncPage(MyEquipmentListManager.getShowList().size)
+        setPageView.syncPage(viewModel.getDataList().size)
+        setPageView.syncData(viewModel.getDataList() as ArrayList<ArrayList<Any>>)
     }
 
 }

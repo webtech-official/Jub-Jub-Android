@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.entity.singleton.MyEquipmentListManager
 import com.example.jub_jub_android.ui.adapter.recyclerview.MyRentList_RecyclerViewAdapter
+import com.example.jub_jub_android.ui.view.myrentstatus.MyRentList_ViewModel
 import kotlinx.android.synthetic.main.fragment_item_status_list.view.*
 
-class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
+class MyRentList_ViewPagerAdapter(val context: Context, val viewModel: MyRentList_ViewModel) : PagerAdapter() {
 
 
-    private var context = context
     private lateinit var layoutInflater: LayoutInflater
 
     override fun getItemPosition(`object`: Any): Int {
@@ -25,7 +24,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return MyEquipmentListManager.getShowList().size
+        return viewModel.getDataList().size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -38,7 +37,7 @@ class MyRentList_ViewPagerAdapter(context: Context) : PagerAdapter() {
         val view: View = layoutInflater.inflate(R.layout.fragment_item_status_list, null)
 
         //나의 대여 목록.
-        var adapter = MyRentList_RecyclerViewAdapter(MyEquipmentListManager.getShowList()[position])
+        var adapter = MyRentList_RecyclerViewAdapter(viewModel.getDataList()[position])
         view.recyclerView_ItemStatusList.adapter = adapter
         adapter.notifyDataSetChanged()
 
