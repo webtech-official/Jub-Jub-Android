@@ -33,5 +33,9 @@ class EquipmentStatus_PageView(var context: Context, var view: View, var viewMod
         setPageView.syncData(viewModel.getDataList() as ArrayList<ArrayList<Any>>)
     }
 
+
+
+
+
 }
 
