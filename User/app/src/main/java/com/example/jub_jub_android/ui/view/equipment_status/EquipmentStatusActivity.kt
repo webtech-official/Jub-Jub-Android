@@ -22,6 +22,10 @@ class EquipmentStatusActivity : AppCompatActivity() {
 
     private lateinit var pageView: EquipmentStatus_PageView
 
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var viewModel: EquipmentStatus_ViewModel
+
     //마지막으로 뒤로가기 버튼 누른 시간
     private var backKeyPressedTime : Long = 0
 
@@ -29,14 +33,11 @@ class EquipmentStatusActivity : AppCompatActivity() {
 
     var searchText = MutableLiveData<String>()
 
-    private lateinit var binding: ActivityMainBinding
-
-    private lateinit var viewModel: EquipmentStatus_ViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         init()
+
     }
 
     private fun init() {
@@ -54,10 +55,6 @@ class EquipmentStatusActivity : AppCompatActivity() {
         refreshLayout.setOnRefreshListener {
             refresh()
         }
-
-        EquipmentStatus_ViewModel.i.observe(this, {
-            viewModel.getEquipmentData(applicationContext)
-        })
 
         EquipmentStatus_ViewModel.list.observe(this, {
             pageView.syncPage()
