@@ -20,24 +20,22 @@ class EquipmentStatus_ViewModel: ViewModel() {
 
 
     companion object{
-        var i :MutableLiveData<Int> =MutableLiveData()
-
         var list = MutableLiveData<ArrayList<ArrayList<Equipment>>>()
 
-        fun update() {
-            i.value = i.value?.plus(1)
-            Log.d("TestLog_MaEqVM", "update!")
+        private var i = MutableLiveData<Int>()
+
+        fun update(){
+            i.value = i.value!! + 1
         }
     }
 
-    init {
-        i.value = 0
-    }
 
     fun init(context: Context){
         equipmentStatusDB = EquipmentStatusDB.getInstance(context)!!
 
         list.value = ArrayList<ArrayList<Equipment>>()
+        i.value = 0
+
         getEquipmentData(context)
 
         Log.d("TestLog_MainViewModel", "${list.value}")
@@ -54,7 +52,6 @@ class EquipmentStatus_ViewModel: ViewModel() {
             override fun onResponse(call: Call<EquipmentResponse>, response: Response<EquipmentResponse>) {
                 if(response.body()!!.success){
                     setDataList(response.body()?.list!!)
-                    Log.d("TestLog_MainViewModel", "getDataFromServer 성공 list.size = ${response.body()?.list?.size}")
                 } else{
                     Toast.makeText(context, response.body()?.msg, Toast.LENGTH_SHORT).show()
                 }
@@ -70,13 +67,11 @@ class EquipmentStatus_ViewModel: ViewModel() {
 
     //region setDataList
     fun setDataList(dataList: ArrayList<Equipment>){
-        Log.d("TestLog_MVVM_setDL", "list.size = ${dataList.size}")
         val thread = Thread(Runnable {
             equipmentStatusDB.equipmentStatusDAO().clear()
 
             for(i in 0 until dataList.size){
                 equipmentStatusDB.equipmentStatusDAO().insert(dataList[i])
-                Log.d("TestLog_MVVM_setDL", "insert")
             }
         })
 
