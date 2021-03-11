@@ -10,6 +10,7 @@ import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
 import com.example.jub_jub_android.entity.dataclass.response.MyResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
+import com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatus_ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,9 +33,10 @@ class RentViewModel: ViewModel() {
         response.enqueue(object : Callback<MyResponse> {
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
 
-                if(response.isSuccessful && response.body()!!.success)
+                if(response.isSuccessful && response.body()!!.success){
                     Toast.makeText(context, "대여 신청 완료!", Toast.LENGTH_SHORT).show()
-                else{
+                    EquipmentStatus_ViewModel.update()
+                } else{
                     Toast.makeText(context, "${response.body()?.msg}", Toast.LENGTH_SHORT).show()
                 }
             }
