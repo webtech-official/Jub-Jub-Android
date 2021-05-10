@@ -3,8 +3,6 @@ package com.example.jub_jub_android.ui.view.equipment_status
 import android.content.Intent
 import android.os.Bundle
 import android.os.Process
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -56,11 +54,11 @@ class EquipmentStatusActivity : AppCompatActivity() {
             refresh()
         }
 
-        EquipmentStatus_ViewModel.list.observe(this, {
+        EquipmentStatus_ViewModel.list.observe(this, androidx.lifecycle.Observer {
             pageView.syncPage()
         })
 
-        this.searchText.observe(this, {
+        this.searchText.observe(this, androidx.lifecycle.Observer{
             viewModel.search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
         })
 

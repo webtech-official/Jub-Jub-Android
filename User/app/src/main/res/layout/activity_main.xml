@@ -10,6 +10,7 @@
             type="com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatusActivity"/>
 
         <import type="android.view.View"/>
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
