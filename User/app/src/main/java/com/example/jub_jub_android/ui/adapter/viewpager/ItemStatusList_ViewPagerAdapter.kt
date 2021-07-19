@@ -14,7 +14,6 @@ class ItemStatusList_ViewPagerAdapter(var context: Context, private var viewMode
 
     private lateinit var layoutInflater: LayoutInflater
 
-
     override fun getItemPosition(`object`: Any): Int {
         return POSITION_NONE
     }

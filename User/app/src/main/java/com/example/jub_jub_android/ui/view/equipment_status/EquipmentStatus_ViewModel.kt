@@ -2,30 +2,35 @@ package com.example.jub_jub_android.ui.view.equipment_status
 
 import android.content.Context
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.jub_jub_android.base.BaseViewModel
 import com.example.jub_jub_android.data.local.EquipmentStatusDB
 import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EquipmentStatus_ViewModel: ViewModel() {
+class EquipmentStatus_ViewModel: BaseViewModel() {
 
     private lateinit var equipmentStatusDB: EquipmentStatusDB
 
+    lateinit var pageView: EquipmentStatus_PageView
+
+    var searchText = MutableLiveData<String>()
 
     companion object{
         var list = MutableLiveData<ArrayList<ArrayList<Equipment>>>()
-
         private var i = MutableLiveData<Int>()
 
         fun update(){
-            i.value = i.value!! + 1
+            i.postValue(0)
         }
     }
 
@@ -39,6 +44,10 @@ class EquipmentStatus_ViewModel: ViewModel() {
         getEquipmentData(context)
 
         Log.d("TestLog_MainViewModel", "${list.value}")
+    }
+
+    fun initPageView(context: Context, pV: View){
+        pageView = EquipmentStatus_PageView(context, pV, this)
     }
 
 

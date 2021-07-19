@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/black"
+    android:paddingHorizontal="25dp"
+    android:layout_weight="1"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

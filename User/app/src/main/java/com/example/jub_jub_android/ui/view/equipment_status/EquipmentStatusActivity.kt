@@ -4,32 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Process
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
 import com.example.jub_jub_android.R
+import com.example.jub_jub_android.base.BaseActivity
 import com.example.jub_jub_android.databinding.ActivityMainBinding
 import com.example.jub_jub_android.ui.activity.MyPageActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class EquipmentStatusActivity : AppCompatActivity() {
+class EquipmentStatusActivity : BaseActivity<ActivityMainBinding, EquipmentStatus_ViewModel>(R.layout.activity_main) {
 
-    private lateinit var pageView: EquipmentStatus_PageView
-
-    private lateinit var binding: ActivityMainBinding
-
-    private lateinit var viewModel: EquipmentStatus_ViewModel
+    override val viewModel: EquipmentStatus_ViewModel by viewModel()
 
     //마지막으로 뒤로가기 버튼 누른 시간
     private var backKeyPressedTime : Long = 0
 
     var isViewMode = true
-
-    var searchText = MutableLiveData<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,25 +33,21 @@ class EquipmentStatusActivity : AppCompatActivity() {
 
     private fun init() {
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
         binding.activity = this
-        binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this).get(EquipmentStatus_ViewModel::class.java)
         viewModel.init(applicationContext)
 
-        pageView = EquipmentStatus_PageView(this, pageView_MainActivity, viewModel)
+        viewModel.initPageView(this, pageView_MainActivity)
 
         refreshLayout.setOnRefreshListener {
             refresh()
         }
 
-        EquipmentStatus_ViewModel.list.observe(this, androidx.lifecycle.Observer {
-            pageView.syncPage()
+        EquipmentStatus_ViewModel.list.observe(this, {
+            viewModel.pageView.syncPage()
         })
 
-        this.searchText.observe(this, androidx.lifecycle.Observer{
+        viewModel.searchText.observe(this, {
             viewModel.search(it.toString().toLowerCase(Locale.getDefault()).replace(" ", ""))
         })
 
@@ -79,18 +68,15 @@ class EquipmentStatusActivity : AppCompatActivity() {
 
     fun setTitleBarSearchMode() {
         isViewMode = false
-        binding.invalidateAll()
     }
 
     fun setTitleBarViewMode() {
         isViewMode = true
-        binding.invalidateAll()
-        searchText.value = ""
+        viewModel.searchText.value = ""
     }
 
     fun getIsViewMode(): Boolean {
         return isViewMode
-        binding.invalidateAll()
     }
 
     //뒤로가기 버튼 눌렀을 때

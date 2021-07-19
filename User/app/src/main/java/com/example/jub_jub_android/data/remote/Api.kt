@@ -25,7 +25,6 @@ interface Api {
     @POST("equipmentallow/{name}")
     fun rentEquipment(@Header("Authorization") token: String,
                            @Body equipmentAllowSaveDto : EquipmentAllowDTO,
-                           @Path("name") name: String
-    ): Call<MyResponse>
+                           @Path("name") name: String): Call<MyResponse>
 }
 
