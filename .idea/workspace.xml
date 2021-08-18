@@ -2,8 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="381d21c7-523e-4a71-8ec8-c643c5056ea2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/modules/apiModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/modules/networkModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/modules/repositoryModule.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/extension/BindingAdapterExtensions.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/extension/Extensions.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/repository/AuthRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/login/LoginViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/signup/SignUpViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/util/NotNullMutableLiveData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/util/SingleLiveEvent.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/app/src/main/res/drawable/ic_splash_screen__1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/base/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/base/BaseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/local/EquipmentStatusDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/local/EquipmentStatusDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/local/EquipmentStatusDB.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/local/EquipmentStatusDB.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/local/MyEquipmentDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/local/MyEquipmentDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/local/MyEquipmentDB.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/local/MyEquipmentDB.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/local/SharedPref.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/local/SharedPref.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/remote/Api.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/network/Api.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/data/remote/NetRetrofit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/model/network/NetRetrofit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/app/MyApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/app/MyApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/modules/activityModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/di/modules/activityModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/activity/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/login/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/activity/MyPageActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/mypage/MyPageActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/activity/SignUpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/signup/SignUpActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/activity/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/splash/SplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/util/MyUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/util/MyUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/util/SetPageView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/util/SetPageView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/equipment_status/EquipmentStatusActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/equipment_status/EquipmentStatusActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/equipment_status/EquipmentStatus_PageView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/equipment_status/EquipmentStatus_PageView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/equipment_status/EquipmentStatus_ViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/equipment_status/EquipmentStatus_ViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/myrentstatus/MyRentListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/myrentstatus/MyRentListActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/myrentstatus/MyRentList_PageView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/myrentstatus/MyRentList_PageView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/myrentstatus/MyRentList_ViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/myrentstatus/MyRentList_ViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/rent_request/RentActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/rent_request/RentActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/rent_request/RentViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/java/com/example/jub_jub_android/ui/view/rent_request/RentViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_my_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_my_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/User/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,19 +169,9 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1259" y="83" key="#app" timestamp="1616117062439">
-      <screen x="-1920" y="2" width="1920" height="1040" />
+    <state x="740" y="295" key="FileChooserDialogImpl" timestamp="1628648032996">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1259" y="83" key="#app/0.0.1920.1040/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1616117062439" />
-    <state x="-1180" y="286" key="FileChooserDialogImpl" timestamp="1616117079754">
-      <screen x="-1920" y="2" width="1920" height="1040" />
-    </state>
-    <state x="-1180" y="286" key="FileChooserDialogImpl/0.0.1920.1040/-1920.2.1920.1040@-1920.2.1920.1040" timestamp="1616117079754" />
-    <state x="-1180" y="295" key="FileChooserDialogImpl/0.0.1920.1080/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1613262961340" />
-    <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080/-1920.0.1920.1080@0.0.1920.1080" timestamp="1611673049872" />
-    <state x="-1828" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1611674334682">
-      <screen x="-1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="-1828" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1080/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1611674334682" />
+    <state x="740" y="295" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1628648032996" />
   </component>
 </project>

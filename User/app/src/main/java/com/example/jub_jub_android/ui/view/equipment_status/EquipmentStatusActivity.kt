@@ -4,11 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Process
 import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.base.BaseActivity
 import com.example.jub_jub_android.databinding.ActivityMainBinding
-import com.example.jub_jub_android.ui.activity.MyPageActivity
+import com.example.jub_jub_android.ui.view.mypage.MyPageActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_pageview.*
 import java.util.*
@@ -18,9 +17,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class EquipmentStatusActivity : BaseActivity<ActivityMainBinding, EquipmentStatus_ViewModel>(R.layout.activity_main) {
 
     override val viewModel: EquipmentStatus_ViewModel by viewModel()
-
-    //마지막으로 뒤로가기 버튼 누른 시간
-    private var backKeyPressedTime : Long = 0
 
     var isViewMode = true
 

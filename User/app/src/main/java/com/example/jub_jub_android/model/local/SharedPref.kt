@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.data.local
+package com.example.jub_jub_android.model.local
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,11 +7,11 @@ import com.example.jub_jub_android.entity.dataclass.body.Login
 
 class SharedPref(val context: Context) {
 
-    fun saveAccount(id: String, password: String){
+    fun saveAccount(loginData: Login){
         Log.d("TestLog_SharedPref", "id= ")
         return getPref(context).edit().let {
-            it.putString("Id", id)
-            it.putString("Pw", password)
+            it.putString("Id", loginData.email)
+            it.putString("Pw", loginData.password)
             it.apply()
         }
     }
@@ -29,7 +29,7 @@ class SharedPref(val context: Context) {
     fun isExist(key: String): Boolean = getPref(context).contains(key)
 
     private fun getPref(context: Context): SharedPreferences =
-        context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+            context.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
 
 

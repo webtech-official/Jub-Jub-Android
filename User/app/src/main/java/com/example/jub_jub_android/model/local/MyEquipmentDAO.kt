@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.data.local
+package com.example.jub_jub_android.model.local
 
 import androidx.room.Dao
 import androidx.room.Insert

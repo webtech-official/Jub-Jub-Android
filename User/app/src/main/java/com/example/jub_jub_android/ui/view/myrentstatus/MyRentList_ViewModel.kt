@@ -4,9 +4,9 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.jub_jub_android.data.local.MyEquipmentDB
-import com.example.jub_jub_android.data.remote.NetRetrofit
+import com.example.jub_jub_android.base.BaseViewModel
+import com.example.jub_jub_android.model.local.MyEquipmentDB
+import com.example.jub_jub_android.model.network.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.MyEquipment
 import com.example.jub_jub_android.entity.dataclass.response.MyEquipmentDetailInfo
 import com.example.jub_jub_android.entity.dataclass.response.MyEquipmentResponse
@@ -15,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MyRentList_ViewModel: ViewModel() {
+class MyRentList_ViewModel: BaseViewModel() {
 
     private lateinit var myEquipmentDB : MyEquipmentDB
 
@@ -36,7 +36,7 @@ class MyRentList_ViewModel: ViewModel() {
     }
 
     fun getMyEquipmentData(context: Context) {
-        val response: Call<MyEquipmentResponse> = NetRetrofit.getServiceApi().getMyEquipmentData(TokenManager.getToken())
+        val response: Call<MyEquipmentResponse> = NetRetrofit.getEquipmentApi().getMyEquipmentData(TokenManager.getToken())
 
         response.enqueue(object: Callback<MyEquipmentResponse>{
 
@@ -84,6 +84,7 @@ class MyRentList_ViewModel: ViewModel() {
     }
 
     fun processShowList(key: String){
+
         var dataList = ArrayList<MyEquipment>()
         var array = ArrayList<ArrayList<MyEquipment>>()
 

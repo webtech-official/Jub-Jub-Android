@@ -1,13 +1,14 @@
-package com.example.jub_jub_android.ui.activity
+package com.example.jub_jub_android.ui.view.mypage
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.SharedPref
+import com.example.jub_jub_android.model.local.SharedPref
 import com.example.jub_jub_android.entity.singleton.TokenManager
-import com.example.jub_jub_android.ui.util.MyUtil
+import com.example.jub_jub_android.util.MyUtil
+import com.example.jub_jub_android.ui.view.login.LoginActivity
 import com.example.jub_jub_android.ui.view.myrentstatus.MyRentListActivity
 import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*

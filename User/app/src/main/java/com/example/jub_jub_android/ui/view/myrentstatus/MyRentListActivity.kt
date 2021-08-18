@@ -1,23 +1,23 @@
 package com.example.jub_jub_android.ui.view.myrentstatus
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.example.jub_jub_android.R
+import com.example.jub_jub_android.base.BaseActivity
 import com.example.jub_jub_android.databinding.ActivityMyRentalListBinding
 import kotlinx.android.synthetic.main.activity_my_rental_list.*
 import kotlinx.android.synthetic.main.layout_pageview.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MyRentListActivity : AppCompatActivity() {
+class MyRentListActivity : BaseActivity<ActivityMyRentalListBinding, MyRentList_ViewModel>(
+    R.layout.activity_my_rental_list
+) {
 
     lateinit var pageView : MyRentList_PageView
 
-    lateinit var viewModel: MyRentList_ViewModel
+    override val viewModel: MyRentList_ViewModel by viewModel()
 
-    lateinit var binding: ActivityMyRentalListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,13 +29,9 @@ class MyRentListActivity : AppCompatActivity() {
 
     private fun init() {
 
-        viewModel = ViewModelProvider(this).get(MyRentList_ViewModel::class.java)
         viewModel.init(applicationContext)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_my_rental_list)
         binding.activity = this
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
 
         setPageView()
 

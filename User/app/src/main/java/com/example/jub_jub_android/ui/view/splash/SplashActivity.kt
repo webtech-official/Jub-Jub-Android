@@ -1,10 +1,11 @@
-package com.example.jub_jub_android.ui.activity
+package com.example.jub_jub_android.ui.view.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.local.SharedPref
+import com.example.jub_jub_android.model.local.SharedPref
+import com.example.jub_jub_android.ui.view.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startApp() {
          //MyEquipmentListManager.setDummyDataList(applicationContext, 100)
-        val intent = Intent(applicationContext, LoginActivity ::class.java)
+        val intent = Intent(applicationContext, LoginActivity::class.java)
         init(intent)
         startActivity(intent)
         finish()

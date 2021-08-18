@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.ui.util
+package com.example.jub_jub_android.util
 
 import android.app.Dialog
 import android.content.Context

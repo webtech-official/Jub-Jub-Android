@@ -9,6 +9,10 @@
             name="activity"
             type="com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatusActivity"/>
 
+        <variable
+            name="vm"
+            type="com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatus_ViewModel" />
+
         <import type="android.view.View"/>
 
     </data>
@@ -75,7 +79,7 @@
                 android:id="@+id/editText_SearchText_MainActivitySearchMode"
                 android:layout_width="0dp"
                 android:paddingLeft="40dp"
-                android:text="@={activity.searchText}"
+                android:text="@={vm.searchText}"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="8dp"

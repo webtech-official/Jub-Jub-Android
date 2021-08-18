@@ -12,7 +12,6 @@ interface EquipmentDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(equipment: Equipment)
 
-
     @Query("SELECT * FROM equipment WHERE name || category  LIKE :word ")
     fun search(word: String): List<Equipment>
 
