@@ -1,15 +1,13 @@
 package com.example.jub_jub_android.extension
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ProgressBar
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.jub_jub_android.di.modules.activityModule
+import com.example.jub_jub_android.R
 
 
-@BindingAdapter("app:refreshing")
+@BindingAdapter("refreshing")
 fun refreshing(view: ProgressBar, visible: Boolean){
     if(visible){
         view.visibility = View.VISIBLE
@@ -17,3 +15,15 @@ fun refreshing(view: ProgressBar, visible: Boolean){
         view.visibility = View.GONE
     }
 }
+
+@BindingAdapter("customtitle")
+fun setTitle(view: View, text: String){
+    view.findViewById<TextView>(R.id.textView_editTextTitle_layout).text = text
+}
+
+@BindingAdapter("customHint")
+fun updateHint(view: View, text: String){
+    view.findViewById<EditText>(R.id.editText_layout).hint = text
+}
+
+
