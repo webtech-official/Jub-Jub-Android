@@ -13,9 +13,6 @@ abstract class BaseActivity <B: ViewDataBinding, VM: BaseViewModel>(
     @LayoutRes private val layoutResId: Int
     ): AppCompatActivity() {
 
-    var backKeyPressedTime : Long = 0
-
-
     lateinit var binding: B
     abstract val viewModel: VM
 
