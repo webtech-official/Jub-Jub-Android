@@ -10,4 +10,26 @@
     <color name="gray">#7D7D7D</color>
     <color name="yellow">#FFE600</color>
     <color name="reject">#FF5841</color>
+    <color name="red">#FF0000</color>
+    <color name="gray8080">#808080</color>
+    <color name="grayB6B6">#B6B6B6</color>
+    <color name="grayBEBE">#BEBEBE</color>
+    <color name="grayF5F5">#F5F5F5</color>
+    <color name="grayB4B4">#B4B4B4</color>
+    <color name="gray6B6B">#6B6B6B</color>
+    <color name="grayC7C7">#C7C7C7</color>
+    <color name="grayC9C9">#C9C9C9</color>
+    <color name="black5050">#505050</color>
+    <color name="red7272">#DA7272</color>
+
+    <color name="mainBlue">#2D57A0</color>
+
+    <color name="shadowBlue22">#332D57A0</color>
+
+    <color name="returnGreen">#87B67F</color>
+    <color name="rentalOrange">#E4AB76</color>
+    <color name="waitingPurple">#9976E4</color>
+    <color name="rejectRed">#FF3C3C</color>
+    <color name="overDueSky">#3CB9FF</color>
+
 </resources>
