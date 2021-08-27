@@ -3,6 +3,6 @@
 
     <font
         android:fontStyle = "normal"
-        android:font = "@font/roboto_regular"/>
+        android:font = "@font/ttf_roboto_regular"/>
 
 </font-family>
