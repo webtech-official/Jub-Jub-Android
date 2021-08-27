@@ -32,7 +32,6 @@ class EquipmentStatus_ViewModel: BaseViewModel() {
         }
     }
 
-
     fun init(context: Context){
         equipmentStatusDB = EquipmentStatusDB.getInstance(context)!!
 

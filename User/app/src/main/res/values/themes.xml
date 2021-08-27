@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.JubJubUser" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.JubJubUser" parent="Theme.AppCompat.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -13,12 +13,15 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
 
+        <item name="android:windowBackground">@color/white</item>
+
         <!-- Text 눌렀을 때 색 -->
-        <item name="colorControlHighlight">@color/white</item>
+<!--        <item name="colorControlHighlight">@color/white</item>-->
 
         <!-- 타이틀 바 제거 -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
 
@@ -35,24 +38,70 @@
         <item name="android:fontFamily">@font/varela</item>
     </style>
 
+    <style name="ClickableItem">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+    
+    <style name="LoginAdditionalTexts">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/gray8080</item>
+        <item name="android:fontFamily">@font/notosans_medium</item>
+
+    </style>
+
     <style name="LoginRegisterLogo">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">24dp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/notosans</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/notosans_light</item>
+    </style>
+
+    <style name="EditTextTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:textColor">@color/mainBlue</item>
+        <item name="android:fontFamily">@font/notosans_medium</item>
     </style>
 
     <style name="MyEditText">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">44dp</item>
-        <item name="android:paddingLeft">15dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">12dp</item>
+        <item name="backgroundTint">@color/mainBlue</item>
+        <item name="android:textColorHint">@color/grayB6B6</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/notosans_medium</item>
+    </style>
+
+    <style name="BlueBorderButton" parent="ClickableItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textColorHint">@color/white</item>
-        <item name="android:fontFamily">@font/notosans</item>
-        <item name="android:background">@drawable/edittext_customedge</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:fontFamily">@font/notosans_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/bg_button_mainblue_10dp</item>
+    </style>
+
+    <style name="SignUpTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:textColor">@color/mainBlue</item>
+        <item name="android:fontFamily">@font/notosans_bold</item>
     </style>
 
     <style name="MyButton">
@@ -60,16 +109,23 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:fontFamily">@font/notosans</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
         <item name="android:gravity">center</item>
         <item name="android:backgroundTint">@color/white</item>
     </style>
 
     <style name="MyLinearLine">
         <item name="android:orientation">horizontal</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/grayC9C9</item>
+    </style>
+
+    <style name="MyLinearLine04">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0.4dp</item>
+        <item name="android:background">@color/grayC9C9</item>
     </style>
 
     <style name="MyBackArrow">
@@ -112,7 +168,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">@font/notosans</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginLeft">15dp</item>
     </style>

@@ -3,7 +3,7 @@
 
     <font
         android:fontStyle = "normal"
-        android:font = "@font/notosans_regular"
+        android:font = "@font/otf_notosanskr_bold"
         />
 
 </font-family>

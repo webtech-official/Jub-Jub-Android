@@ -40,23 +40,23 @@ class MyRentList_RecyclerViewAdapter(var dataList: ArrayList<MyEquipment>):Recyc
             itemView.textView_ItemName_Item.text = data.name
             itemView.textView_ItemCategory_Item.text = data.category
             itemView.textView_ItemCount_Item.text = "수량 : ${data.count}개"
-            itemView.textView_RentStatus_Item.visibility = View.VISIBLE
-            itemView.textView_RentStatus_Item.text = data.status
+            itemView.textView_RentStatus_Item5123123.visibility = View.VISIBLE
+            itemView.textView_RentStatus_Item5123123.text = data.status
 
             when(data.status){
                 "대기" -> setRentStatus(itemView, R.drawable.bg_waiting, R.color.black)
                 "반납" -> setRentStatus(itemView, R.drawable.bg_return, R.color.white)
-                "대여" -> setRentStatus(itemView, R.drawable.bg_rental, R.color.black)
+                "대여" -> setRentStatus(itemView, R.drawable.bg_white_border_10dp, R.color.black)
                 "승인" -> setRentStatus(itemView, R.drawable.bg_overdue, R.color.black)
                 "거절" -> setRentStatus(itemView, R.drawable.bg_reject, R.color.black)
-                else -> itemView.textView_RentStatus_Item.text = "?"
+                else -> itemView.textView_RentStatus_Item5123123.text = "?"
 
             }
         }
 
         private fun setRentStatus(view: View, backgroundId: Int, textColorId: Int){
-            itemView.textView_RentStatus_Item.background = ContextCompat.getDrawable(view.context, backgroundId)
-            itemView.textView_RentStatus_Item.setTextColor(ContextCompat.getColor(view.context, textColorId))
+            itemView.textView_RentStatus_Item5123123.background = ContextCompat.getDrawable(view.context, backgroundId)
+            itemView.textView_RentStatus_Item5123123.setTextColor(ContextCompat.getColor(view.context, textColorId))
         }
     }
 

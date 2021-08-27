@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="activity"
+            type="com.example.jub_jub_android.ui.view.notice.detail.NoticeDetailActivity" />
+
+        <variable
+            name="vm"
+            type="com.example.jub_jub_android.ui.view.notice.detail.NoticeDetailViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.view.notice.detail.NoticeDetailActivity">
+
+        <ImageView
+            style="@style/LeftShortArrow"
+            android:src="@drawable/ic_arrow_left"
+            android:onClick="@{() -> activity.finish()}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline26"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline25" />
+
+        <ImageView
+        android:id="@+id/imageView5"
+        style="@style/AppLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline25" />
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/PageTitle"
+            android:text="공지사항"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline26" />
+
+        <View style="@style/MyLinearLine"
+            android:id="@+id/view4"
+            android:background="#C9C9C9"
+            app:layout_constraintEnd_toEndOf="@id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@id/guideline27" />
+
+
+        <TextView
+            style="@style/PageTitle"
+            android:text="공지 제목"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline30" />
+
+        <TextView
+            style="@style/NoticeDateText"
+            android:text="공지 날짜"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline31" />
+
+        <LinearLayout
+            style="@style/MyLinearLine"
+            android:layout_height="0.4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline32" />
+
+        <TextView
+            style="@style/NoticeDateText"
+            android:layout_width="0dp"
+            android:text="공지 내용"
+            app:layout_constraintWidth_percent="0.71"
+            android:textColor="#323232"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline33" />
+
+        <View
+            android:id="@+id/view5"
+            style="@style/MyLinearLine04"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline34"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline34" />
+
+        <TextView
+            style="@style/PageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다른 공지사항"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline36"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline34" />
+
+
+        <!--    다른 공지사항 밑 선    -->
+        <View
+            android:id="@+id/view6"
+            style="@style/MyLinearLine04"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline36"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline36" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/guideline37"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline36"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                style="@style/BoldBlackText"
+                android:text="다른 공지사항 제목_1"
+                android:textSize="9dp" />
+
+            <TextView
+                style="@style/NoticeDateText"
+                android:layout_marginTop="2dp"
+                android:text="다른 공지사항 날짜_1"
+                android:textSize="7dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/guideline39"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                style="@style/BoldBlackText"
+                android:text="다른 공지사항 제목_2"
+                android:textSize="9dp" />
+
+            <TextView
+                style="@style/NoticeDateText"
+                android:layout_marginTop="2dp"
+                android:text="다른 공지사항 날짜_2"
+                android:textSize="7dp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view7"
+            style="@style/MyLinearLine04"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline37"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline37" />
+
+        <View
+            android:id="@+id/view8"
+            style="@style/MyLinearLine04"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline39"
+            app:layout_constraintEnd_toStartOf="@+id/guideline29"
+            app:layout_constraintStart_toStartOf="@+id/guideline28"
+            app:layout_constraintTop_toTopOf="@+id/guideline39" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0788"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1256"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1871"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2167"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2512"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2967"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3378933" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7130"/>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7729138" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8275"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8866"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

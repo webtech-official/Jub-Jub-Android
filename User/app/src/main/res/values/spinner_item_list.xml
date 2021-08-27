@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_array">
+        <item>전체</item>
+        <item>반납완료</item>
+        <item>대여중</item>
+        <item>승인대기</item>
+        <item>거절</item>
+        <item>연체</item>
+    </string-array>
+</resources>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
+import com.example.jub_jub_android.base.BaseViewModel
 import com.example.jub_jub_android.model.network.NetRetrofit
 import com.example.jub_jub_android.databinding.ActivityRentBinding
 import com.example.jub_jub_android.entity.dataclass.Equipment
@@ -15,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RentViewModel: ViewModel() {
+class RentViewModel: BaseViewModel() {
 
     var itemAmount = 0
     var rentAmount = 0
