@@ -23,6 +23,19 @@ class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(R.la
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initETArray()
+
+        viewModel.adapter = SignUpViewPagerAdapter(viewModel)
+
+        viewModel.adapter.also {
+            binding.viewPager2SignUpActivity.adapter = it
+            binding.viewPager2SignUpActivity.isUserInputEnabled = false
+        }.notifyDataSetChanged()
+
+        viewModel.viewpagerPosition.observe(this, { binding.viewPager2SignUpActivity.currentItem = it })
+
+        viewModel.finish.observe(this, { finish() })
+
         viewModel.signUpResult.observe(this, {
             showToast(it.msg)
             if(it.success){
@@ -30,15 +43,24 @@ class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(R.la
             }
         })
 
-        viewModel.signUpClick.observe(this, {
-            if (checkEditText()) {
-                viewModel.signUp(createSignUpInstance())
-            }
-        })
-
     }
 
+    private fun initETArray() { for(i in 0..3){ viewModel.signUpEditTextArrayList.add(binding.editText) } }
+
+
+
+
+
+
+
+
+
+
+
+
     private fun checkEditText(): Boolean{
+        return true
+        /*
         return if(editText_ClassNum_SignUpActivity.text.toString() == "" || editText_Email_SignUpActivity.text.toString() == "" || editText_Name_SignUpActivity.text.toString() == ""
             || editText_Password_SignUpActivity.text.toString() == "" || editText_PasswordCheck_SignUpActivity.text.toString() == "" ) {
             Toast.makeText(applicationContext, "빈칸을 모두 입력해주세요!", Toast.LENGTH_SHORT).show()
@@ -49,22 +71,10 @@ class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(R.la
         } else{
             Log.d("TestLog", "checkEditText 통과")
             true
-        }
-    }
-
-    private fun createSignUpInstance(): SignUp {
-        return with(binding){
-            SignUp(
-                editTextClassNumSignUpActivity.text.toString(),
-                editTextEmailSignUpActivity.text.toString(),
-                editTextNameSignUpActivity.text.toString(),
-                editTextPasswordSignUpActivity.text.toString()
-            )
-        }
+        }*/
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+        viewModel.viewPagerPrevPage()
     }
 }

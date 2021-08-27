@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_width="85dp"
+    android:layout_height="30dp">
+
+    <TextView style="@style/Display_Current_Rent_Status_Text"
+        android:id="@+id/textView_RentStatus_Item"
+        android:text="반납완료"
+        android:textSize="11dp"
+        android:layout_marginLeft="12dp"
+        android:textColor="#484848"
+        android:fontFamily="@font/notosans_regular"
+        android:includeFontPadding="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

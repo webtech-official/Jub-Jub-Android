@@ -75,23 +75,6 @@ class EquipmentStatusActivity : BaseActivity<ActivityMainBinding, EquipmentStatu
         return isViewMode
     }
 
-    //뒤로가기 버튼 눌렀을 때
-    override fun onBackPressed() {
-        if(!isViewMode){
-            setTitleBarViewMode()
-        }else{
-            //1번 눌렀을 때
-            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
-                backKeyPressedTime = System.currentTimeMillis()
-                Toast.makeText(applicationContext, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
-            }
-            //2초 안에 2번 눌렀을 때 종료
-            else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
-                finishApp()
-            }
-        }
-    }
-
     private fun finishApp(){
         moveTaskToBack(true)                        // 태스크를 백그라운드로 이동
         finishAndRemoveTask()                        // 액티비티 종료 + 태스크 리스트에서 지우기
