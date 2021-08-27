@@ -5,14 +5,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.jub_jub_android.base.BaseViewModel
-import com.example.jub_jub_android.data.local.EquipmentStatusDB
-import com.example.jub_jub_android.data.remote.NetRetrofit
+import com.example.jub_jub_android.model.local.EquipmentStatusDB
+import com.example.jub_jub_android.model.network.NetRetrofit
 import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentResponse
 import com.example.jub_jub_android.entity.singleton.TokenManager
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +32,6 @@ class EquipmentStatus_ViewModel: BaseViewModel() {
         }
     }
 
-
     fun init(context: Context){
         equipmentStatusDB = EquipmentStatusDB.getInstance(context)!!
 
@@ -55,7 +52,7 @@ class EquipmentStatus_ViewModel: BaseViewModel() {
     //region 기자재 정보 가져오기
     fun getEquipmentData(context: Context) {
 
-        val response: Call<EquipmentResponse> = NetRetrofit.getServiceApi().getEquipmentData(TokenManager.getToken())
+        val response: Call<EquipmentResponse> = NetRetrofit.getEquipmentApi().getEquipmentData(TokenManager.getToken())
 
         response.enqueue(object : Callback<EquipmentResponse> {
             override fun onResponse(call: Call<EquipmentResponse>, response: Response<EquipmentResponse>) {

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_white_border_10dp"
+    android:layout_width="300dp"
+    android:layout_height="141dp">
+
+    <TextView
+        style="@style/BoldBlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그아웃 하시겠습니까?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:background="#676767"
+        android:layout_marginTop="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline412" />
+
+    <TextView
+        android:id="@+id/textView16"
+        style="@style/SignOutCheckText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        android:text="네"
+        app:layout_constraintEnd_toStartOf="@+id/view10"
+        app:layout_constraintTop_toTopOf="@+id/guideline412" />
+
+    <TextView
+        style="@style/SignOutCheckText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        android:text="아니요"
+        app:layout_constraintStart_toEndOf="@+id/view10"
+        app:layout_constraintTop_toTopOf="@+id/guideline412" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3071"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline412"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.60"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

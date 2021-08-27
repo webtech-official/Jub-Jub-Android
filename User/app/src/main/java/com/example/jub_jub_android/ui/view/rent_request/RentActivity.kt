@@ -6,19 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.jub_jub_android.R
-import com.example.jub_jub_android.data.remote.NetRetrofit
 import com.example.jub_jub_android.databinding.ActivityRentBinding
 import com.example.jub_jub_android.entity.dataclass.Equipment
 import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
-import com.example.jub_jub_android.entity.dataclass.response.MyResponse
-import com.example.jub_jub_android.entity.singleton.TokenManager
-import com.example.jub_jub_android.ui.util.MyUtil
+import com.example.jub_jub_android.util.MyUtil
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_rent.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class RentActivity : AppCompatActivity() {

@@ -13,16 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JubJubUser"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.view.notice.detail.NoticeDetailActivity" />
+        <activity android:name=".ui.view.notice.NoticeActivity" />
+        <activity android:name=".ui.view.main.MActivity" />
         <activity android:name=".ui.view.rent_request.RentActivity" />
-        <activity android:name=".ui.view.myrentstatus.MyRentListActivity"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".ui.activity.MyPageActivity" />
-        <activity android:name=".ui.activity.SignUpActivity" />
-        <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name="com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatusActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".ui.view.rent_request.TmpRentActivity" />
         <activity
-            android:name=".ui.activity.SplashActivity"
+            android:name=".ui.view.myrentstatus.MyRentListActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".ui.view.mypage.MyPageActivity" />
+        <activity
+            android:name=".ui.view.signup.SignUpActivity"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity android:name=".ui.view.login.LoginActivity" />
+        <activity
+            android:name=".ui.view.equipment_status.EquipmentStatusActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".ui.view.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

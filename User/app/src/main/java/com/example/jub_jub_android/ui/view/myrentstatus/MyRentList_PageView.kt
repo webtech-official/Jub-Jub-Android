@@ -3,7 +3,7 @@ package com.example.jub_jub_android.ui.view.myrentstatus
 import android.content.Context
 import android.view.View
 import com.example.jub_jub_android.ui.adapter.viewpager.MyRentList_ViewPagerAdapter
-import com.example.jub_jub_android.ui.util.SetPageView
+import com.example.jub_jub_android.util.SetPageView
 import kotlinx.android.synthetic.main.layout_pageview.view.*
 
 class MyRentList_PageView(var context: Context, var view: View, var viewModel: MyRentList_ViewModel){
