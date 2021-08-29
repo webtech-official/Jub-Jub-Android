@@ -82,10 +82,23 @@
         <item name="android:fontFamily">@font/notosans_demilight</item>
         <item name="android:includeFontPadding">false</item></style>
 
-    <style name="Display_Current_Rent_Status_Text">
+    <style name="Display_Current_Rent_Status_Text" parent="BorderClickableItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">9dp</item>
+        <item name="android:textColor">@color/grayADAD</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Rent_Status_Item_Text" parent="BorderClickableItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">@color/black4848</item>
+        <item name="android:layout_marginLeft">12dp</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/notosans_regular</item>
         <item name="android:includeFontPadding">false</item></style>
