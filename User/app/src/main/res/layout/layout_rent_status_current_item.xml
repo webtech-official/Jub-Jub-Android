@@ -7,10 +7,9 @@
     android:layout_height="30dp">
 
     <TextView
+        android:id="@+id/textView_Current_RentStatus"
         style="@style/Display_Current_Rent_Status_Text"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="25dp"
         android:text="전체"
-        android:textColor="#ADADAD" />
+        />
 
 </LinearLayout>

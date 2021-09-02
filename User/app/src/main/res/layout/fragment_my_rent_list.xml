@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.myrentstatus.MyRentList_ViewModel" />
+            type="com.example.jub_jub_android.ui.view.main.myrent.MyRentViewModel" />
 
     </data>
 
@@ -28,7 +28,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline36" />
 
-        <Spinner style="@style/ClickableItem"
+        <Spinner style="@style/BorderClickableItem"
             android:id="@+id/spinner_Rent_Status"
             android:layout_width="85dp"
             android:layout_height="30dp"

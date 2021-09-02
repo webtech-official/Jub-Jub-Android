@@ -1,78 +1,112 @@
 package com.example.jub_jub_android.ui.view.rent_request
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
+import android.widget.TextView
 import com.example.jub_jub_android.R
+import com.example.jub_jub_android.base.BaseActivity
 import com.example.jub_jub_android.databinding.ActivityRentBinding
+import com.example.jub_jub_android.databinding.DialogRentRequestCompleteBinding
 import com.example.jub_jub_android.entity.dataclass.Equipment
-import com.example.jub_jub_android.entity.dataclass.response.EquipmentAllowDTO
-import com.example.jub_jub_android.util.MyUtil
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_rent.*
-import kotlinx.android.synthetic.main.layout_alertdialog.*
+import com.example.jub_jub_android.entity.dataclass.result.RentRequestDialog
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
+class RentActivity: BaseActivity<ActivityRentBinding, RentViewModel>(R.layout.activity_rent) {
 
-class RentActivity : AppCompatActivity() {
-
-    private lateinit var vm: RentViewModel
-    private lateinit var binding: ActivityRentBinding
-
-    lateinit var data: Equipment
+    override val viewModel: RentViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        vm = ViewModelProvider(this).get(RentViewModel::class.java)
+        viewModel.equipmentData = intent.getSerializableExtra("EquipmentData") as Equipment
 
-        data = intent.getSerializableExtra("Data") as Equipment
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_rent)
         binding.activity = this
-        binding.lifecycleOwner = this
 
-        vm.init(data, binding)
-
-        binding.viewModel = vm
-
-        Picasso.get().load(data.image).into(imageView_RentItem_RentActivity)
+        viewModel.rentRequestResult.observe(this, {
+            showToast(it.msg)
+            if(it.success){
+                bindDialog("대여신청이 완료되었습니다!", "목록으로", true)
+            }else{
+                bindDialog("수량 부족으로 인해 대여 불가능합니다 !", "확인", false)
+            }
+        })
 
     }
 
-    fun rentRequest(){
-        val dialog = MyUtil.makeBaseDialog(this, "대여")
-
-        dialog.textView_Cancel_AlertDialogLayout.setOnClickListener {
-            dialog.dismiss()
+    fun clickRentRequestButton(){
+        if(checkEditText()){
+            viewModel.rentRequest()
         }
-
-        dialog.textView_Accept_AlertDialogLayout.setOnClickListener {
-            if(checkEditText()){
-                vm.rentRequest(applicationContext, getEquipmentAllowDTO(), data.name)
-                dialog.dismiss()
-                finish()
-            }
-        }
-
-        dialog.show()
     }
 
     private fun checkEditText(): Boolean {
-        return if(vm.rentAmount == 0) {
-            Toast.makeText(applicationContext, "대여 수량을 확인해 주세요", Toast.LENGTH_SHORT).show()
+        return if(viewModel.rentAmount.value == 0) {
+            bindDialog("대여 수량을 확인해주세요.", "확인", false)
             false
-        }else if(editText_RentReason_RentActivity.text.toString() == ""){
-            Toast.makeText(applicationContext, "대여 사유를 입력해 주세요", Toast.LENGTH_SHORT).show()
+        }else if(viewModel.rentReason == ""){
+            bindDialog("대여 사유을 입력해주세요.", "확인", false)
             false
         }else{
             true
         }
     }
 
-    private fun getEquipmentAllowDTO(): EquipmentAllowDTO {
-        return EquipmentAllowDTO(vm.rentAmount, vm.rentReason)
+    private fun bindDialog(result: String, button_Text: String, success: Boolean){
+
+        var bindingDialog = DialogRentRequestCompleteBinding.inflate(LayoutInflater.from(this))
+
+        var dialog = AlertDialog.Builder(this)
+            .setView(bindingDialog.root)
+            .create()
+
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+
+        //dialog.window?.attributes?.height = ViewGroup.LayoutParams.MATCH_PARENT
+
+        bindingDialog.dialog = RentRequestDialog(result, button_Text)
+        //dialog.setContentView(bindingDialog.root)
+
+        dialog.show()
     }
 
-}
+    private fun showDialog(result: String, button_Text: String){
+        var dialog = Dialog(this)
+
+        //val dialogBinding = DataBindingUtil.inflate<DialogRentRequestCompleteBinding>(LayoutInflater.from(this), R.layout.dialog_rent_request_complete, null, false);
+        //val dialogBinding = DialogRentRequestCompleteBinding.inflate(LayoutInflater.from(this))
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_rent_request_complete)
+
+        dialog.findViewById<TextView>(R.id.textView_Dialog_Title).text = result
+
+
+        dialog.findViewById<Button>(R.id.button_Dialog).also {
+            it.text = button_Text
+
+            if(button_Text == "목록으로") {
+                it.setOnClickListener {
+                    dialog.dismiss()
+                    finish()
+                }
+            }
+
+            if(button_Text == "확인") {
+                it.setOnClickListener {
+                    dialog.dismiss()
+                }
+            }
+
+        }
+
+            //dialog.textView_AlertName_AlertDialogLayout.text = dialogName
+            //dialog.textView_AlertContent_AlertDialogLayout.text = "정말 $dialogName 하시겠습니까?"
+
+            dialog.show()
+        }
+
+    }

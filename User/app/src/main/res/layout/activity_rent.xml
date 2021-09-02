@@ -1,217 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="activity"
             type="com.example.jub_jub_android.ui.view.rent_request.RentActivity" />
-
         <variable
-            name="viewModel"
+            name="vm"
             type="com.example.jub_jub_android.ui.view.rent_request.RentViewModel" />
-
-        <import type="android.R.string"/>
-
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/black"
+        android:layout_height="match_parent">
 
-        tools:context="com.example.jub_jub_android.ui.view.rent_request.RentActivity">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:paddingHorizontal="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
-                android:fontFamily="@font/notosans_regular"
-                android:text="대여"
-                android:textColor="@color/white"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView_BackArrow_RentActivity"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView_BackArrow_RentActivity"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:padding="4dp"
-                android:onClick="@{()-> activity.finish()}"
-                android:src="@drawable/ic_arrow_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white"
+        <ImageView
+            style="@style/AppLogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear" />
+            app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
-        <ScrollView
-            android:id="@+id/scrollView2"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/LeftShortArrow"
+            android:src="@drawable/ic_arrow_left"
+            android:onClick="@{() -> activity.finish()}"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline11" />
+
+        <TextView
+            style="@style/PageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="대여하기"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+        <ImageView
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear"
-            app:layout_constraintVertical_bias="1.0">
+            equipment_image="@{vm.equipmentData.image}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline14"
+            app:layout_constraintEnd_toStartOf="@+id/guideline22"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="40dp"
-                android:layout_marginTop="15dp">
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/ItemName"
+            android:text="@{vm.equipmentData.name}"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
-                <ImageView
-                    android:id="@+id/imageView_RentItem_RentActivity"
-                    android:layout_width="350dp"
-                    android:layout_height="350dp"
-                    android:src="@drawable/imageex"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            style="@style/ItemText"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_item_count"
+            android:gravity="center"
+            android:paddingHorizontal="18dp"
+            equipment_count="@{vm.equipmentData.count}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline16"
+            app:layout_constraintEnd_toStartOf="@+id/guideline22"
+            app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
-                <TextView
-                    android:id="@+id/textView_RentItemName_RentActivity"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="50dp"
-                    android:text="@={activity.data.name}"
-                    android:textColor="@color/white"
-                    android:textSize="24dp"
-                    app:layout_constraintEnd_toStartOf="@+id/textView_RentItemCount_RentActivity"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView_RentItem_RentActivity"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView_RentItem_RentActivity" />
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/ItemText"
+            android:layout_marginLeft="0dp"
+            android:text="@{vm.equipmentData.category}"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
-                <TextView
-                    android:id="@+id/textView_rentItemCategory_RentActivity"
-                    style="@style/MyTitleText"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@{activity.data.category}"
-                    app:layout_constraintStart_toStartOf="@+id/textView_RentItemName_RentActivity"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_RentItemName_RentActivity" />
+        <TextView
+            android:id="@+id/textView8"
+            style="@style/ItemName"
+            android:text="대여수량"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
-                <TextView
-                    android:id="@+id/textView_RentItemCount_RentActivity"
-                    style="@style/MyTitleText"
-                    android:layout_marginTop="20dp"
-                    android:text="@{@string/rent_Eq_Count(activity.data.count)}"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView_RentItemName_RentActivity"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView_RentItem_RentActivity"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView_RentItem_RentActivity" />
+        <ImageView style="@style/StepperIcon"
+            android:id="@+id/imageView3"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_minus"
+            android:onClick="@{() -> vm.clickMinusButton()}"
+            android:background="@drawable/bg_stepper_minus"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    style="@style/MyTitleText"
-                    android:layout_marginTop="15dp"
-                    android:text="대여수량"
-                    app:layout_constraintEnd_toEndOf="@+id/textView_RentItemCount_RentActivity"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_RentItemCount_RentActivity" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            rent_amount="@{vm.rentAmount}"
+            android:background="@drawable/bg_rent_request_item_count"
+            android:fontFamily="@font/notosans_regular"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:paddingHorizontal="15dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/textView8" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintEnd_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+        <ImageView style="@style/StepperIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:onClick="@{() -> vm.clickPlusButton()}"
+            android:src="@drawable/ic_plus"
+            android:background="@drawable/bg_stepper_plus"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/textView10" />
 
-                    <TextView
-                        android:id="@+id/textView_MinusMyRentItemAmount_RentActivity"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/amount_control_edge"
-                        android:gravity="center"
-                        android:text="─"
-                        android:onClick="@{()-> viewModel.minusItem()}"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="대여사유를 작성해주세요."
+            android:text="@={vm.rentReason}"
+            android:gravity="start|top"
+            android:padding="20dp"
+            android:textSize="10dp"
+            android:fontFamily="@font/notosans_demilight"
+            android:includeFontPadding="false"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grayB4B4"
+            android:background="@drawable/bg_shadow_edittext"
+            app:layout_constraintBottom_toTopOf="@+id/guideline19"
+            app:layout_constraintEnd_toStartOf="@+id/guideline22"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
-                    <TextView
-                        android:id="@+id/textView_MyRentItemAmount_RentActivity"
-                        android:layout_width="60dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/amount_control_edge"
-                        android:fontFamily="@font/notosans_regular"
-                        android:gravity="center"
-                        android:text="@{Integer.toString(viewModel.rentAmount)}"
-                        android:textColor="@color/black"
-                        android:textSize="18dp" />
+        <Button
+            style="@style/BlueBorderButton"
+            android:text="대여신청"
+            android:onClick="@{() -> activity.clickRentRequestButton()}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline22"
+            app:layout_constraintStart_toStartOf="@+id/guideline21"
+            app:layout_constraintTop_toTopOf="@+id/guideline20" />
 
-                    <TextView
-                        android:id="@+id/textView_AddMyRentItemAmount_RentActivity"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/amount_control_edge"
-                        android:gravity="center"
-                        android:text="┼"
-                        android:onClick="@{()-> viewModel.plusItem()}"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0738" />
 
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/editText_RentReason_RentActivity"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginVertical="15dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@color/white"
-                    android:gravity="top"
-                    android:hint="대여사유"
-                    android:text="@={viewModel.rentReason}"
-                    android:padding="8dp"
-                    android:textColorHint="@color/black"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView_RentItem_RentActivity"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/imageView_RentItem_RentActivity"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
-                <Button
-                    android:id="@+id/button_Rent_RentActivity"
-                    style="@style/MyButton"
-                    android:gravity="center"
-                    android:text="대여"
-                    android:onClick="@{()-> activity.rentRequest()}"
-                    android:layout_marginTop="100dp"
-                    app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_RentReason_RentActivity" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1256" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1884" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5123" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5344" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5763" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6133"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6625" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7955" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8189" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
+

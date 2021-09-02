@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.ui.view.notice
+package com.example.jub_jub_android.ui.adapter.recyclerview
 
 import android.content.Intent
 import android.view.LayoutInflater

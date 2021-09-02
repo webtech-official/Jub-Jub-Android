@@ -3,9 +3,10 @@ package com.example.jub_jub_android.ui.view.signup
 import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import com.example.jub_jub_android.base.BaseViewModel
-import com.example.jub_jub_android.entity.dataclass.result.AuthResult
+import com.example.jub_jub_android.entity.dataclass.result.ServerResult
 import com.example.jub_jub_android.entity.dataclass.body.SignUp
 import com.example.jub_jub_android.model.repository.AuthRepository
+import com.example.jub_jub_android.ui.adapter.viewpager.SignUpViewPagerAdapter
 
 class SignUpViewModel(private val auth: AuthRepository): BaseViewModel() {
 
@@ -13,9 +14,9 @@ class SignUpViewModel(private val auth: AuthRepository): BaseViewModel() {
 
     lateinit var adapter: SignUpViewPagerAdapter
 
-    private val refreshing = MutableLiveData(false)
+    val loading = MutableLiveData(false)
 
-    val signUpResult = MutableLiveData<AuthResult>()
+    val signUpResult = MutableLiveData<ServerResult>()
 
     val viewpagerPosition = MutableLiveData(0)
 
@@ -38,23 +39,24 @@ class SignUpViewModel(private val auth: AuthRepository): BaseViewModel() {
         if(viewpagerPosition.value == 3){
             signUp(createSignUpObject())
         }else{
-            showLog("before plus = ${viewpagerPosition.value}")
             viewpagerPosition.value = viewpagerPosition.value?.plus(1)
-            showLog("after plus = ${viewpagerPosition.value}")
         }
     }
 
     private fun createSignUpObject(): SignUp {
-        return SignUp(signUpEditTextArrayList[0].text.toString(),signUpEditTextArrayList[1].text.toString(),signUpEditTextArrayList[2].text.toString(),signUpEditTextArrayList[3].text.toString())
+        return SignUp(signUpEditTextArrayList[3].text.toString(), signUpEditTextArrayList[0].text.toString(), signUpEditTextArrayList[2].text.toString(), signUpEditTextArrayList[1].text.toString())
     }
 
     private fun signUp(signUp: SignUp) {
         showLog("signUpData = $signUp")
-        refreshing.postValue(true)
+
+        //Start Loading
+        loading.postValue(true)
+
         addDisposable(
             auth.signUp(signUp)
                 .subscribe({
-                    setSignUpResult(true, "회원가입 성공")
+                    setSignUpResult(it.success, it.msg)
                 }, {
                     setSignUpResult(false, it.message.toString())
                 })
@@ -62,8 +64,10 @@ class SignUpViewModel(private val auth: AuthRepository): BaseViewModel() {
     }
 
     private fun setSignUpResult(result: Boolean, msg: String){
-        refreshing.postValue(false)
-        signUpResult.postValue(AuthResult(result, msg))
+        //Stop Loading
+        showLog("signUpResult: $result   msg: $msg")
+        loading.postValue(false)
+        signUpResult.postValue(ServerResult(result, msg))
     }
 
 }

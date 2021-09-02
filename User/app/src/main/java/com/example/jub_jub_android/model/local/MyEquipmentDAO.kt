@@ -21,5 +21,4 @@ interface MyEquipmentDAO {
     @Query("DELETE from myEquipment")
     fun clear()
 
-
 }

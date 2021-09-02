@@ -1,9 +1,9 @@
 package com.example.jub_jub_android.di.modules
 
-import com.example.jub_jub_android.ui.view.equipment_status.EquipmentStatus_ViewModel
 import com.example.jub_jub_android.ui.view.login.LoginViewModel
 import com.example.jub_jub_android.ui.view.main.MViewModel
-import com.example.jub_jub_android.ui.view.myrentstatus.MyRentList_ViewModel
+import com.example.jub_jub_android.ui.view.main.equipment.EquipmentViewModel
+import com.example.jub_jub_android.ui.view.main.myrent.MyRentViewModel
 import com.example.jub_jub_android.ui.view.notice.NoticeViewModel
 import com.example.jub_jub_android.ui.view.notice.detail.NoticeDetailViewModel
 import com.example.jub_jub_android.ui.view.rent_request.RentViewModel
@@ -13,7 +13,7 @@ import org.koin.dsl.module
 
 val activityModule = module {
 
-    viewModel { EquipmentStatus_ViewModel() }
+    viewModel { EquipmentViewModel(get()) }
 
     viewModel { LoginViewModel(get()) }
 
@@ -23,11 +23,11 @@ val activityModule = module {
     //fragment
     //viewModel { EquipmentStatus_ViewModel() }
 
-    viewModel { MyRentList_ViewModel() }
+    viewModel { MyRentViewModel(get()) }
 
     viewModel { MViewModel() }
 
-    viewModel { RentViewModel() }
+    viewModel { RentViewModel(get()) }
     viewModel { NoticeViewModel() }
     viewModel { NoticeDetailViewModel() }
 }
