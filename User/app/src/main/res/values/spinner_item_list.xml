@@ -6,6 +6,6 @@
         <item>대여중</item>
         <item>승인대기</item>
         <item>거절</item>
-        <item>연체</item>
+        <item>대여승인</item>
     </string-array>
 </resources>

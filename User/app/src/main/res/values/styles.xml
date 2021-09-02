@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="LeftShortArrow" parent="ClickableItem">
+    <style name="LeftShortArrow" parent="BorderClickableItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:src">@drawable/ic_short_arrow_left</item>
+        <item name="android:background">@drawable/bg_back_icon</item>
         <item name="android:padding">6dp</item>
     </style>
 
@@ -57,7 +58,7 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="StepperIcon" parent="ClickableItem">
+    <style name="StepperIcon" parent="BorderClickableItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:padding">7.5dp</item>
@@ -81,17 +82,26 @@
         <item name="android:fontFamily">@font/notosans_demilight</item>
         <item name="android:includeFontPadding">false</item></style>
 
-    <style name="Display_Current_Rent_Status_Text">
+    <style name="Display_Current_Rent_Status_Text" parent="BorderClickableItem">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">9dp</item>
+        <item name="android:textColor">@color/grayADAD</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/notosans_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Rent_Status_Item_Text" parent="BorderClickableItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">11dp</item>
+        <item name="android:textColor">@color/black4848</item>
+        <item name="android:layout_marginLeft">12dp</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/notosans_regular</item>
         <item name="android:includeFontPadding">false</item></style>
-
-    <style name="CustomSpinner" parent="android:Widget.Spinner">
-
-    </style>
 
     <style name="SignOutCheckText">
         <item name="android:layout_width">wrap_content</item>
@@ -101,6 +111,12 @@
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/notosans_bold</item>
         <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="RentRequestDialog">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/bg_white_border_10dp</item>
     </style>
 
 </resources>

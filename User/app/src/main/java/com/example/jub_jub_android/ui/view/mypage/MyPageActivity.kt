@@ -9,7 +9,6 @@ import com.example.jub_jub_android.model.local.SharedPref
 import com.example.jub_jub_android.entity.singleton.TokenManager
 import com.example.jub_jub_android.util.MyUtil
 import com.example.jub_jub_android.ui.view.login.LoginActivity
-import com.example.jub_jub_android.ui.view.myrentstatus.MyRentListActivity
 import kotlinx.android.synthetic.main.activity_my_page.*
 import kotlinx.android.synthetic.main.layout_alertdialog.*
 
@@ -20,10 +19,6 @@ class MyPageActivity : AppCompatActivity() {
 
         imageView_BackArrow_MyPage.setOnClickListener {
             finish()
-        }
-
-        textView_MyRentalList_MyPage.setOnClickListener {
-            startActivity(Intent(applicationContext, MyRentListActivity::class.java))
         }
 
         textView_Logout_MyPage.setOnClickListener {

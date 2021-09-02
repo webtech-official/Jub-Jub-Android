@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="activity"
+            type="com.example.jub_jub_android.ui.view.login.LoginActivity" />
+
+        <variable
             name="vm"
             type="com.example.jub_jub_android.ui.view.login.LoginViewModel" />
 
@@ -79,16 +83,16 @@
         <Button
             android:id="@+id/button_Login_LoginActivity"
             style="@style/BlueBorderButton"
-            android:onClick="@{() -> vm.clickLogin()}"
+            android:onClick="@{() -> activity.clickSignInButton()}"
             android:text="Sign in"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
         <TextView
-            android:id="@+id/textView_GotoRegister_LoginActivity"
+            android:id="@+id/textView_GotoSignUp_LoginActivity"
             style="@style/LoginAdditionalTexts"
-            android:onClick="@{() -> vm.clickSignUp()}"
+            android:onClick="@{() -> activity.clickSignUpButton()}"
             android:text="아직 계정이 없으신가요? 회원가입"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintHorizontal_bias="0.488"

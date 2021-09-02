@@ -1,45 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="300dp"
-    android:layout_height="140dp"
-    android:background="@drawable/bg_white_border_10dp">
+
+<layout>
+
+    <data>
+        <variable
+            name="dialog"
+            type="com.example.jub_jub_android.entity.dataclass.result.RentRequestDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginVertical="290dp"
+        style="@style/RentRequestDialog">
+
+        <TextView
+            android:id="@+id/textView_Dialog_Title"
+            style="@style/PageTitle"
+            android:text="@{dialog.result}"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline23" />
+
+        <Button style="@style/BlueBorderButton"
+            android:id="@+id/button_Dialog"
+            android:layout_width="65dp"
+            android:layout_height="25dp"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            android:gravity="center"
+            android:text="@{dialog.button_Text}"
+            android:textSize="9dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline24" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3071"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5928"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/textView11"
-        style="@style/PageTitle"
-        android:text="대여신청이 완료되었습니다!"
-        android:textColor="@color/black"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline23" />
-
-    <Button style="@style/BlueBorderButton"
-        android:layout_width="65dp"
-        android:layout_height="25dp"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="5dp"
-        android:gravity="center"
-        android:text="목록으로"
-        android:textSize="9dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline24" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3071"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5928"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

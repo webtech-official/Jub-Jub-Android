@@ -1,19 +1,10 @@
 package com.example.jub_jub_android.ui.view.signup
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Toast
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.base.BaseActivity
 import com.example.jub_jub_android.databinding.ActivitySignupBinding
-import com.example.jub_jub_android.model.network.NetRetrofit
-import com.example.jub_jub_android.entity.dataclass.body.SignUp
-import com.example.jub_jub_android.entity.dataclass.response.SignUpResponse
-import kotlinx.android.synthetic.main.activity_signup.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.jub_jub_android.ui.adapter.viewpager.SignUpViewPagerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(R.layout.activity_signup) {
@@ -30,7 +21,7 @@ class SignUpActivity : BaseActivity<ActivitySignupBinding, SignUpViewModel>(R.la
         viewModel.adapter.also {
             binding.viewPager2SignUpActivity.adapter = it
             binding.viewPager2SignUpActivity.isUserInputEnabled = false
-        }.notifyDataSetChanged()
+        }
 
         viewModel.viewpagerPosition.observe(this, { binding.viewPager2SignUpActivity.currentItem = it })
 

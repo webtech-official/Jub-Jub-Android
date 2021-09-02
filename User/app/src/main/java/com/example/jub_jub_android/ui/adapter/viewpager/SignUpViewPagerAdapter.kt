@@ -1,4 +1,4 @@
-package com.example.jub_jub_android.ui.view.signup
+package com.example.jub_jub_android.ui.adapter.viewpager
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import com.example.jub_jub_android.databinding.LayoutSignup1Binding
 import com.example.jub_jub_android.databinding.LayoutSignup2Binding
 import com.example.jub_jub_android.databinding.LayoutSignup3Binding
 import com.example.jub_jub_android.databinding.LayoutSignup4Binding
+import com.example.jub_jub_android.ui.view.signup.SignUpViewModel
 import kotlinx.android.synthetic.main.layout_myedittext.view.*
 
 class SignUpViewPagerAdapter(val viewModel: SignUpViewModel): RecyclerView.Adapter<SignUpViewPagerAdapter.ViewHolder>() {
@@ -82,6 +83,8 @@ class SignUpViewPagerAdapter(val viewModel: SignUpViewModel): RecyclerView.Adapt
             viewModel.signUpEditTextArrayList[3] = binding.customEditStudentNumber.findViewById(R.id.editText_layout)
             binding.buttonSignUp.text = "회원가입 완료"
         }
+
+
 
     }
 

@@ -56,4 +56,15 @@ object MyUtil {
         return dialog
     }
 
+    fun getRentStatus(status: String): String {
+        return when(status){
+            "ROLE_Waiting" -> "승인대기"
+            "ROLE_Accept" -> "대여승인"
+            "ROLE_Reject" -> "거절"
+            "ROLE_Rental" -> "대여중"
+            "ROLE_Return" -> "반납완료"
+            else -> "?"
+        }
+    }
+
 }

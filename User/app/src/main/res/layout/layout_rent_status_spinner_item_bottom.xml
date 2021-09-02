@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:background="@drawable/bg_bottom_spinner_item"
+    android:layout_width="85dp"
+    android:layout_height="30dp">
+
+    <TextView style="@style/Rent_Status_Item_Text"
+        android:id="@+id/textView_RentStatus_Item"
+        android:text="반납완료"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

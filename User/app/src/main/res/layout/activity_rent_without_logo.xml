@@ -6,7 +6,7 @@
     <data>
         <variable
             name="activity"
-            type="com.example.jub_jub_android.ui.view.rent_request.TmpRentActivity" />
+            type="com.example.jub_jub_android.ui.view.rent_request.RentActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

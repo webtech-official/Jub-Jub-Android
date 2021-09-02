@@ -3,15 +3,13 @@
     android:gravity="center"
     android:background="#DEDEDE"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="85dp"
     android:layout_height="30dp">
 
     <TextView
+        android:id="@+id/textView_Current_RentStatus"
         style="@style/Display_Current_Rent_Status_Text"
-        android:layout_width="wrap_content"
-        android:layout_marginRight="25dp"
         android:text="전체"
-        android:textColor="#ADADAD" />
+        />
 
 </LinearLayout>

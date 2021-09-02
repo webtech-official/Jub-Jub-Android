@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.base.BaseActivity
-import com.example.jub_jub_android.databinding.ActivityMBinding
-import com.example.jub_jub_android.ui.view.main.home.EquipmentFragment
+import com.example.jub_jub_android.databinding.ActivityMainBinding
+import com.example.jub_jub_android.ui.view.main.equipment.EquipmentFragment
 import com.example.jub_jub_android.ui.view.main.mypage.MyPageFragment
 import com.example.jub_jub_android.ui.view.main.myrent.MyRentListFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MActivity() : BaseActivity<ActivityMBinding, MViewModel>(R.layout.activity_m) {
+class MainActivity : BaseActivity<ActivityMainBinding, MViewModel>(R.layout.activity_main) {
 
     var backKeyPressedTime : Long = 0
 

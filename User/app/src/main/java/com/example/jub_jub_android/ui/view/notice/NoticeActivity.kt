@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.example.jub_jub_android.R
 import com.example.jub_jub_android.base.BaseActivity
 import com.example.jub_jub_android.databinding.ActivityNoticeBinding
+import com.example.jub_jub_android.ui.adapter.recyclerview.NoticeRecyclerViewAdapter
 import org.koin.android.ext.android.inject
 
 class NoticeActivity : BaseActivity<ActivityNoticeBinding, NoticeViewModel>(R.layout.activity_notice) {

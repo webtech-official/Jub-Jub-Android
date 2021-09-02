@@ -11,7 +11,7 @@ import org.koin.core.context.startKoin
 class MyApplication : Application() {
 
     companion object {
-        const val BASE_URL = "http://15.165.97.179:8080/v2/"
+        const val BASE_URL = "http://10.120.72.245:8081/v2/"
     }
 
     override fun onCreate() {

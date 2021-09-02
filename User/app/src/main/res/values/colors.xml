@@ -11,6 +11,10 @@
     <color name="yellow">#FFE600</color>
     <color name="reject">#FF5841</color>
     <color name="red">#FF0000</color>
+
+
+    <color name="grayDEDE">#DEDEDE</color>
+    <color name="grayF4F4">#F4F4F4</color>
     <color name="gray8080">#808080</color>
     <color name="grayB6B6">#B6B6B6</color>
     <color name="grayBEBE">#BEBEBE</color>
@@ -19,7 +23,10 @@
     <color name="gray6B6B">#6B6B6B</color>
     <color name="grayC7C7">#C7C7C7</color>
     <color name="grayC9C9">#C9C9C9</color>
+    <color name="grayADAD">#ADADAD</color>
+
     <color name="black5050">#505050</color>
+    <color name="black4848">#484848</color>
     <color name="red7272">#DA7272</color>
 
     <color name="mainBlue">#2D57A0</color>
