@@ -8,11 +8,11 @@
 
         <variable
             name="activity"
-            type="com.example.jub_jub_android.ui.view.login.LoginActivity" />
+            type="com.jubjub.user.ui.view.login.LoginActivity" />
 
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.login.LoginViewModel" />
+            type="com.jubjub.user.ui.view.login.LoginViewModel" />
 
     </data>
 
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:padding="20dp"
-        tools:context="com.example.jub_jub_android.ui.view.login.LoginActivity">
+        tools:context="com.jubjub.user.ui.view.login.LoginActivity">
 
         <ImageView android:id="@+id/loginTitle"
             android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            refreshing="@{vm.refreshing}" />
+            refreshing="@{vm.loading}" />
 
 
 

@@ -5,10 +5,10 @@
     <data>
         <variable
             name="fragment"
-            type="com.example.jub_jub_android.ui.view.main.equipment.EquipmentFragment" />
+            type="com.jubjub.user.ui.view.main.equipment.EquipmentFragment" />
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.main.equipment.EquipmentViewModel" />
+            type="com.jubjub.user.ui.view.main.equipment.EquipmentViewModel" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.signup.SignUpViewModel" />
+            type="com.jubjub.user.ui.view.signup.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

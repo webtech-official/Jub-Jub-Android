@@ -6,14 +6,14 @@
     <data>
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.signup.SignUpViewModel" />
+            type="com.jubjub.user.ui.view.signup.SignUpViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.jub_jub_android.ui.view.signup.SignUpActivity">
+        tools:context="com.jubjub.user.ui.view.signup.SignUpActivity">
 
         <EditText android:id="@+id/editText"
             app:layout_constraintTop_toTopOf="parent"

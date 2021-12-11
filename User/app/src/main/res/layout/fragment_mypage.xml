@@ -5,7 +5,7 @@
     <data>
         <variable
             name="fragment"
-            type="com.example.jub_jub_android.ui.view.main.mypage.MyPageFragment" />
+            type="com.jubjub.user.ui.view.main.mypage.MyPageFragment" />
     </data>
 
 
@@ -73,6 +73,7 @@
             android:fontFamily="@font/notosans_medium"
             android:gravity="center"
             android:text="로그아웃"
+            android:onClick="@{() -> fragment.signOut()}"
             android:textColor="@color/red7272"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"

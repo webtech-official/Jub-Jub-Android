@@ -7,11 +7,11 @@
     <data>
         <variable
             name="activity"
-            type="com.example.jub_jub_android.ui.view.notice.detail.NoticeDetailActivity" />
+            type="com.jubjub.user.ui.view.notice.detail.NoticeDetailActivity" />
 
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.notice.detail.NoticeDetailViewModel" />
+            type="com.jubjub.user.ui.view.notice.detail.NoticeDetailViewModel" />
 
     </data>
 

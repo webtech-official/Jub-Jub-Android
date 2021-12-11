@@ -115,7 +115,7 @@ class ModifyEquipmentActivity : AppCompatActivity(){
     }
 
     private fun modifyData() {
-        progress_bar.visibility = View.VISIBLE
+          progress_bar.visibility = View.VISIBLE
         Log.d("TestLog_Modify", "Image = ${MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()).toString()}")
         val imagePath = MyUtil.getPathFromUri(applicationContext, MyUtil.getUriFromBitmap(applicationContext, imageView_ItemImage_ModifyActivity.drawable.toBitmap()))
         val imageFile = File(imagePath)

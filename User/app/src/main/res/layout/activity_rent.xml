@@ -6,10 +6,10 @@
     <data>
         <variable
             name="activity"
-            type="com.example.jub_jub_android.ui.view.rent_request.RentActivity" />
+            type="com.jubjub.user.ui.view.rent_request.RentActivity" />
         <variable
             name="vm"
-            type="com.example.jub_jub_android.ui.view.rent_request.RentViewModel" />
+            type="com.jubjub.user.ui.view.rent_request.RentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

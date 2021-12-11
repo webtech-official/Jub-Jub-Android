@@ -75,11 +75,13 @@
         <item name="android:fontFamily">@font/notosans_medium</item>
     </style>
 
+
     <style name="MyEditText">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">44dp</item>
         <item name="android:textSize">12dp</item>
         <item name="backgroundTint">@color/mainBlue</item>
+        <item name="android:inputType">text</item>
         <item name="android:textColorHint">@color/grayB6B6</item>
         <item name="android:paddingBottom">3dp</item>
         <item name="android:maxLines">1</item>
